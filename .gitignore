@@ -1,0 +1,5 @@
+./entities
+./project
+./__pycache__
+tech_tree.*
+upgrade_tree.*
