@@ -147,7 +147,7 @@ def add_tech_age(tech, age):
 def get_age_from_tech(tech):
     # Extract an age number for a tech
     #TODO: This doesn't work for spirits or governments as currently stored.
-    age_match = re.match(age, 'TECHAGE([0-9]+)')
+    age_match = re.match(tech, 'TECHAGE([0-9]+)')
     if age_match:
         return int(age_match.group(1))
     else:
@@ -304,11 +304,11 @@ def load_entities(filename):
 def load_data():
     print("Loading...")
     print("Unlocks")
-    unlock_dir = r'C:\Users\rhalstea\projects\millennia\textassets\unlocks'
+    unlock_dir = r'textassets\unlocks'
     for filename in os.listdir(unlock_dir):
         load_unlocks(os.path.join(unlock_dir, filename))
     print("Entities")
-    entity_dir = r'C:\Users\rhalstea\projects\millennia\textassets\entities'
+    entity_dir = r'textassets\entities'
     for filename in os.listdir(entity_dir):
         load_entities(os.path.join(entity_dir, filename))
     print("done.")
