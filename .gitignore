@@ -2,5 +2,5 @@ entities/**
 project/**
 __pycache__/**
 textassets/*
-tech_tree.*
-upgrade_tree.*
+*.gv
+*.gv.*
