@@ -301,14 +301,12 @@ def load_entities(filename):
             # not sure what would be here, but we can check to ensure we haven't missed any
             pass
 
-def load_data():
+def load_data(unlock_dir="txt_data/unlocks", entity_dir="txt_data/entities"):
     print("Loading...")
     print("Unlocks")
-    unlock_dir = r'textassets\unlocks'
     for filename in os.listdir(unlock_dir):
         load_unlocks(os.path.join(unlock_dir, filename))
     print("Entities")
-    entity_dir = r'textassets\entities'
     for filename in os.listdir(entity_dir):
         load_entities(os.path.join(entity_dir, filename))
     print("done.")
@@ -323,10 +321,12 @@ def load_data():
     ##pretty_print(projects)
     ##print("ages for techs:")
     ##pretty_print(tech_ages)
-    print("Errored cards:")
-    pretty_print(error_cards)
-    print("Errored entities:")
-    pretty_print(error_entities)
+    if len(error_cards) > 0:
+        print("Errored cards:")
+        pretty_print(error_cards)
+    if len(error_entities) > 0:
+        print("Errored entities:")
+        pretty_print(error_entities)
     ##print("Blank entities:")
     ##pretty_print(blank_entities)
     return (tech_ages, age_advances, age_spirits, age_governments, units, improvements, buildings, projects)
