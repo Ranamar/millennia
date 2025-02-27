@@ -1,0 +1,928 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GOVREPUBLIC</DeckName>
+
+<!--
+
+   DEFAULT
+   Palazzo
+      Bonus Improvement Points, Production
+      Has a moderate Region Level requirement
+
+
+   T1
+   Open Markets 
+      +1 Foreign Trade Slot (Import) on Warehouses CB
+
+   Public Investments
+      +5 Food, +5 Housing, and +5 Sanitation on Palazzo
+
+   Atelier Studio 
+      Unlocks new CB “Atelier Studio ”, high Region Level requirement, generates Knowledge
+      (Link to University Upgrade Line, between Medieval University & University)
+
+
+   T2
+   Conspicuous Consumption
+      +1 Luxury on Plantation Goods (Grapes, Olives, Flax, Cotton, Rice, Tobacco, Tea, Sugar, and Coffee)
+
+   Centralized Power +1 Region Level to Palazzo
+
+   
+   T3
+   Eat Cake
+      +1 Luxury and +1 Wealth on Luxury Goods (Wine, Delicacies, and Jewelry)
+
+   Patron of the Arts
+      +1 Culture and +1 Arts XP on Palazzo
+
+
+   T4
+      REFORMED
+-->
+
+
+   <Definition>
+
+      <ACard>
+         <ID>GOVREPUBLIC-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+
+                  <!-- Standardized "New Government, Destroy old CB's" Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-CHANGEGOVERNMENT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVREPUBLIC-BASE_BUILDINGBUFF</Payload>
+                     <Target>ENTTAG,+Capital</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVREPUBLIC-BASE_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Capital-GOV_CAPITALBUFF,GOVREPUBLIC-BASE_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-GOV_HOMELANDBUFF,GOVREPUBLIC-BASE_HOMELANDBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVREPUBLIC,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVREPUBLIC,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-GovernmentSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-WarfareSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ExplorationSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-EngineeringSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-DiplomacySofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ArtsSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DomainTier:3</Tag>
+               <Tag>DomainAge:5</Tag>
+               <Tag>DomainResource:ResDomainGovernment</Tag>
+               <Tag>AIHint-Republic</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>0</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVREPUBLIC-BASE_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Capital</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Capital - National Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,8</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+
+                  <!-- Capital - Regional Needs -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>      
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVREPUBLIC-BASE_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Free Bonuses
+      -->
+      <ACard>
+         <ID>GOVREPUBLIC-STARTERIDEAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- DEFAULT CB's -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PALAZZO</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVREPUBLIC-INCREASEMAX</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-DomainXP-Tier3-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-IP-Tier3-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:0</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVREPUBLIC-INCREASEMAX</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPointsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialistsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResArcanaMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfareMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExplorationMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernmentMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArtsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineeringMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacyMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      Open Markets 
+         +1 Foreign Trade Slot (Import) on Warehouses CB
+      -->
+         <ACard>
+            <ID>GOVREPUBLIC-OPENMARKETS</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>GOVREPUBLIC-OPENMARKETS_CAPITALBUFF</Payload>
+                        <Target>ENTTAG,Warehouse</Target>
+                        <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>TriggerOnEntityCreateTag-Warehouse-OPENMARKETS,GOVREPUBLIC-OPENMARKETS_CAPITALBUFF</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>2</Layer>
+         </ACard>
+
+         <ACard>
+            <ID>GOVREPUBLIC-OPENMARKETS_CAPITALBUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatExportSlotCount,ADD,1</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Public Investments
+         +5 Food, +5 Housing, and +5 Sanitation on Palazzo
+      -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-PUBLICINVESTMENTS</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>GOVREPUBLIC-PUBLICINVESTMENTS_CAPITALBUFF</Payload>
+                        <Target>ENTTYPE,B_PALAZZO</Target>
+                        <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>TriggerOnEntityCreateType-B_PALAZZO-PUBLICINVESTMENTS,GOVREPUBLIC-PUBLICINVESTMENTS_CAPITALBUFF</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintType-B_PALAZZO-PUBLICINVESTMENTS_BUILDHELPER,ResCityFood</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintType-B_PALAZZO-PUBLICINVESTMENTS_BUILDHELPER,ResCityHousing</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintType-B_PALAZZO-PUBLICINVESTMENTS_BUILDHELPER,ResCitySanitation</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>2</Layer>
+         </ACard>
+
+         <ACard>
+            <ID>GOVREPUBLIC-PUBLICINVESTMENTS_CAPITALBUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResCityFood,ADD,5</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResCityHousing,ADD,5</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResCitySanitation,ADD,5</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Atelier Studio 
+         Unlocks new CB “Atelier Studio”, high Region Level requirement, generates Knowledge
+         (Link to University Upgrade Line, between Medieval University & University)
+      -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-ATELIERSTUDIO</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                     <!-- <ACardRequirement>
+                        <ReqType>CR_Region</ReqType>
+                        <Req>StatBonusRegionLevel,GTE,4</Req>
+                        <Target>PLAYER</Target>
+                     </ACardRequirement> -->
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockContent</EffectType>
+                        <Payload>B_ATELIERSTUDIO</Payload>
+                        <ReverseOnPassive>false</ReverseOnPassive>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>2</Layer>
+         </ACard>
+
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      Conspicuous Consumption
+         +1 Luxury on Plantation Goods (Grapes, Olives, Flax, Cotton, Rice, Tobacco, Tea, Sugar, and Coffee)
+      -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-CONSPICUOUSCONSUMPTION</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <!-- Buffs all goods tagged PlantationGoods to give +Luxury -->
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ConsumeGoodBonus-+PlantationGood-ResCityLuxury,ADD,1</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintTag-+PlantationGood-CONSPICUOUSCONSUMPTION_BUILDHELPER,ResCityLuxury</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:85</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>3</Layer>
+         </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!-- Centralized Power +1 Region Level to Palazzo -->
+         <ACard>
+            <ID>GOVREPUBLIC-CENTRALIZEDPOWER</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>GOVREPUBLIC-CENTRALIZEDPOWER_CAPITALBUFF</Payload>
+                        <Target>ENTTYPE,B_PALAZZO</Target>
+                        <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>TriggerOnEntityCreateType-B_PALAZZO-CENTRALIZEDPOWER,GOVREPUBLIC-CENTRALIZEDPOWER_CAPITALBUFF</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:85</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>3</Layer>
+         </ACard>
+
+         <ACard>
+            <ID>GOVREPUBLIC-CENTRALIZEDPOWER_CAPITALBUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatBonusRegionLevel,ADD,1</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      Eat Cake
+         +1 Luxury and +1 Wealth on Luxury Goods (Wine, Delicacies, and Jewelry)
+      -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-EATCAKE</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <!-- Buffs all Luxury tagged goods -->
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ConsumeGoodBonus-+LuxuryGoods-ResCityLuxury,ADD,1</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ConsumeGoodBonus-+LuxuryGoods-ResCoin,ADD,1</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:125</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>4</Layer>
+         </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Patron of the Arts
+         +1 Culture and +1 Arts XP on Palazzo
+      -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-PATRONOFTHEARTS</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>GOVREPUBLIC-PATRONOFTHEARTS_CAPITALBUFF</Payload>
+                        <Target>ENTTYPE,B_PALAZZO</Target>
+                        <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>TriggerOnEntityCreateType-B_PALAZZO-PATRONOFTHEARTS,GOVREPUBLIC-PATRONOFTHEARTS_CAPITALBUFF</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintType-B_PALAZZO-PUBLICINVESTMENTS_BUILDHELPER,ResCulture</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_SetStringData</EffectType>
+                        <Payload>BuildHelperHintType-B_PALAZZO-PUBLICINVESTMENTS_BUILDHELPER,ResDomainArts</Payload>
+                        <Target>PLAYER</Target>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+                  <Tag>PurchaseCost-ResDomainGovernment:125</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>4</Layer>
+         </ACard>
+
+         <ACard>
+            <ID>GOVREPUBLIC-PATRONOFTHEARTS_CAPITALBUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResCulture,ADD,1</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResDomainArts,ADD,1</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+
+<!-- _________________TIER 5______________________ -->
+
+         <ACard>
+            <ID>GOVREPUBLIC-COMPLETED</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>AllowPeacefulRevolution,SET,1</Payload>
+                        <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>GOVREPUBLIC-COMPLETED_HOMELANDBUFF</Payload>
+                        <Target>ENTTAG,+Homeland</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>PurchaseCost-ResDomainGovernment:160</Tag>
+                  <Tag>NotReversible</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>5</Layer>
+         </ACard>
+
+         <ACard>
+            <ID>GOVREPUBLIC-COMPLETED_HOMELANDBUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                     <ACardRequirement>
+                        <ReqType>CR_CheckTag</ReqType>
+                        <Req>+Homeland</Req>
+                        <Target>ENT,EXEC</Target>
+                        <Hidden>true</Hidden>
+                     </ACardRequirement>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResCulture,ADD,2</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+<!-- ___________________INNOVATION_________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-GOVREPUBLIC-FINEDELICACIES</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_DomainSpec</ReqType>
+               <Req>GOVREPUBLIC</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+LuxuryGoods-ResCityProduction,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

@@ -1,0 +1,486 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_PROPAGANDASTUDIO</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityIdeology,10</Data>
+         <Data>ResCoin,10</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>UpgradeLine-Media,1</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_YOUTHCAMP</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>ResCityIdeology,2</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_COMMANDCENTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>ResDomainGovernment,1</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>ResCityIdeology,5</Data>
+         <Data>RegionalEfficiencyResCityProduction,1.1</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_AIRBASE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>StatAirUnitCapacity,1</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AirliftDestination</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_FOREIGNOFFICE_2</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,4</Data>
+         <Data>ResDomainDiplomacy,3</Data>
+         <Data>ResCityIdeology,5</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE8_VICTORYGENERALS-FOREIGNCONSULATE_SETDIPLOINCOME</Data>
+         <Data>RequiredRegionLevel,3</Data>
+         <Data>UpgradeLine-Diplomacy,4</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DataLinkAction:PLAYER:RelationshipDiplomacyIncome,TECHAGE4-GREATHALL_DATALINKACTION_BUFF</Tag>
+         <Tag>TooltipItemizeDiplomaticRelationships</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_GOVERNMENTBUNKER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResDomainGovernment,2</Data>
+         <Data>ResDomainWarfare,2</Data>
+         <Data>ResCityIdeology,2</Data>
+         <Data>FilterAge,8</Data>
+         <Data>UpgradeLine-CityGov,6</Data>
+         <Data>TriggerOnUnitBuilt,UNITACTIONS-GOVERNMENTBUNKER_ONUNITBUILDTRIGGER</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GOVAUTOCRATIC</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-GOVAUTOCRATIC-DisplayName</Data>
+      </StartingData>
+      <Tag>
+         <Tag>GovernmentCapital</Tag>
+         <Tag>CapitalAge8</Tag>
+         <Tag>AIHint-GovernmentBunker</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tag>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_ROYALTRAININGFIELD</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,280</Data>-->
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResDomainWarfare,2</Data>
+         <Data>TriggerOnUnitBuilt,UNITACTIONS-ROYALTRAININGCAMP_ONUNITBUILDTRIGGER</Data>
+         <Data>UpgradeLine-Warcamp,4</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>FilterAge,8</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GOVAUTOCRATIC</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-GOVAUTOCRATIC-DisplayName</Data>
+      </StartingData>
+      <Tags>
+         <Tag>MilitaryBasePresent</Tag>
+         <Tag>BarracksPresent</Tag>
+         <Tag>TrainingCamp</Tag>
+         <Tag>AIHint-RoyalTrainingField</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MILITARYTRAININGCAMP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MILITARYTRAININGCAMP</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>ResCityHousing,40</Data>
+         <Data>StatUnrest,8</Data>
+         <Data>WorkableResDomainWarfare,2</Data>
+         <Data>UpgradeLine-Apartment,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SLAGFOUNDRY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SLAGFOUNDRY</Data>
+         <Data>WorkableConvertGoods-Gold-2-Slag,2</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResCityIdeology,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,493</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MREKITCHEN</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MREKITCHEN</Data>
+         <Data>WorkableConvertGoods-+CanMakeDelicacies-3-MRE,3</Data>
+         <Data>WorkableResDomainWarfare,1</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResCityIdeology,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-Kitchen,3</Data>
+         <Data>ImprovementSort,151</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_RAGSFACTORY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_RAGSFACTORY</Data>
+         <Data>WorkableConvertGoods-+CanMakeRags-2-Rags,2</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResCityIdeology,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,135</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Textile</Tag>
+         <Tag>Factory</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_WARGAMES</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_WARGAMES</Data>
+         <Data>WorkableConvertGoods-Computers-2-WarGames,2</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>UpgradeLine-ComputerLab,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,610</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Computing</Tag>
+         <Tag>Computers</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- DLC 2 -->
+   <EntityInfo>
+      <ID>B_TILEIMP_NUCLEARWEAPONFACILITY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_NUCLEARWEAPONFACILITY</Data>
+         <Data>WorkableConvertGoods-EnrichedUranium-2-NuclearWarhead,2</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,561</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>NuclearWeaponImprovement</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_ANTIAIRINFANT</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_PropFighterX</Icon>
+      <Portrait>AntiAirInfantryPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,40</Data>
+         <!-- AA I -->
+         <Data>CombatMod-StatAttack-Target:+AirUnit,8.0</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>FilterAge,8</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_8</Data>
+         <Data>LeaderPromotionCost,123</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/AntiAirInfantry/Unit_AntiAirInfantry</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ActInAirDefenseRound</Tag>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMissile</Tag>   
+         <Tag>AttackSoundGrenade</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>     
+         <!-- AI Hints -->
+         <Tag>AIHint-DefensiveUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ANTITANKINFANT</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_TreadX</Icon>
+      <Portrait>AntiTankInfantryPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,30</Data>
+         <Data>StatDefense,44</Data>
+         <!-- Tank Killer III -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,3.0</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>FilterAge,8</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_8</Data>
+         <Data>LeaderPromotionCost,123</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/AntiTankInfantry/Unit_AntiTankInfantry</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMissile</Tag>   
+         <Tag>AttackSoundGrenade</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>    
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_NAVYTRANSPORT</ID>
+      <Import>UNIT_TRANSPORT</Import>
+      <Icon>UnitIcon_TransportShip</Icon>
+      <Portrait>NavyTransportPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,51</Data>
+         <Data>StatMovement,70</Data>
+         <Data>StatMovementMax,70</Data>
+         <Data>RevealRadius,2</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable_Navy/NavyTransport/Unit_NavyTransport</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- GOV AUTOCRATIC-->
+
+   <EntityInfo>
+      <ID>UNIT_SHOCKTROOP</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Rifle</Icon>
+      <Portrait>ShockTroopPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,210</Data>
+         <Data>Upkeep-ResCoin,10</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,31</Data>
+         <Data>StatDefense,43</Data>
+         <!-- Tank Killer -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,2.0</Data>
+         <!-- Volley -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>         
+         <Data>FilterAge,8</Data>
+         <Data>UpgradeLine-Infantry,8</Data>
+         <!-- Fold-In Spartans & Hopelite to Infantry -->
+         <Data>UpgradeLine-Spartan,4</Data>
+         <!-- Fold in the Samurai & Naginata -->
+         <Data>UpgradeLine-Samurai,3</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_8</Data>
+         <Data>LeaderPromotionCost,123</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/ShockTrooper/Unit_ShockTrooper</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GOVAUTOCRATIC</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-GOVAUTOCRATIC-DisplayName</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundRifleMulti</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>   
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-ShockTroop</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_LEADER_GENERAL</ID>
+      <Import>UNIT_LEADER_8</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>LeaderGeneralPortrait</Portrait>
+      <StartingData>
+         <Data>StatTactics,10</Data>
+         <!--Data>UseAction-100,UNITACTIONS-GENERAL_AIRSTRIKE</Data-->
+         <Data>UnitMemberPrefab,Entities/Units/Army/General/Unit_General</Data>
+      </StartingData>
+      <Tags>
+         <Tag>General</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_LEADER_FIVESTAR</ID>
+      <Import>UNIT_LEADER_8</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>LeaderFiveStarPortrait</Portrait>
+      <StartingData>
+         <Data>StatTactics,16</Data>
+         <!--Data>UseAction-100,UNITACTIONS-GENERAL_AIRSTRIKE</Data-->
+         <Data>UnitMemberPrefab,Entities/Units/Army/GeneralFiveStar/Unit_GeneralFiveStar</Data>
+      </StartingData>
+      <Tags>
+         <Tag>General</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+</EntityInfoList>

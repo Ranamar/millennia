@@ -1,0 +1,1516 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GOVDEMOCRATICREPUBLIC</DeckName>
+
+<!--
+   GOVERNMENT BUILDING
+   Executive Office - Bonus Gov XP, Wealth, and Ideology
+
+
+   T1
+   CONGRESSIONAL HALLS
+   CB, Bonus Gov XP based on National Population, One Per Nation
+
+   RESEARCH
+   Bonus Knowledge from Research chain goods (Research, Computers, Computer Sim)
+
+   NATIONAL GUARD
+   Bonus Attack & Defense on Militia (+Militia tag)
+
+
+   T2
+   TOWN HALL
+   Government Domain Power, Bonus Regional Efficiency on target Region (like Local Reforms)
+
+   OFFICE OF SCIENCE AND TECHNOLOGY
+   Knowledge Regional Efficiency Bonus on Executive Office
+
+   NATIONAL GUARD 2
+   Additional militia in your cities
+
+
+   T3
+   COMMISSION RESEARCH PROJECT
+   Government Domain Power, short-term knowledge income bonus on target region, (not a one-and-done Eureka, but a flat amount over a few turns). No cool-down, should try to spin plates on multiple regions at the same time.
+
+   SCIENCE RESEARCH AGREEMENT
+   Diplomatic Action, you and target allied nation both get a knowledge income bonus per turn on all of your regions.
+
+
+   T4
+   REFORMED
+-->
+
+
+   <Definition>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_ARMSRACE</Payload>
+                 </ACardEffect>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_FACTIONS</Payload>
+                 </ACardEffect>
+
+                  <!-- Standardized "New Government, Destroy old CB's" Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-CHANGEGOVERNMENT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-SECULAR_GOVT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-BASE_BUILDINGBUFF</Payload>
+                     <Target>ENTTAG,+Capital</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-BASE_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Capital-GOV_CAPITALBUFF,GOVDEMOCRATICREPUBLIC-BASE_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-GOV_HOMELANDBUFF,GOVDEMOCRATICREPUBLIC-BASE_HOMELANDBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-GOVDEMOCRACYSCIENCE,GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+
+                  <!-- FACTION BONUSES -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-RADIOSTATION_BUILDINGBUFF</Payload>
+                     <Target>ENTTYPE,B_RADIOSTATION</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_RADIOSTATION-GOVDEMOCRATICREPUBLICRADIOSTATION,GOVDEMOCRATICREPUBLIC-RADIOSTATION_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionCulture,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionDirect,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>Faction,DEMOCRATIC</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IdeologyNeedEnabled,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-FACTIONREWARDS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankLeaderBonusActive-DEMOCRATIC,GOVDEMOCRATICREPUBLIC-FACTIONLEADER_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankPersonalBonusActive-DEMOCRATIC,GOVDEMOCRATICREPUBLIC-FACTIONPERSONALRANK_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>APPLYFACTIONREWARDS</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-GovernmentSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-WarfareSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ExplorationSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-EngineeringSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-DiplomacySofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ArtsSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age of Generals Check -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>TECHAGE8_VICTORYGENERALS-BASE,8</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+                  <!-- But NOT Age 9+ -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,9</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-GENERALSVICTORYCHECK,TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_DEMOCRATIC</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DomainTier:5</Tag>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainGovernment</Tag>
+               <Tag>AIHint-Democracy</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>0</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONREWARDS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>FactionActive-Democratic</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-DEMOCRATIC-0,GOVDEMOCRATICREPUBLIC-FACTIONREWARD_0</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-DEMOCRATIC-1,GOVDEMOCRATICREPUBLIC-FACTIONREWARD_1</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-DEMOCRATIC-2,GOVDEMOCRATICREPUBLIC-FACTIONREWARD_2</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-BASE_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Capital</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Capital - National Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,13</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Needs -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>      
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>            
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-BASE_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,6</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-RADIOSTATION_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Free Bonuses
+      -->
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-STARTERIDEAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- DEFAULT CB's -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_EXECUTIVEOFFICE</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-INCREASEMAX</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FACTIONHQ</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-DomainXP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-IP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:0</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-INCREASEMAX</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Age 8 Special rule, choosing faction gives sofab point -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPointsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialistsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResArcanaMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfareMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExplorationMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernmentMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArtsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineeringMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacyMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      CONGRESSIONAL HALLS
+      CB, Bonus Gov XP based on National Population, One Per Nation
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-CONGRESSIONALHALLS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_CONGRESSIONALHALLS-CONGRESSIONALHALLS_BUILDHELPER,ResDomainGovernment</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CONGRESSIONALHALLS</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-CONGRESSIONALHALLS_DATALINKACTION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempBuffAmountGovernment,SET,[REGION:Population]</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempBuffAmountGovernment,MUL,0.25</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,[SELF:NS_TempBuffAmountGovernment]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-CongressionalHalls-Tooltip</Payload>
+                     <PayloadParam>FormatParam:0.25</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      RESEARCH
+      Bonus Knowledge from Research chain goods (Research, Computers, Computer Sim)
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-RESEARCH</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+ResearchGood-ResKnowledge,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_COFFEEHOUSE-RESEARCH_BUILDHELPER1,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_ALCHEMYLAB-RESEARCH_BUILDHELPER2,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_LABORATORY-RESEARCH_BUILDHELPER3,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_SECRETLABORATORY-RESEARCH_BUILDHELPER4,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      NATIONAL GUARD
+      Bonus Attack & Defense on Militia (+Militia tag)
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-NATIONALGUARD</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-NATIONALGUARD_UNITBUFF</Payload>
+                     <Target>ENTTAG,+Militia</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Militia-NATIONALGUARD,GOVDEMOCRATICREPUBLIC-NATIONALGUARD_UNITBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-NATIONALGUARD_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Militia</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      TOWN HALL
+      Government Domain Power, Bonus Regional Efficiency on target Region (like Local Reforms)
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-TOWNHALL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovDemocraticRepublicTownHall,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      OFFICE OF SCIENCE AND TECHNOLOGY
+      Knowledge Regional Efficiency Bonus on Executive Office
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-OFFICEOFSCIENCEANDTECHNOLOGY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-OFFICEOFSCIENCEANDTECHNOLOGY_BUFF</Payload>
+                     <Target>ENTTYPE,B_EXECUTIVEOFFICE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_EXECUTIVEOFFICE-OFFICEOFSCIENCEANDTECHNOLOGY,GOVDEMOCRATICREPUBLIC-OFFICEOFSCIENCEANDTECHNOLOGY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_EXECUTIVEOFFICE-OFFICEOFSCIENCEANDTECHNOLOGY_BUILDHELPER,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-OFFICEOFSCIENCEANDTECHNOLOGY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResKnowledge,ADD,0.2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      NATIONAL GUARD 2
+      Additional militia in your cities
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-PATRIOTISM</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CITY_DEFENDER_COUNT,ADD,1</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      COMMISSION RESEARCH PROJECT
+      Government Domain Power, short-term knowledge income bonus on target region, (not a one-and-done Eureka, but a flat amount over a few turns). No cool-down, should try to spin plates on multiple regions at the same time.
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-COMMISSIONRESEARCHPROJECT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovDemocraticRepublicCommissionResearchProject,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-COMMISSIONRESEARCH_CAPITALBUFF</ID>
+         <CardSpriteName>UI/Icons/NationalSpirit/NSIconSmall-GOVDEMOCRATICREPUBLIC</CardSpriteName>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>4</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- UI -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,5</Payload>
+                     <Target>ENTTAGATLOC,+CityCenter,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <!-- Actual Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,5</Payload>
+                     <Target>ENTTAGATLOC,+Capital,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      SCIENCE RESEARCH PACT
+      Increases Research Treaty value
+      -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCHPACT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TREATY_EFFFICIENCY-TREATYRESEARCH,MUL,1.5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 5______________________ -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-COMPLETED</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-COMPLETED_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:225</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-COMPLETED_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________FACTION_REWARDS________________________ -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONREWARD_0</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Entities/Icons/B_TILEIMP_CORPORATERD-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- First Threshold -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CORPORATERD</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:2500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- Jack: Tier 2 & 3 Faction thresholds are not working properly at the moment, will need to revisits when all Faction-related content is going in.-->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONREWARD_1</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Culture Powers/UNITED_WE_STAND-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovDemocraticRepublicUnitedWeStand,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:5000</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-UNITEDWESTAND_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>DRCount-DR_Alliance,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>DRCount-DR_War,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>WarCountAggressorAny,BOOL_FALSE,0</Req>
+               <UseBooleanFormat>true</UseBooleanFormat>
+               <UsePlainFormat>true</UsePlainFormat>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_War,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>WarCountAggressorAny,BOOL_FALSE,0</Req>
+                     <UseBooleanFormat>true</UseBooleanFormat>
+                     <UsePlainFormat>true</UsePlainFormat>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>SpawnPerRegion:[PLAYER:DRCount-DR_Alliance]</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONREWARD_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/ResKnowledge-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CanRushTech,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:12500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________FACTION_BONUSES________________________ -->
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONLEADER_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Proxy-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Faction Lead Bonus -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_FACTION</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-FACTIONDEMOCRACYLEAD,GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_FACTION</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_FACTION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-FACTIONPERSONALRANK_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Proxy-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Faction Lead Bonus -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_PERSONAL</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-FACTIONDEMOCRACYPERSONAL,GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_PERSONAL</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-SCIENCERESEARCH_BUILDINGBUFF_PERSONAL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________INNOVATION________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-GOVDEMOCRATICREPUBLIC-MILITARYRESEARCH</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-MILITARYRESEARCH_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_DEFENSEMANUFACTURING</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_DEFENSEMANUFACTURING-MILITARYRESEARCH,GOVDEMOCRATICREPUBLIC-MILITARYRESEARCH_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_DEFENSEMANUFACTURING-MILITARYRESEARCH_BUILDHELPER,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-MILITARYRESEARCH_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-GOVDEMOCRATICREPUBLIC-PRIVATESCHOOLS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVDEMOCRATICREPUBLIC-PRIVATESCHOOLS_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_SCHOOLDISTRICT</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_SCHOOLDISTRICT-PRIVATESCHOOLS,GOVDEMOCRATICREPUBLIC-PRIVATESCHOOLS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_SCHOOLDISTRICT-PRIVATESCHOOLS_BUILDHELPER,ResCoin</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVDEMOCRATICREPUBLIC-PRIVATESCHOOLS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

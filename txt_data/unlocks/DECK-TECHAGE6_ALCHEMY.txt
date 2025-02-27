@@ -1,0 +1,827 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE6_ALCHEMY</DeckName>
+
+   <Definition>
+<!-- Default Stuff -->
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE6_ALCHEMY-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MUSKET</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6-WARSPAWN_MUSKETCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MANOFWAR</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Buildings/Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MUSEUM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PUBLICSCHOOL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_GOLDTRANSMUTER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_HOUSEOFWORSHIP</Payload>
+                  </ACardEffect>
+
+                  <!-- City Defenders for Age  -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TownDefenderEntityType,UNIT_MILITIA_LVL_6</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CityDefenderEntityType,UNIT_MILITIA_LVL_6</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>RevoltSpawnType,UNIT_REBEL_LVL_6</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CI_CASHOUT_VALUE,MUL,1.2</Payload> <!-- 250 -> 300 -->
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CI_XPGAIN_VALUE,SET,108</Payload>
+                  </ACardEffect> 
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <!-- 
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE6,+AddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+                  -->
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age6AlchemyUnlocks</Payload>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:6</Tag>
+               <Tag>VariantAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age6_Alchemy_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_RESARCANA</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_ALCHEMIST</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_TRANSMUTATION</Tag>
+               <Tag>MusicEra:3</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- TECHS -->
+
+   <!-- Age Advance Tech -->
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE7-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE6_ALCHEMY-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:650</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE6_ALCHEMY-TECHAGE7_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-TECHAGE7_VICTORYHARMONY_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ControlledReligionGlobalPopFrac,GTE,0.30</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE6-TECHAGE7_VICTORYHARMONY_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE7_VICTORYHARMONY-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE6_ALCHEMY-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:600</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>VictoryAgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- IMPORT TECHS -->
+      <ACard><Import>TECHAGE6-SOCIETY</Import></ACard>
+      <ACard><Import>TECHAGE6-GOVERNMENT</Import></ACard>
+      <ACard><Import>TECHAGE6-COLONIES</Import></ACard>
+
+
+   <!-- NEW TECHS -->
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-ELEMENTARYPHYSICS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_LITERARYSALON</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_ALCHEMYSCHOOL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_ALCHEMYLAB</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:443</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-PANACEA</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PERFUMESHOP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PANACEA</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_CAP,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_TownCap-ICON,Tooltip:GameStrings-Proxy-TownCapIncrease,InfopediaLink:ITT_Misc|CONCEPT_TOWNS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:408</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-TRANSMUTATION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_FOUNDRY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_ARSENAL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_ETHEREUMTRANSMUTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:452</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-BLACKPOWDER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_DRAGONGRENADIER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_DRAGONARTILLERY</Payload>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#MAX_ARMY_SIZE,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_ARMYSIZE-ICON,Tooltip:GameStrings-Proxy-MaxArmySizeIncrease,InfopediaLink:ITT_Misc|CONCEPT_ARMIES</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE6_ALCHEMY-BASE</Tag>
+               <Tag>TechCostBase:378</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ________________AGE_ACTIVE__________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-ALCHEMY</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,ALCHEMY</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-ALCHEMY:6,TECHAGE6_ALCHEMY-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Bespoke Content Goes Here: -->
+
+                  <!-- Spawn B_ARCANA (like Outbreaks) on ALL MT_NEUTRAL_TOWN & random MT_GOODS tiles -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY-SPAWNARCANA</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+NeutralTown</Target>
+                  </ACardEffect>
+                  <!-- Spawn B_ARCANA (like Outbreaks) on ALL MT_NEUTRAL_TOWN & random MT_GOODS tiles -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY-SPAWNARCANA_RANDOM</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+ArcanaTarget</Target>
+                  </ACardEffect>
+
+                  <!-- Create PersistentActionCard, continue to spawn B_ARCANA on MT_GOODS in neutral territory periodically -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE6_ALCHEMY_SPAWNARCANA,TECHAGE6_ALCHEMY-SPAWNARCANA_REGION</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+
+                  <!-- Player Active Effects -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Spawn UNIT_ALCHEMIST for each nation (one per homeland) -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_ALCHEMIST</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ALCHEMIST</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationSpawnAlchemist,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ALCHEMIST</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Arcana</Payload>
+                  <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_RESARCANA</PayloadParam>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-ALCHEMY</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Disable PersistentActionCard[s] that spawn B_ARCANA-->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE6_ALCHEMY_SPAWNARCANA,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Remove all remaining B_ARCANA on the map -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-Arcana</Target>
+                  </ACardEffect>
+
+                  <!-- Remove potential Arcana Books Innovation buff -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>INNOVATION-ALCHEMY-ARCANESTUDIES</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-SPAWNARCANA</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Abstracted to a card effect to set the tile owner as the card & arcana owner -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_ARCANA</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-SPAWNARCANA_RANDOM</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>30,A</TriggerParam>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_ARCANA</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>70,B</TriggerParam>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-SPAWNARCANA_REGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>20,A</TriggerParam>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_ARCANA</Payload>
+                     <PayloadParam>SpawnLimit:1,SpawnExcludeTag:Arcana</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+ArcanaTarget</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>80,B</TriggerParam>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>NoTooltipEffects</Tag>
+               <Tag>HiddenAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+
+<!-- ____________________________________________ -->
+<!-- ________________INNOVATION__________________ -->
+<!-- ____________________________________________ -->
+      
+      <ACard>
+         <ID>INNOVATION-ALCHEMY-ARCANAINSIGHT</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,7</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Should look for a way to do this in tags, more inclusive -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConstructionCostFactor-B_TILEIMP_GOLDTRANSMUTER,SUB,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+      
+      <ACard>
+         <ID>INNOVATION-ALCHEMY-ARCANESTUDIES</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,7</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Books-ResArcana,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- ___________________CHAOS____________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-ALCHEMY-FICKLETHINGS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,7</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConstructionCostFactor-B_TILEIMP_GOLDTRANSMUTER,ADD,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConstructionCostFactor-B_TILEIMP_ETHEREUMTRANSMUTER,ADD,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-ALCHEMY-TEMPERMENTAL</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,7</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_ALCHEMY-TEMPERMENTAL_EFFECT</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE6_ALCHEMY-TEMPERMENTAL_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGREGION,ALLPLAYERS-Arcana</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________BARBARIANS________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________EXPLORATION_______________ -->
+      <!-- ____________________________________________ -->
+
+
+   </Definition>
+</ADeck>

@@ -1,0 +1,1465 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE7_CRISISIGNORANCE</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE7_CRISISIGNORANCE-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>IgnoranceTechCostReduction</Payload>
+                  </ACardEffect>
+
+                  <!-- Reveal Tiles -->
+                  <ACardEffect>
+                     <EffectType>CE_RevealHiddenTile</EffectType>
+                     <Payload>MT_PETROLEUM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RevealHiddenTile</EffectType>
+                     <Payload>MT_RAREEARTH</Payload>
+                  </ACardEffect>
+
+                  <!-- Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TELEGRAPHOFFICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MILITARYBASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SWEATSHOP</Payload>
+                  </ACardEffect>
+
+                  <!-- Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OILWELL</Payload>
+                  </ACardEffect>
+
+                  <!-- Unlock Powers ReduceTechA ReduceTechB ReduceTechC -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsReduceTechA,SET,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareReduceTechB,SET,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringReduceTechC,SET,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE7,+AddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age7IgnoranceUnlocks</Payload>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:7</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>CrisisName:CRISISLUDDITE</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age7_Ignorance_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_CRISISIGNORANCE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_TECHREDUCTION</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_NEEDSPOWER</Tag>
+               <Tag>MusicEra:4</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- TECHS -->
+   <!-- Age Advance Techs -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE8-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE7_CRISISIGNORANCE-BASE,2</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE7_CRISISIGNORANCE-BASE</Tag>
+               <Tag>TechCostBase:1100</Tag>
+               <Tag>TechLayout:4,2</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE7_CRISISIGNORANCE-TECHAGE8_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-TECHAGE8_VICTORYGENERALS_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalStrengthVsTopRivalRatio,GTE,1.5</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE7_CRISISIGNORANCE-BASE,2</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE7_CRISISIGNORANCE-BASE</Tag>
+               <Tag>TechCostBase:1100</Tag>
+               <Tag>AIValue:10</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>VictoryAgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- Techs -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-TECHA</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SEWERS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_GROCERYSTORE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FOREIGNOFFICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CONTAINERYARD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CHATEAUX</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PUBLISHINGHOUSE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_FERTILIZEDFARM</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MILLINGPLANT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CIGARPLANT</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsReduceTechA,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE7_CRISISIGNORANCE-BASE</Tag>
+               <Tag>TechCostBase:2200</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-TECHB</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_HOWITZER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_EARLYMG</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MOUNTEDRIFLE</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_PEDRAILIRONCLAD</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_IRONCLADBATTLESHIP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-EXPLSPAWN_IRONCLADCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MILITARYPOLICE</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareReduceTechB,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE7_CRISISIGNORANCE-BASE</Tag>
+               <Tag>TechCostBase:2200</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-TECHC</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_POWERGRID</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_RAREEARTHMINE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_STEAMTRAWLER</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_ADVISORYBOARD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_STEELSWEATSHOP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TEXTILESWEATSHOP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PAPERSWEATSHOP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_LUMBERSWEATSHOP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_POWERGENERATOR</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringReduceTechC,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE7_CRISISIGNORANCE-BASE</Tag>
+               <Tag>TechCostBase:2200</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- Age Effects -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-EXPLSPAWN_IRONCLADCHECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Compare value to Units's ID -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ExplCommVesselValue,LT,4</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Update Comm Vessel Unit -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ExplCommVesselUnit,UNIT_IRONCLADBATTLESHIP</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_IRONCLADBATTLESHIP</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!-- Set value to Units's ID -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ExplCommVesselValue,SET,4</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-SWEATSHOP_ONSELFBUILDTRIGGER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-REDUCE_TECH_A_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE7_CRISISIGNORANCE-TECHA,FALSE</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHA,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-SPAWN_REBELS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-REDUCE_TECH_B_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE7_CRISISIGNORANCE-TECHB,FALSE</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHB,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-SPAWN_REBELS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-REDUCE_TECH_C_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE7_CRISISIGNORANCE-TECHC,FALSE</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHC,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-SPAWN_REBELS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-SPAWN_REBELS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_REBEL_LVL_7</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:1,SpawnRadius:3</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#WORLD_DIFFICULTY_HARDMODE,GTE,1</Req>
+                     <UsePlainFormat>true</UsePlainFormat>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_REBEL_LVL_7</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:1,SpawnRadius:3,SpawnMagnetTag:+Rebel</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ChoiceTag-1-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+
+<!-- ____________________________________________ -->
+<!-- _________________AGE_CHARGING_______________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-BEGIN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeBegin-CRISISLUDDITE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,7</Req>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Create persistent card to track player Education each turn -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE7_CRISISIGNORANCE_DELTA,TECHAGE7_CRISISIGNORANCE-CHECK_PERPLAYER</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE7_CRISISIGNORANCE_CHECK,TECHAGE7_CRISISIGNORANCE-CHECK_PERREGION</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IgnoranceChargeRequired,SET,20</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IgnoranceChargeRequired,DIV,#GAME_SPEED</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_DataAlert</EffectType>
+                     <Payload>CREATE,StatCrisisIgnoranceCharge</Payload>
+                     <PayloadParam>DataAlertThresholds:0.5|0.8|1.0,DataAlertMaxVal:[PLAYER:IgnoranceChargeRequired],DataAlertMessageKey:TECHAGE7_CRISISIGNORANCE-WARNING</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ______________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-CHECK_PERREGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE6-TECHAGE7_CRISISIGNORANCE_ADVANCE</CardSpriteName>
+         <Prereqs>
+            <!-- This isn't working? Have to put requirement on EACH Choice? -->
+            <!--
+            <Requirements>
+               <ReqType>CR_GameData</ReqType>
+               <Req>NeedTarget-NEEDEDUCATION,GTE,1</Req>
+               <Target>ENT,EXEC</Target>
+            </Requirements>
+            -->
+         </Prereqs>
+         <Choices>
+
+            <!-- Visual Meter -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatCrisisIgnoranceCharge,GTE,[PLAYER:IgnoranceChargeRequired]</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-CHECK_PERREGION-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempIgnoranceChargeValue,SET,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Functionality -->
+            <!-- No Sanitation, 3 charge -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDEDUCATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDEDUCATION,LT,0.5</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempIgnoranceChargeValue,ADD,3</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Sanitation at Greater than 50%, 1 charge -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDEDUCATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDEDUCATION,GTE,0.5</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDEDUCATION,LT,1.0</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempIgnoranceChargeValue,ADD,1</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Sanitation at Greater than 100%, 0 charge -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDEDUCATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDEDUCATION,GTE,1</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempIgnoranceChargeValue,ADD,0</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Gets around the Null Executor issue ... -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDEDUCATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-TALLY</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>ShowDeltaValueCrisisMeter</Tag>
+               <Tag>DeltaValueStat:StatCrisisIgnoranceChargeDelta</Tag>
+               <Tag>UseChoiceSeparators</Tag>
+               <Tag>ChoiceTag-2-ComposeChoiceTooltipByRegions</Tag>
+               <Tag>ChoiceTag-3-ComposeChoiceTooltipByRegions</Tag>
+               <Tag>ShowCrisisMeterDecor</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-CHECK_PERPLAYER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisIgnoranceChargeDelta,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-TALLY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisIgnoranceCharge,ADD,[SELF:TempIgnoranceChargeValue]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisIgnoranceChargeDelta,ADD,[SELF:TempIgnoranceChargeValue]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ________________AGE_ACTIVE__________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-CRISISLUDDITE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,IGNORANCE</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-CRISISLUDDITE:7,TECHAGE7_CRISISIGNORANCE-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- force-choose the age for the timeline -->
+                  <ACardEffect>
+                     <EffectType>CE_ChooseAge</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,ADD,2</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Always add Chaos for Crisis Events -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+
+                  <!-- Set of Player Buffs for Active -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-CRISISLUDDITE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+
+                  <!-- remove any game rules specific to the crisis -->
+
+                  <!-- Reduce Tech Costs to normal values (~300) -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromAgeSunsetDiscount-TECHAGE7_CRISISIGNORANCE-TECHA,ADD,15</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromAgeSunsetDiscount-TECHAGE7_CRISISIGNORANCE-TECHB,ADD,15</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromAgeSunsetDiscount-TECHAGE7_CRISISIGNORANCE-TECHC,ADD,15</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- remove player based buffs -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- BUFFS / EFFECTS -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+
+                  <!-- Increase the discount percent for other nations researching a tech before you -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TECH_DISCOUNT_OTHER_PLAYERS,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Increase the discount percent for techs that are from previous ages -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TECH_AGE_DISCOUNT_BASE,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TECH_AGE_DISCOUNT_EXPONENT,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ________________INNOVATION__________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRISISIGNORANCE-URBANIZATIONAFFINITY</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-URBANIZATIONAFFINITY_BUFF</Payload>
+                     <Target>ENTTYPE,B_TELEGRAPHOFFICE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TELEGRAPHOFFICE-URBANIZATIONAFFINITY,TECHAGE7_CRISISIGNORANCE-URBANIZATIONAFFINITY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TELEGRAPHOFFICE-URBANIZATIONAFFINITY_BUILDHELPER,ResDomainArts</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-URBANIZATIONAFFINITY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-CRISISIGNORANCE-WARFAREAFFINITY</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-WARFAREAFFINITY_BUFF</Payload>
+                     <Target>ENTTYPE,B_MILITARYBASE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_MILITARYBASE-WARFAREAFFINITY,TECHAGE7_CRISISIGNORANCE-WARFAREAFFINITY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-WARFAREAFFINITY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-CRISISIGNORANCE-INDUSTRAILIZATIONAFFINITY</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISIGNORANCE-INDUSTRAILIZATIONAFFINITY_BUFF</Payload>
+                     <Target>ENTTYPE,B_SWEATSHOP</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_SWEATSHOP-INDUSTRAILIZATIONAFFINITY,TECHAGE7_CRISISIGNORANCE-INDUSTRAILIZATIONAFFINITY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_SWEATSHOP-INDUSTRAILIZATIONAFFINITY_BUILDHELPER,ResDomainEngineering</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISIGNORANCE-INDUSTRAILIZATIONAFFINITY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ___________________CHAOS____________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISIGNORANCE-URBANIZATION</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_Tech</ReqType>
+               <Req>TECHAGE7_CRISISIGNORANCE-TECHA,FALSE</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHA,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHA,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>UniversalAddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-CRISISIGNORANCE-MILITARY</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_Tech</ReqType>
+               <Req>TECHAGE7_CRISISIGNORANCE-TECHB,FALSE</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHB,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHB,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>UniversalAddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-CRISISIGNORANCE-INDUSTRY</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_Tech</ReqType>
+               <Req>TECHAGE7_CRISISIGNORANCE-TECHC,FALSE</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHC,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TechDiscount-FromDirectPowerDiscount-TECHAGE7_CRISISIGNORANCE-TECHC,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>UniversalAddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ________________HELP_TOPICS____________________ -->
+
+
+
+   </Definition>
+</ADeck>

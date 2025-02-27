@@ -1,0 +1,982 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE3_HEROES</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Force AGE OF HEROES to other players -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE3_HEROES-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <!-- Default Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_CROSSBOW</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3-WARSPAWN_CROSSBOWCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_GRANARY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_WATCH</Payload>
+                  </ACardEffect>
+
+                  <!-- Default IMPs -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRASH</Payload>
+                  </ACardEffect>
+
+                  <!-- Age Unlocks Pop-Up -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age3HeroesUnlocks</Payload>
+                     <!-- <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_SPECIALIZATIONS</PayloadParam> -->
+                  </ACardEffect>
+
+                  <!-- Update C/I Decks -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3_HEROES,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3_HEROES,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:3</Tag>
+               <Tag>VariantAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age3_Hero_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_HEROAGE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_QUESTS</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_DOMAINSAGE3</Tag>
+               <Tag>CalloutRedirect-CONCEPT_DOMAINSAGE3:CONCEPT_DOMAINS</Tag>
+               <Tag>MusicEra:2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- Age Advance Tech -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE4-BASE</Payload>
+                     <!--<Hidden>true</Hidden>-->
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE3_HEROES-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE3_HEROES-BASE</Tag>
+               <!-- <Tag>TechCostBase:160</Tag> -->
+               <Tag>TechCostBase:115</Tag>
+               <Tag>TechLayout:4,2</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE3_HEROES-TECHAGE4_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- IMPORT TECHS -->
+
+      <ACard><Import>TECHAGE3-SMELTING</Import></ACard>
+      <ACard><Import>TECHAGE3-HORSE</Import></ACard>
+      <ACard><Import>TECHAGE3-CONSTRUCTION</Import></ACard>
+
+
+      <!-- NEW/ALT TECHS -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-STORYTELLING</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_HEROHALL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PAPERMAKER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_POETS</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Cards/Techs/TECHAGE3_HEROES-STORYTELLING,Tooltip:TECHAGE3_HEROES-STORYTELLING-Proxy-QuestBuff,InfopediaLink:ITT_Misc|CONCEPT_QUESTS</PayloadParam>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CanBuyoutDiplomacy,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Diplomacy-ICON,Tooltip:Game-GameData-Misc-CanBuyoutDiplomacy,InfopediaLink:ITT_Misc|CONCEPT_DIPLOMACY</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_HEROES-BASE</Tag>
+               <Tag>TechCostBase:57</Tag>
+               <Tag>TechLayout:2,0</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-GLORY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_BATHHOUSE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MAUSOLEUM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_LODGE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OVEN</Payload>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_CAP,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_TownCap-ICON,Tooltip:GameStrings-Proxy-TownCapIncrease,InfopediaLink:ITT_Misc|CONCEPT_TOWNS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_HEROES-BASE</Tag>
+               <Tag>TechCostBase:64</Tag>
+               <Tag>TechLayout:2,1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-ORACLE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_ORACLE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OFFERING</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsProphecy,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_ProxyTechInfo</EffectType>
+                        <PayloadParam>IconPath:UI/Icons/Culture Powers/PROPHECY-ICON,Tooltip:TECHAGE3_HEROES-ORACLE-Proxy-Prophecy,InfopediaLink:ITT_Misc|CONCEPT_RESCULTURE</PayloadParam>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_SPEAR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_HEROES-BASE</Tag>
+               <Tag>TechCostBase:64</Tag>
+               <Tag>TechLayout:2,2</Tag>
+               <Tag>AIHint-Oracle</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-PROPHECY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,4</Req>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- This is set to hidden, the Power Tooltip already explains the effect -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnLandmark</EffectType>
+                     <Payload>QuestZero,4,6</Payload>
+                     <PayloadParam>SpawnCount:1,SpawnVFX:UI/FX_BuildImprovement Variant,SpawnSFX:ImprovementBuilt</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement</ExtraTargetParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-SPIRITUALITY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CHARMS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TALISMAN</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsSpawnArtist,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_ProxyTechInfo</EffectType>
+                        <PayloadParam>IconPath:UI/Icons/Culture Powers/SPAWN_ARTIST-ICON,Tooltip:Game-Culture-ArtsSpawnArtist-PowerTooltip</PayloadParam>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ARTIST</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#WEALTH_GIFT_COST,MUL,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Diplomacy-ICON,Tooltip:TECHAGE3_HEROES-SPIRITUALITY-Proxy-GiftBuff</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Arts-ICON,Tooltip:TECHAGE4-ORGANIZEDRELIGION-Proxy-ArtsXP,FormatParam:5,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINARTS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_HEROES-BASE</Tag>
+               <Tag>TechCostBase:64</Tag>
+               <Tag>TechLayout:2,3</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+      <!-- ________________AGE_ACTIVE__________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-HEROES</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,HEROES</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-HEROES:3,TECHAGE3_HEROES-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Spawn Quests -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnLandmark</EffectType>
+                     <Payload>QuestZero,3,6</Payload>   <!-- Category, Min Radius, Max Raius -->
+                     <PayloadParam>SpawnCount:2</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement</ExtraTargetParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnLandmark</EffectType>
+                     <Payload>QuestOne,4,8</Payload>   <!-- Category, Min Radius, Max Raius -->
+                     <PayloadParam>SpawnCount:2</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement</ExtraTargetParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnLandmark</EffectType>
+                     <Payload>QuestTwo,5,8</Payload>   <!-- Category, Min Radius, Max Raius -->
+                     <PayloadParam>SpawnCount:1</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement</ExtraTargetParam>
+                  </ACardEffect>
+
+                  <!-- Track Quest Completion -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE3_HEROES,TECHAGE3_HEROES-AGEQUESTGOAL</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionDataTrigger-TECHAGE3_HEROES,LandmarksCompletedQuest</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Heroes</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_HEROAGE</PayloadParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Quests</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_QUESTS</PayloadParam>
+                  </ACardEffect>
+
+                  <!-- Game Speed Normalized Setting -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3-NORMALIZE_SPEED</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_HERO</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_HERO</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Set Scout Promote Type to Hero -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-SCOUT_PROMOTE_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_SCOUT</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_SCOUT-HERO,TECHAGE3_HEROES-SCOUT_PROMOTE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Disable OTHER Unit Promotions -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-NOTHERO_PROMOTE_DISABLE</Payload>
+                     <Target>ENTTAG,+NotHero</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+NotHero-NOTHERO,TECHAGE3_HEROES-NOTHERO_PROMOTE_DISABLE</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <!--
+               <Tag>ForceEffectAsBuff</Tag>
+               -->
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-SCOUT_PROMOTE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-150,UNITACTIONS-PROMOTE_HERO</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-NOTHERO_PROMOTE_DISABLE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>LeaderPromotionType,DELETE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-AGEQUESTGOAL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Entities/Icons/B_PARTHENON-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>LandmarksCompletedQuest,GTE,#AGE3HEROES_PARTHENONREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_PARTHENON-QUESTGOAL_BUILDHELPER,ResKnowledge</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PARTHENON</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,20</Payload>
+                     <PayloadParam>PopupNotify:QuestReward</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-PARTHENON_QUEST_DATALINKACTION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempBuffAmount,SET,[PLAYER:LandmarksCompletedQuest]</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempBuffAmount,MUL,0.25</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:TempBuffAmount]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE3_HEROES-Parthenon-Tooltip</Payload>
+                     <PayloadParam>FormatParam:0.25</PayloadParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE3_HEROES-Parthenon-Tooltip2</Payload>
+                     <PayloadParam>FormatParam:[PLAYER:LandmarksCompletedQuest]</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________ -->
+
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-HEROES</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Cleanup -->
+                  <!-- Doesn't actually apply any buffs -->
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>TECHAGE3_HEROES-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-PLAYERSUNSET</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Remove Quest Landmarks -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-LandmarkQuest</Target>
+                  </ACardEffect>
+
+                  <!-- Remove Unfinished Goals -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE3_HEROES,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionDataTrigger-TECHAGE3_HEROES,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-PLAYERSUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Leave Scout Promote Type to Hero, don't disable -->
+
+                  <!-- Enable OTHER Unit Promotions to Leader_3 again -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_HEROES-NOTHERO_PROMOTE_RESET</Payload>
+                     <Target>ENTTAG,+NotHero</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+NotHero-NOTHERO,DELETE</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <!--
+               <Tag>ForceEffectAsBuff</Tag>
+               -->
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-NOTHERO_PROMOTE_RESET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>LeaderPromotionType,UNIT_LEADER_3</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE3_HEROES-HELP_TURN_3</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+      <!-- ___________________CHAOS____________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-HEROES-TRIALSANDTRIBULATIONS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 4+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <!-- Spawn Oni for Each Player -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ONI</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:2,SpawnRadius:4,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_ONI</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+      <!-- ________________INNOVATION__________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-HEROES-SKALDS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Poems-ResDomainExploration,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-HEROES-PROPHETICVISIONS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_Tech</ReqType>
+               <Req>TECHAGE3_HEROES-ORACLE,TRUE</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RevealTiles</EffectType>
+                     <Payload>1</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-LandmarkQuest</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

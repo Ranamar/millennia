@@ -1,0 +1,500 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_TRADECOMPANY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,330</Data>
+         <Data>ResCityProduction,12</Data>
+         <Data>StatImportSlotCount,1</Data>
+         <Data>StatExportSlotCount,2</Data>
+         <Data>UpgradeLine-Warehouses,2</Data>
+         <Data>FilterAge,5</Data>
+         <Data>RequiredRegionLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Warehouse</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_CIVILENGINEER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,250</Data> -->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>ResCityProduction,12</Data>
+         <Data>ResDomainEngineering,2</Data>
+         <Data>ResImprovementPoints,2</Data>
+         <Data>UpgradeLine-CityWorks,3</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>WorkshopPresent</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_WARFAREENGINEER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,180</Data> -->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>ResCityProduction,2</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_BAROQUEMUSIC</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,216</Data> -->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>ResDomainArts,2</Data>
+         <Data>ResCulture,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE5_DISCOVERY-BAROQUEMUSIC_ONBUILDTRIGGER</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>UpgradeLine-ArtHouse,2</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_CANTONOFFICE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,216</Data> -->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>ResDomainDiplomacy,1</Data>
+         <Data>ResDomainGovernment,1</Data>
+         <Data>ResCulture,1</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_COURTPAINTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,210</Data> -->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>StatUnrestSuppression,8</Data>
+         <Data>ResCityLuxury,8</Data>
+         <Data>FilterAge,5</Data>
+         <Data>RequiredRegionLevel,4</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BAROQUESCULPTOR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,24</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BAROQUESCULPTOR</Data>
+         <Data>WorkableConvertGoods-+CanMakeStone-2-Statue,2</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>UpgradeLine-Sculptor,2</Data>
+         <Data>ImprovementSort,821</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-StoneClay</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CULTURALDISTRICT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,36</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CULTURALDISTRICT</Data>
+         <Data>WorkableResDomainArts,2</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>UpgradeLine-CultureCenter,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-CityOfGoldTile</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>AIHint-CulturalDistrict</Tag>
+         <Tag>WaterVisuals</Tag>
+         <Tag>FaceShore</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MUSEUM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResImprovementPoints,40</Data>-->
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MUSEUM</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_CITYOFGOLD,1</Data>
+         <Data>AIBuildWeight,1.2</Data>
+         <Data>ImprovementSort,900</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-CityOfGoldTile</Tag>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>WaterVisuals</Tag>
+         <Tag>FaceShore</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_CONQUISTADOR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Spyglass</Icon>
+      <Portrait>ConquistadorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,32</Data>-->
+         <Data>ConstructionCost-ResCityProduction,175</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,23</Data>
+         <Data>StatDefense,30</Data>
+         <!-- Quick -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>StatExpeditionChanceNatural,0.5</Data>
+         <Data>StatExpeditionChanceCityOfGold,0.5</Data>
+         <Data>StatExpeditionChanceNaturalRuins,0.5</Data>
+         <Data>StatExpeditionChanceWastelandRuins,0.5</Data>
+         <Data>FilterAge,5</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-SCOUT_RETURNHOME</Data>
+         <Data>UseAction-101,UNITACTIONS-SCOUT_SELFHEAL</Data>
+         <Data>UseAction-102,UNITACTIONS-SCOUT_CLAIMLANDMARK</Data>
+         <Data>UseAction-103,UNITACTIONS-EXPLORER_EXPEDITION</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>UpgradeLine-Scout,3</Data>
+         <Data>UpgradeResource,ResDomainExploration</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_5</Data>
+         <Data>LeaderPromotionCost,54</Data>
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Conquistador/Unit_Conquistador</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>GameDataTooltip-StatExpeditionChanceCityOfGold</Tag>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>TypeMobileRecon</Tag> <!-- Used for AdvancedStart -->
+         <Tag>Scout</Tag>
+         <Tag>ScalingStats</Tag>
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+         <Tag>NonStacking</Tag>
+         <Tag>Explorer</Tag>
+         <Tag>Knight</Tag>
+         <Tag>AIHint-Scout</Tag>
+         <Tag>AIHint-Conquistador</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundHorse</Tag>
+         <Tag>AttackOverSoundHorse</Tag>
+         <Tag>AttackSoundLineSword</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <Tag>DestroyedSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ORNITHOPTERENGINEER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Orinthopter</Icon>
+      <Portrait>OrnithopterPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,125</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>               
+         <Data>FilterAge,5</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-ORNITHOPTER_SPAWNBIRD</Data>
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/OrnithopterEngineer/Unit_OrnithopterEngineer</Data>
+         <Data>ObsoleteAge,7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:WorkshopPresent</Tag>
+         <Tag>NonCombatant</Tag>
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-OrnithopterEngineer</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ORNITHOPTERBIRD</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Orinthopter</Icon>
+      <Portrait>OrnithopterBirdPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,2</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>UseAction-50,NONE</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Ornithopter/Unit_Ornithopter</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Ornithopter</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-ORNITHOPTER_SELFDESTRUCT</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MECHKNIGHT</ID>
+      <Import>UNIT_COMBAT_NOHEAL</Import>
+      <Icon>UnitIcon_MechanicalHorse</Icon>
+      <Portrait>MechanicalKnightPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,80</Data>-->
+         <Data>ConstructionCost-ResCityProduction,175</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,50</Data>
+         <Data>StatCommandMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,34</Data>
+         <Data>StatDefense,25</Data>
+         <Data>StatOrgDamageFactor,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+         <!-- Flank -->
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>FilterAge,5</Data>
+         <Data>UseAction-100,UNITACTIONS-MACHINA_SELFHEAL</Data>
+         <Data>UpgradeLine-Shock,5</Data>
+         <Data>ObsoleteAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/MechKnight/Unit_Mechknight</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:WorkshopPresent</Tag>
+         <Tag>TypeArmor</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>Knight</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>Automata</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMechCavalry</Tag>
+         <!--<Tag>AttackOverSoundMechCavalry</Tag>-->
+         <Tag>AttackSoundLineSword</Tag>
+         <Tag>DamageTakenSoundMetalRobot</Tag>
+         <Tag>RoutedSoundMechHorse</Tag>
+         <Tag>MemberDeadSoundMechCavalry</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-MechanicalKnight</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_GIANTCROSSBOW</ID>
+      <Import>UNIT_COMBAT_NOHEAL</Import>
+      <Icon>UnitIcon_SiegeEngine</Icon>
+      <Portrait>GiantCrossbowPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,56</Data>-->
+         <Data>ConstructionCost-ResCityProduction,150</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,50</Data>
+         <Data>StatCommandMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,30</Data>
+         <Data>StatDefense,17</Data>
+         <!-- Siege Unit Stats -->
+         <Data>StatBarragePower,20</Data>
+         <!-- <Data>UseAction-100,UNITACTIONS-SIEGE_DAMAGEDEFENSES</Data> -->
+         <!-- <Data>StatStrategicPower,30</Data> -->
+         <!-- <Data>StatStrategicTargets,3</Data> -->
+         <Data>UseAction-101,UNITACTIONS-SIEGE_BARRAGEUNITS</Data>
+         <Data>UseAction-102,UNITACTIONS-MACHINA_SELFHEAL</Data>
+         <Data>UpgradeLine-Artillery,3</Data>
+         <Data>FilterAge,5</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Cart</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/GiantCrossbow/Unit_GiantCrossbow</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:WorkshopPresent</Tag>
+         <Tag>TypeSiege</Tag>
+         <Tag>Cannon</Tag>
+         <Tag>Automata</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundBallista</Tag>
+         <Tag>AttackSoundLineMetal</Tag>
+         <Tag>ProjectileFiredSoundCrossbow</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>RoutedSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-GiantCrossbow</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Water Movement Units -->
+   <EntityInfo>
+      <ID>UNIT_CARAVEL</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_AncientShip1</Icon>
+      <Portrait>CaravelPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,150</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>         
+         <Data>StatMovement,50</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>StatAttack,23</Data>
+         <Data>StatDefense,33</Data>
+         <!-- Warship -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+AttackShip,2.0</Data>
+         <Data>UpgradeLine-Warship,4</Data>
+         <Data>UseAction-100,UNITACTIONS-CARAVEL_SPAWNCONQUISTADOR</Data>         
+         <Data>FilterAge,5</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>       
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/Caravel/Unit_Caravel</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>Warship</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Warship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundCannon</Tag>
+		   <Tag>AttackSoundCannon</Tag>
+		   <Tag>ProjectileFiredSoundCannon</Tag>
+		   <Tag>DamageTakenSoundWoodenBoat</Tag>
+		   <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SCORPIONBOAT</ID>
+      <Import>UNIT_SUBMARINE_BASE</Import>
+      <Icon>UnitIcon_AncientShip1</Icon>
+      <Portrait>ScorpionBoatPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,150</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,50</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>StatAttack,38</Data>
+         <Data>StatDefense,18</Data>
+         <!-- Submarine Ship -->
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UseAction-100,NONE</Data>
+         <Data>UseAction-101,NONE</Data>
+         <Data>UseAction-102,NONE</Data>
+         <Data>UpgradeLine-Antiship,1</Data>
+         <Data>FilterAge,5</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UpgradeResource,ResDomainExploration</Data>         
+         <Data>UnitMemberPrefab,Entities/Units/Navy/ScorpionBoat/Unit_ScorpionBoat</Data>
+         <Data>ObsoleteAge,7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>NonNuclearSub</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundEngineBoat</Tag>
+         <Tag>AttackOverSoundEngineBoat</Tag>
+		   <Tag>AttackSoundLineShipRamMetal</Tag>
+		   <Tag>DamageTakenSoundWoodenBoat</Tag>
+		   <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+         <!-- AI Hints -->
+        <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+</EntityInfoList>

@@ -1,0 +1,254 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_ARCANA</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_ARCANA</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>Arcana</Tag>
+         <Tag>Overlay</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_ALCHEMYSCHOOL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>UpgradeLine-University,3</Data>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,2</Data>
+         <Data>ResKnowledge,3</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,6</Data>
+      </StartingData>
+      <Tags>
+         <Tag>University</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_PERFUMESHOP</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>ResCoin,10</Data>
+         <Data>ResCityLuxury,1</Data>
+         <Data>FilterAge,6</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ALCHEMYLAB</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResArcana,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ALCHEMYLAB</Data>
+         <Data>WorkableConvertGoods-Gold-2-AResearch,2</Data>
+         <Data>ImprovementSort,490</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>AIHint-AlchemyLab</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PANACEA</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResArcana,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PANACEA</Data>
+         <Data>WorkableConvertGoods-Gold-2-Panacea,2</Data>
+         <Data>ImprovementSort,491</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_GOLDTRANSMUTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResArcana,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_GOLDTRANSMUTER</Data>
+         <Data>WorkableConvertGoods-+CanMakeMetal-2-Gold,2</Data>
+         <Data>ImprovementSort,460</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ETHEREUMTRANSMUTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResArcana,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ETHEREUMTRANSMUTER</Data>
+         <Data>WorkableConvertGoods-Gold-2-Ethereum,2</Data>
+         <Data>ImprovementSort,492</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>AIHint-EthereumTransmuter</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_DRAGONGRENADIER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Grenade</Icon>
+      <Portrait>DragonGrenadierPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,40</Data>-->
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,20</Data>
+         <Data>StatDefense,30</Data>
+         <!-- Dragonfire -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-Assault,5</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/DragonGrenadier/Unit_DragonGrenadier</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>TypeProjectile</Tag>
+         <Tag>RequiredBuildingTag:BarracksPresent</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGrenade</Tag>
+         <Tag>ProjectileFiredSoundJavelin</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>AttackSoundGrenade</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag> 
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-DragonGrenadier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_DRAGONARTILLERY</ID>
+      <Import>UNIT_CATAPULT_BASE</Import>
+      <Icon>UnitIcon_CannonDragon</Icon>
+      <Portrait>DragonArtilleryPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,36</Data>
+         <Data>StatDefense,24</Data>
+         <Data>RevealRadius,2</Data>
+         <!-- Siege Unit Stats -->
+         <Data>StatBarragePower,20</Data>
+         <Data>StatBarrageTargets,5</Data>
+         <Data>StatStrategicPower,50</Data>
+         <Data>StatStrategicTargets,4</Data>
+         <Data>UpgradeLine-Artillery,4</Data>
+         <Data>UseAction-100,UNITACTIONS-SIEGE_DAMAGEDEFENSES_RANGED</Data>   <!-- UNITACTIONS-SIEGE_DAMAGEDEFENSES -->
+         <Data>FilterAge,6</Data>
+         <Data>ObsoleteAge,8</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/DragonArtillery/Unit_DragonArtillery</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundCannon</Tag>
+		   <Tag>AttackSoundCannon</Tag>
+		   <Tag>ProjectileFiredSoundCannon</Tag>
+		   <Tag>DamageTakenSoundMachine</Tag>
+		   <Tag>RoutedSoundMachine</Tag>
+		   <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_ALCHEMIST</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Alchemy</Icon>
+      <Portrait>AlchemistPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-ALCHEMIST_GATHERARCANA</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Alchemist/Unit_Alchemist</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TagAIBehavior-BT_GatherArcana</Tag>
+         <Tag>NonCombatant</Tag>
+         <Tag>NonStacking</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   
+</EntityInfoList>

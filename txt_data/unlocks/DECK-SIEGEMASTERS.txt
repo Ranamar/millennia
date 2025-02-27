@@ -1,0 +1,693 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>SIEGEMASTERS</DeckName>
+
+   <!--
+   T1
+   Weapon Camp
+      Unlocks "Weapon Camp" Outpost Improvement
+         Generates +1 Warfare XP
+
+   Field Forester
+      Unlocks "Field Forester" Outpost Improvement
+         Built on Forest Terrain
+         Generates +1 Logs (sent to linked Region)
+
+   T2
+   Siege Weapons
+      Enables Weapon Camp IMP Unit Actions to spawn Siege Weapon Units. Each unit costs Warfare XP to spawn.
+         
+         Trebuchet: Medium ATK/DEF, deals bonus damage to fortifications.
+         Can "Unpack" to use Siege Defenses Unit Action from a far range.
+
+         Ballista: High ATK, Low DEF, has TypeRanged "CombatTargetingRandom"
+
+         Siege Tower: High DEF, Low ATK, basically a mobile wall. Deals bonus damage to fortifications.
+
+   Sharpened Stakes
+      +1 Warfare XP buff to the Sawmill upgrade line
+
+   T3
+   Decommission Siege Engine
+      Enables Siege Engine "Decommission" Unit Action
+         Destroys the unit in exchange for IP
+
+   Professional Artillery
+      Siege Engine unit’s “Artillery Barrage“ unit action is twice as effective against units.
+
+      Siege Engine unit’s “Siege Defenses“ unit action destroys twice as many buildings within an enemy’s capital city.
+
+   Dig Tunnels
+      Warfare Domain Power
+         Costs 30 Warfare XP, 4 turn cooldown
+         Target hostile enemy city center
+         Friendly units adjacent to a hostile enemy city center gain +10 ATK for 2 turns
+
+   Legacy
+   Have 5 Siege Engine Units
+
+
+   -->
+   
+   <Definition>
+
+<!-- _________________TIER 0______________________ -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>SIEGEMASTERS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>SIEGEMASTERS,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:4</Tag>
+               <Tag>DomainResource:ResDomainEngineering</Tag>
+               <Tag>AIHint-SiegeMasters</Tag>
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Weapon Camp
+         Unlocks "Weapon Camp" Outpost Improvement
+            Generates +1 Warfare XP
+      -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-WEAPONCAMP</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WEAPONCAMP</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:50</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+
+      <!--
+      Field Forester
+         Unlocks "Field Forester" Outpost Improvement
+            Built on Forest Terrain
+            Generates +1 Logs (sent to linked Region)
+      -->
+      
+      <ACard>
+         <ID>SIEGEMASTERS-FIELDFORESTER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_FIELDFORESTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:50</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      Siege Weapons
+         Enables Weapon Camp IMP Unit Actions to spawn Siege Weapon Units. Each unit costs Warfare XP to spawn.
+            
+            Trebuchet: Medium ATK/DEF, deals bonus damage to fortifications.
+            Can "Unpack" to use Siege Defenses Unit Action from a far range.
+
+            Ballista: High ATK, Low DEF, has TypeRanged "CombatTargetingRandom"
+
+            Siege Tower: High DEF, Low ATK, basically a mobile wall. Deals bonus damage to fortifications.
+      -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-SIEGEWEAPONS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>SIEGEMASTERS-WEAPONCAMP,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-SIEGEWEAPONS_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_WEAPONCAMP</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_WEAPONCAMP-SIEGEWEAPONS,SIEGEMASTERS-SIEGEWEAPONS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:90</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-SIEGEWEAPONS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-100,UNITACTIONS-SIEGEMASTERS_TREBUCHET</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-101,UNITACTIONS-SIEGEMASTERS_BALLISTA</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-102,UNITACTIONS-SIEGEMASTERS_SIEGETOWER</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Sharpened Stakes
+         +1 Warfare XP buff to the Sawmill upgrade line
+      -->
+      
+      <ACard>
+         <ID>SIEGEMASTERS-SHARPENEDSTAKES</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-SHARPENEDSTAKES_BUFF</Payload>
+                     <Target>ENTTAG,+Sawmill</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Sawmill-SHARPENEDSTAKES,SIEGEMASTERS-SHARPENEDSTAKES_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+              </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-SHARPENEDSTAKES_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      Decommission Siege Engine
+         Enables Siege Engine "Decommission" Unit Action
+            Destroys the unit in exchange for IP
+      -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-DECOMMISSION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>SIEGEMASTERS-SIEGEWEAPONS,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-DECOMMISSION_BUFF</Payload>
+                     <Target>ENTTAG,+SiegeEngine</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-SiegeEngine-DECOMMISSION,SIEGEMASTERS-DECOMMISSION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:75</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-DECOMMISSION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-102,UNITACTIONS-SIEGEMASTERS_DECOMMISSION</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Professional Artillery
+         Siege Engine unit’s “Artillery Barrage“ unit action is twice as effective against units.
+
+         Siege Engine unit’s “Siege Defenses“ unit action destroys twice as many buildings within an enemy’s capital city.
+      -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-PROFESSIONAL_ARTILLERY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-PROFESSIONAL_ARTILLERY_BUFF</Payload>
+                     <Target>ENTTAG,+SiegeEngine</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-SiegeEngine-PROFESSIONAL_ARTILLERY,SIEGEMASTERS-PROFESSIONAL_ARTILLERY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:75</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-PROFESSIONAL_ARTILLERY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatBarragePower,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatStrategicPower,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatStrategicTargets,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Dig Tunnels
+         Warfare Domain Power
+            Costs 30 Warfare XP, 4 turn cooldown
+            Target hostile enemy city center
+            Friendly units adjacent to a hostile enemy city center gain +10 ATK for 2 turns
+      -->
+
+      <ACard>
+         <ID>SIEGEMASTERS-DIGTUNNELS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSiegeMastersDigTunnels,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:75</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-DIGTUNNELS_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Duration>2</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,10</Payload>
+                     <Target>ENT,FINDTAGLOCRAD,+Unit,EXTERNALTARGET,1</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      
+<!-- _________________LEGACY______________________ -->
+      
+      <ACard>
+         <ID>SIEGEMASTERS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>SiegeEngine,GTE,5</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainEngineering,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-NationalSpirit-SofabWarning</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-LineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-SIEGEMASTERS_LEGACY_BUFF,SIEGEMASTERS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ___________________INNOVATION_________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-SIEGEMASTERS-DRAFTPIONEERS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,6</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SIEGEMASTERS-DRAFTPIONEERS_SPAWN</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <TargetLimit>3</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SIEGEMASTERS-DRAFTPIONEERS_SPAWN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>SUBREGION,FALSE</Req>
+                     <Target>LOC,EXECLOC</Target>
+                     <Hidden>true</Hidden>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ENGINEER</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

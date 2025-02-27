@@ -1,0 +1,710 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>CRUSADERS</DeckName>
+
+   <!--
+
+      Must have religion to take crusader spirit
+
+      T1:
+
+         Order - unlocks the "Order Capital" building
+               allows "Order Knight" to be trained in region
+
+         Lost Faith - Destroying a town reduces Religion in the region - 25% of pops become "no Religion" when a town is destroyed
+
+
+      T2:
+
+         Reliquary - New wealth generation CB
+
+         Fervor - Order Knight Attack increased by 20% when fighting units that do not share state religion
+
+
+      T3:
+
+         Conversion Decree - 50% of region population converts to your religion upon conquest
+
+         Holy Lands - For each Religion birthplace held, the culture bonus for % of world pop following your religion doubles
+
+
+      T4:
+
+         Crusade CP - Generates full army of "Order Knights"
+
+
+      National Spirit:
+
+         Control at least two Religion birthplaces.
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>CRUSADERS-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>CRUSADERS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>CRUSADERS,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CRUSADERS-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>RequireReligion</Tag>
+               <Tag>DomainAge:4</Tag>
+               <Tag>DomainResource:ResDomainWarfare</Tag>
+               <Tag>AIHint-Crusaders</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Military Order
+      Unlocks Military Headquarters and Knight of the Order
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-MILITARYORDER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ORDERKNIGHT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ORDERKNIGHT</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Lost Faith
+      Destroying town reduces Religion in the region - 25% of pops become "no Religion"
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-LOSTFAITH</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnInvadeTown-CRUSADERS,CRUSADERS-TOWN_DESTROY_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>CRUSADERS-LOSTFAITH-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-TOWN_DESTROY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- 
+                     This triggers post-town destruction, does this work? 
+                     Can it find a valid region to reduce heretics? 
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Target>LOC,EXECLOC</Target>
+                     <Payload>REMOVEHERETICSPERCENT,0.25</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+
+<!-- ________________TIER 2______________________ -->
+
+      <!--
+      Reliquary
+      New wealth generation CB
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-RELIQUARY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_RELIQUARY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:85</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <!--
+         TECHAGE4-Entities.xml
+         <EntityInfo>
+            <ID>B_RELIQUARY</ID>
+            <Import>CITYBUILDING_BASE</Import>
+            <MapScale>1.0</MapScale>
+            <StartingData>
+               <Data>ConstructionCost-ResCityProduction,200</Data>
+               <Data>NeedAdjust-NEEDFAITH,5</Data>
+               <Data>ResCoin,15</Data>
+               <Data>FilterAge,4</Data>             
+               <Data>RequiredRegionLevel,2</Data>
+            </StartingData>
+         </EntityInfo>
+      -->
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Fervor - Order Knight Attack increased by 20% when fighting units that do not share state religion
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-FERVOR</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_HEADQUARTERS</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:85</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-HEADQUARTERS_BUILDTRIGGER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CRUSADERS-FERVOR_UNITBUFF</Payload>
+                     <Target>ENTTAG,+Knight</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Knight-FERVOR,CRUSADERS-FERVOR_UNITBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-FERVOR_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CombatMod-StatAttack-VsSpecial:Heretic,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      Conversion Decree
+      50% of region population converts to your religion upon conquest
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-CONVERSIONDECREE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnInvadeCity-CRUSADERS,CRUSADERS-CITY_CONQUER_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>CRUSADERS-CONVERSIONDECREE-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+      <ACard>
+        <ID>CRUSADERS-CITY_CONQUER_EFFECT</ID>
+        <ExecutionType>CX_All</ExecutionType>
+        <Choices>
+           <ACardChoice>
+              <Requirements>
+              </Requirements>
+              <Effects>
+                 <ACardEffect>
+                    <EffectType>CE_Special</EffectType>
+                    <Target>LOC,EXECLOC</Target>
+                    <Payload>CONVERTRELIGIONPOPFRAC,0.5</Payload>
+                    <DisplayAsPercentage>true</DisplayAsPercentage>
+                 </ACardEffect>
+              </Effects>
+           </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Holy Lands
+      For each Religion birthplace held, the culture bonus for % of world pop following your religion doubles
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-HOLYLANDS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_RELIGION_BIRTHPLACE,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_BONUS_BIRTHPLACE_ADDITIONAL_CONTROLLED,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age 8 Secularism Government -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#SECULAR_GOVERNMENT,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Card-Or</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age 8 Secularism Government -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#SECULAR_GOVERNMENT,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <UsePlainFormat>true</UsePlainFormat>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-SECULAR_FAITH_REPLACEMENT_HUGE</Payload>
+                     <Target>ENTTYPE,B_RELIGION_BIRTHPLACE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_RELIGION_BIRTHPLACE-RITUALPRAYER,PLAYERACTIONS-SECULAR_FAITH_REPLACEMENT_HUGE</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:125</Tag>
+               <Tag>ChoiceTag-1-HideIfUnmet</Tag>
+               <Tag>ChoiceTag-2-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      Crusade CP
+      Generates full army of "Order Knights"
+      -->
+
+
+      <!--
+      Crusade!
+      Culture Power: Spawn an Army Stack of Knight of the Order
+      -->
+
+      <ACard>
+         <ID>CRUSADERS-CRUSADE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareCrusadersSpawnCrusade,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ORDERKNIGHT</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  
+                  <!--ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect-->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:160</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <!--NATIONAL SPIRIT: Control at least two Religion birthplaces.-->
+
+      <ACard>
+         <ID>CRUSADERS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_RELIGION_BIRTHPLACE,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainWarfare,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-NationalSpirit-SofabWarning</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-LineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CRUSADERS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-CRUSADERS_LEGACY_BUFF,CRUSADERS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRUSADERS-CHAINMAIL</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,6</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CRUSADERS-CHAINMAIL_UNITBUFF</Payload>
+                     <Target>ENTTYPE,UNIT_ORDERKNIGHT</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_ORDERKNIGHT-CHAINMAIL,CRUSADERS-CHAINMAIL_UNITBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CRUSADERS-CHAINMAIL_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

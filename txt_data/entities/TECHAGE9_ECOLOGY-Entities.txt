@@ -1,0 +1,423 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_BIORESEARCHLAB</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResKnowledge,4</Data>
+         <Data>ResCityEducation,6</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>FilterAge,9</Data>
+         <Data>RequiredRegionLevel,3</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_MIXEDZONEHOUSING</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityHousing,10</Data>
+         <Data>ResCityInformation,10</Data>
+         <Data>RegionalEfficiencyResCityProduction,1.2</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_COMMUNITYCENTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>StatUnrestSuppression,30</Data>
+         <Data>ResCoin,20</Data>
+         <Data>UpgradeLine-Police,4</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_PEACEANDLOVECOOP</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResDomainArts,10</Data>
+         <Data>ResCulture,3</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>UpgradeLine-ArtHouse,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_EPA</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>ResInnovationPerTurn,1</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- TOWNS -->
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGYBASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_ECOLOGY</Data>
+         <Data>SpecLevel,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_ECOLOGY_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_ECOLOGY_MAXBONUSCHECK</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>EcologyTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGY</ID>
+      <Import>B_TOWNSPEC_ECOLOGYBASE</Import>
+      <StartingData>
+         <Data>SpecLevel,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_ECOLOGY_2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGY_2</ID>
+      <Import>B_TOWNSPEC_ECOLOGYBASE</Import>
+      <StartingData>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_ECOLOGY_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGY_3</ID>
+      <Import>B_TOWNSPEC_ECOLOGYBASE</Import>
+      <StartingData>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_ECOLOGY_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGY_4</ID>
+      <Import>B_TOWNSPEC_ECOLOGYBASE</Import>
+      <StartingData>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_ECOLOGY_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_ECOLOGY_5</ID>
+      <Import>B_TOWNSPEC_ECOLOGYBASE</Import>
+      <StartingData>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_COMMUNITYHOUSING</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_COMMUNITYHOUSING</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityHousing,45</Data>
+         <Data>StatUnrestSuppression,8</Data>
+         <Data>WorkableResCoin,12</Data>
+         <Data>UpgradeLine-Apartment,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TIDALPOWER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TIDALPOWER</Data>
+         <Data>WorkableResCityPower,5</Data>
+         <Data>ResCityPower,10</Data>
+         <Data>CoastalTownBonusValue,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TIDALPOWER_DEEPWATERBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>CoastalTownBonus</Tag>
+         <Tag>BuildRequirementTag-WaterMovement</Tag>
+         <Tag>BuildRequirementMovementTypeAdjacent-MT_Land</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+		 <Tag>FaceShore</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_GEOTHERMAL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_GEOTHERMAL</Data>
+         <Data>WorkableResCityPower,5</Data>
+         <Data>ResCityPower,10</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-GEOTHERMAL_POWERBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-Hills</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_GMOFARM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_GMOFARM</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_FARM,4</Data>
+         <Data>WorkableResCityFood,16</Data>
+         <Data>ResCityPowerRequired,4</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Farming,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,004</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-+GrasslandImprovements</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>ModernFarm</Tag>
+         <Tag>Farms</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MEATSUBSTITUTE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MEATSUBSTITUTE</Data>
+         <Data>WorkableGoodsMeat,3</Data>
+         <Data>WorkableResDomainExploration,1</Data>
+         <Data>WorkableResCoin,15</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Pasture,3</Data>
+         <Data>ImprovementSort,202</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-PastureGood</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>Ranch</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PUBLICARTINSTALL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PUBLICARTINSTALL</Data>
+         <Data>ResDomainArts,2</Data>
+         <Data>ResCulture,1</Data>
+         <Data>WorkableResCoin,15</Data>
+         <Data>UpgradeLine-CultureCenter,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ARCOLOGY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ARCOLOGY</Data>
+         <Data>ResDomainGovernment,5</Data>
+         <Data>ResDomainWarfare,5</Data>
+         <Data>ResDomainExploration,5</Data>
+         <Data>ResDomainDiplomacy,5</Data>
+         <Data>ResDomainEngineering,5</Data>
+         <Data>ResDomainArts,5</Data>
+         <Data>ResCulture,5</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>AIHint-Arcology</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- DLC 2 Atomic Ambitions -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CARBONCAPTURE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CARBONCAPTURE</Data>
+         <Data>ResCitySanitation,12</Data>
+         <Data>WorkableResCitySanitation,12</Data>
+         <Data>WorkableConvertGoods-+IsWaste-4-RecycledMaterial,4</Data>
+         <Data>UpgradeLine-Trash,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Trash</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CLEANNUCLEARREACTOR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,90</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CLEANNUCLEARREACTOR</Data>
+         <Data>WorkableConvertGoods-EnrichedUranium-1-Power,3</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-Reactor,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+         <Tag>DownstreamNetworkHeat</Tag>
+         <Tag>HasNetworkHeat</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_PEACEKEEPER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Sentry</Icon>
+      <Portrait>PeaceKeeperPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,20</Data>
+         <Data>StatDefense,32</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,18</Data>
+         <Data>UpgradeLine-Guard,6</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,140</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/PeaceKeeper/Unit_PeaceKeeper</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>           
+         <!-- AI Hints -->
+         <Tag>AIHint-Guard</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+</EntityInfoList>

@@ -1,0 +1,785 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>MODERNIZATION</DeckName>
+
+<!-- NOTES -->
+
+   <!--
+
+   Tier 1
+
+   WORKER COOPERATIVE: All tile improvements in the player�s nation gain an additional worker spot.
+
+   OVERHEAD POWER LINES: All city centers now generate +5 Power.
+
+   DISTRIBUTION CENTER: Unlocks the Distribution Center tile improvement. 
+      50 improvement point cost, 2 worker slots, +4 production and +2 improvement points when worked, 5 power need.
+
+
+   Tier 2
+
+   RAPID DEVELOPMENT: Unlocks Rapid Development CP.
+      100% boost to target region�s Production for 10 turns.
+
+   HIGH SPEED EXPRESSWAY: Unlocks High Speed Expressway CB.
+      380 Production cost, 6 power need, requires region level 4, +20 Production.
+
+   SUBWAY: Unlocks Subway DP. 
+      30 Eng XP cost, 1.5 progressive cost, creates a Subway CB within the targeted region. 
+      Subway has 2 power need, increases region level by 1, and provides +2 improvement points.
+
+
+   Tier 3
+
+   PVC Plumbing: Unlocks level 5 Towns. 
+      (New maximum town level)
+
+
+   LEGACY: Have 5 Media Line improvements (and thus movies)
+
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>MODERNIZATION-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>MODERNIZATION,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainEngineering</Tag>
+               <Tag>AIHint-Modernization</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________OVERHEAD POWER LINES_____________________ -->
+
+      <!-- One time buff applied to player nation. All city centers now generate +5 Power. -->
+
+      <ACard>
+         <ID>MODERNIZATION-OVERHEADPOWERLINES</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-OVERHEADPOWERLINES_BUFF</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_CAPITAL-OVERHEADPOWERLINES,MODERNIZATION-OVERHEADPOWERLINES_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-OVERHEADPOWERLINES_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________DISTRIBUTION CENTER_____________________ -->
+
+      <!-- Unlocks the Distribution Center tile improvement. 50 improvement point cost, 2 worker slots, +4 production and +2 improvement points when worked, 5 power need. -->
+
+      <ACard>
+         <ID>MODERNIZATION-DISTRIBUTIONCENTER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_DISTRIBUTIONCENTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________HIGH SPEED EXPRESSWAY_____________________ -->
+
+      <!-- Unlocks High Speed Expressway CB. 380 Production cost, 6 power need, requires region level 4, +20 Production. -->
+
+      <ACard>
+         <ID>MODERNIZATION-HIGHSPEEDEXPRESSWAY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_HIGHSPEEDEXPRESSWAY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________SUBWAY_____________________ -->
+
+      <!-- Unlocks Subway DP. 30 Eng XP cost, 1.5 progressive cost, creates a Subway CB within the targeted region. Subway has 2 power need, increases region level by 1, and provides +2 improvement points.  -->
+
+      <ACard>
+         <ID>MODERNIZATION-SUBWAY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringModernizationSubway,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_SUBWAY</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-SUBWAY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+LandMovement</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>SubwayPresent,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_SUBWAY</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________PVC PLUMBING_____________________ -->
+
+      <!-- Unlocks level 5 Towns. (Maximum town level) -->
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_PROMOTION_CAP,ADD,1</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_DEFAULT_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_FARM_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_LUMBER_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_MINE_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_COASTAL_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_CIVILBUNKER_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-PVCPLUMBING_MOUND_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-PVCPLUMBING_ECOLOGY_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-PVCPLUMBING_CIVILBUNKER_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect> -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-PVCPLUMBING_NUCLEARTOWN_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-PVCPLUMBING_TOMORROWTOWN_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:250</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING_MOUND_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>MOUNDBUILDERS-MOUND_TOWN,TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_MOUND_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING_ECOLOGY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE9_ECOLOGY-PLAYERACTIVE,TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_ECOLOGY_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING_CIVILBUNKER_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE10_VICTORYROGUEAI-NATIONALSECURITY,TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_CIVILBUNKER_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING_NUCLEARTOWN_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE7_ATOM-BASE,TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_NUCLEARTOWN_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-PVCPLUMBING_TOMORROWTOWN_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CommunityOfTomorrowUnlocked,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_TOMORROWTOWN_5</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- _____________________RAPID DEVELOPMENT_____________________ -->
+
+      <!-- Unlocks Rapid Development CP. 20% boost to target region�s Production for 10 turns. -->
+
+      <ACard>
+         <ID>MODERNIZATION-RAPIDDEVELOPMENT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringModernizationRapidDevelopment,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:250</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-RAPIDDEVELOPMENT_CAPITALBUFF</ID>
+         <CardSpriteName>UI/Icons/NationalSpirit/NSIconSmall-MODERNIZATION</CardSpriteName>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>4</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Actual Effect -->
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityProduction,ADD,1.0</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAG,Capital</Target>
+                  </ACardEffect>
+                  -->
+                  <!-- UI Icon -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityProduction,ADD,1.0</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_4_____________________ -->
+
+   <!-- _____________________WORKER COOPERATIVE_____________________ -->
+
+      <!-- One time buff applied to player nation. All tile improvements in the player�s nation gain an additional worker spot. -->
+
+      <ACard>
+         <ID>MODERNIZATION-WORKERCOOPERATIVE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-WORKERCOOPERATIVE_BUFF</Payload>
+                     <Target>ENTTAG,+Modernization</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Modernization-WORKERCOOPERATIVE,MODERNIZATION-WORKERCOOPERATIVE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-WORKERCOOPERATIVE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ExtraWorkerSlots,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+   <!-- Have 2 Level 5 Towns -->
+
+      <ACard>
+         <ID>MODERNIZATION-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>LevelFiveTown,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainEngineering,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-MODERNIZATION_LEGACY_BUFF,MODERNIZATION-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-MODERNIZATION-SOLARPANELROOFING</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MODERNIZATION-SOLARPANELROOFING_BUFF</Payload>
+                     <Target>ENTTAG,LevelFiveTown</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-LevelFiveTown-SOLARPANELROOFING,MODERNIZATION-SOLARPANELROOFING_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MODERNIZATION-SOLARPANELROOFING_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

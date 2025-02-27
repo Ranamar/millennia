@@ -1,0 +1,391 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+<!-- CAP CITY BUILDINGS -->
+
+   <!-- Tech -->
+
+   <EntityInfo>
+      <ID>B_HEROHALL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,80</Data>
+         <Data>ResKnowledge,1</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>UpgradeLine-Library,1</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_BATHHOUSE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,100</Data>
+         <Data>ResCitySanitation,8</Data>
+         <Data>StatBonusRegionLevel,1</Data>
+         <Data>FilterAge,3</Data>
+         <Data>UpgradeLine-CitySanitation,1</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_MAUSOLEUM</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,90</Data>
+         <Data>ResCityExpansionPoints,6</Data>
+         <Data>ResCulture,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE3-MONUMENT_ONSELFBUILDTRIGGER</Data>
+         <Data>UpgradeLine-CapMonument,2</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CapMonument</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_ORACLE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,160</Data>
+         <Data>ResDomainArts,1</Data>
+         <Data>ResCulture,1</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>UpgradeLine-ArtHouse,1</Data>
+         <!-- Temple -->
+         <Data>FilterAge,3</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_PARTHENON</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,120</Data>
+         <Data>ResCulture,1</Data>
+         <Data>StatUnrestSuppression,5</Data>
+         <Data>FilterAge,3</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DataLinkAction:PLAYER:LandmarksCompletedQuest,TECHAGE3_HEROES-PARTHENON_QUEST_DATALINKACTION_BUFF</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- TILE IMPROVEMENTS -->
+
+   <!-- Tech -->
+   <EntityInfo>
+      <ID>B_TILEIMP_POETS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,30</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_POETS</Data>
+         <Data>WorkableConvertGoods-Paper-1-Poems,1</Data>
+         <Data>WorkableResKnowledge,1</Data>
+         <Data>UpgradeLine-PrintingPress,1</Data>
+         <Data>ImprovementSort,760</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>Scribes</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_LODGE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_LODGE</Data>
+         <Data>ResCityHousing,15</Data>
+         <Data>GoodsWaste,1</Data>
+         <Data>WorkableResDomainExploration,1</Data>
+         <Data>UpgradeLine-Apartment,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_OFFERING</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,24</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_OFFERING</Data>
+         <Data>WorkableConvertGoods-Gold-2-Offering,2</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ImprovementSort,480</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>AIPhaseOutAge-4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TALISMAN</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,24</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TALISMAN</Data>
+         <Data>WorkableConvertGoods-+CanMakeStone-2-Talisman,2</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>UpgradeLine-Sculptor,1</Data>
+         <Data>ImprovementSort,830</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-StoneClay</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CHARMS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,24</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CHARMS</Data>
+         <Data>WorkableConvertGoods-Logs-2-Charms,2</Data>
+         <Data>WorkableResDomainArts,1</Data>
+         <Data>UpgradeLine-Woodworker,1</Data>
+         <Data>ImprovementSort,720</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Woodwork</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- UNITS -->
+
+   <!-- Default -->
+   <EntityInfo>
+      <ID>UNIT_HERO</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_LaurelWreath</Icon>
+      <Portrait>HeroPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,17</Data>
+         <Data>StatDefense,22</Data>
+         <Data>StatTactics,3</Data>
+         <Data>StatTargetPriority,199</Data>
+         <Data>LeaderRetireValue,20</Data>
+         <Data>UseAction-100,UNITACTIONS-HERO_QUEST</Data>
+         <Data>UseAction-201,UNITACTIONS-LEADER_RETIRE</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Hero/Unit_Hero</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE3</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>Leader</Tag>
+         <Tag>TagAILimitType-Leader</Tag>
+         <Tag>UseEntityNameTable:LeadersAge3Heroes</Tag>
+         <Tag>Hero</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag> 
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- Quest Rewards -->
+   <EntityInfo>
+      <ID>UNIT_ICARUS</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Icarus</Icon>
+      <Portrait>IcarusPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,14</Data>
+         <Data>StatDefense,19</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>FilterAge,3</Data>
+         <!-- Quick -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2.0</Data>
+         <Data>ActionCharges,1</Data>
+         <Data>FlightChanceStart,0.8</Data>
+         <Data>FlightChance,1</Data>
+         <Data>UseAction-100,UNITACTIONS-ICARUS_ATTEMPTFLY</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Balloon</Data>
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Icarus/Unit_Icarus</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-ICARUS_FLYRESET</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>         
+         <Tag>Scout</Tag>
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>AttackBegunSoundJavelin</Tag>
+         <Tag>ProjectileFiredSoundJavelin</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>NotHero</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ONI</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_OniHeaddress</Icon>
+      <Portrait>OniPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>         
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,12</Data>
+         <Data>StatDefense,18</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>FilterAge,3</Data>
+         <!-- Assault -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Oni/Unit_Oni</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Barbarian</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag> 
+         <Tag>NotHero</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_JACKALGUARD</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Jackal</Icon>
+      <Portrait>JackalPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,98</Data>
+         <Data>Upkeep-ResCoin,1</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,23</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,6</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>UpgradeLine-Guard,2</Data>
+         <Data>FilterAge,3</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/JackalGuard/Unit_JackalGuard</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag> 
+         <Tag>NotHero</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

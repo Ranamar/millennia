@@ -1,0 +1,1638 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GOVCOMMUNIST</DeckName>
+
+<!--
+
+   DEFAULT
+   Complex Town Hall
+   Clamp Needs to 150% Max, down from 200% Max
+
+   FACTION
+   Faction HQ
+   Production from Radio Station
+   Production from Faction HQ
+
+   Personal - Productom from Factory IMPs
+   Lead - Production from Factory IMPs
+
+   T1 - Soviet Factory IMP (Steel -> Tools)
+   T2 - Collective Farm IMP (4x Food + Housing)
+   T3 - Culture Power, Spawn Pioneers in every region, Pioneers gain Unit Action to create a Soviet Factory OR Farm
+
+
+   T1
+   STATE OWNED ENTERPRISES
+   Mine Town Bonus gains 2x bonus from adjacent Mine IMPs
+
+   SOVIET FARMS
+   Bonus Ideology, Food from Farm IMPs
+
+   PROLETARIAT REGIME
+   Removes Luxury Need, gains permanent Regional Efficiency Bonus
+
+
+   T2
+   FIVE-YEAR PLAN
+   Engineering Domain Power, boost a town to max level
+
+   SOVIET HOUSING
+   Bonus Ideology, Housing from Housing IMPs
+
+   HEAVY ARMAMENT
+   Reduce army production costs for armored/heavy units
+
+
+   T3
+   FROM EACH ACCORDING TO THEIR ABILITY
+   Bonus Production from Soviet Factory IMP based on adjacent Mine IMPs (like town bonus)
+
+   TO EACH ACCORDING TO THEIR NEEDS
+   Bonus Ideology from Soviet Factory IMP based on adjacent Mine IMPs
+
+
+   T4
+   REFORMED
+
+-->
+
+
+   <Definition>
+
+<!-- AUTOMATIC CARD -->
+      <ACard>
+         <ID>GOVCOMMUNIST-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_ARMSRACE</Payload>
+                 </ACardEffect>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_FACTIONS</Payload>
+                 </ACardEffect>
+
+                  <!-- Standardized "New Government, Destroy old CB's" Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-CHANGEGOVERNMENT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-SECULAR_GOVT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-BASE_BUILDINGBUFF</Payload>
+                     <Target>ENTTAG,+Capital</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-BASE_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Capital-GOV_CAPITALBUFF,GOVCOMMUNIST-BASE_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-GOV_HOMELANDBUFF,GOVCOMMUNIST-BASE_HOMELANDBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVCOMMUNIST,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVCOMMUNIST,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-FACTIONHQ_BUFF</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-COMMUNISTFACTIONHQ,GOVCOMMUNIST-FACTIONHQ_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-RADIOSTATION_BUFF</Payload>
+                     <Target>ENTTYPE,B_RADIOSTATION</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_RADIOSTATION-COMMUNISTRADIOSTATION,GOVCOMMUNIST-RADIOSTATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+
+                  <!-- FACTION BONUSES -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionCulture,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionDirect,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>Faction,COMMUNIST</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IdeologyNeedEnabled,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-FACTIONREWARDS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankLeaderBonusActive-COMMUNIST,GOVCOMMUNIST-FACTIONLEADER_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankPersonalBonusActive-COMMUNIST,GOVCOMMUNIST-FACTIONPERSONALRANK_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>APPLYFACTIONREWARDS</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-GovernmentSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-WarfareSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ExplorationSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-EngineeringSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-DiplomacySofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ArtsSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age of Generals Check -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>TECHAGE8_VICTORYGENERALS-BASE,8</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+                  <!-- But NOT Age 9+ -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,9</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-GENERALSVICTORYCHECK,TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_COMMUNIST</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DomainTier:5</Tag>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainGovernment</Tag>
+               <Tag>AIHint-Communism</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>0</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONREWARDS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>FactionActive-Communist</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-COMMUNIST-0,GOVCOMMUNIST-FACTIONREWARD_0</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-COMMUNIST-1,GOVCOMMUNIST-FACTIONREWARD_1</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-COMMUNIST-2,GOVCOMMUNIST-FACTIONREWARD_2</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- AUTOMATIC BUFFS -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-BASE_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Capital</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Capital - National Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,6</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,8</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Needs -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>      
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>            
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-BASE_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,6</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONHQ_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-RADIOSTATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrestSuppression,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Free Bonuses
+      -->
+      <ACard>
+         <ID>GOVCOMMUNIST-STARTERIDEAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- DEFAULT CB's -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_COMPLEX</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-INCREASEMAX</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FACTIONHQ</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-DomainXP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-IP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:0</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-INCREASEMAX</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Age 8 Special rule, choosing faction gives sofab point -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPointsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialistsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResArcanaMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfareMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExplorationMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernmentMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArtsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineeringMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacyMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      STATE OWNED ENTERPRISES
+      Mine Town Bonus gains 2x bonus from adjacent Mine IMPs
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-STATEENTERPRISE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVCOMMUNIST-STATEENTERPRISE-TownBuffTooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      SOVIET FARMS
+      Bonus Ideology, Food from Farm IMPs
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETFARMS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-SOVIETFARMS_BUFF</Payload>
+                     <Target>ENTTAG,Farms</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Farms-SOVIETFARMS,GOVCOMMUNIST-SOVIETFARMS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Farms-SOVIETFARMS_BUILDHELPER1,ResCityFood</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Farms-SOVIETFARMS_BUILDHELPER2,ResCityIdeology</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETFARMS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      PROLETARIAT REGIME
+      Removes Luxury Need, gains permanent Regional Efficiency Bonus
+      -->
+      <ACard>
+         <ID>GOVCOMMUNIST-PROLETARIATREGIME</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#MAX_INDIVIDUAL_NEED_SATISFACTION,SUB,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#LUXURY_PER_POP,SUB,#LUXURY_PER_POP</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-PROLETARIATREGIME_CAPITALBUFF</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-CityCenter-PROLETARIATREGIME,GOVCOMMUNIST-PROLETARIATREGIME_CAPITALBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-PROLETARIATREGIME_CAPITALBUFF</ID>
+         <CardSpriteName>UI/Icons/NationalSpirit/NSIconSmall-GOVCOMMUNIST</CardSpriteName>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiency,ADD,0.1</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      FIVE-YEAR PLAN
+      Instantly upgrade a town to max town level
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FIVEYEARPLAN</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringGovCommunistFiveYearPlan,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FIVEYEARPLAN_TARGET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>SpecLevel,LT,#TOWN_PROMOTION_CAP</Req>
+                     <Target>ENTTAGATLOC,TownSpec,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_InvokePower</EffectType>
+                     <Payload>CET_TownPromote</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Repeat effect until town reaches towncap -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-FIVEYEARPLAN_EFFECT</Payload>
+                     <Target>ENTTAGATLOC,TownSpec,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FIVEYEARPLAN_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>SpecLevel,LT,#TOWN_PROMOTION_CAP</Req>
+                     <Target>ENTTAGATLOC,TownSpec,EXECLOC</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_InvokePower</EffectType>
+                     <Payload>CET_TownPromote</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Repeat effect until town reaches towncap -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-FIVEYEARPLAN_EFFECT</Payload>
+                     <Target>ENTTAGATLOC,TownSpec,EXECLOC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      SOVIET HOUSING
+      Bonus Ideology, Housing from Housing IMPs
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETHOUSING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-SOVIETHOUSING_BUFF</Payload>
+                     <Target>ENTTAG,Housing</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Housing-SOVIETHOUSING,GOVCOMMUNIST-SOVIETHOUSING_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Housing-SOVIETFARMS_BUILDHELPER1,ResCityHousing</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Housing-SOVIETFARMS_BUILDHELPER2,ResCityIdeology</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETHOUSING_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      HEAVY ARMAMENT
+      Reduce production costs for all Armored/Heavy Units
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-HEAVYARMAMENT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConstructionCostFactor-UNIT_MBT,SUB,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage> 
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      FROM EACH ACCORDING TO THEIR ABILITY
+      Bonus Production from Soviet Factory IMP based on adjacent Mine IMPs (like town bonus)
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FROMEACH</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVCOMMUNIST-FROMEACH-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETFACTORY_PRODUCTION_TOWNBONUS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>GOVCOMMUNIST-FROMEACH,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_FactoryMineBonusValue,ADD,SPECIALVAL:ENTITYTAGRADIUS:1:MineTownBonus:MineTownBonusValue</Payload>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_FactoryMineBonusValue,MUL,2</Payload>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,[SELF:NS_FactoryMineBonusValue]</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>ChoiceTag-0-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!-- 
+      TO EACH ACCORDING TO THEIR NEEDS
+      Bonus Ideology from Soviet Factory IMP based on adjacent Mine IMPs
+      -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-TOEACH</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVCOMMUNIST-TOEACH-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SOVIETFACTORY_IDEOLOGY_TOWNBONUS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>GOVCOMMUNIST-TOEACH,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_FactoryIdeologyBonusValue,ADD,SPECIALVAL:ENTITYTAGRADIUS:1:MineTownBonus:MineTownBonusValue</Payload>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_FactoryIdeologyBonusValue,MUL,2</Payload>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,[SELF:NS_FactoryIdeologyBonusValue]</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>ChoiceTag-0-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 5______________________ -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-COMPLETED</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-COMPLETED_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:225</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-COMPLETED_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- __________________FACTION_REWARDS__________________________ -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONREWARD_0</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Entities/Icons/B_TILEIMP_SOVIETFACTORY-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Third Threshold -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SOVIETFACTORY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:2500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONREWARD_1</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Entities/Icons/B_TILEIMP_COLLECTIVEFARM-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Second Threshold -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_COLLECTIVEFARM</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:5000</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONREWARD_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Culture Powers/SEIZE_THE_MEANS-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringGovCommunistSeizeTheMeans,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-SEIZETHEMEANS_PIONEER_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_ENGINEER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_ENGINEER-SEIZE_THE_MEANS,GOVCOMMUNIST-SEIZETHEMEANS_PIONEER_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_SOVIETFACTORY</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_COLLECTIVEFARM</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:12500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SEIZETHEMEANS_FINDREGIONS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-SEIZETHEMEANS_SPAWNPIONEER</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SEIZETHEMEANS_SPAWNPIONEER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>ISVASSAL,FALSE</Req>
+                     <Target>LOC,EXECLOC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ENGINEER</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-SEIZETHEMEANS_PIONEER_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-150,UNITACTIONS-PIONEER_SPAWNFACTORY</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-151,UNITACTIONS-PIONEER_SPAWNFARM</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+<!-- ___________________FACTION_BONUSES_________________________ -->
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONLEADER_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/CONCEPT_HIDDENGOODS-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Faction Lead Bonus -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_FACTION</Payload>
+                     <Target>ENTTAG,+MineTownBonus</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+MineTownBonus-FACTIONCOMMUNISTLEAD,GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_FACTION</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_FACTION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVCOMMUNIST-FACTIONPERSONALRANK_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/CONCEPT_HIDDENGOODS-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Faction Lead Bonus -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_PERSONAL</Payload>
+                     <Target>ENTTAG,+MineTownBonus</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+MineTownBonus-FACTIONCOMMUNISTPERSONAL,GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_PERSONAL</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-INDUSTRIALIMPROVEMENT_BUILDINGBUFF_PERSONAL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________INNOVATION________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-GOVCOMMUNIST-BRUTALISTARCHITECTURE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-BRUTALISTARCHITECTURE_BUFF</Payload>
+                     <Target>ENTTAG,+Housing</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Housing-BRUTALISTARCHITECTURE,GOVCOMMUNIST-BRUTALISTARCHITECTURE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-+Housing-BRUTALISTARCHITECTURE_BUILDHELPER,ResCityProduction</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-BRUTALISTARCHITECTURE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-GOVCOMMUNIST-GUARANTEEDJOBS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVCOMMUNIST-GUARANTEEDJOBS_BUFF</Payload>
+                     <Target>ENTTAG,+Factory</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Factory-GUARANTEEDJOBS,GOVCOMMUNIST-GUARANTEEDJOBS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-+Factory-BRUTALISTARCHITECTURE_BUILDHELPER,ResCityIdeology</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVCOMMUNIST-GUARANTEEDJOBS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

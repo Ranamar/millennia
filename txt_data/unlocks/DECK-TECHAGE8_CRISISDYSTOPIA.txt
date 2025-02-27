@@ -1,0 +1,1370 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE8_CRISISDYSTOPIA</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE8_CRISISDYSTOPIA-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <!-- Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SMG</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-WARSPAWN_SMGCHECK_1</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8-WARSPAWN_SMGCHECK_2</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SUBMARINE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_DESTROYER</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>B_RIOT</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWERCRANE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALTEMPLE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_RADIOSTATION</Payload>
+                  </ACardEffect>
+
+                  <!-- Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_STANDARDDISTRICT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CLOTHINGFACTORY</Payload>
+                  </ACardEffect>
+
+                  <!-- Bonus Worker Baseline -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BONUS_WORKER_POPULATION_INTERVAL,ADD,10</Payload>
+                  </ACardEffect>
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age8DystopiaUnlocks</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>SpaceRaceAvailable</Payload>
+                  </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <!-- Clear Innovation & Chaos decks, only have the new cards -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+AddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+                  -->
+
+                  <!-- Factions -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVFUNDAMENTALIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVCOMMUNIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVDEMOCRATICREPUBLIC</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:8</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>CrisisName:CRISISDYSTOPIA</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age8_Dystopia_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_RIOT</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_FACTIONS</Tag>
+               <Tag>CalloutRedirect-CONCEPT_FACTIONS:CONCEPT_GOVERNMENT</Tag>
+               <Tag>AgeNotificationCallout-3:CONCEPT_MEGAPROJECT</Tag>
+               <Tag>MusicEra:4</Tag>
+               <Tag>AIAgeRule:Dystopia</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-WARSPAWN_SMGCHECK_1</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Compare value to Units's ID -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>WarSpawnUnit1Value,LT,11</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Update War Spawn to Units -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarSpawnUnit1,UNIT_SMG</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarVolunteersUnit,UNIT_SMG</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_SMG</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!-- Set value to Units's ID -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WarSpawnUnit1Value,SET,11</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+<!-- TECHS -->
+   <!-- Age Advance Techs -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE9-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE8_CRISISDYSTOPIA-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:1200</Tag>
+               <Tag>TechLayout:4,2</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE8_CRISISDYSTOPIA-TECHAGE9_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-TECHAGE9_CRISISWASTELAND_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <!-- CR_Locked, you unlock by doing DEFCON, which auto-sets the age for you -->
+                     <ReqType>CR_Locked</ReqType>
+                     <Req>WASTELAND_ADVANCE</Req>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE9_CRISISWASTELAND-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE8_VICTORYGENERALS-BASE,0</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:1100</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>CrisisAgeAdvance</Tag>
+               <Tag>SkipCountTechRequirement</Tag>
+              <!--<Tag>HideIfUnmet</Tag>-->
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- IMPORT -->
+      <ACard><Import>TECHAGE8-HEAVYMACHINERY</Import></ACard>
+      <ACard><Import>TECHAGE8-AIRWARFARE</Import></ACard>
+      <ACard><Import>TECHAGE8-COMPUTING</Import></ACard>
+
+   <!-- NEW TECH -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-NATIONALISM</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SPACECENTER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALPASTIME</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SCHOOLDISTRICT</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentAddressGrievance,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/RIOT_ADDRESS-ICON,Tooltip:TECHAGE8_CRISISDYSTOPIA-NATIONALISM-Proxy-AddressGrievance,InfopediaLink:ITT_Misc|CONCEPT_RIOT</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- placeholder for manhattan project -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ProjectStage-MANHATTAN-MH1-STATE,MSS_FirstAttempt</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ActiveMegaproject2,MANHATTAN</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ProjectStage-MANHATTAN,MH1</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_ManhattanProject,Tooltip:TECHAGE8-ENERGY-Proxy-ManhattanProject</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:750</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-LAWENFORCEMENT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ASSAULTRIFLE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_RIOTPOLICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_RIOTBARRICADES</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_EMERGENCYBROADCAST</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#MAX_ARMY_SIZE,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_ARMYSIZE-ICON,Tooltip:GameStrings-Proxy-MaxArmySizeIncrease,InfopediaLink:ITT_Misc|CONCEPT_ARMIES</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:700</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-FOSSILFUELS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MEGAPOWER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OILREFINERY_POLLUTION</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRASHINCINERATOR</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:800</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-COUNTERCULTURE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PUNKHQ</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PERFORMINGARTSCENTER</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsNonViolentProtest,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/RIOT_PROTEST-ICON,Tooltip:TECHAGE8_CRISISDYSTOPIA-COUNTERCULTURE-Proxy-NonViolentProtest,InfopediaLink:ITT_Misc|CONCEPT_RIOT</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:800</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-EMERGENCYRESPONSE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FEMA</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SHELTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_CRISISDYSTOPIA-BASE</Tag>
+               <Tag>TechCostBase:750</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-FEMA_ONBUILD</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CI_CASHOUT_VALUE,MUL,0.8</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-RIOT_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- ____________________________________________ -->
+
+
+   <!-- Age Begin -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-CHARGE_PER_PLAYER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_CRISISDYSTOPIA_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>SimDeckCardDrawTracker-ResChaos,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ShowCrisisMeterDecor</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- Age Active -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-CRISISDYSTOPIA</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,BLOOD</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-CRISISDYSTOPIA:8,TECHAGE8_CRISISDYSTOPIA-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,ADD,3</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- other game rules -->
+
+                  <!-- Set of Player Buffs for Active -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+
+                  <!-- PersistentActionCard, spawn Riots in all of player's regions -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-CRISISDYSTOPIA_SETRIOTCHANCE,TECHAGE8_CRISISDYSTOPIA-SPAWNRIOT_SETREGIONCHANCE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-CRISISDYSTOPIA_SPAWNRIOT,TECHAGE8_CRISISDYSTOPIA-SPAWNRIOT_REGION</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Initialize starting RIOT Chance as a GameData per region -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatRiotChance,SET,0.1</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+Capital</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+
+                  <!-- Unlock WarfareRemoveRiot , removes a Riot but gives a little chaos (to tank, not per turn) -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareRemoveRiot,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- force-choose the age for the timeline -->
+                  <ACardEffect>
+                     <EffectType>CE_ChooseAge</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-CRISISDYSTOPIA</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- remove any game rules specific to the crisis -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Clear Peristent Riot Spawner rules -->
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-CRISISDYSTOPIA_SETRIOTCHANCE,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-CRISISDYSTOPIA_SPAWNRIOT,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Remove Riots -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-Riot</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Spawn 10 B_RIOT, target any IMP controlled by the player -->
+                  <!-- Intended to be evenly distributed among all regions -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOTS_INITIALPLAYER</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_RIOTPOLICE</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_RIOTPOLICE</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOTS_INITIALPLAYER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatRiotPerRegion,SET,10</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatRiotPerRegion,DIV,[PLAYER:StatRegionCount]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOTS_INITIALREGION</Payload>
+                     <Target>REGION</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOTS_INITIALREGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_RIOT</Payload>
+                     <PayloadParam>MaxSpawnDistance:-1,WarnOnFailure:false,SpawnLimit:[PLAYER:StatRiotPerRegion],SpawnExcludeTag:+Riot</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+Improvement</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOT_SETREGIONCHANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Base RIOT Chance from Capital (initialized from Age Active) and other cap buildings -->
+                  <!-- 10 Base from Capital in each Region -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RiotChance,SET,SPECIALVAL:BUILDINGREGION:StatRiotChance</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RiotChance,ADD,SPECIALVAL:TILETAGREGION:+HasRiotChance:StatRiotChance</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RiotChance,MUL,#WORLD_DIFFICULTY</Payload>
+                  </ACardEffect>
+
+                  <!-- Multiply by Pop -->
+                  <!-- Running total, 0.1 Base * 10 Pop = 1.0 -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RiotChance,MUL,[SELF:Population]</Payload>
+                  </ACardEffect>
+
+                  <!-- Floor of 0.1, if needs are being met -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_NeedsFloor,SET,0.1</Payload>
+                  </ACardEffect>
+                  <!-- 
+                     Needs Average Unmetmet percent 
+                     100% or more met = 0.1 
+                     50% met = 0.5
+                     0% met = 1.0
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_NeedsFloor,ADD,[SELF:NeedAverageUnmet]</Payload>
+                  </ACardEffect>
+
+                  <!--
+                     If Needs are being met, chance to spawn = regional pop (0.1*10*0.1 = 1 = 1%)
+                     If Needs are unmet, chance increases dramatically (0.1*10*0.2 = 20%, 0.1*10*0.5 = 50%)
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RiotChance,MUL,[SELF:NS_NeedsFloor]</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>NoTooltipEffects</Tag>
+               <Tag>HiddenAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOT_REGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>[SELF:NS_RiotChance],A</TriggerParam>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_RIOT</Payload>
+                     <PayloadParam>MaxSpawnDistance:-1,WarnOnFailure:false,SpawnExcludeTag:+Riot,SpawnLimit:1</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+Improvement</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>[INVERTSELF:NS_RiotChance],B</TriggerParam>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>NoTooltipEffects</Tag>
+               <Tag>HiddenAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-DESTROY_RIOT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-Riot,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ________________INNOVATION__________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-CRISISDYSTOPIA-CHAOS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 9+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLKNOWNPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,SUB,10</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_MessageDialog</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-INNOVATION_CHAOS</Payload>
+                     <Target>PLAYER,ALLKNOWNPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>INNOVATION-CRISISDYSTOPIA-CHAOS-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- ____________________________________________ -->
+<!-- ___________________CHAOS____________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-ACIDRAIN</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-ACIDRAIN_CITYBUFF</Payload>
+                     <Target>ENTTAG,Capital</Target>
+                  </ACardEffect>
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-ACIDRAIN_CITYBUFF</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-ACIDRAIN_CITYBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/ResChaos-ICON</CardSpriteName>
+         <Duration>4</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityFood,MUL,0.8</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddDurationToTooltip</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-FLOODS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>ShallowWater,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,BuildRequirementTag-ShallowWater</Target>
+                     <TargetLimit>5</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-FIRES</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <!-- This will require that you have at least one Cap building.  It also puts Cap buildings in the entity buffer.  The tag counted here is set in the base building, defined in Game Entities. -->
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>CityBuildingConstructed,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,Improvement</Target>
+                     <TargetLimit>3</TargetLimit>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-QUAKE_EFFECT</Payload>
+                     <Target>REGION,REQTARGETREGION</Target>
+                     <TargetLimit>3</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-RIOTS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-SPAWNRIOTS_INITIALPLAYER</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-EARTHQUAKE</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-EARTHQUAKE_EFFECT</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-EARTHQUAKE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ApplyDamage</EffectType>
+                     <Payload>40</Payload>
+                     <PayloadParam>CanKillUnits:true</PayloadParam>
+                     <Target>ENTTAGREGION,Unit</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>CHAOS-CRISISDYSTOPIA-TERRORISM</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>Capital,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-TERRORISM_EFFECT</Payload>
+                     <Target>REGION,REQTARGETREGION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,ADD,50</Payload>
+                     <Target>REGION,REQTARGETREGION</Target>
+                     <!-- <Target>ENT,REQTARGET</Target> -->
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_CRISISDYSTOPIA-TERRORISM_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>DAMAGEDEFENSES</Payload>
+                     <PayloadParam>DamageDefensesStrategicAttack:1000,DamageDefensesStrategicTargets:2,DamageDefensesTag:+CanBeSieged</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

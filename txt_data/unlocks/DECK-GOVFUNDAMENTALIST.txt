@@ -1,0 +1,1745 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GOVFUNDAMENTALIST</DeckName>
+
+<!--
+
+   DEFAULT
+   Sacred Capital CB, limit one-per-nation
+
+
+   FACTION
+   Faction HQ
+   Bonus Faith on Faction HQ
+   Bonus Faith on Radio Station
+
+   Personal - Bonus Ideology from Religious improvements
+   Lead - Bonus Ideology from Religious improvements
+
+   T1 - Unlocks Tract Publisher Improvement (upgrade of Tract Printer)
+   T2 - Bonus Faith & Ideology from Education Improvements
+   T3 - Reduces Secularism pressure, globally
+
+
+   T1
+   RELIGIOUS LAW
+   Generate Gov XP in Office of Supreme Leader based on number of state religion population in its region
+
+   CULTURAL EXCELLENCE
+   Generate Arts XP from religious improvements when local state religion adoption is above 50%
+
+
+   T2
+   MINISTRY OF INDUSTRY
+   Generate Production & Engineering XP on factory improvements when local state religion adoption is above 50%
+
+   ECONOMIC DEVELOPMENT PLAN
+   Generate Wealth & Exploration XP on dock improvements when local state religion adoption is above 50%
+
+   DEATH TO OUR ENEMIES
+   Generate Unrest Suppression & Warfare XP on training camp capital buildings when local state religion adoption is above 50%
+
+
+   T3
+   DENOUNCE HEATHENS
+   Unlocks Unilateral Diplomatic Action, reduces relationship score & generates a small amount of all domain types
+
+   CULTURAL REVOLUTION
+   Unlocks Arts Culture Power, reduces unrest in all of your regions & generates a small amount of all domain types
+
+   ONE TRUE RELIGION
+   Reduces Secularism pressure for your Nation
+
+
+   T5
+   REFORMED
+
+-->
+
+
+   <Definition>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- You must have a Religion to take this Government -->
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_ARMSRACE</Payload>
+                 </ACardEffect>
+                 <ACardEffect>
+                   <EffectType>CE_UnlockInfopedia</EffectType>
+                   <Payload>CONCEPT_FACTIONS</Payload>
+                 </ACardEffect>
+
+                  <!-- Standardized "New Government, Destroy old CB's" Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-CHANGEGOVERNMENT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-BASE_BUILDINGBUFF</Payload>
+                     <Target>ENTTAG,+Capital</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Capital-GOV_CAPITALBUFF,GOVFUNDAMENTALIST-BASE_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-BASE_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-GOV_HOMELANDBUFF,GOVFUNDAMENTALIST-BASE_HOMELANDBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVFUNDAMENTALIST,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GOVFUNDAMENTALIST,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  -->
+
+
+                  <!-- FACTION BONUSES -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-RADIOSTATION_BUFF</Payload>
+                     <Target>ENTTYPE,B_RADIOSTATION</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_RADIOSTATION-FUNDAMENTALISTRADIO,GOVFUNDAMENTALIST-RADIOSTATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-RELIGIOUS_IDEOLOGY_BUFF</Payload>
+                     <Target>ENTTAG,ReligiousBuilding</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-ReligiousBuilding-RELIGIOUS_IDEOLOGY,GOVFUNDAMENTALIST-RELIGIOUS_IDEOLOGY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionCulture,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionDirect,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>Faction,FUNDAMENTALIST</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IdeologyNeedEnabled,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-FACTIONREWARDS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankLeaderBonusActive-FUNDAMENTALIST,GOVFUNDAMENTALIST-FACTIONLEADER_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionRankPersonalBonusActive-FUNDAMENTALIST,GOVFUNDAMENTALIST-FACTIONPERSONALRANK_ACTIVE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>APPLYFACTIONREWARDS</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-GovernmentSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-WarfareSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ExplorationSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-EngineeringSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-DiplomacySofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ArtsSofab,ADD,3</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age of Generals Check -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>TECHAGE8_VICTORYGENERALS-BASE,8</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+                  <!-- But NOT Age 9+ -->
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,9</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-GENERALSVICTORYCHECK,TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_FUNDAMENTALIST</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DomainTier:5</Tag>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainGovernment</Tag>
+               <Tag>AIHint-Fundamentalist</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>0</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONREWARDS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>FactionActive-Fundamentalist</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-FUNDAMENTALIST-0,GOVFUNDAMENTALIST-FACTIONREWARD_0</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-FUNDAMENTALIST-1,GOVFUNDAMENTALIST-FACTIONREWARD_1</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>FactionReward-FUNDAMENTALIST-2,GOVFUNDAMENTALIST-FACTIONREWARD_2</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+<!-- AUTOMATIC BUFFS -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-BASE_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Capital</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Capital - National Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,13</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Needs -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Unique to Fundamentalist -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-BASE_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,6</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-RADIOSTATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-RELIGIOUS_IDEOLOGY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,10</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Spawn Palace Effect -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-SPAWNPALACE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>B_SACREDCAPITAL,EQ,0</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_SACREDCAPITAL,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_SACREDCAPITAL</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+<!-- FACTION BUFFS -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONLEADER_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-FACTION_RELIGIOUS_GLOBAL</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-FACTION_GLOBAL,GOVFUNDAMENTALIST-FACTION_RELIGIOUS_GLOBAL</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTION_RELIGIOUS_GLOBAL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONPERSONALRANK_ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-FACTION_RELIGIOUS_LEADER</Payload>
+                     <Target>ENTTYPE,B_FACTIONHQ</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_FACTIONHQ-FACTION_LEADER,GOVFUNDAMENTALIST-FACTION_RELIGIOUS_LEADER</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTION_RELIGIOUS_LEADER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- FACTION REWARDS -->
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONREWARD_0</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Entities/Icons/B_TILEIMP_TRACTPUBLISHER-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRACTPUBLISHER</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:2500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONREWARD_1</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Proxy-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-FACTIONREWARD_1_BUFF</Payload>
+                     <Target>ENTTAG,EducationBuilding</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-EducationBuilding-FACTIONREWARD_1_BUFF,GOVFUNDAMENTALIST-FACTIONREWARD_1_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:5000</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONREWARD_1_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-FACTIONREWARD_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/Proxy-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,SUB,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>FactionThreshold:12500</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Free Bonuses
+      -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-STARTERIDEAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- DEFAULT CB's -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SACREDCAPITAL</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-INCREASEMAX</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FACTIONHQ</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-DomainXP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-IP-Tier4-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:0</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-INCREASEMAX</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Age 8 Special rule, choosing faction gives sofab point -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPointsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialistsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResArcanaMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfareMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExplorationMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernmentMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArtsMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineeringMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacyMax,SET,400</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      RELIGIOUS LAW
+      Generate Gov XP in Office of Supreme Leader based on number of state religion population in its region
+      -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-RELIGIOUSLAW</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_SACREDCAPITAL-RELIGIOUSLAW_BUILDHELPER,ResDomainGovernment</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-SacredPalace-Tooltip</Payload>
+                     <PayloadParam>FormatParam:0.2</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-RELIGIOUSLAW_DATALINKACTION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>GOVFUNDAMENTALIST-RELIGIOUSLAW,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempGovBuff,SET,[REGION:StateReligionPopulation]</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempGovBuff,MUL,0.2</Payload><!-- leaving buff as x1 to make it easier to tune this later-->
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,[SELF:NS_TempGovBuff]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-SacredPalace-Tooltip</Payload>
+                     <PayloadParam>FormatParam:0.2</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>ChoiceTag-0-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      CULTURAL EXCELLENCE
+      Generate Arts XP from religious improvements when local state religion adoption is above 50%
+      -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALEXCELLENCE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-CULTURALEXCELLENCE_EFFECT</Payload>
+                     <Target>ENTTAG,ReligiousBuilding</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-ReligiousBuilding-CULTURALEXCELLENCE,GOVFUNDAMENTALIST-CULTURALEXCELLENCE_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-ReligiousBuilding-CULTURALEXCELLENCE_BUILDHELPER,ResDomainArts</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALEXCELLENCE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnTurnStart,GOVFUNDAMENTALIST-CULTURALEXCELLENCE_BUFF</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALEXCELLENCE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>1</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StateReligionPopulationFrac,GTE,0.5</Req>
+                     <Target>REGION,EXECLOC</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      MINISTRY OF INDUSTRY
+      Generate Production & Engineering XP on factory improvements when local state religion adoption is above 50%
+      -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY_EFFECT</Payload>
+                     <Target>ENTTAG,Factory</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Factory-MINISTRYOFINDUSTRY,GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Factory-MINISTRYOFINDUSTRY_BUILDHELPER1,ResDomainEngineering</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Factory-MINISTRYOFINDUSTRY_BUILDHELPER2,ResCityProduction</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnTurnStart,GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY_BUFF</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-MINISTRYOFINDUSTRY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>1</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StateReligionPopulationFrac,GTE,0.5</Req>
+                     <Target>REGION,EXECLOC</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      ECONOMIC DEVELOPMENT PLAN
+      Generate Wealth & Exploration XP on dock improvements when local state religion adoption is above 50%
+      -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN_EFFECT</Payload>
+                     <Target>ENTTAG,Docks</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Docks-ECONOMICDEVELOPMENTPLAN,GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Docks-ECONOMICDEVELOPMENTPLAN_BUILDHELPER,ResDomainExploration</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Docks-ECONOMICDEVELOPMENTPLAN_BUILDHELPER,ResCoin</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnTurnStart,GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN_BUFF</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-ECONOMICDEVELOPMENTPLAN_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>1</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StateReligionPopulationFrac,GTE,0.5</Req>
+                     <Target>REGION,EXECLOC</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      DEATH TO OUR ENEMIES
+      Generate Unrest Suppression & Warfare XP on training camp capital buildings when local state religion adoption is above 50%
+      -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-DEATHTOOURENEMIES</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-DEATHTOOURENEMIES_EFFECT</Payload>
+                     <Target>ENTTAG,TrainingCamp</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-TrainingCamp-DEATHTOOURENEMIES,GOVFUNDAMENTALIST-DEATHTOOURENEMIES_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Docks-ECONOMICDEVELOPMENTPLAN_BUILDHELPER,ResDomainWarfare</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-TrainingCamp-DEATHTOOURENEMIES_EFFECT,StatUnrestSuppression</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-DEATHTOOURENEMIES_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnTurnStart,GOVFUNDAMENTALIST-DEATHTOOURENEMIES_BUFF</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>CanUndo</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-DEATHTOOURENEMIES_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>1</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StateReligionPopulationFrac,GTE,0.5</Req>
+                     <Target>REGION,EXECLOC</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrestSuppression,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      DENOUNCE HEATHENS
+      Unlocks Unilateral Diplomatic Action, reduces relationship score & generates a small amount of all domain types
+      -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-DENOUNCEHEATHENS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomaticAction-GOVFUNDAMENTALIST-DENOUNCEHEATHENSUNILAT,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_Tooltip</EffectType>
+                        <Payload>GOVFUNDAMENTALIST-DENOUNCEHEATHENS-Tooltip</Payload>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-DENOUNCEHEATHENSUNILAT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},GTE,0</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,{PlayerReligion}:FALSE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,100</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Denounce</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AIActionWeight:AIA_Warmonger=1,AIA_Friendship=-10,AIA_Anger=2,AIA_Fear=-8,AIA_ProactiveNice=-10</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      CULTURAL REVOLUTION
+      Unlocks Arts Culture Power, reduces unrest in all of your regions & generates a small amount of all domain types
+      -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALREVOLUTION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsFundamentalistCulturalRevolution,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALREVOLUTION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-CULTURALREVOLUTION_UNREST_EFFECT</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-CULTURALREVOLUTION_UNREST_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,SUB,50</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX\FireworkCelebrationParticle</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      ONE TRUE RELIGION
+      Reduces Secularism pressure for your Nation
+      -->
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-ONETRUERELIGION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,SUB,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+
+<!-- _________________TIER 5______________________ -->
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-COMPLETED</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-COMPLETED_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:225</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-COMPLETED_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________INNOVATION________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-GOVFUNDAMENTALIST-NEORELIGIOUSODE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVFUNDAMENTALIST-NEORELIGIOUSODE_BUFF</Payload>
+                     <Target>ENTTYPE,B_PERFORMINGARTSCENTER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_PERFORMINGARTSCENTER-NEORELIGIOUSODE,GOVFUNDAMENTALIST-NEORELIGIOUSODE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVFUNDAMENTALIST-NEORELIGIOUSODE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

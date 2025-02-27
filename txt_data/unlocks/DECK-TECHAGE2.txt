@@ -1,0 +1,2676 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE2</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE2-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE2-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-DIFFICULTY_PER_AGE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SimDeckEnabled-ResChaos,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SimDeckEnabled-ResInnovation,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Reveal Tiles -->
+                  <ACardEffect>
+                     <EffectType>CE_RevealHiddenTile</EffectType>
+                     <Payload>MT_COPPER</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Cap Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_ENCAMPMENT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_WORKCAMP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MEETINGHALL</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_DWELLING</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_GUARD</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Specializations -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SpecializationSlotCount,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,EARLYSEA</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,RITUALHUNTERS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GODKINGDYNASTY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,RAIDER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,NATURE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,OLYMPICLEGACY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,MOUNDBUILDERS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,WARRIORELITE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,MESSENGERS</Payload>
+                  </ACardEffect>
+
+                  <!-- City Defenders for Age  -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TownDefenderEntityType,UNIT_MILITIA_LVL_2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CityDefenderEntityType,UNIT_MILITIA_LVL_2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>RevoltSpawnType,UNIT_REBEL_LVL_2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Non-Com Combatant Stat Buffs -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Target>ENTTAG,ScalingStats</Target>
+                     <Payload>PLAYERACTIONS-NONCOM_AGE2_STATBUFF</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-ScalingStats-STATBUFF,PLAYERACTIONS-NONCOM_AGE2_STATBUFF</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Specializations</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_SPECIALIZATIONS</PayloadParam>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age2Unlocks</Payload>
+                     <!-- <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_SPECIALIZATIONS</PayloadParam> -->
+                  </ACardEffect>
+                  
+
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HELP_TURN_3</Payload>
+                     <PayloadParam>TurnDelay:3</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HELP_TURN_4</Payload>
+                     <PayloadParam>TurnDelay:4</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HELP_TURN_10</Payload>
+                     <PayloadParam>TurnDelay:10</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HELP_TURN_15</Payload>
+                     <PayloadParam>TurnDelay:15</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HELP_TURN_20</Payload>
+                     <PayloadParam>TurnDelay:20</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+
+                  <!-- Default Culture Powers + Direct Powers -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentConvertOutpostToTown,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect> <!-- I think this power no longer exists? -->
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationGainKnowledgePoints_2,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringPromoteTown,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringRebuildTown,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacySpawnEnvoy,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ENVOY</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyVassalIntegrate,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <!-- Level Up Culture + Direct Powers -->
+                  
+
+
+
+                  <!-- Update C/I Decks -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#EUREKA_KNOWLEDGE,SET,#EUREKA_VALUE_AGE2</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#EUREKA_KNOWLEDGE,DIV,#GAME_SPEED</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CI_CASHOUT_VALUE,MUL,2</Payload> <!-- 150 -> 300 -->
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CI_XPGAIN_VALUE,SET,25</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE2,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE2,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <!-- Other Event Decks -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#REWARD_XPGAIN_VALUE,SET,20</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE2,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE2,+AddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+
+                  <!-- Set IP/Specialist Alerts -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#WARNING_THRESHOLD_IMPROVEMENT_POINTS,SET,40</Payload>
+                  </ACardEffect>
+
+                  <!-- VISUALS -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PrefabAppend:MT_CITYCENTER,-ANCIENT</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PrefabAppend:+TownSpecialization,-ANCIENT</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ENT,MT_CITYCENTER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ENTTAG,+TownSpecialization</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OUTPOST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRADEPOST</Payload>
+                  </ACardEffect>
+
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_PROMOTION_CAP,ADD,1</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_FARM_2</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_LUMBER_2</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_MINE_2</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWNSPEC_COASTAL_2</Payload>
+                  </ACardEffect>
+
+                  <!-- Startup Bonus -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#STARTBONUS_ENGINEERING</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#STARTBONUS_DIPLOMACY</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#STARTBONUS_DELAYEDUNIT,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <Payload>UNIT,UNIT_HORTICULTURIST</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#STARTBONUS_DELAYEDUNIT,EQ,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <Payload>UNIT,UNIT_ANIMALCULTURIST</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#STARTBONUS_DELAYEDUNIT,EQ,4</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <Payload>UNIT,UNIT_PROSPECTOR_MARBLE</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <!-- <Tag>TechHidden</Tag> -->
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:2</Tag>
+               <Tag>DefaultAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age2_Bronze_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_DOMAINSAGE2</Tag>
+               <Tag>CalloutRedirect-CONCEPT_DOMAINSAGE2:CONCEPT_DOMAINS</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_SPECIALIZATIONS2</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_TRADE</Tag>
+               <Tag>MusicEra:2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Age Advance Techs -->
+
+      <ACard>
+         <ID>TECHAGE2-TECHAGE3_HEROES_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatClaimedLandmarks,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE2-TECHAGE3_HEROES_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE3_HEROES-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE2-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE2-BASE</Tag>
+               <Tag>TechCostBase:38</Tag>
+               <Tag>TechLayout:4,1</Tag>
+               <Tag>AIValue:4</Tag>
+               <!-- <Tag>HelpAlertOnResearchBegin:VARIANTAGE</Tag> -->
+               <Tag>AgeAdvance</Tag>
+               <!-- <Tag>VariantAgeAdvance</Tag> -->
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE3-BASE</Payload>
+                     <!--<Hidden>true</Hidden>-->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE2-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:110</Tag>-->
+               <Tag>TechCostBase:44</Tag>
+               <Tag>TechLayout:4,0</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE2-TECHAGE3_BASE_ADVANCE</Tag>
+               <Tag>AgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-TECHAGE3_CRISISBLOOD_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatCrisisBloodCharge,GTE,[PLAYER:CrisisBloodChargeRequired]</Req>
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE2-TECHAGE3_CRISISBLOOD_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE2-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE2-BASE</Tag>
+               <Tag>TechCostBase:38</Tag>
+               <Tag>TechLayout:4,3</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>HelpAlertOnResearchBegin:CRISISAGE</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>CrisisAgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- Age Techs -->
+
+      <ACard>
+         <ID>TECHAGE2-BELIEF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TEMPLE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_VATS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PRESS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WEAVER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:26</Tag>-->
+               <Tag>TechCostBase:20</Tag>
+               <Tag>TechLayout:0,0</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE2-COMMUNITY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CRANE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SAWPIT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_KILN</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MILL</Payload>
+                  </ACardEffect>
+                  <!-- Rush Production Enabled -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CanRushProduction,SET,1</Payload>
+					 <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Wealth-ICON,Tooltip:TECHAGE2-COMMUNITY-Proxy-RushBuy</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:26</Tag>-->
+               <Tag>TechCostBase:20</Tag>
+               <Tag>TechLayout:0,2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-DRILL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SPEAR</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-WARSPAWN_SPEARCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_CHARIOT</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareHeal,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/REINFORCEMENTS-ICON,Tooltip:TECHAGE2-DRILL-Proxy-Reinforce,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareMove,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/FORCED_MARCH-ICON,Tooltip:TECHAGE2-DRILL-Proxy-ForceMarch,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#MAX_ARMY_SIZE,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_ARMYSIZE-ICON,Tooltip:GameStrings-Proxy-MaxArmySizeIncrease,InfopediaLink:ITT_Misc|CONCEPT_ARMIES</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:37</Tag>-->
+               <Tag>TechCostBase:27</Tag>
+               <Tag>TechLayout:0,3</Tag>
+               <Tag>AIValue:2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-OFFICIALS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MARKET</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyBribeBarbarian,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/BRIBE-ICON,Tooltip:TECHAGE2-OFFICIALS-Proxy-Bribe,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINDIPLOMACY</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationClaimTerritory,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/CLAIM_TERRITORY-ICON,Tooltip:TECHAGE2-OFFICIALS-Proxy-ClaimTerritory,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINEXPLORATION</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CanRushCulture,SET,1</Payload>
+					 <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Culture-ICON,Tooltip:TECHAGE2-OFFICIALS-Proxy-RushCulture,InfopediaLink:ITT_Misc|CONCEPT_RESCULTURE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_ENVOY</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Portraits/EnvoyPortrait,Tooltip:TECHAGE2-OFFICIALS-Proxy-SpawnEnvoy,InfopediaLink:ITT_Unit|UNIT_ENVOY</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:37</Tag>-->
+               <Tag>TechCostBase:27</Tag>
+               <Tag>TechLayout:2,0</Tag>
+               <Tag>AIValue:6</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE2-MINING</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_QUARRY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_STONECUTTER</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_ENGINEER</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Portraits/PioneerPortrait,Tooltip:TECHAGE2-MINING-Proxy-Pioneer,InfopediaLink:ITT_Unit|UNIT_ENGINEER</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MINE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:33</Tag>-->
+               <Tag>TechCostBase:25</Tag>
+               <Tag>TechLayout:2,1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-SHIPBUILDING</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationSpawnUtilityShip,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_ProxyTechInfo</EffectType>
+                        <PayloadParam>IconPath:UI/Icons/Culture Powers/UTILITY_SHIP-ICON,Tooltip:Game-Culture-ExplorationSpawnUtilityShip-PowerTooltip</PayloadParam>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_UTILITYSHIP</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!--ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_UTILITYSHIP</Payload>
+                  </ACardEffect-->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_GALLEY</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TransportLoadAbilityUnlocked,SET,1</Payload>
+					 <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_ProxyTechInfo</EffectType>
+                        <PayloadParam>IconPath:UI/Icons/Unit Actions/TRANSPORT_LOAD-ICON,Tooltip:TECHAGE2-SHIPBUILDING-Proxy-WaterTransport,InfopediaLink:ITT_Misc|CONCEPT_TERRAIN</PayloadParam>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TerrainExpansionCostFactor-TT_WATER,SUB,1.0</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Influence-ICON,Tooltip:TECHAGE2-SHIPBUILDING-Proxy-WaterExpansion,InfopediaLink:ITT_Misc|CONCEPT_RESCITYEXPANSIONPOINTS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+
+                  <!-- TESTING SHIP BUFF -->
+                  <!-- TESTING SHIP BUFF -->
+
+                  <!-- <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-SHIPBUFF</Payload>
+                     <Target>ENTTAG,+ShipTest</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+ShipTest-SHIP,TECHAGE2-SHIPBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect> -->
+
+                  <!-- TESTING SHIP BUFF -->
+                  <!-- TESTING SHIP BUFF -->
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE2-BASE</Tag>
+               <!--<Tag>TechCostBase:26</Tag>-->
+               <Tag>TechCostBase:20</Tag>
+               <Tag>TechLayout:2,2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- TRIGGER ACTIONS -->
+
+      <!-- Upgrade Volunteers & War Spawn Units Check -->
+      <ACard>
+         <ID>TECHAGE2-WARSPAWN_SPEARCHECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Compare value to Unit's ID {2} -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>WarSpawnUnit1Value,LT,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Update War Spawn to Unit -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarSpawnUnit1,UNIT_SPEAR</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarVolunteersUnit,UNIT_SPEAR</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_SPEAR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!-- Set value to Unit's ID {2} -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WarSpawnUnit1Value,SET,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <!-- TESTING SHIP BUFF -->
+      <!-- TESTING SHIP BUFF -->
+
+      <ACard>
+         <ID>TECHAGE2-SHIPBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+
+
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatMovementMax,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RevealRadius,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+               </Effects>
+
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- TESTING SHIP BUFF -->
+      <!-- TESTING SHIP BUFF -->
+
+
+      <!-- ____________________________________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE2-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-AGE2</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-AGE2:2,TECHAGE2-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- This is the faster integration age rule for 2. -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_INTEGRATION_PER_TURN,ADD,1.0</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- This is the barbarian warlord age rule for 2?  Should probably move this from a age 3 file. -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-BEGIN</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE2-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-AGE2</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_INTEGRATION_PER_TURN,SUB,1.0</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEnemyUnitKilled-CrisisBloodTrigger,NONE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- End Tracking Charging  -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE3_CRISISBLOOD,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionDataTrigger-TECHAGE3_CRISISBLOOD,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_DataAlert</EffectType>
+                     <Payload>CLEAR,StatCrisisBloodCharge</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+      <!-- ____________________CHAOS___________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-TECHAGE2-INVADERS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 3+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <!-- Store Region target into Buffer -->
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>Population,GTE,1</Req>
+               <Target>REGION</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <!-- Spawn N thieves units in Region (dispersed if attacked, they block gathering until dealt with); your Chaos is reduced. -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BARBARIAN_LVL_2</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>LOC,REQTARGETREGION</Target>
+                     <TargetLimit>4</TargetLimit>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>CHAOS-PERREGION-Tooltip</Payload>
+                     <PayloadParam>FormatParam:4</PayloadParam> <!-- Same as TargetLimit above -->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-TECHAGE2-VOLCANO</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 3+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>MT_MARBLE,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>Improvement,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <!-- Volcano Erupts -->
+               <Effects>
+                  <!-- ENTTAGREGION is by EXECLOC, need to CE_PlayCard onto the Volcano to get logic working -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-CHAOS_VOLCANO_ERUPT</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-CHAOS_VOLCANO_ERUPT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IsRazed,SET,1</Payload>
+                     <Target>ENTTAGREGION,Improvement</Target>
+                     <TargetLimit>4</TargetLimit>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-TECHAGE2-TSUNAMI</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 3+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>CoastalTownBonus,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <!-- Coastal improvements are Razed -->
+               <Effects>
+                  <!-- ENTTAGREGION is by EXECLOC, need to CE_PlayCard onto the Volcano to get logic working -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-CHAOS_TSUNAMI_FLOOD</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-CHAOS_TSUNAMI_FLOOD</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IsRazed,SET,1</Payload>
+                     <Target>ENTTAGREGION,CoastalTownBonus</Target>
+                     <TargetLimit>4</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-TECHAGE2-VAGABONDS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>Improvement,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-VAGABONDS_EFFECT</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-VAGABONDS_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BARBARIAN_LVL_2</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BARBARIAN_LVL_2</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BARBARCHER</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <!-- Moved the actual card to DECK-CHAOS and made it Age Agnostic -->
+
+      <ACard>
+         <ID>TECHAGE2-REBELLION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-TECHAGE2-LOSTINTHEWOODS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>UNIT_SCOUT,GTE,1</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________INNOVATION________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-SHORTSWORD</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SHORTSWORD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_SHORTSWORD</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-HEARTYSTEEDS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE2-HEARTYSTEEDS_BUFF</Payload>
+                     <Target>ENTTAG,+TypeCavalry</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-TypeCavalry-HEARTYSTEEDS,TECHAGE2-HEARTYSTEEDS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-HEARTYSTEEDS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CombatMod-StatDefense-Role:CR_Defender,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-PLOW</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+Grain-ResCityFood,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <!-- 
+                     +1 Wheat
+                     +2 Flour?
+                     +3 Bread?
+                  -->
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-MASONS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Limestone-ResCityProduction,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Marble-ResCityProduction,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <!-- 
+                     +1 Limestone/Marble
+                     +2 StoneBlocks?
+                  -->
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- [9/11/23] BEN: Leaving a comment here as a placeholder for if we inevitably introduce more water based goods -->
+
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-ENGINEERING</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+   		<CardTags>
+               <Tags>
+               <!--Tag>AddToInnovationDeck</Tag-->
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-DIPLOMACY</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+         <CardTags>
+            <Tags>
+               <!--Tag>AddToInnovationDeck</Tag-->
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-STONEHENGE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_STONEHENGE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>B_STONEHENGE</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>UniversalAddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-TECHAGE2-GREATSPHINX</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_GREATSPHINX</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>B_GREATSPHINX</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>UniversalAddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-GREATSPHINX_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+Stone-ResCityExpansionPoints,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+Stone-ResDomainEngineering,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- ____________________BARBARIANS______________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>BARBARIAN-TECHAGE2-CROSSBOW</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_Region</ReqType>
+               <Req>!IDLE</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,15</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_CROSSBOW</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_CROSSBOW</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>BARBARIAN-TECHAGE2-CAVALRY</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_Region</ReqType>
+               <Req>!IDLE</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,15</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_CAVALRY</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_CAVALRY</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>BARBARIAN-TECHAGE2-CATAPULT</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_Region</ReqType>
+               <Req>!IDLE</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,15</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_CATAPULT</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_CATAPULT</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+      <!-- __________________EXPLORATION_______________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE2-FINDSPEAR</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Spear upgrades to Pike in 4 -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SPEAR</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_SPEAR</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,[SELF:NS_RewardWithChaos]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToExploreDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE2-FINDCHARIOT</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Chariot upgrades to Cavalry in 3 -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_CHARIOT</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_CHARIOT</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,[SELF:NS_RewardWithChaos]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToExploreDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE2-FINDMERCHANT</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCHANT</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_MERCHANT</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,[SELF:NS_RewardWithChaos]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToExploreDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE2-FINDPIONEER</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ENGINEER</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ENGINEER</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_RewardWithChaos,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,[SELF:NS_RewardWithChaos]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToExploreDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE2-HELP_TURN_3</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Crisis</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_BLOODAGE</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-HELP_TURN_4</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Variants</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_HEROAGE</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-HELP_TURN_10</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Chains</Payload>
+                     <!--<PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_RESCULTURE</PayloadParam>-->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-HELP_TURN_15</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>OverExpansion</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_REGIONS</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE2-HELP_TURN_20</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>WinCondition</Payload>
+                     <!-- <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_REGIONS</PayloadParam> -->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+         <ACard>
+            <ID>TECHAGE2-PROMOTECULTURALEXPORTS_EFFECT</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                     <ACardRequirement>
+                        <ReqType>CR_GameData</ReqType>
+                        <Req>StatVassalProsperity,LT,#VASSAL_PROSPERITY_MAX</Req>
+                        <Target>LOC,EXTERNALTARGET</Target>
+                        <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                     </ACardRequirement>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatVassalProsperity,ADD,0.5</Payload>
+                        <Target>LOC,EXTERNALTARGET</Target>
+                        <DisplayAsPercentage>true</DisplayAsPercentage>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+         </ACard>
+
+         <!-- ____________________________________________ -->
+
+         <ACard>
+            <ID>TECHAGE2-WARFAREHEAL</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatCommand,ADD,#COMMANDRECOVERY</Payload>
+                        <Target>ENTTAGATLOC,Unit,EXTERNALTARGET</Target>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+         </ACard>
+
+         <ACard>
+            <ID>TECHAGE2-WARFAREHEAL2</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <AutoExecute>true</AutoExecute>
+            <Duration>2</Duration> <!-- This should match #WARFAREMOVEHEAL_DEBUFF_DURATION for string reasons -->
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatAttack,MUL,#WARFAREMOVEHEAL_DEBUFF_MUL</Payload>
+                        <Target>ENTTAGATLOC,Unit,EXTERNALTARGET</Target>
+                        <DisplayAsPercentage>true</DisplayAsPercentage>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatDefense,MUL,#WARFAREMOVEHEAL_DEBUFF_MUL</Payload>
+                        <Target>ENTTAGATLOC,Unit,EXTERNALTARGET</Target>
+                        <DisplayAsPercentage>true</DisplayAsPercentage>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+         <!-- ____________________________________________ -->
+
+         <ACard>
+            <ID>TECHAGE2-WARFAREMOVE</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <AutoExecute>true</AutoExecute>
+            <Duration>2</Duration> <!-- This should match #WARFAREMOVEHEAL_DEBUFF_DURATION for string reasons -->
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatAttack,MUL,0.9</Payload>
+                        <Target>ENTTAGATLOC,Unit,EXTERNALTARGET</Target>
+                        <DisplayAsPercentage>true</DisplayAsPercentage>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>StatDefense,MUL,0.9</Payload>
+                        <Target>ENTTAGATLOC,Unit,EXTERNALTARGET</Target>
+                        <DisplayAsPercentage>true</DisplayAsPercentage>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+
+
+   </Definition>
+</ADeck>

@@ -1,0 +1,819 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GOVMONARCHY</DeckName>
+
+<!--
+   T1
+   MANORIALISM
+   Increase Vassal prosperity per turn (passive, always on, stacks with Merchant)
+
+
+   STEWARDSHIP
+   Generate more “Fake IP” for Vassals
+
+
+   PEASANTRY
+   Increase terrain type bonuses for Vassals (or “Serfdom”?)
+
+
+   T2
+   OATH OF FEALTY
+   Vassals have higher starting prosperity. Unlock CP “Oath of Fealty”, grows all Vassal’s population by +1.
+
+   ROYAL COURT
+   Vassals generate Government XP
+
+
+   T3
+   SUZERAINTY
+   Vassals have higher prosperity cap (stacks with Chivalry’s bonus)
+
+   ROUND TABLE
+   Vassals generate Diplomacy XP
+
+
+   T4
+   REFORMED
+-->
+
+
+<Definition>
+
+   <ACard>
+      <ID>GOVMONARCHY-AUTOMATIC</ID>
+      <Subtype>CST_Tech</Subtype>
+      <ExecutionType>CX_All</ExecutionType>
+      <Choices>
+         <ACardChoice>
+            <Effects>
+
+               <!-- Standardized "New Government, Destroy old CB's" Effect -->
+               <ACardEffect>
+                  <EffectType>CE_PlayCard</EffectType>
+                  <Payload>PLAYERACTIONS-CHANGEGOVERNMENT</Payload>
+                  <PayloadParam>PlayCardPassive:true</PayloadParam>
+                  <ReverseOnPassive>false</ReverseOnPassive>
+                  <Target>PLAYER</Target>
+                  <Hidden>true</Hidden>
+               </ACardEffect>
+
+               <ACardEffect>
+                  <EffectType>CE_PlayCard</EffectType>
+                  <Payload>GOVMONARCHY-BASE_BUILDINGBUFF</Payload>
+                  <Target>ENTTAG,+Capital</Target>
+                  <Hidden>true</Hidden>
+               </ACardEffect>
+               <ACardEffect>
+                  <EffectType>CE_PlayCard</EffectType>
+                  <Payload>GOVMONARCHY-BASE_HOMELANDBUFF</Payload>
+                  <Target>ENTTAG,+Homeland</Target>
+                  <Hidden>true</Hidden>
+               </ACardEffect>
+
+               <ACardEffect>
+                  <EffectType>CE_SetStringData</EffectType>
+                  <Payload>TriggerOnEntityCreateTag-Capital-GOV_CAPITALBUFF,GOVMONARCHY-BASE_BUILDINGBUFF</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+               <ACardEffect>
+                  <EffectType>CE_SetStringData</EffectType>
+                  <Payload>TriggerOnEntityCreateTag-Homeland-GOV_HOMELANDBUFF,GOVMONARCHY-BASE_HOMELANDBUFF</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+               <ACardEffect>
+                  <EffectType>CE_AddCardsByTag</EffectType>
+                  <Payload>GOVMONARCHY,+AddToInnovationDeck</Payload>
+                  <Target>INNOVATION</Target>
+                  <ReverseOnPassive>false</ReverseOnPassive>
+               </ACardEffect>
+
+               <!--
+               <ACardEffect>
+                  <EffectType>CE_AddCardsByTag</EffectType>
+                  <Payload>GOVMONARCHY,+AddToChaosDeck</Payload>
+                  <Target>CHAOS</Target>
+                  <ReverseOnPassive>false</ReverseOnPassive>
+               </ACardEffect>
+               -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-GovernmentSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-WarfareSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ExplorationSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-EngineeringSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-DiplomacySofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PowerCostScalar-ArtsSofab,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+            </Effects>
+         </ACardChoice>
+      </Choices>
+      <CardTags>
+         <Tags>
+            <Tag>ForceEffectAsBuff</Tag>
+            <Tag>DomainTier:3</Tag>
+            <Tag>DomainAge:5</Tag>
+            <Tag>DomainResource:ResDomainGovernment</Tag>
+            <Tag>AIHint-FeudalMonarchy</Tag>
+         </Tags>
+      </CardTags>
+      <Layer>0</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-BASE_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Capital</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- Capital - National Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,0</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Resources -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,6</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+
+                  <!-- Capital - Regional Needs -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>      
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>            
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-BASE_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!--
+      Free Bonuses
+      -->
+      <ACard>
+         <ID>GOVMONARCHY-STARTERIDEAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- DEFAULT CB's -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_THRONEROOM</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVMONARCHY-INCREASEMAX</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-DomainXP-Tier3-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Proxy-GovernmentStarter-IP-Tier3-Tooltip</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:0</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-INCREASEMAX</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPointsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialistsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResArcanaMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfareMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExplorationMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernmentMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArtsMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineeringMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacyMax,SET,300</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+             
+
+
+<!-- _________________TIER 2______________________ -->
+
+      <!--
+      T1
+      MANORIALISM
+      Increase Vassal prosperity per turn (passive, always on, stacks with Merchant)
+
+      -->
+      <ACard>
+         <ID>GOVMONARCHY-MANORIALISM</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_PROSPERITY_PER_TURN,ADD,0.05</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      STEWARDSHIP
+      Generate more “Fake IP” for Vassals
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-STEWARDSHIP</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_FAKEIP_PER_POP,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      PEASANTRY
+      Increase terrain type bonuses for Vassals (or serfdom?)
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-PEASANTRY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_POPGROWTH_FROM_TERRAIN,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_WEALTH_FROM_TERRAIN,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_IP_FROM_TERRAIN,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+<!-- _________________TIER 3______________________ -->
+
+      <!--
+      OATH OF FEALTY
+      Unlock CP “Oath of Fealty”, grows all Vassal’s population by +1.
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-OATHOFFEALTY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentMonarchyOathOfFealty,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:85</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-OATHOFFEALTY_FINDVASSALS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatVassalCount,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <UsePlainFormat>true</UsePlainFormat>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <Payload>GOVMONARCHY-OATHOFFEALTY_ADDPOP</Payload>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip> 
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-OATHOFFEALTY_ADDPOP</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CityIsVassal,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>REGIONALLOWSPOPGROWTH,TRUE</Req>
+                     <Target>LOC,EXECLOC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustPopulation</EffectType>
+                     <Payload>1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      ROYAL COURT
+      Vassals generate Government XP
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-ROYALCOURT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSALINCOME_RESDOMAINGOVERNMENT,ADD,0.0625</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:85</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+<!-- _________________TIER 4______________________ -->
+
+      <!--
+      SUZERAINTY
+      Vassals have higher prosperity cap (stacks with Chivalry's bonus),
+      Vassals have higher starting prosperity.
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-SUZERAINTY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_PROSPERITY_MAX,ADD,0.5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_SETTLER_START_PROSPERITY,ADD,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      ROUND TABLE
+      Vassals generate Diplomatic XP
+      -->
+
+      <ACard>
+         <ID>GOVMONARCHY-ROUNDTABLE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSALINCOME_RESDOMAINDIPLOMACY,ADD,0.0625</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainGovernment:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+<!-- _________________TIER 5______________________ -->
+
+      <ACard>
+         <ID>GOVMONARCHY-COMPLETED</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>AllowPeacefulRevolution,ADD,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GOVMONARCHY-COMPLETED_HOMELANDBUFF</Payload>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainGovernment:160</Tag>
+               <Tag>NotReversible</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GOVMONARCHY-COMPLETED_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <AutoExecute>true</AutoExecute>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Homeland</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________INNOVATION_______________________ -->
+
+      <ACard>
+         <ID>INNOVATION-GOVMONARCHY-VASSALAUTONOMY</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_DomainSpec</ReqType>
+               <Req>GOVMONARCHY</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_BORDEREXPAND_PER_POP,ADD,0.1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_POPGROWTH_PER_TURN,ADD,0.025</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

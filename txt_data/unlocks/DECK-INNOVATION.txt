@@ -1,0 +1,549 @@
+<ADeck>
+   <ReshuffleWhenEmpty>true</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>false</MaintainOrderWhenShuffled>
+   <PerPlayer>true</PerPlayer>
+   <DeckName>INNOVATION</DeckName>
+   <CardTags>
+      <Tag>HorizontalDisplay</Tag>
+      <Tag>UseActionButtons</Tag>
+   </CardTags>
+
+   <Definition>
+
+   <!-- AUTOCARD -->
+
+      <ACard>
+         <ID>INNOVATION-AUTOMATIC</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,MUL,#INNOVATION_CARD_DECAY</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- AGE AGNOSTIC -->
+
+      <ACard>
+         <ID>INNOVATION-AGNOSTIC-POPULATION</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!-- -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>StatRegionCount,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!-- Gain Pop -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustPopulation</EffectType>
+                     <Payload>1</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-AGNOSTIC-ENLISTMENT</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!-- -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>StatRegionCount,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-INNOVATION_ENLISTMENT_EFFECT</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>99</Layer>
+      </ACard>
+
+      <!-- Not interesting enough, fewer is better in here to let cooler cards rise to the top. -->
+      <!-- <ACard>
+         <ID>INNOVATION-AGNOSTIC-CULTURE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!~~ ~~>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!~~ Gain Culture ~~>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard> -->
+
+      <!-- Not interesting enough, fewer is better in here to let cooler cards rise to the top. -->
+      <!-- <ACard>
+         <ID>INNOVATION-AGNOSTIC-GOVERNMENT</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!~~ ~~>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!~~ Gain Domain XP ~~>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard> -->
+
+      <!-- Not interesting enough, fewer is better in here to let cooler cards rise to the top. -->
+      <!-- <ACard>
+         <ID>INNOVATION-AGNOSTIC-EXPLORE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!~~ ~~>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!~~ Gain Domain XP ~~>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard> -->
+
+      <!-- Not interesting enough, fewer is better in here to let cooler cards rise to the top. -->
+      <!-- <ACard>
+         <ID>INNOVATION-AGNOSTIC-WARFARE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!~~ ~~>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!~~ Gain Domain XP ~~>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard> -->
+
+
+      <ACard>
+         <ID>INNOVATION-AGNOSTIC-VOLUNTEERS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <!-- -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <!-- Gain IP, scale to Age Value -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,#CI_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>99</Layer>
+      </ACard>
+
+
+   <!-- AGE 1 DEFAULTS -->
+
+
+   <!-- DLC 1 Events -->
+
+      <ACard>
+         <ID>INNOVATION-ANCIENTWORLDS-MAMMOTH</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Megafauna Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>MegafaunaEnabled,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <!-- Only appear in Age 1 & 2 -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MASTODON</Payload>
+                     <Target>LOC,STARTINGLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MASTODON</Payload>
+                     <Target>LOC,STARTINGLOC</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MASTODON</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-ANCIENTWORLDS_INNOVATION_MAMMOTH_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_MASTODON</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_MASTODON-INNOVATION_MAMMOTH_BUFF,TECHAGE1-ANCIENTWORLDS_INNOVATION_MAMMOTH_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>99</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-ANCIENTWORLDS-TIGER</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Megafauna Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>MegafaunaEnabled,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <!-- Only appear in Age 1 & 2 -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SMILODON</Payload>
+                     <Target>LOC,STARTINGLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SMILODON</Payload>
+                     <Target>LOC,STARTINGLOC</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SMILODON</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-ANCIENTWORLDS_INNOVATION_SMILODON_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_SMILODON</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_SMILODON-INNOVATION_SMILODON_BUFF,TECHAGE1-ANCIENTWORLDS_INNOVATION_SMILODON_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>99</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INNOVATION-ANCIENTWORLDS-LUSH_GRASSLAND</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <!-- <Count>2</Count> -->
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Frozen Terrain Start Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>FrozenTerrainStartEnabled,GTE,1</Req>
+               <Target>GAME</Target>
+            </Requirement>
+            <!-- Only appear in Age 1 & 2 -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Change some Grassland into Lush Grassland ? -->
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SMILODON</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:2,SpawnRadius:4,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+                  -->
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>99</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

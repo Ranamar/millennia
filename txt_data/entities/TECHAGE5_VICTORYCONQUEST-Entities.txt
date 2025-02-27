@@ -1,0 +1,114 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+
+
+<!-- Cap City Buildings -->
+
+   <EntityInfo>
+      <ID>B_NATIONALRESOURCESOFFICE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,200</Data>-->
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>ResCoin,10</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DataLinkAction:PLAYER:StatRegionCount,TECHAGE5_VICTORYCONQUEST-UNIFICATION_DATALINKACTION_BUFF</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- Tile Improvements -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TRENCHES</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TRENCHES</Data>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>AIBuildWeight,0</Data>
+         <!-- [9/8/22] BEN: WIP, needs code support to function, want to test ZOC on this -->
+         <Data>FortificationBonus,1.5</Data>
+         <Data>WorkableResDomainWarfare,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Units -->
+
+   <EntityInfo>
+      <ID>UNIT_LEGIONNAIRE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_ScutumShield</Icon>
+      <Portrait>LegionnairePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,125</Data>
+         <!-- Intentionally lower upkeep -->
+         <Data>Upkeep-ResCoin,5</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,20</Data>
+         <Data>StatDefense,28</Data>
+         <!-- Spears -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>UpgradeLine-Guard,3</Data>
+         <Data>ObsoleteAge,7</Data>
+         <Data>FilterAge,5</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_5</Data>
+         <Data>LeaderPromotionCost,54</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+         <Data>TriggerOnTurnStart,TECHAGE5_VICTORYCONQUEST-LEGIONNAIRE_LINE_EFFECT</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Legionnaire/Unit_Legionnaire</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:BarracksPresent</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>Legionnaire</Tag>
+         <Tag>EmcampmentBuff</Tag>
+         <Tag>MilitaryBaseBuff</Tag>
+         <Tag>VRCombatBuff</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLineSword</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>     
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-Legionnaire</Tag>
+         <Tag>AIHint-Guard</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

@@ -1,0 +1,603 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>CHIVALRY</DeckName>
+
+   <!--
+   Tier 1
+      Medieval Medicine: Population growth in territories increased.
+
+      Call Banners: Unlocks the Call Banners CP, which spawns two peasants at every Vassal.
+
+         Peasant (same as Militia 4): 50 HP, 20 Move, 30 Org, 13 ATK, 18 DEF. Peasants start as fodder, fairly weak.  They cannot be promoted to Leaders.  Peasants have a Unit Ability that can be used to turn them into a Farm (when they are in a grassland tile in their territory with no other Improvement).
+
+      Tapestry Weaver: Unlocks Tapestry Weaver Improvement.  Takes in Cloth, produces Tapestries (1 Arts XP).
+
+   Tier 2
+      Dubbing: Adds a Unit Ability to Peasants allowing them to be knighted (turned into Knights) at no cost.  Requires the Peasant to be second level Veterancy.
+
+      Tavern: Unlocks Tavern Outpost Improvement; Tavern produced Mead Good (2 Food, 4 Unrest).
+
+   Tier 3
+      Grant Fief: Unlocks CP that spawns a Settler.
+
+      Majesty: Increases Castle value +1 Culture and +12 Wealth.
+
+   Tier 4
+      National Spirit: Have four Castles.
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>CHIVALRY-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-CHIVALRY_DEFAULT_BUFF,CHIVALRY-DEFAULT_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>CHIVALRY,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:4</Tag>
+               <Tag>DomainResource:ResDomainArts</Tag>
+               <Tag>AIHint-Chivalry</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________TIER_1_____________________ -->
+
+      <!-- Tavern: Unlocks Tavern Outpost Improvement; Tavern produced Mead Good (2 Food, 4 Unrest). -->
+
+      <ACard>
+         <ID>CHIVALRY-TAVERN</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_CASTLE,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TAVERN</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+   <!-- ________________________________________________ -->
+
+      <!-- Call Banners: Unlocks the Call Banners CP, which spawns two peasants at every Vassal.
+
+         Peasant (same as Militia 4): 50 HP, 20 Move, 30 Org, 13 ATK, 18 DEF. Peasants start as fodder, fairly weak.  They cannot be promoted to Leaders.  Peasants have a Unit Ability that can be used to turn them into a Farm (when they are in a grassland tile in their territory with no other Improvement). 
+      -->
+
+      <ACard>
+         <ID>CHIVALRY-CALLBANNERS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentChivalryCallBanners,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_PEASANT</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_FARM</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!-- <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_PEASANT</Payload>
+                  </ACardEffect> -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-CALLBANNERS_FINDVASSALS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatVassalCount,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-CALLBANNERS_SPAWNPEASANTS</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-CALLBANNERS_SPAWNPEASANTS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CityIsVassal,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_PEASANT</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_PEASANT</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- ________________________________________________ -->
+
+      <!-- Tapestry Weaver: Unlocks Tapestry Weaver Improvement.  Takes in Cloth, produces Tapestries (1 Arts XP). -->
+
+      <ACard>
+         <ID>CHIVALRY-TAPESTRYWEAVER</ID>
+         <Subtype>CST_Tech</Subtype>
+           <ExecutionType>CX_All</ExecutionType>
+           <Choices>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TAPESTRYWEAVER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:60</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+<!-- _____________________TIER_2_____________________ -->
+
+      <!-- Dubbing: Adds a Unit Ability to Peasants allowing them to be knighted (turned into Knights) at no cost.  Requires the Peasant to be second level Veterancy.  -->
+
+      <ACard>
+         <ID>CHIVALRY-DUBBING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>CHIVALRY-CALLBANNERS,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-DUBBING_PEASANTBUFF</Payload>
+                     <Target>ENTTYPE,UNIT_PEASANT</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_PEASANT-DUBBING,CHIVALRY-DUBBING_PEASANTBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-DUBBING_PEASANTBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-101,UNITACTIONS-PEASANT_DUBBING</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ________________________________________________ -->
+
+      <!-- Medieval Medicine: Population growth in territories increased.  -->
+
+      <ACard>
+         <ID>CHIVALRY-MEDIEVALMEDICINE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_POPGROWTH_PER_TURN,MUL,1.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+      <!-- Grant Fief: Unlocks CP that spawns a Settler.  -->
+
+      <ACard>
+         <ID>CHIVALRY-GRANTFIEF</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentChivalrySpawnSettler,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+   <!-- ________________________________________________ -->
+
+      <!-- Seat of Power: Increases Castle value +1 Culture and +12 Wealth. -->
+
+      <ACard>
+         <ID>CHIVALRY-MAJESTY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                   <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-MAJESTY_BUILDINGBUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_CASTLE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_CASTLE-MAJESTY,CHIVALRY-MAJESTY_BUILDINGBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-MAJESTY_BUILDINGBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,12</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+      <!-- QUEST: Have four Castles. -->
+
+      <ACard>
+         <ID>CHIVALRY-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_CASTLE,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainArts,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-NationalSpirit-SofabWarning</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-LineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-CHIVALRY_LEGACY_BUFF,CHIVALRY-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CHIVALRY-KNIGHTSOFTHEROUNDTABLE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,6</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>CHIVALRY-KNIGHTSOFTHEROUNDTABLE_BUFF</Payload>
+                     <Target>ENTTAG,Knight</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Knight-KNIGHTSOFTHEROUNDTABLE_BUFF,CHIVALRY-KNIGHTSOFTHEROUNDTABLE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHIVALRY-KNIGHTSOFTHEROUNDTABLE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCommandMax,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

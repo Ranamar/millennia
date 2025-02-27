@@ -1,0 +1,1050 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>FLOWERCHILD</DeckName>
+
+<!-- NOTES -->
+   <!--
+
+   Tier 0
+
+   DISARMAMENT
+      Deletes your Nuclear Warhead stockpile
+      Changes Warheads goods to consume for +1 War XP instead of +1 Warhead resource
+      Players with this NS gain +5 Culture while at higher DEFCON levels (Level 4 or higher)
+
+
+   Tier 1
+
+   MUSIC FESTIVAL
+      Unlocks “Music Festival” Tile Improvement. 
+         Generates +1 Arts XP, +1 Diplomacy XP, and +1 Ideology per nation you are in an alliance with. 1 per Nation.
+
+   DISARMAMENT
+      Unlocks “Disarmament” Bilateral Diplomatic Action. 
+         Other Nation has to agree to the action
+         Both Nations lose 50 Warheads and gain 50 Arts XP and reduces 50 Unrest in all Regions
+
+   NUCLEAR CEASEFIRE
+      Disables the "Nuclear Readiness" penalty for your Nation.
+
+
+   Tier 2
+
+   BURN EFFIGY
+      Unlocks the “Burn Effigy” Arts Domain Power.
+         Costs 50 Arts XP, 10 turn cooldown, 1.2 Progressive cost.
+         Targets friendly Music Festival tile improvement.
+         Fill your Culture meter to full.
+
+
+   STUDENT PROTESTS
+      +1 Ideology buff to University buildings.
+
+   Tier 3
+
+   PEACE CONVENTION
+      Unlocks "Peace Convention" Diplomacy Culture Power.
+         Reduces the current DEFCON level by 1.
+
+   SECURITY COUNCIL
+      Unlocks the "Invite to Security Council" Diplomatic Action.
+         Disables "Nuclear Readiness" penalty for another Nation.
+         Must be an Allied Nation.
+         Gain +1 Innovation Per Turn for you (not for them).
+
+
+   LEGACY: 
+      Reach Alliance level with 50% or more of the nations within the game.
+
+   -->
+
+   <Definition>
+<!-- _____________________TIER_0_____________________ -->
+
+      <ACard>
+         <ID>FLOWERCHILD-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-DEFCON_HOMELANDBUFF</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Homeland-DEFCON_HOMELANDBUFF,FLOWERCHILD-DEFCON_HOMELANDBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-HOMELAND_DEFCON_INCOME</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>ENTTAG,+Homeland</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>FLOWERCHILD,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResWarheads,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-AUTOMATIC_WARHEAD_BUFF</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainDiplomacy</Tag>
+               <Tag>AIHint-FLOWERCHILD</Tag>
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DEFCON_HOMELANDBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnTurnStart,FLOWERCHILD-HOMELAND_DEFCON_INCOME</Payload>
+                     <Target>ENTTAG,Homeland</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-HOMELAND_DEFCON_INCOME</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>1</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>StatDEFCONValue,LT,#DEFCON_3_THRESHOLD</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,#FLOWERCHILD_HIGHDEFCON_BONUS</Payload>
+                     <Target>ENTTAG,Homeland</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-AUTOMATIC_WARHEAD_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-NuclearWarhead-ResWarheads,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-NuclearWarhead-ResDomainWarfare,ADD,#FLOWERCHILD_CORECONVERSION_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________MUSIC FESTIVAL_____________________ -->
+
+      <!--    
+      Unlocks “Music Festival” Tile Improvement. 
+         Generates +1 Arts XP, +1 Diplomacy XP, and +1 Ideology per nation you are in an alliance with. 1 per Nation.
+      -->
+
+      <ACard>
+         <ID>FLOWERCHILD-MUSICFESTIVAL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MUSICFESTIVAL</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:140</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-MUSICFESTIVAL_DATALINKACTION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>FLOWERCHILD-MUSICFESTIVAL-Tooltip</Payload>
+                     <PayloadParam>FormatParam:1</PayloadParam> <!-- Ratio of allies to XP/Ideology -->
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,[PLAYER:DRCount-DR_Alliance]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,[PLAYER:DRCount-DR_Alliance]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,[PLAYER:DRCount-DR_Alliance]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________DISARMAMENT_____________________ -->
+      
+      <!--
+      Unlocks “Disarmament” Diplomacy Domain Power. 
+         Costs 10 Nuclear Warheads and 50 Diplomacy XP.
+         Gain +10 Diplomatic Opinion with every other Nation. Air bombing units do more damage.
+      -->
+
+      <ACard>
+         <ID>FLOWERCHILD-DISARMAMENT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomaticAction-FLOWERCHILD-DIPLO_DISARMAMENT_SEND,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:140</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DIPLO_DISARMAMENT_SEND</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResDomainDiplomacy,GTE,#DIPLOMACY_EMBASSY_COST</Req>
+                     <IsCost>true</IsCost>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_War,FALSE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:FLOWERCHILD-DIPLO_DISARMAMENT_RECV</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AIActionWeight:AIA_Warmonger=1,AIA_Anger=-1,AIA_ProactiveNice=4,AIA_Fear=4</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DIPLO_DISARMAMENT_RECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+
+                  <!-- [10/28/24] Xemu - ensure both players get a min cap here as well to avoid going negative -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResWarheadsMin,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResWarheadsMin,SET,0</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResWarheads,SUB,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResWarheads,SUB,50</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,50</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <!-- 9/4/2024 Jack: Not working at present for targeting the sending player. Can't seem to target the sending player's REGION and can only target at the PLAYER level.
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,SUB,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,SUB,50</Payload>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-PEACE_REDUCEUNREST</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-PEACE_REDUCEUNREST</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DefaultChoice:0</Tag>
+               <Tag>MarkChoiceAsDecline:0</Tag>
+               <Tag>MarkChoiceAsAccept:1</Tag>
+               <Tag>AIResponseWeights-0:AIA_Warmonger=-2,AIA_Anger=-5</Tag>
+               <Tag>AIResponseWeights-1:AIA_Fear=1,AIA_Compliant=1,AIA_Friendship=2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________NUCLEAR CEASEFIRE_____________________ -->
+
+      <!-- Disables the "Nuclear Readiness" penalty for your Nation. -->
+
+      <ACard>
+         <ID>FLOWERCHILD-NUCLEARCEASEFIRE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_SMALL_PENALTY_UNREST,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_LARGE_PENALTY_UNREST,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Hidden, makes threshold astronomitcally high, removes the debuff UI from your Regions -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_SMALL_PENALTY_THRESHOLD,MUL,999</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_LARGE_PENALTY_THRESHOLD,MUL,999</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:140</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________BURN EFFIGY_____________________ -->
+
+      <!-- 
+      Unlocks the “Burn Effigy” Arts Domain Power.
+         Costs 50 Arts XP, 5 turn cooldown, 1.2 Progressive cost.
+         Targets friendly Music Festival tile improvement.
+         Fill your Culture meter to full. 
+      -->
+
+      <ACard>
+         <ID>FLOWERCHILD-BURNEFFIGY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>FLOWERCHILD-MUSICFESTIVAL,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsFlowerChildBurnEffigy,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:250</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-BURNEFFIGY_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>CultureRushPointsNeeded,GT,0</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>ResWarheads,EQ,0</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataAny</ReqType>
+                     <Req>CultureRushPointsNeeded,GT,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataAny</ReqType>
+                     <Req>ResWarheads,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,[PLAYER:CultureRushPointsNeeded]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- _____________________STUDENT PROTESTS_____________________ -->
+
+      <!-- +1 Ideology buff to University buildings. -->
+
+      <ACard>
+         <ID>FLOWERCHILD-STUDENTPROTESTS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-STUDENTPROTESTS_BUFF</Payload>
+                     <Target>ENTTAG,+University</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-University-STUDENTPROTESTS,FLOWERCHILD-STUDENTPROTESTS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:250</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-STUDENTPROTESTS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________PEACE CONVENTION_____________________ -->
+
+      <!--       
+      Unlocks "Peace Convention" Diplomacy Culture Power.
+         Reduces the current DEFCON level by 1. 
+      -->
+
+      <ACard>
+         <ID>FLOWERCHILD-PEACECONVENTION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyFlowerChildPeaceConvention,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:280</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-PEACECONVENTION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>DEFCONEnabled,BOOL_TRUE,1</Req>
+               <UseBooleanFormat>true</UseBooleanFormat>
+               <UsePlainFormat>true</UsePlainFormat>
+               <Target>GAME</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameDataTotal</ReqType>
+               <Req>StatDEFCONValue,GTE,#DEFCON_4_THRESHOLD</Req>
+               <Target>PLAYER,ALLPLAYERS</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>ResWarheads,EQ,0</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DEFCONEnabled,BOOL_TRUE,1</Req>
+                     <UseBooleanFormat>true</UseBooleanFormat>
+                     <UsePlainFormat>true</UsePlainFormat>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>StatDEFCONValue,GTE,#DEFCON_4_THRESHOLD</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataAny</ReqType>
+                     <Req>ResWarheads,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- 8/21/2024 Jack: Return to this if DEFCON is written a different way. -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDEFCONValue,SUB,#DEFCON_TIER_THRESHOLD</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- _____________________SECURITY COUNCIL_____________________ -->
+
+      <!--       
+      Unlocks the "Invite to Security Council" Diplomatic Action.
+         Disables "Nuclear Readiness" penalty for another Nation.
+         Must be an Allied Nation.
+         Gain +1 Innovation Per Turn for you (not for them). 
+      -->
+
+      <ACard>
+        <ID>FLOWERCHILD-SECURITYCOUNCIL</ID>
+        <Subtype>CST_Tech</Subtype>
+        <ExecutionType>CX_All</ExecutionType>
+        <Choices>
+          <ACardChoice>
+            <Requirements>
+            </Requirements>
+            <Effects>
+              <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>DiplomaticAction-FLOWERCHILD-DIPLO_SECURITYCOUNCIL_SEND,ADD,1</Payload>
+                  <Target>PLAYER</Target>
+                  <DisplayWithoutOperator>true</DisplayWithoutOperator>
+               </ACardEffect>
+            </Effects>
+          </ACardChoice>
+        </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>PurchaseCost-ResDomainDiplomacy:280</Tag>
+          </Tags>
+        </CardTags>
+        <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DIPLO_SECURITYCOUNCIL_SEND</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_Alliance,TRUE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResDomainDiplomacy,GTE,#DIPLOMACY_EMBASSY_COST</Req>
+                     <IsCost>true</IsCost>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:FLOWERCHILD-DIPLO_SECURITYCOUNCIL_RECV</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AIActionWeight:AIA_Warmonger=1,AIA_Anger=-1,AIA_ProactiveNice=2,AIA_Fear=1</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DIPLO_SECURITYCOUNCIL_RECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-DIPLO_SECURITYCOUNCIL_BUFF</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,15</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DefaultChoice:1</Tag>
+               <Tag>MarkChoiceAsDecline:0</Tag>
+               <Tag>MarkChoiceAsAccept:1</Tag>
+               <Tag>AIResponseWeights-0:AIA_Warmonger=-2,AIA_Anger=-5</Tag>
+               <Tag>AIResponseWeights-1:AIA_Fear=1,AIA_Compliant=1,AIA_Friendship=2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-DIPLO_SECURITYCOUNCIL_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_SMALL_PENALTY_UNREST,MUL,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_LARGE_PENALTY_UNREST,MUL,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_SMALL_PENALTY_THRESHOLD,MUL,999</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#ARMSRACE_LARGE_PENALTY_THRESHOLD,MUL,999</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>FLOWERCHILD-NUCLEARCEASEFIRE-CardText</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+   <!-- Reach Alliance level with 50% of players in the game -->
+
+      <ACard>
+         <ID>FLOWERCHILD-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainDiplomacy,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>FLOWERCHILD-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-FLOWERCHILD_LEGACY_BUFF,FLOWERCHILD-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>FLOWERCHILD-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-FLOWERCHILD-MAKEPEACENOTWAR</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-NuclearWarhead-ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-NuclearWarhead-ResDomainArts,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

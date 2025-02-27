@@ -1,0 +1,617 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>MACHINERY</DeckName>
+
+   <!--
+
+   Tier 1
+
+   Iron Rich: Unlocks an Engineering Domain Culture Power that can be used to spawn a, Iron Prospector.  This Unit functions like the Prospector, but “reveals” Iron instead of Gold.
+   Iron Prospector: Spawns a free Iron Prospector.
+
+   Charcoal Furnace: Unlocks Charcoal Furnace improvement. Converts 2 Logs to 4 Charcoal. +1 Workable Engineering XP. Charcoal is worth +3 Production. Charcoal can be used in all the same chains as Coal in Age 7+.
+
+
+   Tier 2
+
+   Tinker: Unlocks the Tinker Improvement.  Takes in Tools (8 Pro), makes Machines (4 IP and 2 ENG XP), 30 IP.  (For now, values here in progress.)
+
+   Cupellation: +3 wealth per Furnace & Charcoal Furnace.
+
+   Local Industry: Coal & Charcoal is consumed for an extra +1 Pro.
+
+
+   Tier 3
+
+   Clock Tower: Unlocks Clock Tower CB, generates 2 Gov XP, 6 Luxury, 180 Production cost.
+
+   Apprenticeship: Charcoal Furnace & Tinker improvements gain +1 Workers Slots
+
+
+   National Spirit
+
+   Have three Tinkers.
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>MACHINERY-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MACHINERY-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>MACHINERY,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:4</Tag>
+               <Tag>DomainResource:ResDomainEngineering</Tag>
+               <Tag>AIHint-Machinery</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MACHINERY-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_______________________ -->
+
+      <!--
+      Iron Rich: Unlocks an Engineering Domain Culture Power that can be used to spawn a, Iron Prospector.  This Unit functions like the Prospector, but “reveals” Iron instead of Gold.
+      -->
+
+      <ACard>
+         <ID>MACHINERY-IRON_RICH</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-MachinerySpawnProspector,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_IRON_PROSPECTOR</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_IRON_PROSPECTOR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:70</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Charcoal Furnace: Unlocks Charcoal Furnace improvement. Converts 2 Logs to 4 Charcoal. +1 Workable Engineering XP. Charcoal is worth +3 Production. Charcoal can be used in all the same chains as Coal in Age 7+.
+      -->
+
+      <ACard>
+         <ID>MACHINERY-CHARCOAL_FURNACE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CHARCOALFURNACE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:70</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- ____________________TIER_2________________________ -->
+
+      <!--
+      Tinker: Unlocks the Tinker Improvement.  Takes in Tools (8 Pro), makes Machines (4 IP and 2 ENG XP), 30 IP.  (For now, values here in progress.)
+      -->
+
+      <ACard>
+         <ID>MACHINERY-TINKER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TINKER</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:90</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Cupellation: +3 wealth per Furnace.
+      -->
+
+      <ACard>
+         <ID>MACHINERY-CUPELLATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MACHINERY-CUPELLATION_BUFF</Payload>
+                     <Target>ENTTAG,+Furnace</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Furnace-CUPELLATION,MACHINERY-CUPELLATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-+Furnace-CUPELLATION_BUILDHELPER,ResCoin</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:90</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MACHINERY-CUPELLATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableResCoin,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ___________________________________________ -->
+
+      <!--
+      Local Industry: Coal & Charcoal are consumed for an extra +1 Production.
+      -->
+
+      <ACard>
+         <ID>MACHINERY-LOCAL_INDUSTRY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Coal-ResCityProduction,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Charcoal-ResCityProduction,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:90</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+<!-- ______________________TIER_3______________________ -->
+
+      <!--
+      Clock Tower: Unlocks Clock Tower CB, generates 2 Gov XP, 6 Luxury, 180 Production cost.
+      -->
+
+      <ACard>
+         <ID>MACHINERY-CLOCK_TOWER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CLOCK_TOWER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_TREBUCHET</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-NewLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_TREBUCHET</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Apprenticeship: Charcoal Furnace & Tinker improvements gain +1 Workers Slots
+      -->
+
+      <ACard>
+         <ID>MACHINERY-APPRENTICESHIP</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MACHINERY-APPRENTICESHIP_BUFF</Payload>
+                     <Target>ENTTAG,+Apprenticeship</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Apprenticeship-APPRENTICESHIP,MACHINERY-APPRENTICESHIP_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MACHINERY-APPRENTICESHIP_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ExtraWorkerSlots,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- __________________LEGACY__________________________ -->
+
+      <ACard>
+         <ID>MACHINERY-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_TINKER,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainEngineering,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-NationalSpirit-SofabWarning</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-LineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MACHINERY-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-MACHINERY_LEGACY_BUFF,MACHINERY-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MACHINERY-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+   <ACard>
+      <ID>INNOVATION-MACHINERY-WINDLASSCROSSBOWS</ID>
+      <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+      <ExecutionType>CX_Choice</ExecutionType>
+      <Subtype>CST_Event</Subtype>
+      <Count>1</Count>
+      <BurnAfterReading>true</BurnAfterReading>
+      <Prereqs>
+         <Requirement>
+            <!-- Stop using this even in Age 6+ -->
+            <ReqType>CR_ChosenAge</ReqType>
+            <Req>NONE,6</Req>
+            <Target>PLAYER</Target>
+         </Requirement>
+      </Prereqs>
+      <Choices>
+         <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_PlayCard</EffectType>
+                  <Payload>MACHINERY-WINDLASSCROSSBOWS_BUFF</Payload>
+                  <Target>ENTTYPE,UNIT_CROSSBOW</Target>
+                  <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+               </ACardEffect>
+               <ACardEffect>
+                  <EffectType>CE_SetStringData</EffectType>
+                  <Payload>TriggerOnEntityCreateType-UNIT_CROSSBOW-WINDLASSCROSSBOWS,MACHINERY-WINDLASSCROSSBOWS_BUFF</Payload>
+                  <Target>PLAYER</Target>
+                  <Hidden>true</Hidden>
+               </ACardEffect>
+            </Effects>
+         </ACardChoice>
+         <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+            </Effects>
+         </ACardChoice>
+      </Choices>
+      <CardTags>
+         <Tags>
+            <Tag>AddToInnovationDeck</Tag>
+            <Tag>HorizontalDisplay</Tag>
+            <Tag>UseActionButtons</Tag>
+         </Tags>
+      </CardTags>
+   </ACard>
+
+   <ACard>
+      <ID>MACHINERY-WINDLASSCROSSBOWS_BUFF</ID>
+      <ExecutionType>CX_All</ExecutionType>
+      <Choices>
+         <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>StatAttack,ADD,5</Payload>
+                  <Target>ENT,EXEC</Target>
+               </ACardEffect>
+            </Effects>
+         </ACardChoice>
+      </Choices>
+      <CardTags>
+         <Tags>
+            <Tag>ForceEffectAsBuff</Tag>
+         </Tags>
+      </CardTags>
+   </ACard>
+
+
+<!-- ____________________________________________ -->
+
+
+   <ACard>
+      <ID>INNOVATION-MACHINERY-TREBUCHET</ID>
+      <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+      <ExecutionType>CX_Choice</ExecutionType>
+      <Subtype>CST_Event</Subtype>
+      <Count>1</Count>
+      <BurnAfterReading>true</BurnAfterReading>
+      <Prereqs>
+         <Requirement>
+            <!-- Stop using this even in Age 6+ -->
+            <ReqType>CR_ChosenAge</ReqType>
+            <Req>NONE,6</Req>
+            <Target>PLAYER</Target>
+         </Requirement>
+      </Prereqs>
+      <Choices>
+         <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_UnlockContent</EffectType>
+                  <Payload>UNIT_TREBUCHET</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+            </Effects>
+         </ACardChoice>
+         <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+            </Effects>
+         </ACardChoice>
+      </Choices>
+      <CardTags>
+         <Tags>
+            <!--Tag>AddToInnovationDeck</Tag-->
+            <Tag>HorizontalDisplay</Tag>
+            <Tag>UseActionButtons</Tag>
+         </Tags>
+      </CardTags>
+   </ACard>
+
+
+   </Definition>
+</ADeck>

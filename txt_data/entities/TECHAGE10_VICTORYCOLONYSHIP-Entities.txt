@@ -1,0 +1,324 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+
+<!-- Cap City Buildings -->
+
+
+   <EntityInfo>
+      <ID>B_CORPORATEOFFICE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,700</Data>-->
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,6</Data>
+         <Data>ResCoin,40</Data>
+         <Data>RegionalEfficiencyResCoin,1.5</Data>
+         <Data>UpgradeLine-Bank,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>VentureCapitalists</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Tile Improvements -->
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_COLONYSHIP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_COLONYSHIP</Data>
+         <Data>WorkableResColonyShipProgress,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE10_VICTORYCOLONYSHIP-COLONYSHIP_BUILDTRIGGER</Data>
+         <Data>FilterAge,10</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+         <Tag>AIHint-ConstructionPad</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TITANIUMFOUNDRY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TITANIUMFOUNDRY</Data>
+         <Data>WorkableConvertGoods-+SteelType-4-TitaniumAlloy,4</Data>
+         <Data>WorkableResDomainEngineering,1</Data>
+         <Data>WorkableResCityPowerRequired,5</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>UpgradeLine-Tools,6</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,460</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>RebellionTarget</Tag>
+         <Tag>AIHint-TitaniumFoundry</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PLASTEELFACTORY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResImprovementPoints,140</Data>-->
+         <Data>ConstructionCost-ResSpecialists,120</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PLASTEELFACTORY</Data>
+         <Data>WorkableConvertGoods-TitaniumAlloy-6-Plasteel,6</Data>
+         <Data>WorkableResDomainEngineering,1</Data>
+         <Data>WorkableResCityPowerRequired,10</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,461</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>RebellionTarget</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AIHint-PlasteelFactory</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_STEELCRUCIBLE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_STEELCRUCIBLE</Data>
+         <Data>WorkableConvertGoods-+CanMakeMetal-4-Steel,4</Data>
+         <Data>WorkableResDomainEngineering,3</Data>
+         <Data>WorkableResCityPowerRequired,4</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-Furnace,4</Data>
+         <Data>ImprovementSort,411</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>RebellionTarget</Tag>
+         <Tag>Factory</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MEGAWAREHOUSE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MEGAWAREHOUSE</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>WorkableResCoin,20</Data>
+         <Data>TriggerOnSelfBuild,UNITACTIONS-MEGAWAREHOUSE_BUILD</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-MEGAWAREHOUSE_KILLED</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_FRACKINGWELL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_FRACKINGWELL</Data>
+         <Data>WorkableGoodsPetroleum,1</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,511</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>RebellionTarget</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CRUDEREFINERY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CRUDEREFINERY</Data>
+         <Data>WorkableConvertGoods-Petroleum-2-Power,4</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-OilRefinery,2</Data>
+         <Data>ImprovementSort,513</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_POWERPLANT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_POWERPLANT</Data>
+         <Data>ResCityPower,6</Data>
+         <Data>WorkableConvertGoods-+CanMakePower-2-Power,2</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,502</Data>
+         <Data>UpgradeLine-CoalPower,3</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_LABORCAMP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_LABORCAMP</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityHousing,50</Data>
+         <Data>StatUnrest,10</Data>
+         <Data>WorkableResCityProduction,12</Data>
+         <Data>UpgradeLine-Apartment,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ENTERTAINMENTSIM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ENTERTAINMENTSIM</Data>
+         <Data>ResCityLuxury,4</Data>
+         <Data>StatUnrestSuppression,16</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResCityLuxury,4</Data>
+         <Data>WorkableResCoin,10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_RESEARCHSIM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_RESEARCHSIM</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>ResCityEducation,8</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResCityEducation,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Units -->
+
+   <EntityInfo>
+      <ID>UNIT_RAREPROSPECTOR</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Pickaxe</Icon>
+      <Portrait>RareProspectorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-PROSPECTOR_PROSPECT</Data>
+         <Data>UseAction-101,UNITACTIONS-IRON_PROSPECTOR_PROSPECT</Data>
+         <Data>UseAction-102,UNITACTIONS-RAREPROSPECTOR_COALPROSPECT</Data>
+         <Data>UseAction-103,UNITACTIONS-RAREPROSPECTOR_OILPROSPECT</Data>
+         <Data>UseAction-104,UNITACTIONS-RAREPROSPECTOR_RAREEARTHPROSPECT</Data>
+         <Data>UseAction-105,UNITACTIONS-PROSPECTOR_PROSPECT_URANIUM</Data>
+         <Data>ActionCharges,1</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable/RareProspector/Unit_RareProspector</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Prospector</Tag>
+         <Tag>GameDataKillAtZero-ActionCharges</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- PROJECTS -->
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_COLONYSHIP_PROGRESS</ID>
+      <Portrait>PROJECT_GENERATE_COLONYSHIP_PROGRESS-ICON</Portrait>
+      <StartingData>
+         <Data>Generate-ResColonyShipProgressCost,10</Data>
+         <Data>Generate-ResColonyShipProgress,1</Data>
+         <Data>AIBuildWeight,10</Data>
+         <!-- Also track Delta for crisis meter ? -->
+      </StartingData>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+         <Tag>AIHint-ColonyShipProject</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

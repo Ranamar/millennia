@@ -1,0 +1,847 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>SPECIALOPERATIONS</DeckName>
+
+<!-- NOTES -->
+   <!--
+
+   Tier 1
+
+   TACTICAL INSERTION
+      DP which spawns a Special Forces unit. Can be targeted anywhere (that isn't water). Special Forces have high movement speed and the scout's unit ability to teleport to the nearest friendly region.
+
+   LASER TARGETING
+      Air bombing units do more damage.
+
+   AMPHIBIOUS ASSAULT
+      Water Transport units gain additional movement speed.
+
+
+   Tier 2
+
+   VTOL
+      Unlocks the new VTOL air fighter unit, better than age 9 Jet Fighter but not as good as the Rogue AI age 10 EMP Fighter.
+
+   FALSE FLAG ATTACK
+      Envoy gains the ability to raze improvements.
+
+
+   Tier 3
+
+   TARGET INFRASTRUCTURE
+      New CP which destroys any enemy town. Notifies other players using some of the tech used to notify the players for diplomacy. Plays explosion effect.
+
+   DRONE STRIKE
+      DP that instantly kills all leader units in an army, and damages all other units in the same tile/army. Notifies the other player using diplomacy messages.
+
+
+   LEGACY: 
+      Have 3 “Special Forces” units in another nation’s territory
+
+   -->
+
+   <Definition>
+<!-- _____________________TIER_0_____________________ -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>SPECIALOPERATIONS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainWarfare</Tag>
+               <Tag>AIHint-SpecialOperations</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________TACTICAL INSERTION_____________________ -->
+
+      <!-- 
+         DP which spawns a Special Forces unit. 
+            Can be targeted anywhere (that isn't water). 
+            Special Forces have high movement speed and the scout's unit ability to teleport to the nearest friendly region. 
+      -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-TACTICALINSERTION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpecialOperationsTacticalInsertion,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_SPECIALFORCES</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-TACTICALINSERTION_SPAWN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+LandMovement</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SPECIALFORCES</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________AMPHIBIOUS ASSAULT_____________________ -->
+
+      <!-- Water Transport units gain additional movement speed. -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-AMPHIBIOUSASSAULT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                   <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-AMPHIBIOUSASSAULT_STATBUFF</Payload>
+                     <Target>ENTTAG,+WaterTransport</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+WaterTransport-AMPHIBIOUSASSAULT,SPECIALOPERATIONS-AMPHIBIOUSASSAULT_STATBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#AMPHIB_DEFENSE_FACTOR,SET,1.0</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#AMPHIB_ATTACK_FACTOR,SET,1.0</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-AMPHIBIOUSASSAULT_STATBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatMovementMax,ADD,20</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RevealRadius,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________AIR SUPREMACY_____________________ -->
+      
+      <!-- Air bombing units do more damage. +2 Range for all Air Forces. Unlocks VTOL unit.-->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-AIRSUPREMACY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-AIRSUPREMACY_UNITBUFF</Payload>
+                     <Target>ENTTAG,AirBomber</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-AirBomber-AIRSUPREMACY,SPECIALOPERATIONS-AIRSUPREMACY_UNITBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_VTOL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_VTOL</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-AIRSUPREMACY_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,15</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatStrategicPower,ADD,15</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatStrategicTargets,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________FALSE FLAG ATTACK_____________________ -->
+
+      <!-- Envoy gains the ability to raze improvements. -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-SABOTAGE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-SABOTAGE_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_SPECIALFORCES</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_SPECIALFORCES-SABOTAGE,SPECIALOPERATIONS-SABOTAGE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-SABOTAGE_ENVOY_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_ENVOY</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_ENVOY-SABOTAGE,SPECIALOPERATIONS-SABOTAGE_ENVOY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-SABOTAGE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-101,UNITACTIONS-SPECIALOPERATIONS_BRIEFCASENUKE</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-SABOTAGE_ENVOY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-50,UNITACTIONS-SPECIALOPERATIONS_RAZE</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- _____________________CONTACT LOCAL RESISTANCE_____________________ -->
+
+      <!-- Warfare Domain Power. Target enemy capital region with a Special Forces unit adjacent to it. Spawns Age 8 rebel units. -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-CONTACTLOCALRESISTANCE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpecialOperationsContactLocalResistance,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-CONTACTLOCALRESISTANCE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,[PLAYER:RevoltSpawnType]</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnRadius:3,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________TARGET INFRASTRUCTURE_____________________ -->
+
+      <!-- New CP which destroys any enemy town. Notifies other players using some of the tech used to notify the players for diplomacy. Plays explosion effect. -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-TARGETINFRASTRUCTURE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpecialOperationsTargetInfrastructure,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-TARGETINFRASTRUCTURE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_War,TRUE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_TargetInfrastructure</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-+TownSpec,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- _____________________DRONE STRIKE_____________________ -->
+
+      <!-- DP that instantly kills all leader units in an army, and damages all other units in the same tile/army. Notifies the other player using diplomacy messages. -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-DRONESTRIKE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpecialOperationsDroneStrike,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-DRONESTRIKE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-Leader,GTE,1</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <AddToEntityBuffer>true</AddToEntityBuffer>
+                     <EntityBufferFilterCard>SPECIALOPERATIONS-DRONESTRIKE_TARGETFILTER</EntityBufferFilterCard>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-DRONESTRIKE_MESSAGE</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-+Leader,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ApplyDamage</EffectType>
+                     <Payload>50</Payload>
+                     <PayloadParam>CanKillUnits:false</PayloadParam>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-+Unit,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX/ExplosionParticle</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_PlaySound</EffectType>
+                     <Payload>PlaneExplosion</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-DRONESTRIKE_MESSAGE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_DroneStrike</Payload>
+                     <Target>PLAYER,EXECENTOWNER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-DRONESTRIKE_TARGETFILTER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_Alliance,FALSE</Req>
+                     <Target>PLAYER,EXECENTOWNER</Target>
+                  </ACardRequirement>
+               </Requirements>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+   <!-- Have 3 Special Forces Units -->
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>UNIT_SPECIALFORCES,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainWarfare,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-SPECIALOPERATIONS_LEGACY_BUFF,SPECIALOPERATIONS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-SPECIALOPERATIONS-POLYMERBLADES</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                   <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConstructionCostFactor-UNIT_VTOL,SUB,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                   </ACardEffect>
+                </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-SPECIALOPERATIONS-FLYBYWIRE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPECIALOPERATIONS-FLYBYWIRE_UNITBUFF</Payload>
+                     <Target>ENTTAG,AirToAirTarget</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-AirToAirTarget-FLYBYWIRE,SPECIALOPERATIONS-FLYBYWIRE_UNITBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPECIALOPERATIONS-FLYBYWIRE_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAirInterceptRange,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

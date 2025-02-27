@@ -1,0 +1,1601 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE4_CRISISPLAGUE</DeckName>
+
+   <Definition>
+
+<!-- BASE -->
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE4_CRISISPLAGUE-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+
+                  <!-- Unlocking the Create Religion CP -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsReligionCreate,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_KNIGHT</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Cap Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TREASURY</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_FISHINGBOATS_2</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_RELIGIOUSSCRIBE</Payload>
+                  </ACardEffect>
+
+                  <!-- Outpost Upgrades -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CASTLE</Payload>
+                  </ACardEffect>
+
+                  
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>B_OUTBREAK</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4,+UniversalAddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE4,+UniversalAddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age4PlagueUnlocks</Payload>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:4</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age4_Plague_3840x2160</Tag>
+               <Tag>CrisisName:CRISISPLAGUE</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_PLAGUEAGE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_RELIGION</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_SPECIALIZATIONS4</Tag>
+               <Tag>MusicEra:3</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________________________________ -->
+<!-- ___________________TECHS____________________ -->
+
+   <!-- Age Advance Techs -->
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE5-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE4_CRISISPLAGUE-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:360</Tag>
+               <Tag>TechLayout:4,2</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE4_CRISISPLAGUE-TECHAGE5_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-TECHAGE5_VICTORYCONQUEST_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Power Threshold -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalStrengthVsTopRivalRatio,GTE,1.5</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE4-TECHAGE5_VICTORYCONQUEST_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE5_VICTORYCONQUEST-BASE</Payload>
+                     <!--<Hidden>true</Hidden>-->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE4_CRISISPLAGUE-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:280</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>VictoryAgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- IMPORTED TECH -->
+      <ACard><Import>TECHAGE4-MACHINES</Import></ACard>
+      <ACard><Import>TECHAGE4-PROFESSIONALARMY</Import></ACard>
+
+   <!-- TECHS VARIANTS -->
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-EFFICIENTFARMING</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PLAGUEFARM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PLAGUERANCH</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PLAGUEPLANTATION</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_CASTLETOWN</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_PROMOTION_CAP,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_TownLevel-ICON,Tooltip:GameStrings-Proxy-TownPromotionCapIncrease,InfopediaLink:ITT_Misc|CONCEPT_TOWNS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:164</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- NEW TECHS -->
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-SANCTUARY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_HOLYSITE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_LARGETEMPLE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_ABBEY</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsCleanse,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-Cleanse,Tooltip:TECHAGE4_CRISISPLAGUE-PIOUSUNIVERSITY-Proxy-ArtsCleanse,InfopediaLink:ITT_Misc|CONCEPT_RESCULTURE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Arts-ICON,Tooltip:TECHAGE4-ORGANIZEDRELIGION-Proxy-ArtsXP,FormatParam:10,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINARTS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:172</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-MARKETCAPTURE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MARKETMANAGER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_JEWELER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WINERY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_KITCHEN</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>PROJECT_GENERATE_WEALTH</Payload>
+                  </ACardEffect>
+
+                  <!-- Buff all Plantation Goods to be +1 LUX -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-+PlantationGood-ResCityLuxury,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-LuxuryFromPlant,Tooltip:TECHAGE4_CRISISPLAGUE-MARKETCAPTURE-Proxy-MarketCapture</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Reduce Outbreak effect from having Market (import/exports) -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#OUTBREAKCHANCE_PERIMPORTEXPORTSLOT,MUL,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Icons/B_OUTBREAK-ICON,Tooltip:TECHAGE4_CRISISPLAGUE-MARKETCAPTURE-Proxy-MarketSafety</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:164</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-HUMORS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PIOUSUNIVERISTY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PHYSICIANSGUILD</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_PLAGUEDOCTOR</Payload>
+                  </ACardEffect>
+
+                  <!-- Enables Envoy Create Outbreak -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-CREATEOUTBREAK_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_ENVOY</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_ENVOY-CREATEOUTBREAK_BUFF,TECHAGE4_CRISISPLAGUE-CREATEOUTBREAK_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Portraits/EnvoyPortrait,Tooltip:TECHAGE4_CRISISPLAGUE-HUMORS-Proxy-CreateOutbreak</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_OUTBREAK</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <!-- Reduces chance of Outbreak from Population -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#OUTBREAKCHANCE_PERPOP,MUL,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Icons/B_OUTBREAK-ICON,Tooltip:TECHAGE4_CRISISPLAGUE-HUMORS-Proxy-Humors</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:162</Tag>
+               <Tag>AIHint-Humors</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-ISOLATION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_DARKAGEGUARD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-WARSPAWN_DARKBOWCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_BARRICADES</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TURRET</Payload>
+                  </ACardEffect>
+
+                  <!-- Outbreaks evolve slower -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-QUARANTINE_BUFF</Payload>
+                     <Target>ENTTAG,Outbreak</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Outbreak-QUARANTINE,TECHAGE4_CRISISPLAGUE-QUARANTINE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Icons/B_OUTBREAK-ICON,Tooltip:TECHAGE4_CRISISPLAGUE-ISOLATION-Proxy-Quarantine</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE4_CRISISPLAGUE-BASE</Tag>
+               <Tag>TechCostBase:158</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- TRIGGER ACTIONS -->
+
+      <!-- Upgrade Volunteers & War Spawn Units Check -->
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-WARSPAWN_DARKBOWCHECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Compare value to Units's ID {5} -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>WarSpawnUnit1Value,LT,5</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Update War Spawn to Units -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarSpawnUnit1,UNIT_DARKAGEGUARD</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarVolunteersUnit,UNIT_DARKAGEGUARD</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_DARKAGEGUARD</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  <!-- Set value to Units's ID {5} -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WarSpawnUnit1Value,SET,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-CLEANSE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGREGION,+Outbreak</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlaySound</EffectType>
+                     <Payload>UnitActionGeneric</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-CREATEOUTBREAK_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-150,UNITACTIONS-CREATE_OUTBREAK</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-QUARANTINE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GeneratorChargeMax,MUL,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GeneratorChargeConsumed,MUL,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ______________________________________________ -->
+<!-- ___________________CHARGING___________________ -->
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-BEGIN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeBegin-CRISISPLAGUE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Create persistent card to track player Sanitation each turn -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE4_CRISISPLAGUE_CHECKPLAYER,TECHAGE4_CRISISPLAGUE-CHECK_PERPLAYER</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE4_CRISISPLAGUE_CHECKREGION,TECHAGE4_CRISISPLAGUE-CHECK_PERREGION</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlagueChargeRequired,SET,20</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlagueChargeRequired,DIV,#GAME_SPEED</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_DataAlert</EffectType>
+                     <Payload>CREATE,StatCrisisPlagueCharge</Payload>
+                     <PayloadParam>DataAlertThresholds:0.5|0.8|1.0,DataAlertMaxVal:[PLAYER:PlagueChargeRequired],DataAlertMessageKey:TECHAGE4_CRISISPLAGUE-WARNING</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-CHECK_PERREGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE3-TECHAGE4_CRISISPLAGUE_ADVANCE</CardSpriteName>
+         <Prereqs>
+            <!-- This isn't working? Have to put requirement on EACH Choice? -->
+            <!--
+            <Requirements>
+               <ReqType>CR_GameData</ReqType>
+               <Req>NeedTarget-NEEDSANITATION,GTE,1</Req>
+               <Target>ENT,EXEC</Target>
+            </Requirements>
+            -->
+         </Prereqs>
+         <Choices>
+
+            <!-- Visual Meter -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatCrisisPlagueCharge,GTE,[PLAYER:PlagueChargeRequired]</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-CHECK_PERREGION-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Functionality -->
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempPlagueChargeValue,SET,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Sanitation Less than 50%, 3 charge per turn -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDSANITATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDSANITATION,LT,0.5</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempPlagueChargeValue,ADD,3</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Sanitation at Greater than 50%, Less than 100%, 1 charge -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDSANITATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDSANITATION,GTE,0.5</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDSANITATION,LT,1.0</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempPlagueChargeValue,ADD,1</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Sanitation at Greater than 100%, no charge -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDSANITATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedSatisfaction-NEEDSANITATION,GTE,1</Req>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempPlagueChargeValue,ADD,0</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- Gets around the Null Executor issue ... -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>NeedTarget-NEEDSANITATION,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-TALLY</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>ShowDeltaValueCrisisMeter</Tag>
+               <Tag>ShowCrisisMeterDecor</Tag>
+               <Tag>DeltaValueStat:StatCrisisPlagueChargeDelta</Tag>
+               <Tag>UseChoiceSeparators</Tag>
+               <Tag>ChoiceTag-2-ComposeChoiceTooltipByRegions</Tag>
+               <Tag>ChoiceTag-3-ComposeChoiceTooltipByRegions</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-CHECK_PERPLAYER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisPlagueChargeDelta,SET,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-TALLY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisPlagueCharge,ADD,[SELF:TempPlagueChargeValue]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisPlagueChargeDelta,ADD,[SELF:TempPlagueChargeValue]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- ______________________________________________ -->
+<!-- ___________________ACTIVE_____________________ -->
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-CRISISPLAGUE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,PLAGUE</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-CRISISPLAGUE:4,TECHAGE4_CRISISPLAGUE-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Standard CHAOS hit -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Age Game Rules -->
+                  <!-- Outbreaks Spawn Chance -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE4_CRISISPLAGUE_OUTBREAK1,TECHAGE4_CRISISPLAGUE-SETOUTBREAKCHANCE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE4_CRISISPLAGUE_OUTBREAK2,TECHAGE4_CRISISPLAGUE-SPAWNOUTBREAKS</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Outbreaks</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_OUTBREAKS</PayloadParam>
+                  </ACardEffect>
+
+
+                  <!-- For Each Region kill 1/3 of Pop -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustPopulation</EffectType>
+                     <Payload>SCALE,#AGE4PLAGUE_AGESTARTPOPCHANGE</Payload>
+                     <Target>LOC,ALLREGIONS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_MessageDialog</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-DECIMATE_POPULATION</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- For Each Region spawn 1 Outbreak -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                  </ACardEffect>
+
+                  <!-- Game Speed Normalized Setting -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4-NORMALIZE_SPEED</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- For Each Region spawn 1 Outbreak -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-PLAGUE_STARTREGION</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>UNIT,UNIT_PLAGUEDOCTOR</Payload>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_PLAGUEDOCTOR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-PLAGUE_STARTREGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_OUTBREAK</Payload>
+                     <PayloadParam>MaxSpawnDistance:-1,WarnOnFailure:false,SpawnExcludeTag:+Outbreak,SpawnLimit:1</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+Improvement</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-CRISISPLAGUE</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- remove any game rules specific to the crisis -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE4_CRISISPLAGUE_OUTBREAK1,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCardPerRegion-TECHAGE4_CRISISPLAGUE_OUTBREAK2,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Remove Outbreaks -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-Outbreak</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ______________OUTBREAK_PER_TURN_____________ -->
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-SETOUTBREAKCHANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Adjust Outbreak from Improvements + Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromBuildingsImprovements,SET,SPECIALVAL:TILETAGREGION:+HasOutbreakChance:OutbreakChance</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromBuildingsImprovements,ADD,SPECIALVAL:BUILDINGREGION:OutbreakChance</Payload>
+                  </ACardEffect>
+
+
+                  <!-- Adjust Outbreak from Import/Export Slots -->
+                  <!-- Note: Most Import/Export are paired, this is assumed in the balance adjustment for ChancePerImportExportSlot -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromImportExportSlot,SET,SPECIALVAL:BUILDINGREGION:StatImportSlotCount</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromImportExportSlot,ADD,SPECIALVAL:BUILDINGREGION:StatExportSlotCount</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromImportExportSlot,MUL,#OUTBREAKCHANCE_PERIMPORTEXPORTSLOT</Payload>
+                  </ACardEffect>
+
+
+                  <!-- Adjust Outbreak from Pop -->
+                  <ACardEffect>
+                     <!-- Establish Pop Chance Modifier -->
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromPopulation,SET,#OUTBREAKCHANCE_PERPOP</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <!-- Combine PopChance (1) with Modifiers (-0.5) = 0.5x -->
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromPopulation,ADD,SPECIALVAL:TILETAGREGION:+HasOutbreakPopChance:OutbreakPopChance</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromPopulation,ADD,SPECIALVAL:BUILDINGREGION:OutbreakPopChance</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <!-- Multiply by Pop Total for Final -->
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempOutbreakChanceFromPopulation,MUL,[SELF:Population]</Payload>
+                  </ACardEffect>
+
+
+                  <!-- combine all the terms -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>OutbreakChance,SET,#OUTBREAKCHANCE_BASE</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>OutbreakChance,ADD,[SELF:TempOutbreakChanceFromBuildingsImprovements]</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>OutbreakChance,ADD,[SELF:TempOutbreakChanceFromImportExportSlot]</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>OutbreakChance,ADD,[SELF:TempOutbreakChanceFromPopulation]</Payload>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>NoTooltipEffects</Tag>
+               <Tag>HiddenAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-SPAWNOUTBREAKS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Is NOT an Outpost -->
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>SUBREGION,FALSE</Req>
+                     <Target>LOC,EXECLOC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>[SELF:OutbreakChance],A</TriggerParam>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_OUTBREAK</Payload>
+                     <PayloadParam>MaxSpawnDistance:-1,WarnOnFailure:false,SpawnExcludeTag:+Outbreak,SpawnLimit:1</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+Improvement</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <Trigger>CT_Random</Trigger>
+                     <TriggerParam>[INVERTSELF:OutbreakChance],B</TriggerParam>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PersistentActionAutoRepeat</Tag>
+               <Tag>NoTooltipEffects</Tag>
+               <Tag>HiddenAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- ___________________CHAOS____________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISPLAGUE-MASSOUTBREAK</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-MASSOUTBREAK_EFFECT</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-MASSOUTBREAK_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_OUTBREAK</Payload>
+                     <PayloadParam>MaxSpawnDistance:-1,WarnOnFailure:false,SpawnExcludeTag:+Outbreak,SpawnLimit:1,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,REGIONLOCTAG,+Improvement</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISPLAGUE-DEADLYMUTATION</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-DEADLYMUTATION_BUFF</Payload>
+                     <Target>ENTTAG,Outbreak</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Outbreak-DEADLYMUTATION,TECHAGE4_CRISISPLAGUE-DEADLYMUTATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-DEADLYMUTATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GeneratorChargePerTurn,ADD,1</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISPLAGUE-VIRALMUTATION</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#OUTBREAKCHANCE_BASE,ADD,0.1</Payload>
+                     <Target>PLAYER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- ________________INNOVATION__________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRISISPLAGUE-MEDICINE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-MEDICINE_BUFF</Payload>
+                     <Target>ENTTAG,+Outbreak</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Outbreak-MEDICINE,TECHAGE4_CRISISPLAGUE-MEDICINE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-Outbreak-MEDICINE_BUILDHELPER,ResCulture</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-MEDICINE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRISISPLAGUE-COSMICINSIGHT</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_Player</ReqType>
+               <Req>HasReligion,ANY:TRUE</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-ReligiousText-ResKnowledge,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-ReligiousTract-ResKnowledge,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRISISPLAGUE-POISONS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE4_CRISISPLAGUE-POISONS_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_PLAGUEDOCTOR</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_PLAGUEDOCTOR-POISONS,TECHAGE4_CRISISPLAGUE-POISONS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE4_CRISISPLAGUE-POISONS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

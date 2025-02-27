@@ -1,0 +1,775 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>SPACEAGENCY</DeckName>
+
+<!-- NOTES -->
+
+   <!--
+
+      Tier 1
+         Final Frontier: 
+            +! Space Race option that increases success and/or rewards for the space race.
+         
+         National Aerospace Research Facility: 
+            CB: +Good amount of Innovation, increases base success chance for a Space Race launch, one per nation.
+
+         Research Initiative: 
+            Specialists City Project, 10:1 production per specialist.
+
+
+      Tier 2
+         Communication Satellite: 
+            CB, generates high knowledge, high cost (~2x for Age 8 CB), one per nation.
+
+         Deep Space Network: 
+            National Aerospace Research Facility generates more +Knowledge and +Innovation.
+
+         Supersonic B-1B Lancer: Bomber Air Unit, upgrade line, much better stats.
+            (B-52 Stratofortress if we prefer “big military might” over “science, tech, innovation”)
+               Attack, 70
+               Defense, 35
+               Air Attack Range, 4
+               Air Intercept Range, 4
+
+
+      Tier 3
+         Space Mission: 
+            “Launch Space Mission” CP, “cheat”? Requires completing the Space Race Megaproject
+            Essentially an “Olympic Games”-like CP that you could activate after completing the Space Race with neat rare bonuses and such.  Like an Innovation deck.
+            Depth of fantasy fulfillment for only a few extra strings and standard rewards. 
+
+
+      Tier 4
+         Legacy: 
+            Use the Space Mission CP {1} time[s].
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>SPACEAGENCY-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPACEAGENCY-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>SPACEAGENCY,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE8_UTOPIA-BASE,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SPACECENTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainExploration</Tag>
+               <Tag>AIHint-SpaceAgency</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________FINAL_FRONTIER_____________________ -->
+
+      <!-- +1 Space Race option that increases success and/or rewards for the space race. -->
+
+      <ACard>
+         <ID>SPACEAGENCY-FINALFRONTIER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_SPACECENTER,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>SPACEAGENCY-FINALFRONTIER-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+   <!-- _____________________NATIONAL_AEROSPACE_FACILITY_____________________ -->
+
+      <!-- Unlocks National Aerospace Research Facility: CB: +Good amount of Innovation, increases base success chance for a Space Race launch, one per nation. -->
+
+      <ACard>
+         <ID>SPACEAGENCY-NATIONALAEROSPACEFACILITY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALAEROSPACEFACILITY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+   <!-- _____________________RESEARCH_INITIATIVE_____________________ -->
+
+      <!-- Specialists City Project, 10:1 production per specialist. -->
+
+      <ACard>
+         <ID>SPACEAGENCY-RESEARCHINITIATIVE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>PROJECT_GENERATE_SPECIALISTS</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________COMMUNICATIONS_SATELLITE_____________________ -->
+
+      <!-- Unlocks Communications Satellite: CB, generates high knowledge, high cost (~2x for Age 8 CB), one per nation. -->
+
+      <ACard>
+         <ID>SPACEAGENCY-COMMUNICATIONSSATELLITE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_COMMUNICATIONSSATELLITE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________DEEP_SPACE_NETWORK_____________________ -->
+
+      <!-- National Aerospace Research Facility generates more +Knowledge and +Innovation. -->
+
+      <ACard>
+         <ID>SPACEAGENCY-DEEPSPACENETWORK</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>SPACEAGENCY-NATIONALAEROSPACEFACILITY</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPACEAGENCY-DEEPSPACENETWORK_BUFF</Payload>
+                     <Target>ENTTYPE,B_NATIONALAEROSPACEFACILITY</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_NATIONALAEROSPACEFACILITY-DEEPSPACENETWORK,SPACEAGENCY-DEEPSPACENETWORK_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-DEEPSPACENETWORK_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________SUPERSONIC_LANCER_____________________ -->
+
+      <!-- 
+         Unlocks Supersonic B-1B Lancer: Bomber Air Unit, upgrade line, much better stats.
+            (B-52 Stratofortress if we prefer “big military might” over “science, tech, innovation”)
+               Attack, 70
+               Defense, 35
+               Air Attack Range, 4
+               Air Intercept Range, 4
+      -->
+
+      <ACard>
+         <ID>SPACEAGENCY-SUPERSONICLANCER</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SUPERSONICLANCER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________SPACE_MISSIONS_____________________ -->
+
+      <!-- Unlocks  “Launch Space Mission” CP:
+         “cheat”? Requires completing the Space Race Megaproject
+         Essentially an “Olympic Games”-like CP that you could activate after completing the Space Race with neat rare bonuses and such.  Like an Innovation deck.
+         Depth of fantasy fulfillment for only a few extra strings and standard rewards.  
+      -->
+
+      <ACard>
+         <ID>SPACEAGENCY-SPACEMISSION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ProjectStage-SPACERACE-SR4-COMPLETE,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>UI-Megaprojects-SPACERACE-Tooltip-HasCompleted</CustomFormatKey>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationSpaceMission,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>SPACEAGENCY-SPACEMISSION-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-SPACEMISSION_DECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DrawAndPlay</EffectType>
+                     <Payload>SPACEMISSIONS</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPACEAGENCY_SPACEMISSION_COMPLETED,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      
+   <!-- SPACE MISSION SPACEAGENCY BUFFS -->
+
+      <ACard>
+         <ID>SPACEAGENCY-JOIN_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GoodsAlienTech,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-MARS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-STATION_UNITBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-STATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,15</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+   <!-- Complete a Space Mission Event-->
+
+      <ACard>
+         <ID>SPACEAGENCY-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#SPACEAGENCY_SPACEMISSION_COMPLETED,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainExploration,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>SPACEAGENCY-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-SPACEAGENCY_LEGACY_BUFF,SPACEAGENCY-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainExploration:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-SPACEAGENCY-INTERNATIONALSPACESTATION</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>ProjectStage-SPACERACE-SR4-COMPLETE,EQ,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                 <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomaticAction-SPACEAGENCY-DIPLO_INTERNATIONALSPACESTATION_SEND,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>SPACEAGENCY-DIPLO_INTERNATIONALSPACESTATION_SEND</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_War,FALSE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>HasSpaceStation-{CurrentPlayer},EQ,0</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-NotYetBuilt</CustomFormatKey>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,500</Req>
+                     <IsCost>true</IsCost>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResDomainDiplomacy,GTE,#DIPLOMACY_GIFT_COST</Req>
+                     <IsCost>true</IsCost>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:SPACEAGENCY-DIPLO_INTERNATIONALSPACESTATION_RECV</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AIActionWeight:AIA_Warmonger=1,AIA_Anger=2,AIA_ProactiveNice=-1,AIA_Fear=1</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+               <Tag>AIHint-InternationalSpaceStation</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>SPACEAGENCY-DIPLO_INTERNATIONALSPACESTATION_RECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,50</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Should be per player-pair -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>HasSpaceStation-{ExternalTargetPlayer},ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>HasSpaceStation-{CurrentPlayer},ADD,1</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DefaultChoice:1</Tag>
+               <Tag>MarkChoiceAsDecline:0</Tag>
+               <Tag>MarkChoiceAsAccept:1</Tag>
+               <Tag>AIResponseWeights-1:AIA_Fear=6,AIA_Warmonger=-2</Tag>
+               <Tag>AIResponseWeights-0:AIA_Compliant=1,AIA_Warmonger=1,AIA_Anger=5,AIA_Friendship=2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>   
+
+
+   </Definition>
+</ADeck>

@@ -1,0 +1,522 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+
+   <EntityInfo>
+      <ID>B_MERCHALL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,125</Data> -->
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>ResCoin,7</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BarracksPresent</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_GRANDWORKSHOP</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- 25% more than B_WORKSHOP -->
+         <Data>ConstructionCost-ResCityProduction,225</Data>
+         <Data>ResDomainEngineering,1</Data>
+         <Data>ResImprovementPoints,2</Data>
+         <Data>ResCityProduction,8</Data>
+         <Data>UpgradeLine-CityWorks,2</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>WorkshopPresent</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_GRANDTEMPLE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,205</Data>
+         <Data>ResCulture,1</Data>
+         <Data>ResKnowledge,1</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>UpgradeLine-CATHEDRAL,2</Data>
+         <Data>FilterAge,4</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>ReligionRenameFormat,Game-Misc-ReligionRenameFormat-GrandTemple</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ReligionNameOverride</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>Temple</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>UpgradeLine-DedicatedMonument,1</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>Monument</Tag>
+         <Tag>AIHint-BasicMonument</Tag>
+         <Tag>AIPhaseOutAge-5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_GOVERNMENT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_GOVERNMENT</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainGovernment,1</Data>
+         <Data>RegionalEfficiencyResCityFood,1.2</Data>
+         <Data>RegionalEfficiencyResCityHousing,1.2</Data>
+         <Data>RegionalEfficiencyResCitySanitation,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_EXPLORATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_EXPLORATION</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>RegionalEfficiencyResKnowledge,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_WARFARE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_WARFARE</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>RegionalEfficiencyResCityProduction,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_ENGINEERING</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_ENGINEERING</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainEngineering,1</Data>
+         <Data>RegionalEfficiencyResImprovementPoints,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_DIPLOMACY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_DIPLOMACY</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainDiplomacy,1</Data>
+         <Data>RegionalEfficiencyResCoin,1.2</Data>
+         <Data>RegionalEfficiencyResCityLuxury,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MONUMENT_ARTS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MONUMENT_ARTS</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainArts,1</Data>
+         <Data>RegionalEfficiencyResCulture,1.2</Data>
+         <Data>RegionalEfficiencyResCityFaith,1.2</Data>
+         <Data>UpgradeLine-DedicatedMonument,2</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+         <Tag>ReligiousBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_FOUNDATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_FOUNDATION</Data>
+         <Data>WorkableResMonumentProgress,2</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UseAction-100,UNITACTIONS-FOUNDATION_UPGRADETOMONUMENT</Data>
+         <Data>UpgradeLine-SuperMonument,1</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+         <Tag>Foundation</Tag>
+         <Tag>AIHint-SuperMonument</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SUPERMONUMENT_PALACEFORTRESS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SUPERMONUMENT_PALACEFORTRESS</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainGovernment,5</Data>
+         <Data>ResDomainWarfare,5</Data>
+         <Data>ResCityExpansionPoints,10</Data>
+         <Data>UpgradeLine-SuperMonument,2</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>SuperMonument</Tag>
+         <Tag>NoDestroyAction</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SUPERMONUMENT_TEMPLEBAZAAR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SUPERMONUMENT_TEMPLEBAZAAR</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainEngineering,5</Data>
+         <Data>ResDomainDiplomacy,5</Data>
+         <Data>ResCoin,20</Data>
+         <Data>UpgradeLine-SuperMonument,2</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>SuperMonument</Tag>
+         <Tag>NoDestroyAction</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SUPERMONUMENT_FORESTTEMPLE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SUPERMONUMENT_FORESTTEMPLE</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainDiplomacy,5</Data>
+         <Data>ResDomainArts,5</Data>
+         <Data>ResCulture,5</Data>
+         <Data>UpgradeLine-SuperMonument,2</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>SuperMonument</Tag>
+         <Tag>NoDestroyAction</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SUPERMONUMENT_PALACETEMPLE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SUPERMONUMENT_PALACETEMPLE</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResDomainExploration,5</Data>
+         <Data>ResDomainArts,5</Data>
+         <Data>ResCityFaith-{PlayerReligion},20</Data>
+         <Data>UpgradeLine-SuperMonument,2</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>SuperMonument</Tag>
+         <Tag>FaithToCulture_Huge</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>NoDestroyAction</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SUPERMONUMENT_REPEATABLE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SUPERMONUMENT_REPEATABLE</Data>
+         <Data>WorkableResCulture,1</Data>
+         <Data>ResCityExpansionPoints,10</Data>
+         <Data>ResCoin,20</Data>
+         <Data>ResCulture,5</Data>
+         <Data>UpgradeLine-SuperMonument,2</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>SuperMonument</Tag>
+         <Tag>NoDestroyAction</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_LATHEWORKSHOP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,24</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_LATHEWORKSHOP</Data>
+         <Data>WorkableConvertGoods-Ingot-1-Hardware,1</Data>
+         <Data>WorkableResDomainEngineering,1</Data>
+         <Data>ImprovementSort,440</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>RotaryGrindstone</Tag>
+         <Tag>Bellows</Tag>
+         <Tag>AIPhaseOutAge-7</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MIGRANTFARM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MIGRANTFARM</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_FARM,2</Data>
+         <Data>ResCityHousing,5</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Farming,2</Data>
+         <Data>ImprovementSort,002</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-+GrasslandImprovements</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>MedievalFarm</Tag>
+         <Tag>Scythe</Tag>
+         <Tag>Farms</Tag>
+         <Tag>AIHint-MigrantFarm</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MIGRANTPLANTATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResImprovementPoints,40</Data>-->
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MIGRANTPLANTATION</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_PLANTATION,2</Data>
+         <Data>WorkableResCityFood,4</Data>
+         <Data>ResCityHousing,5</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>AIBuildWeight,1.2</Data>
+         <Data>UpgradeLine-Plantation,2</Data>
+         <Data>ImprovementSort,102</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-CultivatedPlantationGood</Tag>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>MedievalFarm</Tag>
+         <Tag>Farms</Tag>
+         <Tag>AIHint-MigrantPlantation</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_MERCCROSSBOW</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_DeathHeadBeret</Icon>
+      <Portrait>MercCrossbowPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,45</Data>
+         <Data>Upkeep-ResCoin,10</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,22</Data>
+         <Data>StatDefense,22</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <!-- Stand Off -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,2.5</Data>
+         <Data>UpgradeLine-Ranged,3</Data>
+         <!-- Fold-in Raider Bow to Ranged Line -->
+         <Data>UpgradeLine-RaiderBow,2</Data>
+         <Data>ObsoleteAge,6</Data>
+         <Data>FilterAge,4</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_4</Data>
+         <Data>LeaderPromotionCost,45</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/CrossbowMercenary/Unit_CrossbowMercenary</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeRanged</Tag>
+         <Tag>Mercenary</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>ProjectileFiredSoundCrossbow</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_CLERGY</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Candle</Icon>
+      <Portrait>ClergyPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-CLERGY_PROSELYTIZE</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Clergy/Unit_Clergy</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NonCombatant</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- PROJECTS -->
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_MONUMENTPROGRESS</ID>
+      <Portrait>PROJECT_GENERATE_MONUMENTPROGRESS-ICON</Portrait>
+      <StartingData>
+         <Data>Generate-ResMonumentProgressCost,3</Data>
+         <Data>Generate-ResMonumentProgress,1</Data>
+         <Data>FilterAge,4</Data>
+         <Data>AIBuildWeight,1</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <!-- Requires B_TILEIMP_FOUNDATION present? -->
+         <!-- Disable if B_TILEIMP_FOUNDATION is destroyed? -->
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+         <Tag>AIHint-SuperMonumentProject</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

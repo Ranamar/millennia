@@ -1,0 +1,1756 @@
+<ADeck>
+   <ReshuffleWhenEmpty>true</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>false</MaintainOrderWhenShuffled>
+   <PerPlayer>true</PerPlayer>
+   <DeckName>EXPLORE</DeckName>
+   <CardTags>
+      <Tag>CanUndo</Tag>
+   </CardTags>
+
+   <Definition>
+
+      <ACard>
+         <ID>EXPLORE-AUTOMATIC</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Count>0</Count>
+         <Choices>
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- __________________DOMAIN_XP_________________ -->
+
+      <ACard>
+         <ID>EXPLORE-NOMADS</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Nomad leader will share knowledge with you. -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-MYSTERY</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Old village, signs of tech you do not know. -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-TEMPLE</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Discover massive temple pyramid -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ___________________AGE_2____________________ -->
+
+      <ACard>
+         <ID>EXPLORE-RIVERDAM</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Find a small village utilizing a river reservoir. -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-VILLAGECOUNCIL</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- The village elder holds council -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-WILDERPEOPLE</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Come across uncivilized people -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-SMALLVILLAGE</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Find a small village. -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ____________________AGE_3___________________ -->
+
+      <ACard>
+         <ID>EXPLORE-DISEASE</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <!-- Town ravaged by disease. -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-WICKERDOLLS</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-MASON</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-BAUBLES</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ______________NATIONAL_RESOURCES____________ -->
+
+      <ACard>
+         <ID>EXPLORE-ARTIFACT</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_KnowledgeReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,[SELF:NS_CultureReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-DESIGN</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_KnowledgeReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ImprovementPointsReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ImprovementPointsReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,[SELF:NS_ImprovementPointsReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- _________________INNOVATION_________________ -->
+
+      <ACard>
+         <ID>EXPLORE-CONTEST</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_KnowledgeReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-ORATOR</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,[SELF:NS_CultureReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ________________SOCIAL_FABRIC_______________ -->
+
+      <ACard>
+         <ID>EXPLORE-POLYMATH</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_KnowledgeReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-GROWINGPAINS</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_CultureReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,[SELF:NS_CultureReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-MADMAN</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSocialFabricWildcard,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ________________SPECIALISTS_________________ -->
+
+      <ACard>
+         <ID>EXPLORE-RECLUSE</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,6</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_KnowledgeReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_KnowledgeReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_SpecialistsReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_SpecialistsReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialists,ADD,[SELF:NS_SpecialistsReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-UNEMPLOYMENT</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>ANY,6</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ImprovementPointsReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ImprovementPointsReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResImprovementPoints,ADD,[SELF:NS_ImprovementPointsReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_SpecialistsReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_SpecialistsReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialists,ADD,[SELF:NS_SpecialistsReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+   <!-- ____________________________________________ -->
+   <!-- ______________REGIONAL_RESOURCES____________ -->
+
+      <ACard>
+         <ID>EXPLORE-AUCTION</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_Region</ReqType>
+               <Req>!IDLE</Req>
+               <Target>PLAYER</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WealthReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ProductionReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ProductionReward,MUL,0.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityProduction,ADD,[SELF:NS_ProductionReward]</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <!--
+      <ACard>
+         <ID>EXPLORE-ANNEXATION</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>Population,GTE,1</Req>
+               <Target>REGION</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WealthReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExpansionReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExpansionReward,MUL,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,[SELF:NS_ExpansionReward]</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+      -->
+
+   <!-- ____________________________________________ -->
+   <!-- _______________RELIGION_POINTS______________ -->
+
+      <ACard>
+         <ID>EXPLORE-PREACHER</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <!-- Has Religion -->
+            <Requirement>
+               <ReqType>CR_Locked</ReqType>
+               <Req>ComingSoon</Req>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>ReligionPoints-{PlayerReligion},GTE,1</Req>
+               <Target>REGION</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WealthReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ReligionReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ReligionReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,[SELF:NS_ReligionReward]</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-PROSPERITY</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <Prereqs>
+            <!-- Has Religion -->
+            <Requirement>
+               <ReqType>CR_Locked</ReqType>
+               <Req>ComingSoon</Req>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_GameDataAny</ReqType>
+               <Req>ReligionPoints-{PlayerReligion},GTE,1</Req>
+               <Target>REGION</Target>
+               <AddToEntityBuffer>true</AddToEntityBuffer>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExpansionReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExpansionReward,MUL,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityExpansionPoints,ADD,[SELF:NS_ExpansionReward]</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ReligionReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ReligionReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFaith-{PlayerReligion},ADD,[SELF:NS_ReligionReward]</Payload>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+
+
+   <!-- ____________________________________________ -->
+   <!-- __________________AGE_1_CARDS_______________ -->
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE1-FINDSCOUT</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Scout upgrades to Explorer in 5 -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,5</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SCOUT</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE1-FINDWARBAND</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Warband upgrades to Spear in 2 -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_WARBAND</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-TECHAGE1-FINDARCHER</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Archer upgrades to Crossbow in 3 -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,3</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ARCHER</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+      </ACard>
+
+
+
+   <!-- ____________________________________________ -->
+   <!-- __________________DLC_1_CARDS_______________ -->
+   <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>EXPLORE-ANCIENTWORLDS-FINDMAMMOTH</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Megafauna Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>MegafaunaEnabled,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <!-- Only appear in Age -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MASTODON</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MASTODON</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-ANCIENTWORLDS-FINDTIGER</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Megafauna Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>MegafaunaEnabled,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <!-- Only appear in Age -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SMILODON</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SMILODON</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-ANCIENTWORLDS-HIGHGROUND</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Any Nomad Start Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>NomadStartEnabled,GTE,1</Req>
+               <Target>GAME</Target>
+            </Requirement>
+            <!-- Only appear in Age 1 -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RevealTiles</EffectType>
+                     <Payload>4</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-ANCIENTWORLDS-RUMORS</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>0</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Camps are nearby -->
+            <!--
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>ALLPLAYERS-RewardCamp,GTE,1</Req>
+               <Target>LOC,TILERADIUS,5</Target>
+            </Requirement>
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>ALLPLAYERS-BarbarianCamp,GTE,1</Req>
+               <Target>LOC,TILERADIUS,5</Target>
+            </Requirement>
+            -->
+            <!-- Only appear in Age 1 -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+             <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExploreReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_ExploreReward,DIV,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainExploration,ADD,[SELF:NS_ExploreReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_RevealTiles</EffectType>
+                     <Payload>1</Payload>
+                     <Target>ENT,FINDTAGLOCRAD,ALLPLAYERS-RewardCampBasic,EXECLOC,10</Target>
+                     <TargetLimit>2</TargetLimit>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-REVEALREWARDCAMPS_BACKUP</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>ENT,EXEC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-RevealRewardCamp</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,DIV,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,[SELF:NS_WarfareReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_RevealTiles</EffectType>
+                     <Payload>1</Payload>
+                     <Target>ENT,FINDTAGLOCRAD,ALLPLAYERS-BarbarianCamp,EXECLOC,10</Target>
+                     <TargetLimit>2</TargetLimit>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>PLAYERACTIONS-REVEALBARBCAMPS_BACKUP</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>ENT,EXEC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-RevealBarbCamp</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>EXPLORE-ANCIENTWORLDS-ICEFISHING</ID>
+         <CardSpriteName>Cards/Events/ExplorePainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>2</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <!-- Frozen Terrain Start Enabled -->
+            <Requirement>
+               <ReqType>CR_GameData</ReqType>
+               <Req>FrozenTerrainStartEnabled,GTE,1</Req>
+               <Target>GAME</Target>
+            </Requirement>
+            <!-- Only appear in Age -->
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,2</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <!-- Only if you have a Region Settled -->
+            <Requirement>
+               <ReqType>CR_EntityTagCount</ReqType>
+               <Req>CityCenter,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-ANCIENTWORLDS_INNOVATION_ICEFISHING_BUFF</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE1-ANCIENTWORLDS_INNOVATION_ICEFISHING_BUFF</Payload>
+                     <Target>ENTTAG,Capital</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

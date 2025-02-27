@@ -1,0 +1,1695 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE8_VICTORYGENERALS</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Force AGE OF GENERALS to other players -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE8_VICTORYGENERALS-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect> -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-UNLOCKGOVS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SMG</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_CRISISDYSTOPIA-WARSPAWN_SMGCHECK_1</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8-WARSPAWN_SMGCHECK_2</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_NATIONALGUARD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_SUBMARINE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_DESTROYER</Payload>
+                  </ACardEffect>
+
+                  <!-- Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TOWERCRANE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_RADIOSTATION</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALTEMPLE</Payload>
+                  </ACardEffect>
+
+                  <!-- Improvements -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OILREFINERY</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MILITARYTRAININGCAMP</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-HELP_TURN_8</Payload>
+                     <PayloadParam>TurnDelay:8</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Bonus Worker Baseline -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BONUS_WORKER_POPULATION_INTERVAL,ADD,10</Payload>
+                  </ACardEffect>
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age8GeneralsUnlocks</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>SpaceRaceAvailable</Payload>
+                  </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <!--
+                     <ACardEffect>
+                        <EffectType>CE_AddCardsByTag</EffectType>
+                        <Payload>TECHAGE8,+AddToBarbarianDeck</Payload>
+                        <Target>BARBARIAN</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AddCardsByTag</EffectType>
+                        <Payload>TECHAGE8,+AddToExploreDeck</Payload>
+                        <Target>EXPLORE</Target>
+                     </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVAUTOCRATIC</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:8</Tag>
+               <Tag>VictoryAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age8_VictoryGenerals_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_VICTORYAGE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_AUTOCRACY</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_MEGAPROJECT</Tag>
+               <Tag>MusicEra:4</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-UNLOCKGOVS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Not Age Setter -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE8_VICTORYGENERALS,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <!-- Not Autocratic -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAutocraticNation,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Factions -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVFUNDAMENTALIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVCOMMUNIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVDEMOCRATICREPUBLIC</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- Age Advance Tech -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE9-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE8_VICTORYGENERALS-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:1200</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE8_VICTORYGENERALS-TECHAGE9_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-TECHAGE9_CRISISWASTELAND_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <!-- CR_Locked, you unlock by doing DEFCON, which auto-sets the age for you -->
+                     <ReqType>CR_Locked</ReqType>
+                     <Req>WASTELAND_ADVANCE</Req>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE9_CRISISWASTELAND-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE8_VICTORYGENERALS-BASE,0</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:1100</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>CrisisAgeAdvance</Tag>
+               <Tag>SkipCountTechRequirement</Tag>
+              <!--<Tag>HideIfUnmet</Tag>-->
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- TECHS -->
+   <!-- IMPORT -->
+      <ACard><Import>TECHAGE8-HEAVYMACHINERY</Import></ACard>
+      <ACard><Import>TECHAGE8-AIRWARFARE</Import></ACard>
+      <ACard><Import>TECHAGE8-ENTERPRISE</Import></ACard>
+
+
+   <!-- NEW TECHS -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-HOMEFRONT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PROPAGANDASTUDIO</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_YOUTHCAMP</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PERFORMINGARTSCENTER</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SLAGFOUNDRY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MREKITCHEN</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_RAGSFACTORY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:750</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-DATAANALYSIS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALSCIENCEACADEMY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_COMPUTERFACTORY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OFFICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WARGAMES</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:800</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-ROCKETS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ANTIAIRINFANT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ANTITANKINFANT</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SAM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SPACECENTER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:850</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-POWERPROJECTION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>AirliftAbilityUnlocked,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <!-- <HiddenInTooltip>true</HiddenInTooltip> -->
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Unit Actions/AIRLIFT-ICON,Tooltip:TECHAGE8-LOGISTICS-Proxy-Airlift</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <!-- Set Water Transport type to NAVYTRANSPORT -->
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TransportEntityType,UNIT_NAVYTRANSPORT</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Portraits/NavyTransportPortrait,Tooltip:TECHAGE8_VICTORYGENERALS-POWERPROJECTION-Proxy-NavyTransport</PayloadParam>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_COMMANDCENTER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_AIRBASE</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#MAX_ARMY_SIZE,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_ARMYSIZE-ICON,Tooltip:GameStrings-Proxy-MaxArmySizeIncrease,InfopediaLink:ITT_Misc|CONCEPT_ARMIES</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareDropParatrooper,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/DROP_PARATROOPER-ICON,Tooltip:TECHAGE8_VICTORYGENERALS-POWERPROJECTION-Proxy-DropParatrooper</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_AIRMOBILE</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- placeholder for manhattan project -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ProjectStage-MANHATTAN-MH1-STATE,MSS_FirstAttempt</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ActiveMegaproject2,MANHATTAN</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>ProjectStage-MANHATTAN,MH1</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_ManhattanProject,Tooltip:TECHAGE8-ENERGY-Proxy-ManhattanProject</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:850</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-STRONGARM</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_FOREIGNOFFICE_2</Payload>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomaticAction-TECHAGE8_VICTORYGENERALS-DIPLOINSTALLPUPPETUNILAT,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Cards/Techs/TECHAGE8_VICTORYGENERALS-STRONGARM,Tooltip:TECHAGE8_VICTORYGENERALS-STRONGARM-Proxy-InstallPuppet</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomaticAction-TECHAGE8_VICTORYGENERALS-DIPLOMADPACTSEND,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-ICON,Tooltip:TECHAGE8_VICTORYGENERALS-STRONGARM-Proxy-MADPact</PayloadParam>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,100</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Warfare-ICON,Tooltip:TECHAGE1-DEFENSE-Proxy-WarXP,FormatParam:100,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE8_VICTORYGENERALS-BASE</Tag>
+               <Tag>TechCostBase:800</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- TECH EVENTS -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-FOREIGNOFFICE_2_DATALINKACTION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempDiplomacy,SET,[PLAYER:RelationshipDiplomacyIncome]</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempDiplomacy,MUL,3</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,[SELF:NS_TempDiplomacy]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-ForeignOffice-Tooltip</Payload>
+                     <PayloadParam>FormatParam:3</PayloadParam>
+                  </ACardEffect>
+                  -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-FOREIGNCONSULATE_SETDIPLOINCOME</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#DIPLO_INCOME_PER_QUALIFYING_PLAYER,SET,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-DIPLOINSTALLPUPPETUNILAT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResDomainDiplomacy,GTE,50</Req>
+                     <IsCost>true</IsCost>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsPuppet-{CurrentPlayer},NEQ,1</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,100</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,1000</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,1000</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>IsPuppet-{CurrentPlayer},ADD,1</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_InstallPuppet</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- 
+         TECHAGE8_VICTORYGENERALS-DIPLOMADPACTSEND
+         Discourage targeted player from fighting your units
+         Both players gain a flag when in combat - If enemy combatant is other player, throws unrest to every region owned by both nations
+         If you attack them AND vice-versa, the whole coflict inspires unrest in both players' nations
+      -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-DIPLOMADPACTSEND</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_War,TRUE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:TECHAGE8_VICTORYGENERALS-DIPLOMADPACTRECV</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AIActionWeight:AIA_Warmonger=-3,AIA_Fear=4,AIA_ProactiveNice=3</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+      
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-DIPLOMADPACTRECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},SUB,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,#DIPLOMACY_FAVOR_MEDIUM</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <!-- Set up TriggerOnBattle with CurrentPlayer & ExternalPlayer flags -->
+                  <!-- If a conflict between units owned by player A against player B, or vice versa, both players hit with Unrest (static, or times number of units) in all regions -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DefaultChoice:0</Tag>
+               <Tag>MarkChoiceAsDecline:0</Tag>
+               <Tag>MarkChoiceAsAccept:1</Tag>
+               <Tag>AIResponseWeights-0:AIA_Warmonger=2,AIA_Anger=5</Tag>
+               <Tag>AIResponseWeights-1:AIA_Compliant=5,AIA_Fear=6,AIA_Warmonger=-2,AIA_Friendship=10</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________ -->
+
+
+      <!-- ____________________________________________ -->
+      <!-- ________________AGE_ACTIVE__________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-GENERALS</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>DEFAULT</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-GENERALS:8,TECHAGE8_VICTORYGENERALS-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,ADD,3</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Bespoke Content Goes Here: -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-GENERALSVICTORYCHECK,TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#AGE8GENERALS_VICTORYREQUIREMENT2,DIV,#GAME_SPEED</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  
+
+                  <!-- Set of Player Buffs for Active -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Set of Player Buffs for Active -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-ESTABLISHAUTOCRATS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-GENERALS</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Is this necessary for anything? -->
+                  <ACardEffect>
+                     <EffectType>CE_DebugLog</EffectType>
+                     <Payload>AgeSunset-GENERALS</Payload>
+                  </ACardEffect>
+
+                  <!-- Cleanup -->
+                  <!-- remove any game rules specific to the crisis -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Set special effect per Player -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-PLAYERSUNSET</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>LastTurnAtPeace,SET,SPECIALVAL:CURRENTTURN</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-GENERALSVICTORYCHECK,DELETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age Setter  -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE8_VICTORYGENERALS,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,TOMAX,0</Payload>
+                     <Target>PLAYER</Target>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- All players -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#WAR_UNREST_PER_TURN,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CHAOS_FROM_REGION_CONQUEST,MUL,#MULTIAGE_CHAOSREDUCTION_MUL</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Disable Truce -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyEnforcePeace,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-PLAYERSUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Not Age Setter -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE8_VICTORYGENERALS,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <!-- If you were/are Autocratic -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAutocraticNation,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>TECHAGE8_VICTORYGENERALS-BASE,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Give permission to Autocratic Nations to change to new governments -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionCulture,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentRevolutionDirect,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Factions -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVFUNDAMENTALIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVCOMMUNIST</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>DomainSpecialization,GOVDEMOCRATICREPUBLIC</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherStrengthRatio,GTE,#AGE8GENERALS_VICTORYREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>FactionPoints-AUTOCRATIC,GTE,#AGE8GENERALS_VICTORYREQUIREMENT2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IdeologyNeedEnabled,EQ,1</Req> <!-- This is borrowing/shortcutting the logic for "HasFaction" but string will need to be coopt -->
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-HasFaction</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYGENERALS</Payload>
+                     <Target>PLAYER,ALLPLAYERSWITHMATCHINGFACTION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>ShowCrisisValuesAsPercent</Tag>
+          </Tags>
+        </CardTags>        
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_AUTOCRATIC</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherFactionStrengthRatio,GTE,#AGE8GENERALS_VICTORYREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>FactionPoints-AUTOCRATIC,GTE,#AGE8GENERALS_VICTORYREQUIREMENT2</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IdeologyNeedEnabled,EQ,1</Req> <!-- This is borrowing/shortcutting the logic for "HasFaction" but string will need to be coopt -->
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-HasFaction</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYGENERALS</Payload>
+                     <Target>PLAYER,ALLPLAYERSWITHMATCHINGFACTION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>ShowCrisisValuesAsPercent</Tag>
+          </Tags>
+        </CardTags>        
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_COMMUNIST</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherFactionStrengthRatio,GTE,#AGE8GENERALS_VICTORYREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>FactionPoints-COMMUNIST,GTE,#AGE8GENERALS_VICTORYREQUIREMENT2</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IdeologyNeedEnabled,EQ,1</Req> <!-- This is borrowing/shortcutting the logic for "HasFaction" but string will need to be coopt -->
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-HasFaction</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYGENERALS</Payload>
+                     <Target>PLAYER,ALLPLAYERSWITHMATCHINGFACTION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>ShowCrisisValuesAsPercent</Tag>
+          </Tags>
+        </CardTags>        
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_DEMOCRATIC</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherFactionStrengthRatio,GTE,#AGE8GENERALS_VICTORYREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>FactionPoints-DEMOCRATIC,GTE,#AGE8GENERALS_VICTORYREQUIREMENT2</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IdeologyNeedEnabled,EQ,1</Req> <!-- This is borrowing/shortcutting the logic for "HasFaction" but string will need to be coopt -->
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-HasFaction</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYGENERALS</Payload>
+                     <Target>PLAYER,ALLPLAYERSWITHMATCHINGFACTION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>ShowCrisisValuesAsPercent</Tag>
+          </Tags>
+        </CardTags>        
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-CHECKFORVICTORY_FUNDAMENTALIST</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE7-TECHAGE8_VICTORYGENERALS_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherFactionStrengthRatio,GTE,#AGE8GENERALS_VICTORYREQUIREMENT</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameDataTotal</ReqType>
+                     <Req>FactionPoints-FUNDAMENTALIST,GTE,#AGE8GENERALS_VICTORYREQUIREMENT2</Req>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IdeologyNeedEnabled,EQ,1</Req> <!-- This is borrowing/shortcutting the logic for "HasFaction" but string will need to be coopt -->
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>Game-Misc-HasFaction</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYGENERALS</Payload>
+                     <Target>PLAYER,ALLPLAYERSWITHMATCHINGFACTION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>ShowCrisisValuesAsPercent</Tag>
+          </Tags>
+        </CardTags>        
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-ESTABLISHAUTOCRATS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age Setter  -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE8_VICTORYGENERALS,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Send YORN to all Allies to join Autocratic Gov/Faction -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:TECHAGE8_VICTORYGENERALS-JOINAUTOCRATICFACTIONRECV</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERSBYDIPLOMATICRELATIONSHIP:DR_Alliance</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DiplomaticRelationship</EffectType>
+                     <Payload>DR_War,{CurrentPlayer}</Payload>
+                     <Target>PLAYER,ALLPLAYERSBYDIPLOMATICRELATIONSHIP:!DR_Alliance</Target>
+                  </ACardEffect>
+                  <!-- Set self to Autocratic Gov/Faction -->
+                  <!-- Do this AFTER finding all Allies, don't want to set first, Declare War, lose allies, not able to find them -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveSpecialization</EffectType>
+                     <Payload>RESTRICTED</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AssignSpecialization</EffectType>
+                     <Payload>GOVAUTOCRATIC</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <!-- Everyone Else (even people that later adopt Autocratic Government) -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE8_VICTORYGENERALS,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Permanent 10% Regional Efficiency (all regions ?) -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-NONAUTOCRAT_BUFF</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_CAPITAL-NONAUTOCRAT_BUFF,TECHAGE8_VICTORYGENERALS-NONAUTOCRAT_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-NONAUTOCRAT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiency,MUL,1.1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-JOINAUTOCRATICFACTIONRECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Join Autocratic Faction -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveSpecialization</EffectType>
+                     <Payload>RESTRICTED</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AssignSpecialization</EffectType>
+                     <Payload>GOVAUTOCRATIC</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-JOINAUTOCRATICFACTIONRECV-Choice-0-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <!-- Decline / Declare War -->
+                  <ACardEffect>
+                     <EffectType>CE_DiplomaticRelationship</EffectType>
+                     <Payload>DR_War,{CurrentPlayer}</Payload>
+                     <PayloadParam>IsJustifiedWar:true</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>DefaultChoice:1</Tag>
+               <Tag>MarkChoiceAsAccept:0</Tag>
+               <Tag>MarkChoiceAsDecline:1</Tag>
+               <Tag>AIResponseWeights-0:AIA_Compliant=10,AIA_Fear=10,AIA_Friendship=10</Tag>
+               <Tag>AIResponseWeights-1:AIA_Anger=5,AIA_Warmonger=5</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-HELP_TURN_8</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Variants</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- ________________INNOVATION__________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-VICTORYGENERALS-INDOCTRINATION</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-INDOCTRINATION_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_SCHOOLDISTRICT</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_SCHOOLDISTRICT-INDOCTRINATION,TECHAGE8_VICTORYGENERALS-INDOCTRINATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_SCHOOLDISTRICT-INDOCTRINATION_BUILDHELPER,ResCityIdeology</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-INDOCTRINATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,4</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-VICTORYGENERALS-WARBROADCAST</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnPlayerBattleWon-WARBROADCAST,TECHAGE8_VICTORYGENERALS-WARBROADCAST_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-WARBROADCAST_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>2</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,4</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddDurationToTooltip</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- ___________________CHAOS____________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-VICTORYGENERALS-REBELS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_REBEL_LVL_8</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:3,SpawnRadius:4,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <ExtraTargetParam>TileClear,TileNotSettlement</ExtraTargetParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>CHAOS-VICTORYGENERALS-PARTYSPLIT</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,9</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-PARTYSPLIT_CITYBUFF</Payload>
+                     <Target>ENTTAG,Capital</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE8_VICTORYGENERALS-PARTYSPLIT_CITYBUFF</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE8_VICTORYGENERALS-PARTYSPLIT_CITYBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>UI/Icons/ResChaos-ICON</CardSpriteName>
+         <Duration>5</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityIdeology,MUL,0.5</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddDurationToTooltip</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- ____________________________________________ -->
+<!-- __________________BARBARIANS________________ -->
+<!-- ____________________________________________ -->
+
+
+<!-- ____________________________________________ -->
+<!-- __________________EXPLORATION_______________ -->
+<!-- ____________________________________________ -->
+
+
+   </Definition>
+</ADeck>

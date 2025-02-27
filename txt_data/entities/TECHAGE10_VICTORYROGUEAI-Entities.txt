@@ -1,0 +1,815 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_CORRUPTEDCORE</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_CORRUPTEDCORE</Data>
+         <Data>UseAction-100,UNITACTIONS-CORRUPTED_REPAIR</Data>
+         <Data>StatAlignmentDecayValue,6</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>Overlay</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>DestroyOverlayWithImprovement</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BlockTileWorkers</Tag>
+         <Tag>HasAlignmentDecay</Tag>
+         <Tag>CorruptedCore</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+   
+   <EntityInfo>
+      <ID>B_SANITATIONBOTS</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>RegionalEfficiencyResCitySanitation,1.5</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+   </EntityInfo>
+   <EntityInfo>
+      <ID>B_WORKERBOTS</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE10_VICTORYROGUEAI-WORKERBOTS_BUILDTRIGGER</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+   </EntityInfo>
+   <EntityInfo>
+      <ID>B_CONSTRUCTIONBOTS</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>RegionalEfficiencyResCityProduction,1.5</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+   </EntityInfo>
+   
+   <EntityInfo>
+      <ID>B_AICOREFIREWALL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>StatAlignmentDecayValue,-5</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>HasAlignmentDecay</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_AIDISRUPTORWALL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>ResCityPowerRequired,4</Data>
+         <Data>FortificationBonus,1.3</Data>
+         <Data>ResDomainExploration,10</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>UpgradeLine-Walls,7</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AIHint-Wall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_THECLOUD</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>RequiredRegionLevel,8</Data>
+         <Data>FilterAge,10</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE10_VICTORYROGUEAI-THECLOUD_BUILDTRIGGER</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DataLinkAction:PLAYER:CloudComputingCount,TECHAGE10_VICTORYROGUEAI-THECLOUD_BUFF</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TOWN SPEC -->
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_AIWAREHOUSE_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT</Data>
+         <Data>SpecLevel,1</Data>
+         <Data>CityBuildingDefenders-0,UNIT_NEOLUDDITE</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_AIWAREHOUSE_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>AITownSpecializationMatch-AiWarehouseTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_AIWAREHOUSE_2</ID>
+      <Import>B_TOWNSPEC_AIWAREHOUSE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_AIWAREHOUSE_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_AIWAREHOUSE_3</ID>
+      <Import>B_TOWNSPEC_AIWAREHOUSE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_AIWAREHOUSE_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_AIWAREHOUSE_4</ID>
+      <Import>B_TOWNSPEC_AIWAREHOUSE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_AIWAREHOUSE_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_AIWAREHOUSE_5</ID>
+      <Import>B_TOWNSPEC_AIWAREHOUSE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AICORE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,120</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AICORE</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityInformation,8</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>WorkableResKnowledge,2</Data>
+         <Data>StatAlignmentDecayValue,-6</Data>
+         <Data>AiWarehouseTownBonusValue,1</Data>
+         <Data>UpgradeLine-ComputerLab,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Computing</Tag>
+         <Tag>HasAlignmentDecay</Tag>
+         <Tag>AiCore</Tag>
+         <Tag>AIHint-AiCore</Tag>
+         <Tag>AiWarehouseTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BRAINCHIPEDUCATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BRAINCHIPEDUCATION</Data>
+         <Data>ResCityEducation,20</Data>
+         <Data>WorkableResCityEducation,20</Data>
+         <Data>UpgradeLine-PublicSchool,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>EducationBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TECHBUNKER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TECHBUNKER</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>WorkableConvertGoods-Computers-2-AIDisruptor,2</Data>
+         <Data>StatAlignmentDecayValue,-6</Data>
+         <Data>ImprovementSort,650</Data>
+         <Data>AiWarehouseTownBonusValue,1</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Computing</Tag>
+         <Tag>HasAlignmentDecay</Tag>
+         <Tag>AiWarehouseTownBonus</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CRYPTOMINE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CRYPTOMINE</Data>
+         <Data>ResCityPowerRequired,6</Data>
+         <Data>WorkableConvertGoods-Computers-2-CryptoCurrency,2</Data>
+         <Data>ImprovementSort,660</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Computing</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BRAINCOMPUTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BRAINCOMPUTER</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResSpecialists,4</Data>
+         <Data>WorkableResSpecialists,4</Data>
+         <Data>WorkableResKnowledge,2</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>UpgradeLine-LiterarySalon,3</Data>
+         <Data>ImprovementSort,793</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+   
+
+   <!-- Outpost Improvement -->
+   <EntityInfo>
+      <ID>B_TILEIMP_AIBEACON</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AIBEACON</Data>
+         <Data>CountLimit-Region,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>StandardOutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+         <Tag>AiCore</Tag>
+      </Tags>
+   </EntityInfo>
+   
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_ROBOTSOLDIER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Metalhead</Icon>
+      <Portrait>RobotSoldierPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatHealth,100</Data>
+         <Data>StatHealthMax,100</Data>
+         <Data>StatCommand,80</Data>
+         <Data>StatCommandMax,80</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,110</Data>
+         <Data>StatDefense,100</Data>
+         <!-- Tank Killer -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,2.0</Data>
+         <!-- Volley -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/RobotSoldier/Unit_RobotSoldier</Data>
+         <Data>SourceOverlayImageName,UI/Icons/ResInnovation-ICON</Data>
+         <Data>SourceOverlayTooltip,Game-Resource-InnovationPerTurn</Data>
+         <Data>NeutralSubtype,5</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-ROGUEAI_RAZEAICORE</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeProjectile</Tag>         
+         <Tag>RogueAI</Tag>
+         <Tag>NeutralCannotWander</Tag>
+         <Tag>NeutralCannotRaid</Tag>
+         <Tag>NeutralSpecialSeekTag:AiCore</Tag>
+         <Tag>NeutralSeekCanFindBuildings</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundBigLaser</Tag>
+         <Tag>ProjectileFiredSoundBigLaser</Tag>
+         <Tag>DamageTakenSoundMetalRobot</Tag>
+         <Tag>RoutedSoundRobot</Tag>
+         <!--<Tag>DestroyedSoundMachine</Tag>-->
+         <Tag>MemberDeadSoundRobot</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ROBOTSOLDIER_DEFENDER</ID>
+      <Import>UNIT_ROBOTSOLDIER</Import>
+      <Icon>UnitIcon_Metalhead</Icon>
+      <Portrait>RobotSoldierPortrait</Portrait>
+      <Tags>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_ROBOTSUBMARINE</ID>
+      <Import>UNIT_SUBMARINE_BASE</Import>
+      <Icon>UnitIcon_Metalhead</Icon>
+      <Portrait>RobotSubmarinePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatCommand,80</Data>
+         <Data>StatCommandMax,80</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,70</Data>
+         <Data>StatMovementMax,70</Data>
+         <Data>StatAttack,72</Data>
+         <Data>StatDefense,34</Data>
+         <Data>StatUnrestSuppression,0</Data>      
+         <!-- Submarine Ship -->
+         <Data>StatTargetPriority,100</Data>
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UseAction-51,NONE</Data>
+         <Data>UseAction-52,NONE</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Navy/RobotSubmarine/Unit_RobotSubmarine</Data>
+         <Data>NeutralSubtype,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RogueAI</Tag>
+         <Tag>NonNuclearSub</Tag>
+         <!-- 
+            There aren't valid water targets to raze, not going to add these:
+            <Tag>NeutralCannotWander</Tag>
+            <Tag>NeutralCannotRaid</Tag>
+            <Tag>NeutralSpecialSeekTag:AiCore</Tag>
+            <Tag>NeutralSeekCanFindBuildings</Tag>
+         -->
+         <Tag>AttackShip</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+
+        <!-- Sound Tags -->
+         <Tag>AttackBegunSoundSub</Tag>
+         <Tag>AttackSoundSub</Tag>
+         <Tag>ProjectileFiredSoundSub</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundSubs</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ROBOTDRONE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Metalhead</Icon>
+      <Portrait>RobotDronePortrait</Portrait>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,206</Data>
+         <Data>StatDefense,135</Data>
+         <!-- Bomber III -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,2.5</Data>
+         <Data>CombatMod-StatAttack-Target:+NavalTarget,2.5</Data>         
+         <Data>StatAirInterceptRange,0</Data> 
+         <Data>StatAirAttackRange,8</Data>
+         <Data>NeutralSubtype,5</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-JetFighter</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RogueAI</Tag>
+         <Tag>ActInBombingRound</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirInterceptionTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>CanAttackNavalTargets</Tag>         
+         <Tag>AirUnit</Tag>      
+         <Tag>AirBomber</Tag>         
+         <Tag>NoRiverCrossingPenalty</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirBomber</Tag>
+         <Tag>AttackSoundAirBomber</Tag>
+         <Tag>ProjectileFiredSoundAirBomber</Tag>
+         <Tag>DamageTakenSoundMetalRobot</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_NEOLUDDITE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>NeoLudditePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,285</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,30</Data>
+         <Data>StatCommandMax,30</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,33</Data>
+         <Data>StatDefense,47</Data>
+         <!-- Tank Killer -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,2.0</Data>
+         <!-- Volley -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>   
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.5</Data>
+         <!--<Data>UpgradeLine-Guard,7</Data>-->
+         <Data>FilterAge,10</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_10</Data>
+         <Data>LeaderPromotionCost,140</Data>
+         <Data>StatTargetPriority,200</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/NeoLuddite/Unit_NeoLuddite</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>         
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>           
+         <!-- AI Hints -->
+         <Tag>AIHint-Guard</Tag>
+         <Tag>AIHint-NeoLuddite</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_EMPRIFLE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Rifle</Icon>
+      <Portrait>EMPRiflePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,450</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,44</Data>
+         <Data>StatDefense,63</Data>
+         <!-- Tank Killer -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,2.0</Data>
+         <!-- Volley -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.0</Data>
+         <Data>FilterAge,10</Data>
+         <Data>UpgradeLine-Infantry,11</Data>
+         <!-- Fold-In Spartans & Hopelite to Infantry -->
+         <Data>UpgradeLine-Spartan,5</Data>
+         <!-- Fold in the Samurai & Naginata -->
+         <Data>UpgradeLine-Samurai,4</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_10</Data>
+         <Data>LeaderPromotionCost,123</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/EMPRifle/Unit_EMPRifle</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundGun</Tag>
+		   <Tag>AttackSoundGun</Tag>
+		   <Tag>ProjectileFiredSoundLaserMulti</Tag>
+		   <Tag>DamageTakenSoundLine</Tag>
+		   <Tag>RoutedSoundLine</Tag>
+		   <!--<Tag>DestroyedSoundLine</Tag>-->
+		   <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>  
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-EMP</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_EMPTANK</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Tread</Icon>
+      <Portrait>EMPTankPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,475</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data> 
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,50</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>StatAttack,54</Data>
+         <Data>StatDefense,44</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.0</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-TankAI</Data>
+         <Data>UpgradeLine-Shock,11</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,6</Data>
+         <!-- Fold-In Old Guard Cav to Shock Line -->
+         <Data>UpgradeLine-OldGuardCav,4</Data>
+         <Data>FilterAge,10</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_10</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/EmpTank/Unit_EmpTank</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeArmor</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundLaserCannon</Tag>
+         <Tag>AttackSoundLaserCannon</Tag>
+         <Tag>ProjectileFiredSoundLaserCannon</Tag>
+         <Tag>DamageTakenSoundMetalTank</Tag>
+         <Tag>RoutedSoundTank</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-EMP</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- Water Movement -->
+   <EntityInfo>
+      <ID>UNIT_EMPDESTROYER</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_ModernShip</Icon>
+      <Portrait>EMPDestroyerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,450</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,80</Data>
+         <Data>StatMovementMax,80</Data>
+         <Data>StatAttack,44</Data>
+         <Data>StatDefense,63</Data>
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.5</Data>
+         <!-- Warship -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+AttackShip,2.0</Data>
+         <Data>UpgradeLine-Warship,8</Data>
+         <!-- Fold-In Knarr to Warship Line -->
+         <Data>UpgradeLine-Knarr,5</Data>
+         <!-- Fold-In Galleon to Warship Line -->
+         <Data>UpgradeLine-Galleon,4</Data>
+         <Data>FilterAge,9</Data>
+         <Data>AIBuildWeight,0.1</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/EMPDestroyer/Unit_EMPDestroyer</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>Warship</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Warship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundLaserCannon</Tag>
+         <Tag>AttackSoundLaserCannon</Tag>
+         <Tag>ProjectileFiredSoundLaserCannon</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundShips</Tag>     
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-EMP</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Air Force -->
+   <EntityInfo>
+      <ID>UNIT_EMPFIGHTER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_JetFighter</Icon>
+      <Portrait>EMPFighterPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,450</Data>
+         <Data>Upkeep-ResCoin,16</Data>           
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,172</Data>
+         <Data>StatDefense,204</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <!-- Fighter III -->
+         <Data>CombatMod-StatAttack-Target:+AirUnit,3.0</Data>
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.5</Data>
+         <Data>StatAirInterceptRange,7</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Fighter,6</Data>
+         <Data>FilterAge,10</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-JetFighter</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Air/EmpFighter/Unit_EmpFighter</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>ActInAirCombatRounds</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirToAirTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>AirUnit</Tag>         
+         <Tag>NoRiverCrossingPenalty</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirJet</Tag>         
+         <Tag>ProjectileFiredSoundAirMissile</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-EMP</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_EMPBOMBER</ID>
+      <Import>UNIT_BOMBER_BASE</Import>
+      <Icon>UnitIcon_StealthBomber</Icon>
+      <Portrait>EMPBomberPortrait</Portrait>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,475</Data>
+         <Data>Upkeep-ResCoin,16</Data>           
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatAttack,206</Data>
+         <Data>StatDefense,135</Data>
+         <!-- Bomber Stats -->
+         <Data>StatAirAttackRange,8</Data>
+         <Data>StatStrategicPower,206</Data>
+         <!-- Bomber III -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,2.5</Data>
+         <Data>CombatMod-StatAttack-Target:+NavalTarget,2.5</Data>
+         <!-- Anti-Robot -->
+         <Data>CombatMod-StatAttack-Target:+RogueAI,2.5</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Bomber,4</Data>
+         <Data>FilterAge,10</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-JetBomber</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Air/EmpBomber/Unit_EmpBomber</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirJet</Tag>
+         <Tag>AttackSoundAirBomber</Tag>
+         <Tag>ProjectileFiredSoundAirBomber</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-EMP</Tag>
+      </Tags>
+      <CombatViewerData projectileSpeed="50" projectileHeight="0">
+      </CombatViewerData>
+   </EntityInfo>
+   
+</EntityInfoList>

@@ -1,0 +1,321 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+<!-- CAP CITY BUILDINGS -->
+
+   <!-- Special version of Camp/Field/Area that gives Combat XP to ALL unit types -->
+   <!-- Outside of upgradeline, gives permanent +10 XP instead of folding into the line and becoming normalized -->
+   <EntityInfo>
+      <ID>B_PROVINGGROUND</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,100</Data>
+         <Data>TriggerOnUnitBuilt,UNITACTIONS-PROVINGGROUND_ONUNITBUILDTRIGGER</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainingCamp</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Replaces Stone Walls/Towers with 80% as good versions -->
+   <EntityInfo>
+      <ID>B_SKULLWALLS</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,70</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>UpgradeLine-Walls,2</Data>
+         <Data>CityBuildingDefenders-0,UNIT_SKULLFORTIFICATION</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>AIHint-Wall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_SKULLTOWERS</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>TriggerOnSelfBuild,TECHAGE1-LOOKOUT_ONSELFBUILDTRIGGER</Data>
+         <Data>ConstructionCost-ResCityProduction,90</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>FilterAge,3</Data>
+         <Data>UpgradeLine-Towers,2</Data>
+         <Data>CityBuildingDefenders-0,UNIT_SKULLTOWER</Data>
+         <Data>CityAction-0,TILEACTIONS-CITY_ATTACK</Data>
+         <Data>CityAttackStrength,40</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>HasCityAttack</Tag>
+         <Tag>AIHint-Tower</Tag>
+      </Tags>
+   </EntityInfo>
+   
+   <!-- Replaces Library with lesser version (can't go less than 1 knowledge, increased cost to build) -->
+   <EntityInfo>
+      <ID>B_SCRIPTORIUM</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,120</Data>
+         <Data>ResKnowledge,1</Data>
+         <Data>UpgradeLine-Library,1</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MASSGRAVE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,13</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MASSGRAVE</Data>
+         <Data>ResCitySanitation,4</Data>
+         <Data>WorkableResCitySanitation,2</Data>
+         <Data>UpgradeLine-Trash,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>Trash</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SALTHOUSE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,22</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SALTHOUSE</Data>
+         <Data>WorkableConvertGoods-Meat-2-Saltedmeat,2</Data>
+         <Data>UpgradeLine-CannedFood,1</Data>
+         <Data>ImprovementSort,211</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MILITARYCAMP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,18</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MILITARYCAMP</Data>
+         <Data>ResCityHousing,15</Data>
+         <Data>GoodsWaste,1</Data>
+         <Data>WorkableResDomainWarfare,1</Data>
+         <Data>UpgradeLine-Apartment,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Replaces Scribe with War XP version -->
+   <EntityInfo>
+      <ID>B_TILEIMP_WARCOUNCIL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,30</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_WARCOUNCIL</Data>
+         <Data>WorkableConvertGoods-Paper-1-Manuscripts,1</Data>
+         <Data>WorkableResDomainWarfare,1</Data>
+         <Data>UpgradeLine-PrintingPress,1</Data>
+         <Data>ImprovementSort,750</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>Scribes</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ARENA</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,22</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ARENA</Data>
+         <Data>ResCoin,3</Data>
+         <Data>StatUnrestSuppression,6</Data>
+         <Data>WorkableResDomainWarfare,1</Data>
+         <Data>WorkableResCoin,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>AIPhaseOutAge-4</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+   <!-- DEFAULT -->
+   
+   <!-- Line Unit upgrade, meat and potatoes of Blood Age -->
+   <EntityInfo>
+      <ID>UNIT_BERSERKER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Sword</Icon>
+      <Portrait>BerserkerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,20</Data> -->
+         <Data>ConstructionCost-ResCityProduction,40</Data>
+         <Data>Upkeep-ResCoin,1</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,999</Data>
+         <Data>StatCommandMax,999</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,10</Data>
+         <Data>StatDefense,12</Data>
+         <!-- Berserker Charge -->
+         <Data>StatOrgDamageFactor,1.5</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-Assault,1</Data>
+         <Data>FilterAge,3</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_3</Data>
+         <Data>LeaderPromotionCost,20</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Berserker/Unit_Berserker</Data>
+         <Data>ObsoleteAge,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>EncampmentBuff</Tag>
+         <Tag>MilitaryBaseBuff</Tag>
+         <Tag>PreGunpowder</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+   
+   <!-- Defense Units -->
+   <EntityInfo>
+      <ID>UNIT_SKULLFORTIFICATION</ID>
+      <Import>UNIT_WALL_BASE</Import>
+      <Portrait>SkullWallPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,18</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Defenses/SkullWalls/Unit_SkullWalls</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SKULLTOWER</ID>
+      <Import>UNIT_TOWER_BASE</Import>
+      <Portrait>SkullTowerPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,10</Data>
+         <Data>StatDefense,12</Data>
+         <Data>StatOrgDamageFactor,2.0</Data>
+         <!-- Fortifications -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2</Data>
+         <Data>CombatMod-StatDefense-Target:+TypeCavalry,2</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Defenses/SkullTower/Unit_SkullTower</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+         <Tag>AttackBegunSoundBow</Tag>
+         <Tag>ProjectileFiredSoundBow</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Leader -->
+   <EntityInfo>
+      <ID>UNIT_WARLEADER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_HornedHelmLeader</Icon>
+      <Portrait>BarbarianWarlordPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,22</Data>
+         <Data>StatDefense,22</Data>
+         <Data>StatTactics,3</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>LeaderRetireValue,20</Data>
+         <Data>UseAction-201,UNITACTIONS-LEADER_RETIRE</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_BarbarianWarlord</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>Leader</Tag>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE3</Tag>
+         <Tag>PreGunpowder</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge3</Tag> -->
+         <Tag>TagAILimitType-Leader</Tag>
+		 <!-- Sound Tags -->
+		  <Tag>AttackSoundLineMetal</Tag>
+		  <Tag>DamageTakenSoundLine</Tag>
+		  <Tag>RoutedSoundLine</Tag>
+		  <!--<Tag>DestroyedSoundLine</Tag>-->
+		  <Tag>MemberDeadSoundLine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+</EntityInfoList>

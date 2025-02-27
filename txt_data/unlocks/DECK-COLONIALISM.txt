@@ -1,0 +1,742 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>COLONIALISM</DeckName>
+
+   <!--
+
+      Tier 1
+         Placer Claim: A CP to place a Colony outpost where any of your units are currently located
+
+         Eminent Domain: A CP to convert a neutral town into a vassal without fighting it
+
+
+      Tier 2
+         Overseas Colonization: Increased move speed for land units transporting over water + 2 Settlers spawn on your homeland capital.  [Generally oversea expansion is thought of as the difference between colonialism and expansionism]
+
+         Free Trade: Can have trade relations with everyone, regardless of war / diplomatic status, and all Colony outposts give +2 Culture.
+
+         Trade Factory: Outpost Improvement … take the double-value Trade Outpost out of mainline and make it exclusive here.
+
+
+      Tier 3
+         Macroeconomics: Increases max vassal prosperity cap by 50% + 2 Merchants spawn on your homeland capital.
+
+         Demand Fealty: A CP that boosts Prosperity in all Vassals for 4 turns. Can over-cap prosperity.
+
+
+      Tier 4
+         Quest: Have 6 Vassals.
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>COLONIALISM-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>COLONIALISM,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:6</Tag>
+               <Tag>DomainResource:ResDomainDiplomacy</Tag>
+               <Tag>AIHint-Colonialism</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+      <!-- Placer Claim: A CP to place a Colony outpost where any of your units are currently located -->
+
+      <ACard>
+         <ID>COLONIALISM-PLACERCLAIM</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyColonialismSpawnOutpost,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-SPAWNOUTPOST_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TILE,EMPTY_OR_HIDDEN</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+LandMovement</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>OUTPOST,B_TILEIMP_COLONY</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   
+   <!-- ________________________________________________ -->
+
+
+      <!-- Overseas Colonization: Increased move speed for land units transporting over water + 2 Settlers spawn on your homeland capital. -->
+
+      <ACard>
+         <ID>COLONIALISM-OVERSEASCOLONIZATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                   <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-OVERSEASCOLONIZATION_STATBUFF</Payload>
+                     <Target>ENTTAG,+WaterTransport</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+WaterTransport-OVERSEASCOLONIZATION,COLONIALISM-OVERSEASCOLONIZATION_STATBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SETTLER</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-OVERSEASCOLONIZATION_STATBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatMovementMax,ADD,20</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RevealRadius,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________TIER_2_____________________ -->
+
+      <!-- Macroeconomics: Increases max vassal prosperity cap by 50% + spawn a Merchant in your homeland capital. -->
+
+      <ACard>
+         <ID>COLONIALISM-MACROECONOMICS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#VASSAL_PROSPERITY_MAX,ADD,0.75</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCHANT</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCHANT</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <!-- ________________________________________________ -->
+
+      <!-- Free Trade: Can have trade relations with everyone, regardless of war / diplomatic status, and all Colony outposts give +2 Culture -->
+
+      <ACard>
+         <ID>COLONIALISM-FREETRADE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Trade Relations effect -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TradeImportsIgnoreDiplomacy,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <!-- Colony +Culture buff -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-FREETRADE_OUTPOSTBUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_COLONY</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_COLONY-FREETRADE,COLONIALISM-FREETRADE_OUTPOSTBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-FREETRADE_OUTPOSTBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- ________________________________________________ -->
+
+      <!-- Trade Factory: Outpost Improvement … take the double-value Trade Outpost out of mainline and make it exclusive here.  -->
+
+      <ACard>
+         <ID>COLONIALISM-TRADEFACTORY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRADEFACTORY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+
+      <!-- Eminent Domain: A one-time Ideal that instantly converts some remaining minor nations with Vassals
+                           If that's not possible, give settlers instead. -->
+
+      <ACard>
+         <ID>COLONIALISM-EMINENTDOMAIN</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyColonialismEminentDomain,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect> -->
+
+                  <!-- x3 Convert Minors into Vassals, or give Settlers if not. -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_Tooltip</EffectType>
+                        <Payload>COLONIALISM-EMINENTDOMAIN-Tooltip</Payload>
+                        <PayloadParam>FormatParam:3</PayloadParam> <!-- How many of the convert effects there are -->
+                     </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT_INTEGRATION</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <!-- If no Minor Nation, spawn a Settler -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-NeutralTown,LTE,0</Req>
+                     <Target>LOC,RADIUSAROUNDPLAYERCITIES,40</Target>
+                        <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_SETTLER</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                     <UsePlainFormat>true</UsePlainFormat>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- If at least 1 minor nation exists, then immediately convert it to your control -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-NeutralTown,GTE,1</Req>
+                     <Target>LOC,RADIUSAROUNDPLAYERCITIES,40</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT_MINOR</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-NeutralTown</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT_MINOR</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>CHECKINTEGRATION,SUCCESS</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <!-- <Target>ENTTAGATLOC,ALLPLAYERS-+NeutralTown,EXTERNALTARGET</Target> -->
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PeacefulAnnexation,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-CLAIMNEUTRALCAPITAL_EFFECT_INTEGRATION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>ISVASSAL,TRUE</Req>
+                     <Target>LOC,EXECLOC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Target>ENT,EXEC</Target>
+                     <Payload>StatVassalIntegration,ADD,10</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- ________________________________________________ -->
+
+      <!-- Demand Fealty: A CP that boosts Prosperity in all Vassals for 4 turns. Can over-cap prosperity. -->
+
+      <ACard>
+         <ID>COLONIALISM-DEMANDFEALTY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyColonialismDemandFealty,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-DEMANDFEALTY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatVassalCount,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-DEMANDFEALTY_BUFF_2</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-DEMANDFEALTY_BUFF_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>4</Duration>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CityIsVassal,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatVassalProsperity,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________LEGACY_____________________ -->
+
+      <!-- QUEST: Have 6 Vassals. -->
+
+      <ACard>
+         <ID>COLONIALISM-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatVassalCount,GTE,6</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainDiplomacy,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>COLONIALISM-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-COLONIALISM_LEGACY_BUFF,COLONIALISM-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>COLONIALISM-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-COLONIALISM-TEATAX</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Tea-ResCoin,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Tea-ResDomainWarfare,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Tea-ResChaos,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

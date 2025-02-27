@@ -1,0 +1,550 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_DS_HUSBANDRY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityFood,10</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AquaticBuilding</Tag>
+         <Tag>AIHint-DSHusbandry</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_DS_SURFACEBUOY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>StatImportSlotCount,2</Data>
+         <Data>StatExportSlotCount,2</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AquaticBuilding</Tag>
+         <Tag>AIHint-DSSurfaceBuoy</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_DS_COMMANDCENTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>StatBonusRegionLevel,1</Data>
+         <Data>ResDomainGovernment,1</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AquaticBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_DS_SPECIALOPERATIONSCENTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResKnowledge,2</Data>
+         <Data>ResSpecialists,2</Data>
+         <Data>ResCulture,2</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AquaticBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_STATEMEDIA</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResCityIdeology,8</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BIODOME</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,60</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BIODOME</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityHousing,5</Data>
+         <Data>ResCityIdeology,5</Data>
+         <Data>WorkableResCoin,10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>AIHint-Biodome</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_HYDROTHERMALGENERATOR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_HYDROTHERMALGENERATOR</Data>
+         <Data>WorkableGoodsPower,1</Data>
+         <Data>ResCityPower,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTile-MT_HYDROTHERMALVENT</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+         <Tag>AIHint-HydroThermalGenerator</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CORALHARVESTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CORALHARVESTER</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_CORAL,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>MineTownBonusValue,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,910</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>MineTownBonus</Tag>
+         <Tag>BuildRequirementTile-MT_CORAL</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>AIHint-CoralHarvester</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_FABLAB</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_FABLAB</Data>
+         <Data>WorkableConvertGoods-BrainCoral-1-Harderware,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,911</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TRAININGCENTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TRAININGCENTER</Data>
+         <Data>WorkableConvertGoods-BrainCoral-1-Diploma,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,912</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ARTHOUSE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ARTHOUSE</Data>
+         <Data>WorkableConvertGoods-BrainCoral-1-Painting,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,913</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_RANDDCENTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_RANDDCENTER</Data>
+         <Data>WorkableConvertGoods-BrainCoral-1-Breakthrough,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,914</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BIOMEDICALCENTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BIOMEDICALCENTER</Data>
+         <Data>WorkableConvertGoods-BrainCoral-1-AResearchPaper,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,915</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>ImprovementCategory-Special</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SPONSOREDHOUSING</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SPONSOREDHOUSING</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityHousing,40</Data>
+         <Data>ResCitySanitation,24</Data>
+         <Data>StatUnrestSuppression,4</Data>
+         <Data>WorkableResCityIdeology,2</Data>
+         <Data>UpgradeLine-Apartment,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_REGIONALCUISINE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_REGIONALCUISINE</Data>
+         <Data>WorkableConvertGoods-+CanMakeDelicacies-3-Delicacies,3</Data>
+         <Data>WorkableResCityIdeology,2</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-Kitchen,3</Data>
+         <Data>ImprovementSort,151</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_INDUSTRIALBAKERY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_INDUSTRIALBAKERY</Data>
+         <Data>WorkableConvertGoods-Flour-4-Bread,4</Data>
+         <Data>WorkableResCityIdeology,2</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>UpgradeLine-Oven,3</Data>
+         <Data>ImprovementSort,023</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BEAUTIFICATIONCENTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,72</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BEAUTIFICATIONCENTER</Data>
+         <Data>ResCityLuxury,8</Data>
+         <Data>ResCityIdeology,2</Data>
+         <Data>ResCitySanitation,12</Data>
+         <Data>WorkableResCitySanitation,12</Data>
+         <Data>WorkableConvertGoods-+IsWaste-2-RecycledMaterial,2</Data>
+         <Data>UpgradeLine-Trash,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Trash</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BLASTQUARRY_WATER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BLASTQUARRY_WATER</Data>
+         <Data>WorkableGoodsLimestone,4</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>MineTownBonusValue,1</Data>
+         <Data>ImprovementSort,801</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTerrain-TT_DEEPWATER</Tag>
+         <Tag>MineTownBonus</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Projects -->
+
+   <EntityInfo>
+      <ID>DS_PROJECT_INNOVATION</ID>
+      <Portrait>DS_PROJECT_INNOVATION-ICON</Portrait>
+      <StartingData>
+         <Data>Generate-ResInnovationPerTurnCost,10</Data>
+         <Data>Generate-ResInnovationPerTurn,1</Data>
+         <Data>FilterAge,1</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AquaticProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>DS_PROJECT_KNOWLEDGE</ID>
+      <Portrait>DS_PROJECT_KNOWLEDGE-ICON</Portrait>
+      <StartingData>
+         <Data>Generate-ResKnowledgeCost,8</Data>
+         <Data>Generate-ResKnowledge,1</Data>
+         <Data>FilterAge,1</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AquaticProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_OCEANSETTLER</ID>
+      <Import>UNIT_SETTLER</Import>
+      <Icon>UnitIcon_FlagWaves</Icon>
+      <Portrait>OceanSettlerPortrait</Portrait>
+      <StartingData>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>UseAction-51,NONE</Data>
+         <Data>UseAction-52,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-OCEANSETTLER_BUILDOCEANCITY</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-OCEANSETTLER_KILLED</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UpgradeResource,ResDomainExploration</Data>         
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable_Navy/OceanSettler/Unit_OceanSettler</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ScalingStats</Tag>
+         <Tag>WaterMovement</Tag>
+         <Tag>NavalTarget</Tag>         
+         <!-- Settler -->
+         <Tag>TypeSettler</Tag>
+         <Tag>AIHint-DislikesCombat:1</Tag>
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>WeightUnitByCityCount</Tag>
+         <Tag>TagAIBehavior-BT_Settle</Tag>
+         <Tag>NonStacking</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineShipRamMetal</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>AttackBegunSoundEngineBoat</Tag>
+         <Tag>AttackOverSoundEngineBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundShips</Tag>         
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <!--<Tag>MemberDeadSoundLine</Tag>-->
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_NAVALRAIDER</ID>
+      <Import>UNIT_SUBMARINE_BASE</Import>
+      <Icon>UnitIcon_PirateFlag</Icon>
+      <Portrait>NavalRaiderPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <!-- Intentionally cheaper upkeep -->
+         <Data>Upkeep-ResCoin,6</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,70</Data>
+         <Data>StatMovementMax,70</Data>
+         <Data>StatAttack,54</Data>
+         <Data>StatDefense,26</Data>
+         <Data>AIBuildWeight,0.1</Data>         
+         <!-- Sumarine Ship -->
+         <Data>StatBarragePower,25</Data>
+         <Data>StatStrategicPower,50</Data>
+         <Data>StatStrategicTargets,4</Data>
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UpgradeLine-Antiship,3</Data>
+         <Data>FilterAge,8</Data>
+         <Data>ObsoleteAge,10</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Navy/NavalRaider/Unit_NavalRaider</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>NonNuclearSub</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundShips</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+   <EntityInfo>
+      <ID>UNIT_PROPINTERCEPTOR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_PropFighter</Icon>
+      <Portrait>PropInterceptorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,8</Data>       
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,84</Data>
+         <Data>StatDefense,69</Data>
+         <!-- Fighter II -->
+         <Data>CombatMod-StatAttack-Target:+AirUnit,2.5</Data>
+         <Data>StatAirInterceptRange,6</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Fighter,2</Data>
+         <Data>FilterAge,8</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-PropellorFighter</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Air/PropInterceptor/Unit_PropInterceptor</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>ActInAirCombatRounds</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirToAirTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>AirUnit</Tag>
+         <Tag>NoRiverCrossingPenalty</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirPropeller</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundAirFighter</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_BATTLESHIP_DEFENDER</ID>
+      <Import>UNIT_BATTLESHIP</Import>
+      <Icon>UnitIcon_ModernShip</Icon>
+      <Portrait>BattleshipPortrait</Portrait>
+      <Tags>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+      </Tags>
+   </EntityInfo>
+
+</EntityInfoList>

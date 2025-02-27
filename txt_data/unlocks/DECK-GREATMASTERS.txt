@@ -1,0 +1,591 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>GREATMASTERS</DeckName>
+
+<!-- _____________________NOTES_______________________ -->
+
+   <!--
+      Content
+
+      General Artists
+      Artists, in general, are a consumable Culture Power.
+
+      You can spawn an Artist Unit using the Arts Domain DP (this should be somewhat costly).
+      You can deploy this Artist in any Region you own (one per Region), where it will generate one Work of Art Good per turn.
+
+      Work of Art is worth some Luxury.
+
+      Artists have a Unit Ability called “Cultural Movement.”  Using this Unit Ability consumes the Artist Unit and fills the Culture Power meter to 100%.
+
+      Why do we do this instead of just having an Arts Direct that is “fill CP meter to 100%”?
+      The Artist approach lets you store them off for emergency use if you like and parking them for Luxury via Works of Art is worthwhile.
+
+      
+      Master Artists
+      This National Spirit allows the player to upgrade Artists into Master Artists.
+      Artists upgrade to Master Artists like other units (Warband -> Spear) but have an Arts XP cost.
+
+      Master Artists have a “Recruit Apprentice” Unit ability.
+      This ability can be used once in any Region that is not their own, it generates an Apprentice.
+      Only one Apprentice per Region.
+
+      Master Artists, when deployed in a Region, make Masterpiece Goods.
+
+      Masterpiece Goods are a better version of Work of Art; they consume for Luxury and Arts XP.
+
+
+      Apprentices
+      An Apprentice, walked back to one of your own Regions, will make Work of Art, like an Artist.
+      Apprentices do not have the “Cultural Movement”, like Artists and Master Artists.
+      Apprentices can be upgraded into Artists (and then Master Artists).
+
+
+
+      Tier 1
+      Master Artist: Allows Artists to be upgraded into Master Artists.  Spawns one Master Artist.  (Allows access to Apprentice recruiting.)
+
+
+      Tier 2
+      Art Market: Work of Art and Masterpiece Goods consume for Wealth too.
+
+      Patronage: Increases the Luxury value of Work of Art and Masterpiece Goods.
+
+      Art Education: Replaces “Immigration” Arts DP, an improved version of this DP (theme is, people are attracted for the art generated in the city or to try to get training, if that helps inspire a better term).
+
+
+      Tier 3
+      Arts Guildhouse: Unlocks the Arts Guildhouse Cap Building, provides +Culture, +Arts XP.
+
+      Public Exhibition: Replaces “Reduce Unrest” Arts DP, an improved version of this DP.
+
+      Tier 4
+      Golden Age: Culture Power, replaces Local Reforms with a Nation-level version of that CP.
+
+
+      National Spirit
+      Quest: Have 3 Masters.
+
+   -->
+
+   <Definition>
+
+<!-- _____________________AUTOMATIC_______________________ -->
+
+      <ACard>
+         <ID>GREATMASTERS-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GREATMASTERS-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>GREATMASTERS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsSpawnArtist,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ARTIST</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>VisualizeRegionStatus-GreatMasterApprenticeGenerated,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:6</Tag>
+               <Tag>DomainResource:ResDomainArts</Tag>
+               <Tag>AIHint-GreatMasters</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>GREATMASTERS-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________Master Artist______________________ -->
+
+      <!-- Master Artist: Allows Artists to be upgraded into Master Artists.  Spawns one Master Artist.  (Allows access to Apprentice recruiting.) -->
+
+      <ACard>
+         <ID>GREATMASTERS-MASTERARTIST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MASTERARTIST</Payload>
+                     <Target>LOC,ENTTYPELOC,B_HOMELAND</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_MASTERARTIST</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_APPRENTICE</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GREATMASTERS-MASTERARTIST_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_ARTIST</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_ARTIST-MASTERARTIST,GREATMASTERS-MASTERARTIST_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GREATMASTERS-MASTERARTIST_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-102,UNITACTIONS-GREATMASTERS-UPGRADE_TO_MASTER</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________Art Market______________________ -->
+
+      <!-- Art Market: Work of Art and Masterpiece Goods consume for Wealth too. -->
+
+      <ACard>
+         <ID>GREATMASTERS-ARTMARKET</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-ArtWork-ResCoin,ADD,7</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Masterpiece-ResCoin,ADD,12</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________Patronage______________________ -->
+
+      <!-- Patronage: Increases the Luxury value of Work of Art and Masterpiece Goods. -->
+
+      <ACard>
+         <ID>GREATMASTERS-PATRONAGE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-ArtWork-ResCityLuxury,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Masterpiece-ResCityLuxury,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________Guild Training______________________ -->
+
+      <!-- Guild Training: Replaces “Immigration” Arts DP, an improved version of this DP-->
+
+      <ACard>
+         <ID>GREATMASTERS-GUILD_TRAINING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsImmigration,SET,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsGuildTraining,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________Conservatory_________________________ -->
+
+      <!-- Conservatory: Unlocks the Conservatory Cap Building, provides +Culture, +Arts XP. -->
+
+      <ACard>
+         <ID>GREATMASTERS-CONSERVATORY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CONSERVATORY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <!-- _____________________Public Exhibition________________________ -->
+
+      <!-- Public Exhibition: Replaces “Reduce Unrest” Arts DP, an improved version of this DP. -->
+
+      <ACard>
+         <ID>GREATMASTERS-PUBLICEXHIBITION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsReduceUnrest,SET,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsPublicExhibition,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_4_____________________ -->
+
+   <!-- _____________________Golden Age________________________ -->
+
+      <!-- Golden Age: Culture Power, replaces Local Reforms with a Nation-level version of that CP. -->
+
+      <ACard>
+         <ID>GREATMASTERS-GOLDENAGE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentBuffRegion,SET,0</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsGoldenAge,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GREATMASTERS-GOLDENAGE_TRIGGER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GREATMASTERS-GOLDENAGE_EFFECT</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>GREATMASTERS-GOLDENAGE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>8</Duration>
+         <CardSpriteName>UI/Icons/Culture Powers/GOLDEN_AGE-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiency,MUL,1.25</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________QUEST________________________ -->
+
+      <!-- Quest: Have 3 Masters -->
+
+      <ACard>
+         <ID>GREATMASTERS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>UNIT_MASTERARTIST,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainArts,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>GREATMASTERS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-GREATMASTERS_LEGACY_BUFF,GREATMASTERS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>GREATMASTERS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-GREATMASTERS-EARLYIMPRESSIONISM</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-ArtWork-ResCulture,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Masterpiece-ResCulture,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+
+</ADeck>

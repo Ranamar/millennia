@@ -1,0 +1,434 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE7_CRISISOLDONES</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Force AGE OF OLDONES to other players -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE7_CRISISOLDONES-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISOLDONES-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <!--
+                     <ACardEffect>
+                        <EffectType>CE_AddCardsByTag</EffectType>
+                        <Payload>TECHAGE7_CRISISOLDONES,+AddToInnovationDeck</Payload>
+                        <Target>INNOVATION</Target>
+                     </ACardEffect>
+
+                     <ACardEffect>
+                        <EffectType>CE_AddCardsByTag</EffectType>
+                        <Payload>TECHAGE7_CRISISOLDONES,+AddToChaosDeck</Payload>
+                        <Target>INNOVATION</Target>
+                     </ACardEffect>
+                  -->
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age7OldOnesUnlocks</Payload>
+                  </ACardEffect>
+
+                                    
+                  <!-- Unit Infopedia activation -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_CULTIST</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_CULTISTLEADER</Payload>
+                     <ReverseOnPassive>false</ReverseOnPassive>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:7</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age7_OldOnes_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_VICTORYAGE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_FINALAGE</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_CULTISTUPRISING</Tag>
+               <Tag>MusicEra:3</Tag>
+               <Tag>UseAlternateAgePresentation</Tag>
+               </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- NEW TECHS -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-REPEATABLE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,100</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/GAT_CultureMeterFull-ICON,Tooltip:TECHAGE7_CRISISOLDONES-REPEATABLE-Proxy-Income</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE7_CRISISOLDONES-BASE</Tag>
+               <Tag>TechCostBase:600</Tag>
+               <Tag>TechRepeatable</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+      <!-- ________________AGE_ACTIVE__________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-OLDONE_CHARGING</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE6_CRISISHERESY-TECHAGE7_CRISISOLDONES_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CultistTracker,GTE,30</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <!-- Spawn Cultists adjacent to every Town +Town -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISOLDONES-OLDONE_CHARGINGCOMPLETE</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>CultistTracker,GTE,30</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <!-- Only HUMAN players should trigger Old Ones. -->
+                     <ReqType>CR_Player</ReqType>
+                     <Req>PlayerType,PT_Human</Req>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>OldOnesLockedIn,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-OLDONE_CHARGINGCOMPLETE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-OLDONES_CHARGING</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Spawn Cultists adjacent to every City, one per each 10 pop (min 1) -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_CITY</Payload>
+                     <Target>ENTTAG,+Capital</Target>
+                  </ACardEffect>
+                  <!-- Spawn Cultists adjacent to every Town +Town -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_TOWN</Payload>
+                     <Target>ENTTAG,+Town</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-OLDONES</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <!-- Bespoke Content Goes Here: -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISOLDONES-CULTIST_BUFF</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-Cultist</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Cultist-CULTIST,TECHAGE7_CRISISOLDONES-CULTIST_BUFF</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Spawn Cultists adjacent to every City, one per each 10 pop (min 1) -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_CITY</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+Capital</Target>
+                  </ACardEffect>
+                  <!-- Spawn Cultists adjacent to every Town +Town -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_TOWN</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+Town</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_CRISISOLDONES-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- other game rules -->
+                  <!-- Track Victory -->
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>TRACKELIMINATEDPLAYERS,TRUE</Payload>
+                     <PayloadParam>RequiredRemainingPlayerFrac:0.65</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-OLDONESVICTORYCHECK,TECHAGE7_CRISISOLDONES-CHECKFORVICTORY</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Old Ones Setter  -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE7_CRISISOLDONES,EQ,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareCultistUprising,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_FakeConvertUnits</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-+Cultist</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomacyLocked,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <!-- Everyone Else -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsAgeSetter-TECHAGE7_CRISISOLDONES,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DiplomaticRelationship</EffectType>
+                     <Payload>DR_War,{CurrentPlayer}</Payload>
+                     <Target>PLAYER,ALLPLAYERSBYGAMEDATA:IsAgeSetter-TECHAGE7_CRISISOLDONES</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Common effects -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#WAR_UNREST_PER_TURN,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyEnforcePeace,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <!-- <Tag>ForceEffectAsBuff</Tag> -->
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-CHECKFORVICTORY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE6_CRISISHERESY-TECHAGE7_CRISISOLDONES_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TotalOtherPopulationRatio,GTE,1.0</Req>
+                     <Target>PLAYER</Target>
+                     <ShowAsPercentage>true</ShowAsPercentage>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>TrackedEliminatedPlayers,GTE,[GAME:VictoryAgeRequiredEliminations]</Req>
+                     <Target>GAME</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_GameOver</EffectType>
+                     <Payload>VICTORYOLDONES</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ShowCrisisValuesAsPercent</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-CULTIST_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatMovementMax,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE7_CRISISOLDONES-CULTISTUPRISING_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_CITY</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+Capital</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE6_CRISISHERESY-SPAWNCULTIST_TOWN</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-+Town</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_FakeConvertUnits</EffectType>
+                     <Target>ENTTAG,ALLPLAYERS-+Cultist</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

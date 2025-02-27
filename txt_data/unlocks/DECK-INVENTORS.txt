@@ -1,0 +1,885 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>INVENTORS</DeckName>
+
+   <Definition>
+
+<!--________________________NOTES_______________________ -->
+
+   <!--
+
+      Age 6, Engineering Domain.
+      Themed after Tesla, Edison, aviation, electricity, mad science.
+      Might want this National Spirit for high Innovation.
+      Very Education hungry, risk of Age of Ignorance with this National Spirit.
+      Taking this National Spirit adds new Innovation Cards to the deck, themed after flight / Wright brothers, Tesla coil, other inventions of era.  (These sort to the top of the deck.)
+
+
+      Tier 1
+
+      Inventor’s Lab: 
+      Unlocks an Engineering domain Direct Power (scaling cost) that allows you to spawn the Inventor’s Lab, an Improvement with a high-Education cost.  
+      The Inventor’s Lab makes an “Inventions” Good, Inventions consume for Knowledge.  (Upgrade into Labs in Age 7.)
+
+      Bleeding Edge: 
+      Improves Cutting Edge Engineering DP.
+
+      Prime Conductor: 
+      Publication of early electrical experiments produces one-time reward of Knowledge, Specialists, Innovation.
+
+
+      Tier 2
+
+      Polytechnic University: 
+      Rewards one Innovation when researched.
+      Buffs the standard Age 6 University to generate Eng XP.
+
+      Experimental Electricity: 
+      Adds a bonus to the Capital, causing it to generate ResCityPower sufficient to support one Powered Lab.
+      Inventor’s Lab is buffed, gains a Power Need (supplied by the Capital buff), and generates an additional Invention (2 total).
+
+      Leyden Jars: 
+      Unlocks Improvement: Education Need, built with Specialists, generates 1 ResCityPower. Upgrades into Power Station in Age 7.
+
+
+      Tier 3
+      World’s Fair: Unlocks Culture Power that can be used to place a World’s Fair Improvement. Limit one per Nation. 
+      World’s Fair takes in Invention, makes Exhibition Good, worth Innovation, Culture, and Wealth.
+
+
+      National Spirit Legacy
+      Build three Inventor’s Labs.
+
+   -->
+
+<!--________________________AUTOMATIC_______________________ -->
+
+
+
+         <ACard>
+            <ID>INVENTORS-AUTOMATIC</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_PlayCard</EffectType>
+                        <Payload>INVENTORS-DEFAULT_BUFF</Payload>
+                        <Target>ENTTYPE,B_HOMELAND</Target>
+                        <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                     </ACardEffect>
+
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_AddCardsByTag</EffectType>
+                        <Payload>INVENTORS,+AddToInnovationDeck</Payload>
+                        <Target>INNOVATION</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <Layer>0</Layer>
+            <CardTags>
+               <Tags>
+                  <Tag>DomainResource:ResDomainEngineering</Tag>
+                  <Tag>AIWeight:0.1</Tag>
+                  <Tag>DomainAge:6</Tag>
+                  <Tag>AIHint-Inventors</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+         <ACard>
+            <ID>INVENTORS-DEFAULT_BUFF</ID>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>ResDomainEngineering,ADD,1</Payload>
+                        <Target>ENT,EXEC</Target>
+                     </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>ForceEffectAsBuff</Tag>
+               </Tags>
+            </CardTags>
+         </ACard>
+
+
+<!-- _____________________TIER_1_______________________ -->
+
+   <!-- _____________________Inventor’s Lab______________________ -->
+
+      <!--
+      Unlocks an Engineering domain Direct Power (scaling cost) that allows you to spawn the Inventor’s Lab, an Improvement with a high-Education cost.  The Inventor’s Lab makes an “Inventions” Good, Inventions consume for Knowledge.  (Upgrade into Labs in Age 7.)
+      -->
+
+      <ACard>
+         <ID>INVENTORS-LAB</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringInventorsLab,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_INVENTORS_LAB</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-INVENTORS_LAB_SPAWN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>SUBREGION,FALSE</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+OpenTerrain</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>Improvement,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>BlockImprovements,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_TILEIMP_INVENTORS_LAB</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ____________________Prime Conductor____________________ -->
+
+      <!--
+         Publication of early electrical experiments produces one-time reward of Knowledge, Specialists, Innovation.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-PRIME_CONDUCTOR</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,20</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResSpecialists,ADD,100</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+ <!-- ____________________TIER_2________________________ -->
+
+   <!-- _____________________Bleeding Edge_____________________ -->
+
+      <!--
+          Improves Cutting Edge Engineering DP.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-BLEEDING_EDGE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#INNOVATION_INCREASE_VALUE,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+   <!-- _________________Polytechnic University__________________ -->
+
+      <!--
+         Rewards one Innovation when researched.  Unlocks CB, like the Age 6 University (Know and Specialists, requires Education) but with Eng XP bonus or Eng XP instead of Know (alternately, this modifies the standard Age 6 University to generate Eng XP too).
+      -->
+
+      <ACard>
+         <ID>INVENTORS-POLYTECHNIC_UNIVERSITY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-POLYTECHNIC_UNIVERSITY_BUFF</Payload>
+                     <Target>ENTTAG,+University</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+University-POLYTECHNIC_UNIVERSITY,INVENTORS-POLYTECHNIC_UNIVERSITY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovation,SET,200</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-DrawAnInnovation</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-POLYTECHNIC_UNIVERSITY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- ____________________TIER_3______________________ -->
+
+   <!-- ________________Experimental Electricity_______________ -->
+
+      <!--
+         Adds a bonus to the Capital, causing it to generate ResCityPower sufficient to support one Powered Lab.  Inventor’s Lab is replaced with “Powered Inventor’s Lab,” existing Labs can be upgraded.  Specialist Upgrade cost.  Powered Labs have a Power Need (an Age early).  Powered Labs have a Power Need and a higher Education Need, but generate additional Inventions.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-ELECTRICITY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-ELECTRICITY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_HOMELAND-ELECTRICITY,INVENTORS-ELECTRICITY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-POWERED_LAB_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_INVENTORS_LAB</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_INVENTORS_LAB-POWERED_LAB,INVENTORS-POWERED_LAB_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Inventions-ResKnowledge,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-ELECTRICITY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,3</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-POWERED_LAB_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPowerRequired,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableGoodsInventions,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ______________________Leyden Jars______________________ -->
+
+      <!--
+         Unlocks Improvement.  Education Need, built with Specialists, generates 1 ResCityPower.  Upgrades into Power Station in Age 7.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-LEYDEN_JAR</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_VOLTAIC_PILE</Payload>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_VOLTAIC_PILE</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+<!-- ____________________TIER_4______________________ -->
+
+   <!-- ________________World Fair_______________ -->
+
+      <!--
+         Unlocks Culture Power that can be used to place a World’s Fair Improvement.  Limit one per Nation.  World’s Fair takes in Invention, makes Exhibition Good, worth Innovation, Culture, and Wealth.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-WORLD_FAIR</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringWorldFair,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>B_TILEIMP_WORLDFAIR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovationPerTurn,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>PurchaseCost-ResDomainEngineering:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-WORLDFAIR_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>B_TILEIMP_WORLDFAIR,EQ,0</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>SUBREGION,FALSE</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+OpenTerrain</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>Improvement,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>BlockImprovements,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_WORLDFAIR,EQ,0</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_TILEIMP_WORLDFAIR</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+<!-- __________________QUEST____________________ -->
+
+      <!--
+         National Spirit/Legacy
+         Build three Inventor’s Labs.
+      -->
+
+      <ACard>
+         <ID>INVENTORS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_INVENTORS_LAB,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainEngineering,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-INVENTORS_LEGACY_BUFF,INVENTORS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainEngineering:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainEngineering,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-INVENTORS-STREETLIGHTS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-STREETLIGHTS_BUFF</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_CAPITAL-STREETLIGHTS,INVENTORS-STREETLIGHTS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-STREETLIGHTS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Count>0</Count>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrestSuppression,ADD,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-INVENTORS-DIVINESPARK</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirements>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>B_TILEIMP_INVENTORS_LAB,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirements>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>INVENTORS-DIVINESPARK_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_INVENTORS_LAB</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_INVENTORS_LAB-DIVINESPARK,INVENTORS-DIVINESPARK_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>INVENTORS-DIVINESPARK_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResInnovation,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+
+</ADeck>
+

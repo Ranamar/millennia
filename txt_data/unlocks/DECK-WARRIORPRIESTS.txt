@@ -1,0 +1,715 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>WARRIORPRIESTS</DeckName>
+
+   <!--
+
+      Age 6, Warfare Domain.
+
+      Themed loosely after Aztecs and Mayans (Aztecs didn’t live in jungles, so if we want jungle to be part of this, we should lean more on Maya. Both Aztecs and Maya had been conquered by the Spanish by our Age 6 too, FWIW).
+
+      This NS requires a Religion.
+      This NS is primarily because you want Faith.  Secondary benefit if you have jungle terrain.
+
+
+      T1:
+      Jungle Farming: Unlocks Jungle Farm Improvement.  (We had a Terrace Farm idea, on hill terrain, but if we want a terrain – jungle – to be important, we should focus on making that one terrain better.  In 6, you probably want hills for Mines / metal, so making this jungle-based seems a better direction>)  Jungle Farm generates four Maize / turn (Maize == different looking Wheat).
+
+      Jaguar Warrior: Units gain a second upgrade option when they have one level of veterancy; in addition to the option of promoting into leaders, they also have a button to promote into Jaguar Warriors.  (If we want a Maya Unit name, we could use “Holkan.”  This could also be an Eagle Warrior or a Crocodile Warrior; the idea of going into battle in a jaguar onesie made me pick jaguar.)  Jaguar Warriors are +50% Attack and Defense in jungle terrain.
+
+
+      T2:
+      Obsidian Swords: +20% Attack on Jag warriors.
+
+      Pyramid Temple: Outpost building; stronger version of the Temple intended for use in spreading Religion.  Double Faith value if built in jungle terrain.
+      POSSIBLY USE "YACATA PYRAMID" if we want stronger theming here.
+      ALSO, the buff only being on jungle tile exactly could feel stifling. Maybe allow the buff to trigger also when adjacent? I'm leaving this as later buff room.
+      ALSO should the upgrades also get the buff? My balance gut says yes, so I'm doing it
+
+      Sacrifice: Unlocks the Sacrifice DP (War).  Targeted on one of your Capitals with a pop of at least three, you lose 2 pops, gain 20 Faith and 20 Culture.  (25 War cost?  Like other DPs, price needs to scale with use.)
+
+
+      T3:
+      Captives: Every enemy Unit killed in battle is 5 Faith at every Capital.
+
+      War Call: When Sacrifice is used, every Pyramid Temple spawns a Jaguar Warrior.
+
+
+      LEGACY:
+      Have 3 Pyramid Temples.
+
+   -->
+
+   <Definition>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- You must have a Religion to take this National Spirit. -->
+                  <ACardRequirement>
+                     <ReqType>CR_Player</ReqType>
+                     <Req>HasReligion,ANY:TRUE</Req>
+                     <Target>PLAYER</Target>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>WARRIORPRIESTS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:6</Tag>
+               <Tag>DomainResource:ResDomainWarfare</Tag>
+               <Tag>AIHint-WarriorPriests</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _________________TIER 1______________________ -->
+
+      <!-- 
+         Jaguar Warrior: Units leader promotion type is replaced with Jaguar Warriors. Jaguars get +50% att/def in jungle
+         (Base stats on par with age 6 line units)
+      -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-JAGUAR</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-JAGUAR_BUFF</Payload>
+                     <Target>ENTTAG,JaguarBuff</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+JaguarBuff-JAGUAR,WARRIORPRIESTS-JAGUAR_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_JAGUAR</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-JAGUAR_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>LeaderPromotionType,UNIT_JAGUAR</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>LeaderPromotionCost,SET,50</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Jungle Farming: Unlocks Jungle Farm Improvement. Jungle Farm generates four Maize / turn (Maize == different looking Wheat).
+
+      Expand faster into Jungle tiles.
+      -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-JUNGLEFARMING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_JUNGLEFARM</Payload>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-NewLineBreak</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TerrainExpansionCostFactor-TT_JUNGLE,SUB,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:100</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- ____________________TIER 2___________________ -->
+
+   <!-- Obsidian Swords: +20% Attack on Jag warriors. -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-OBSIDIANSWORDS</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>WARRIORPRIESTS-JAGUAR,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                   <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-OBSIDIANSWORDS_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_JAGUAR</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_JAGUAR-OBSIDIANSWORDS,WARRIORPRIESTS-OBSIDIANSWORDS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-OBSIDIANSWORDS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatDefense,MUL,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Pyramid Temple: Special improvement; stronger version of the Temple intended for use in spreading Religion.  Double Faith value if built in jungle terrain.
+      -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-PYRAMIDTEMPLE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PYRAMIDTEMPLE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!-- Sacrifice: Unlocks the Sacrifice DP (War).  Targeted on one of your Capitals with a pop of at least three, you lose 2 pops, gain 20 Faith and 20 Culture.  (25 War cost?  Like other DPs, price needs to scale with use.) -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-SACRIFICE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSacrifice,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-SACRIFICE_POWER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>Population,GTE,3</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustReligion</EffectType>
+                     <Payload>100</Payload>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,20</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>Population,GTE,3</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>WARRIORPRIESTS-WAR_CALL,TRUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-WAR_CALL_POWER</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <!-- Age 8 Secularism Government -->
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#SECULAR_GOVERNMENT,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                     <UsePlainFormat>true</UsePlainFormat>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>HideIfUnmet</Tag>
+               <Tag>ChoiceTag-2-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ___________________TIER 3____________________ -->
+
+      <!--
+      War Call: When Sacrifice is used, every Pyramid Temple spawns a Jaguar Warrior.
+      -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-WAR_CALL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>WARRIORPRIESTS-PYRAMIDTEMPLE,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_Tech</ReqType>
+                     <Req>WARRIORPRIESTS-SACRIFICE,TRUE</Req>
+                     <HideIfMet>true</HideIfMet>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>WARRIORPRIESTS-WAR_CALL-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-WAR_CALL_POWER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_JAGUAR</Payload>
+                     <Target>LOC,ENTTYPELOC,B_TILEIMP_PYRAMIDTEMPLE</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ____________________________________________ -->
+
+      <!--
+      Captives: Every enemy Unit killed in battle is 5 Religion Points at each of your Capitals.
+      -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-CAPTIVES</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEnemyUnitKilled-WarriorPriestsCaptives,WARRIORPRIESTS-CAPTIVE_FAITH_REWARD</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-CAPTIVE_FAITH_REWARD</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-CAPTIVE_FAITH_REWARD_PLAYER</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-CAPTIVE_FAITH_REWARD_PLAYER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE7_VICTORYHARMONY-RELIGIOUSCELEBRATION_EFFECT</Payload>
+                     <Target>ENTTAG,CityCenter</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________QUEST______________________ -->
+
+      <!-- Have 3 Pyramid Temples.  (Or have six Jaguar Warriors.) -->
+
+      <ACard>
+         <ID>WARRIORPRIESTS-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_PYRAMIDTEMPLE,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainWarfare,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-WARRIORPRIESTS_LEGACY_BUFF,WARRIORPRIESTS-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-WARRIORPRIESTS-DEDICATION</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>WARRIORPRIESTS-DEDICATION_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_PYRAMIDTEMPLE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_PYRAMIDTEMPLE-DEDICATION,WARRIORPRIESTS-DEDICATION_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_PYRAMIDTEMPLE-DEDICATION_BUILDHELPER,ResDomainWarfare</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_PYRAMIDTEMPLE-DEDICATION_BUILDHELPER,ResDomainArts</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>WARRIORPRIESTS-DEDICATION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

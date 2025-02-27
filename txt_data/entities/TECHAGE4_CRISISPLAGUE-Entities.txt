@@ -1,0 +1,436 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_OUTBREAK_BASE</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_OUTBREAK</Data>
+         <Data>UseAction-100,UNITACTIONS-OUTBREAK_CLEANSE</Data>
+         <!-- Stat Charge -->
+         <Data>GeneratorChargePerTurn,1</Data>
+         <Data>GeneratorCharge,0</Data>
+         <Data>GeneratorChargeMax,3</Data>
+         <Data>GeneratorChargeConsumed,3</Data>
+         <!-- Upgrade Reference -->
+         <Data>GeneratorSpawnType,B_OUTBREAK_2</Data>
+         <Data>GeneratorSpawnDestroySelf,1</Data>
+      </StartingData>
+      <ActionCards>
+         <!-- Start of turn add charge effect -->
+         <Card>TILEACTIONS-GENERATOR_CHARGE</Card>
+         <!-- This isn't for innate reasons, for the Innovation Card that gives +ResCulture -->
+         <Card>UNITACTIONS-STANDARD_TOWNBUILDINGWORK</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>HasOutbreakChance</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>Outbreak</Tag>
+         <Tag>Overlay</Tag>
+         <Tag>DestroyOverlayWithImprovement</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_OUTBREAK</ID>
+      <Import>B_OUTBREAK_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_OUTBREAK</Data>
+         <Data>RegionalEfficiency,0.95</Data>
+         <Data>StatUnrest,1</Data>
+         <Data>OutbreakChance,0.01</Data>
+         <Data>OutbreakLevel,1</Data>
+         <Data>OutbreakSprite,CITYBUFF-B_OUTBREAK</Data>
+         <!-- First Stage is 6 turns, laters stages are 3 each -->
+         <Data>GeneratorChargeMax,6</Data>
+         <Data>GeneratorChargeConsumed,6</Data>
+         <!-- Upgrade Reference -->
+         <Data>GeneratorSpawnType,B_OUTBREAK_2</Data>
+      </StartingData>
+      <ActionCards>
+         <!-- Start of turn upgrade to next Outbreak -->
+         <Card>TILEACTIONS-GENERATOR_SPAWNBUILDING</Card>
+      </ActionCards>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_OUTBREAK_2</ID>
+      <Import>B_OUTBREAK_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_OUTBREAK_2</Data>
+         <Data>RegionalEfficiency,0.8</Data>
+         <Data>StatUnrest,2</Data>
+         <Data>OutbreakChance,0.1</Data>
+         <Data>OutbreakLevel,2</Data>
+         <Data>OutbreakSprite,CITYBUFF-B_OUTBREAK_2</Data>
+         <!-- Upgrade Reference -->
+         <Data>GeneratorSpawnType,B_OUTBREAK_3</Data>
+      </StartingData>
+      <ActionCards>
+         <!-- Start of turn upgrade to next Outbreak -->
+         <Card>TILEACTIONS-GENERATOR_SPAWNBUILDING</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BlockTileWorkers</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_OUTBREAK_3</ID>
+      <Import>B_OUTBREAK_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_OUTBREAK_3</Data>
+         <Data>RegionalEfficiency,0.8</Data>
+         <Data>StatUnrest,2</Data>
+         <Data>OutbreakChance,0.1</Data>
+         <Data>OutbreakLevel,3</Data>
+         <Data>OutbreakSprite,CITYBUFF-B_OUTBREAK_3</Data>
+      </StartingData>
+      <ActionCards>
+         <!-- Start of turn self destruct & kill a region pop effect -->
+         <Card>TILEACTIONS-OUTBREAK_SELFDESTRUCT</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BlockTileWorkers</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- DEFAULT -->
+
+   <!-- TECH -->
+
+   <EntityInfo>
+      <ID>B_PIOUSUNIVERISTY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,180</Data>
+         <Data>ResKnowledge,1</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>UpgradeLine-University,1</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>University</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_PHYSICIANSGUILD</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,180</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>OutbreakChance,-0.05</Data>
+         <Data>ResKnowledge,1</Data>
+         <Data>UpgradeLine-Council,2</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_MARKETMANAGER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,180</Data>
+         <Data>ResCoin,5</Data>
+         <Data>RegionalEfficiencyResCoin,1.1</Data>
+         <Data>ResDomainDiplomacy,1</Data>
+         <Data>StatImportSlotCount,1</Data>
+         <Data>UpgradeLine-Market,2</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_BARRICADES</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,120</Data> -->
+         <Data>ConstructionCost-ResCityProduction,160</Data>
+         <Data>StatUnrestSuppression,14</Data>
+         <Data>UpgradeLine-Walls,3</Data>
+         <Data>CityBuildingDefenders-0,UNIT_BARRICADE</Data>
+         <Data>FilterAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>AIHint-Wall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TURRET</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- <Data>ConstructionCost-ResCityProduction,120</Data> -->
+         <Data>ConstructionCost-ResCityProduction,160</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>UpgradeLine-Towers,3</Data>
+         <Data>CityBuildingDefenders-0,UNIT_TURRET</Data>
+         <Data>CityAction-0,TILEACTIONS-CITY_ATTACK</Data>
+         <Data>CityAttackStrength,60</Data>
+         <Data>FilterAge,4</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE1-LOOKOUT_ONSELFBUILDTRIGGER</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>HasCityAttack</Tag>
+         <Tag>AIHint-Tower</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- INNOVATION -->
+
+
+<!-- TILE IMPROVEMENTS -->
+   
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PLAGUEFARM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PLAGUEFARM</Data>
+         <Data>GoodsSpecial-TileProduction-PT_FARM,1</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_FARM,1</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Farming,2</Data>
+         <Data>ImprovementSort,002</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>BuildRequirementTag-+GrasslandImprovements</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>MedievalFarm</Tag>
+         <Tag>Scythe</Tag>
+         <Tag>Farms</Tag>
+         <Tag>AIHint-PlagueFarm</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PLAGUEPLANTATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PLAGUEPLANTATION</Data>
+         <Data>GoodsSpecial-TileProduction-PT_PLANTATION,1</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_PLANTATION,1</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>AIBuildWeight,1.2</Data>
+         <Data>UpgradeLine-Plantation,2</Data>
+         <Data>ImprovementSort,102</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>BuildRequirementTag-CultivatedPlantationGood</Tag>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>MedievalFarm</Tag>
+         <Tag>Farms</Tag>
+         <Tag>AIHint-PlaguePlantation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PLAGUERANCH</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,28</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PLAGUERANCH</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_PASTURE,2</Data>
+         <Data>GoodsFertilizer,1</Data>
+         <Data>WorkableResDomainExploration,1</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Pasture,2</Data>
+         <Data>ImprovementSort,201</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-PastureGood</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>AIHint-PlagueRanch</Tag>
+         <Tag>Ranch</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- TECH -->
+
+<!-- UNITS -->
+   <!-- TECH -->
+
+   <EntityInfo>
+      <ID>UNIT_DARKAGEGUARD</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Arrow</Icon>
+      <Portrait>DarkAgeGuardPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,45</Data>
+         <Data>Upkeep-ResCoin,5</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,14</Data>
+         <Data>StatDefense,20</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>UpgradeLine-Guard,2</Data>
+         <Data>ObsoleteAge,6</Data>
+         <Data>FilterAge,4</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_4</Data>
+         <Data>LeaderPromotionCost,45</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/DarkAgeGuard/Unit_DarkAgeGuard</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeRanged</Tag>
+         <Tag>PreGunpowder</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundBow</Tag>
+         <Tag>ProjectileFiredSoundBow</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-DefensiveUnit</Tag>
+         <Tag>AIHint-Guard</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PLAGUEDOCTOR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_PlagueMask</Icon>
+      <Portrait>PlagueDoctorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,45</Data>
+         <Data>Upkeep-ResCoin,5</Data>
+         <Data>UseAction-100,UNITACTIONS-HEALER_HEAL</Data>
+         <Data>UseAction-101,UNITACTIONS-HEALER_CLEANSE</Data>
+         <Data>FilterAge,4</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_4</Data>
+         <Data>LeaderPromotionCost,45</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/PlagueDoctor/Unit_PlagueDoctor</Data>
+         <Data>ObsoleteAge,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>NonCombatant</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-PlagueDoctor</Tag>
+      </Tags>
+   </EntityInfo>
+   
+   <!-- Defense Units -->
+
+   <EntityInfo>
+      <ID>UNIT_BARRICADE</ID>
+      <Import>UNIT_WALL_BASE</Import>
+      <Portrait>BarricadePortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,22</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Barricades/Unit_Barricade</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_TURRET</ID>
+      <Import>UNIT_TOWER_BASE</Import>
+      <Portrait>TurretPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,16</Data>
+         <Data>StatDefense,18</Data>
+         <!-- Fortifications -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2</Data>
+         <Data>CombatMod-StatDefense-Target:+TypeCavalry,2</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Defenses/Turret/Unit_Turret</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+         <Tag>AttackBegunSoundBow</Tag>
+         <Tag>ProjectileFiredSoundBow</Tag>         
+      </Tags>
+   </EntityInfo>
+
+   <!-- Leaders -->
+   <!-- Line -->
+
+   <!-- Archer -->
+
+   <!-- Mobile -->
+
+</EntityInfoList>

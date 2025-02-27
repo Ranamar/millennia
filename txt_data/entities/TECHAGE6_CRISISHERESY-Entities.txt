@@ -1,0 +1,313 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+
+   <EntityInfo>
+      <ID>B_MORALITYPOLICE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,300</Data>-->
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>UpgradeLine-Police,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE6_CRISISHERESY-MORALITYPOLICE_EFFECT</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TEMPLELIBRARY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,330</Data>-->
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+         <Data>ResKnowledge,2</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>UpgradeLine-Library,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>RequiredRegionLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_NATIONALSTATUE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>ResCityExpansionPoints,8</Data>
+         <Data>ResCityFaith-{PlayerReligion},8</Data>
+         <Data>ResCulture,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE6-MONUMENT_ONSELFBUILDTRIGGER</Data>
+         <Data>UpgradeLine-CapMonument,3</Data>
+         <Data>FilterAge,6</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>FaithToCulture_Medium</Tag>
+         <Tag>CapMonument</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CEREAL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,48</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CEREAL</Data>
+         <Data>WorkableConvertGoods-Flour-4-Cereal,4</Data>
+         <Data>UpgradeLine-Oven,2</Data>
+         <Data>ImprovementSort,025</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_THEOLOGICALSCHOOL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,44</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_THEOLOGICALSCHOOL</Data>
+         <Data>ResCityEducation,3</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>WorkableResCityEducation,5</Data>
+         <Data>WorkableResCityFaith-{PlayerReligion},4</Data>
+         <Data>UpgradeLine-PublicSchool,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>EducationBuilding</Tag>
+         <Tag>FaithToCulture_Medium</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_CULTIST</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Hood</Icon>
+      <Portrait>CultistPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>Upkeep-ResCoin,0</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,27</Data>
+         <Data>StatDefense,37</Data>
+         <!--Data>TriggerOnSelfBattleWon,TECHAGE6_CRISISHERESY-SPAWNCULTIST_ONSELFBATTLEWON</Data-->
+         <Data>LeaderPromotionType,UNIT_CULTISTLEADER</Data>
+         <Data>LeaderPromotionCost,50</Data>
+         <Data>StatTargetPriority,100</Data>
+         <Data>NeutralSubtype,3</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Cultist/Unit_Cultist</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>Cultist</Tag>
+         <Tag>PresenceTrackingEnabled</Tag>
+         <Tag>NeutralCannotWander</Tag>
+         <Tag>NeutralCannotRaid</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>   
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_CULTISTLEADER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_HoodSinister</Icon>
+      <Portrait>CultistLeaderPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>Upkeep-ResCoin,0</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,29</Data>
+         <Data>StatDefense,40</Data>
+         <Data>TriggerOnSelfBattleWon,TECHAGE6_CRISISHERESY-SPAWNCULTIST_ONSELFBATTLEWON</Data>
+         <Data>StatTactics,7</Data>
+         <Data>StatTargetPriority,99</Data>
+         <Data>NeutralSubtype,3</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/CultistLeader/Unit_CultistLeader</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>Cultist</Tag>
+         <Tag>PresenceTrackingEnabled</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>   
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_CULTISTGUARD</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Hood</Icon>
+      <Portrait>CultistGuardPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,180</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,18</Data>
+         <Data>StatDefense,27</Data>
+         <!-- City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <!-- Hates Cults -->         
+         <Data>CombatMod-StatAttack-Target:+Cultist,2</Data>
+         <Data>StatUnrestSuppression,12</Data>
+         <Data>UpgradeLine-Guard,4</Data>
+         <Data>ObsoleteAge,8</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/CultistGuard/Unit_CultistGuard</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>      
+         <!-- AI Hints -->
+         <Tag>AIHint-Guard</Tag>
+         <Tag>AIHint-CultistGuard</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MERCHANTCAVALRY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Horseshoe</Icon>
+      <Portrait>MerchantCavPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,36</Data>
+         <Data>StatDefense,32</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <!-- Anti-Cultist -->
+         <Data>CombatMod-StatAttack-Target:+Cultist,2</Data>
+         <Data>UpgradeLine-Shock,6</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/MerchantCavalry/Unit_MerchantCavalry</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCavalry</Tag>
+         <Tag>AttackOverSoundCavalry</Tag>
+         <Tag>AttackSoundLineSword</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <!--<Tag>DestroyedSoundHorse</Tag>-->
+         <Tag>MemberDeadSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag> 
+         <!-- AI Hints -->
+         <Tag>AIHint-MerchantCavalry</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   
+</EntityInfoList>

@@ -1,0 +1,1389 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE3_CRISISBLOOD</DeckName>
+
+   <Definition>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE3_CRISISBLOOD-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Default Units -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_BERSERKER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-WARSPAWN_BERSERKERCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_CROSSBOW</Payload>
+                  </ACardEffect>
+
+                  <!-- Default Cap City Buildings -->
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_WATCH</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_MONUMENT</Payload>
+                  </ACardEffect>
+
+                  <!-- Age Unlocks Pop-Up -->
+
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age3BloodUnlocks</Payload>
+                     <!-- <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_SPECIALIZATIONS</PayloadParam> -->
+                  </ACardEffect>
+
+                  <!-- Update Event Decks -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <!-- Moving the Unique Barbarian Events to the Barbarian TECH -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE3,+UniversalAddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:3</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>CrisisName:CRISISBLOOD</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age3_Blood_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_BLOODAGE</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_DOMAINSAGE3</Tag>
+               <Tag>CalloutRedirect-CONCEPT_DOMAINSAGE3:CONCEPT_DOMAINS</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_GOVERNMENT</Tag>
+               <Tag>MusicEra:2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Upgrade Volunteers & War Spawn Units Check -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-WARSPAWN_BERSERKERCHECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Skipping Requirement, as this is from the Age Base and affects both Spawn types -->
+               </Requirements>
+               <Effects>
+                  <!-- Update War Spawn to Unit -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarSpawnUnit1,UNIT_BERSERKER</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarSpawnUnit2,UNIT_BERSERKER</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>WarVolunteersUnit,UNIT_BERSERKER</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_BERSERKER</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Set value to Units's ID {3} -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WarSpawnUnit1Value,SET,3</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WarSpawnUnit2Value,SET,4</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <!-- Age Advance Techs -->
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE4-BASE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildVisuals</EffectType>
+                     <Payload>ROADS,ALL</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE3_CRISISBLOOD-BASE,3</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE3-BASE</Tag>
+               <Tag>TechCostBase:115</Tag>
+               <Tag>TechLayout:4,2</Tag>
+               <Tag>AIValue:4</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>TelemetryNameOverride:TECHAGE3_CRISISBLOOD-TECHAGE4_BASE_ADVANCE</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard><Import>TECHAGE3-SMELTING</Import></ACard>
+      <ACard><Import>TECHAGE3-HORSE</Import></ACard>
+
+      <!-- Replaces the Unlocks from Construction with Skull Versions -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-BRUTALITY</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SKULLWALLS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SKULLTOWERS</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-TEARDOWNBUFF</Payload>
+                     <Target>ENTTAG,+TypeLine</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+TypeLine-TEARDOWN,TECHAGE3_CRISISBLOOD-TEARDOWNBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-BloodTeardown,Tooltip:TECHAGE3_CRISISBLOOD-BRUTALITY-Proxy-TearDown</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_CRISISBLOOD-BASE</Tag>
+               <Tag>TechCostBase:64</Tag>
+               <Tag>TechLayout:0,3</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Replaces some Unlocks from Infrastructure with Meat/Hunting Camp synergy -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-PRESERVATION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_GRANARY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_OVEN</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SALTHOUSE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_TRASH</Payload>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_CAP,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_TownCap-ICON,Tooltip:GameStrings-Proxy-TownCapIncrease,InfopediaLink:ITT_Misc|CONCEPT_TOWNS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_CRISISBLOOD-BASE</Tag>
+               <Tag>TechCostBase:42</Tag>
+               <Tag>TechLayout:2,2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Replaces Scribes with War XP versions -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-WARCOUNCIL</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SCRIPTORIUM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PAPERMAKER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WARCOUNCIL</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MILITARYCAMP</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CanBuyoutDiplomacy,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/CONCEPT_Diplomacy-ICON,Tooltip:Game-GameData-Misc-CanBuyoutDiplomacy,InfopediaLink:ITT_Misc|CONCEPT_DIPLOMACY</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_CRISISBLOOD-BASE</Tag>
+               <Tag>TechCostBase:57</Tag>
+               <Tag>TechLayout:2,0</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- Combat XP, War XP, Leader  -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-GLADIATORS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_PROVINGGROUND</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_ARENA</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_CRISISBLOOD-BASE</Tag>
+               <Tag>TechCostBase:57</Tag>
+               <Tag>TechLayout:2,1</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- New Content: Barbarianism -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-BARBARIANS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareConvertBarbarians,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/CONVERT_BARBARIANS-ICON,Tooltip:TECHAGE3_CRISISBLOOD-BARBARIANS-Proxy-ConvertBarbarians,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpawnBarbarians,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_ProxyTechInfo</EffectType>
+                        <PayloadParam>IconPath:UI/Icons/Culture Powers/SPAWN_BARBARIANS-ICON,Tooltip:TECHAGE3_CRISISBLOOD-BARBARIANS-Proxy-SpawnBarbarians,InfopediaLink:ITT_Misc|CONCEPT_RESCULTURE</PayloadParam>
+                        <HiddenInTooltip>true</HiddenInTooltip>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_WARLORD</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_BARBARIAN</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareSpawnLeader,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/SPAWN_LEADER-ICON,Tooltip:TECHAGE3_CRISISBLOOD-WARCOUNCIL-Proxy-WarfareSpawnLeader,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE3_CRISISBLOOD-BASE</Tag>
+               <Tag>TechCostBase:60</Tag>
+               <Tag>TechLayout:2,1</Tag>
+               <Tag>AIHint-Barbarians</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- TRIGGER ACTIONS -->
+      <!-- BUFFS -->
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-TEARDOWNBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+TypeLine</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CombatMod-StatAttack-Target:+TypeDefenses,ADD,2.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-CONVERTBARBARIANS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BERSERKER</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_BERSERKER</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Track what kinds/number of barbarian units are killed, and spawn those kinds of units? -->
+                  <!-- Actually convert control from Player0 to PlayerNum? -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-SPAWNBARBARIANCAMP</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TILE,EMPTY_OR_HIDDEN</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>Unit,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_WARLORD</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_WARLORD</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_CreateTile</EffectType>
+                     <Payload>MT_BARBARIAN_CAMP</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <!-- 
+         Crisis age setup:
+         TECHAGE2-TECHAGE3_CRISISBLOOD_ADVANCE is used by players as a normal researchable advance-tech to actually advance to the Age after it has activated.
+
+         TECHAGE3_CRISISBLOOD-BEGIN is begins charging and do any start-of-charge-phase logic.
+
+         TECHAGE3_CRISISBLOOD-ACTIVE is the card that fires off one-time effects when the age is activated (note this is before any players are formally *in* this age)
+
+         TECHAGE3_CRISISBLOOD-SUNSET is the card that does any exit-crisis cleanup (this is invoked when someone first EXITS the formal age)
+         
+         Note that the structure of the latches (CrisisSetup-CRISISBLOOD, etc.) is linked to code to be able to tell what state the crisis is in.
+      -->
+
+      <!-- Age Begin -->
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-BEGIN</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeBegin-CRISISBLOOD</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_ChosenAge</ReqType>
+                     <Req>NONE,3</Req>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+
+                  <!-- A helpful HelpTopic for this first Crisis Event -->
+                  <!-- This is now fired 3 turns into Age 3 -->
+                  <!-- <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Crisis</Payload>
+                     <PayloadParam>InfopediaLink:ITT_Misc|CONCEPT_BLOODAGE</PayloadParam>
+                  </ACardEffect> -->
+
+
+                  <!-- Charging Trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEnemyUnitKilled-CrisisBloodTrigger,TECHAGE3_CRISISBLOOD-TRIGGER_ENEMYKILLED</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!-- Track Charging Completion -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionCard-TECHAGE3_CRISISBLOOD,TECHAGE3_CRISISBLOOD-CHARGE_COMPLETE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>PersistentActionDataTrigger-TECHAGE3_CRISISBLOOD,StatCrisisBloodCharge</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CrisisBloodChargeRequired,SET,6</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CrisisBloodChargeRequired,DIV,#GAME_SPEED</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DataAlert</EffectType>
+                     <Payload>CREATE,StatCrisisBloodCharge</Payload>
+                     <PayloadParam>DataAlertThresholds:0.5|0.8|1.0,DataAlertMaxVal:[PLAYER:CrisisBloodChargeRequired],DataAlertMessageKey:TECHAGE3_CRISISBLOOD-WARNING</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Spawn some units to fight -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-SPAWNWARLORD</Payload>
+                     <PayloadParam>TurnDelay:5</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-TRIGGER_ENEMYKILLED</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>-DoesNotTriggerBloodAge</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>IsFromEliminatedPlayer,EQ,0</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  <!-- 
+                  // [5/6/24] Xemu - note we can't just use this because we still want to add blood crisis when killing neutral minors
+                  <ACardRequirement>
+                     <ReqType>CR_Entity</ReqType>
+                     <Req>PlayerType,TRUE,PT_Neutral</Req>
+                     <Target>ENT,EXEC</Target>
+                     <Hidden>true</Hidden>
+                  </ACardRequirement>
+                  -->
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatCrisisBloodCharge,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-CHARGE_COMPLETE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <CardSpriteName>Cards/Techs/TECHAGE2-TECHAGE3_CRISISBLOOD_ADVANCE</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatCrisisBloodCharge,GTE,[PLAYER:CrisisBloodChargeRequired]</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-CHARGE_COMPLETE-Tooltip</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ShowCrisisMeterDecor</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <!-- Age Active -->
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-CRISISBLOOD</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-CRISISBLOOD:3,TECHAGE3_CRISISBLOOD-SUNSET</Payload>
+                     <Target>GAME</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,BLOOD</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- other game rules -->
+
+                  <ACardEffect>
+                     <EffectType>CE_DiplomaticRelationship</EffectType>
+                     <Payload>PLAYERS_ALL,DR_War</Payload>
+                     <PayloadParam>SuppressGameAlerts:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-SPAWNWARLORD</Payload>
+                     <PayloadParam>TurnDelay:5</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_CreateTile</EffectType>
+                     <Payload>MT_BARBARIAN_CAMP</Payload>
+                     <PayloadParam>CreateTilePlayer:MATCH_PREVIOUS_OWNER,SpawnPerRegion:1,SpawnRadius:5</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <ExtraTargetParam>TileType:TILE_NEUTRAL,TileClear,TileEmpty,TileNotSettlement,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+
+                  <!-- Barbarians are more aggressive when spotted -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BARBARIAN_NEARBY_ATTACK_RANGE,ADD,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- Barbarians raid further and more often -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BARBARIAN_RAID_SEARCH_DIST,ADD,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BARBARIAN_RAID_SCAN_FREQUENCY,SUB,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- More Barbarians Spawn -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BARBARIAN_SPAWN_POP_CAP,ADD,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#BARBARIAN_CAMP_LIMIT_PER_PLAYER,ADD,1</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- force-choose the age for the timeline -->
+                  <ACardEffect>
+                     <EffectType>CE_ChooseAge</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-BASE</Payload>
+                  </ACardEffect>
+
+                  <!-- Game Speed Normalized Setting -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3-NORMALIZE_SPEED</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-CRISISBLOOD</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- remove any game rules specific to the crisis -->
+                  <ACardEffect>
+                     <EffectType>CE_RemoveBuffs</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-PLAYERACTIVE</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-PLAYERSUNSET</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE3_CRISISBLOOD-CONTRIBUTIONREWARD</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>LastTurnAtPeace,SET,SPECIALVAL:CURRENTTURN</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+   <!-- BUFFS / EFFECTS -->
+
+      <!-- [7/9/21] Xemu - note that any buffs generated here will automatically be canceled by the sunset -->
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>DiplomacyLocked,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#UNIT_UPKEEP_FACTOR,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#WAR_UNREST_PER_TURN,MUL,0</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CHAOS_FROM_REGION_CONQUEST,MUL,#MULTIAGE_CHAOSREDUCTION_MUL</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <!-- Change Diplo CP from Peace (bad) to Barbarians (good) -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-DiplomacyEnforcePeace,SUB,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-PLAYERSUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <!-- Get rid of effect, for final this time -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEnemyUnitKilled-CrisisBloodTrigger,NONE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Requirements>
+               <Effects>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-CONTRIBUTIONREWARD</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempReward,SET,[PLAYER:StatCrisisBloodCharge]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>TempReward,MUL,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,[PLAYER:TempReward]</Payload>
+                     <PayloadParam>PopupNotify:EventReward</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE3_CRISISBLOOD-SPAWNWARLORD</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_WARLORD</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:1,SpawnRadius:4</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileType:TILE_NEUTRAL,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#WORLD_DIFFICULTY_HARDMODE,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_BARBARIAN_LVL_3</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:1,SpawnRadius:4,SpawnMagnetTag:+Barbarian</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileType:TILE_NEUTRAL,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PlayPassiveWhenDelayed</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+      <!-- ___________________CHAOS____________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>CHAOS-CRISISBLOOD-RISINGWARLORDS</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 4+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <!-- Spawn Warlords for Each Player -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_WARLORD</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:2,SpawnRadius:4,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <Target>PLAYER</Target>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Standard issue Cash-Out option -->
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+
+      <!-- ____________________________________________ -->
+      <!-- ________________INNOVATION__________________ -->
+      <!-- ____________________________________________ -->
+
+      <ACard>
+         <ID>INNOVATION-CRISISBLOOD-BLOODTHIRST</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#DOMAIN_XP_PER_COMBAT_UNIT,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-CRISISBLOOD-WARLORDS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,4</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_WARLORD</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_WARLORD</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <!-- ____________________________________________ -->
+      <!-- ________________BARBARIANS__________________ -->
+      <!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>BARBARIAN-CRISISBLOOD-WRATH</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <!-- After defeating the Barbarians you come up with a plan... -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Choices>
+             <ACardChoice>
+               <!-- Recruit Them -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Target>LOC,EXECLOC</Target>
+                     <Payload>UNIT,UNIT_BARBARIAN_LVL_3</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <!-- Anger Them -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_WARLORD</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:1,SpawnRadius:4</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileType:TILE_NEUTRAL,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER,ALLKNOWNPLAYERS</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>BARBARIAN-CRISISBLOOD-GREED</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <!-- Defeated, the barbarians offer you a peace offering -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Choices>
+             <ACardChoice>
+               <!-- Accept -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,MUL,5</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WealthReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Take More -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,MUL,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WarfareReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WealthReward,MUL,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WealthReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>BARBARIAN-CRISISBLOOD-PRIDE</ID>
+         <CardSpriteName>Cards/Events/BarbarianPainting</CardSpriteName>
+         <!-- The battle was close, the barbarians fight with honor -->
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <Prereqs>
+            <Requirement>
+               <!-- Require some unit to be damaged <50% HP -->
+               <ACardRequirement>
+                  <ReqType>CR_GameDataAny</ReqType>
+                  <Req>StatHealth,LTE,25</Req>
+                  <Target>ENTTAGATLOC,Combatant,EXECLOC</Target>
+                  <AddToEntityBuffer>true</AddToEntityBuffer>
+               </ACardRequirement>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+             <ACardChoice>
+               <!-- Be humbled -->
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <!-- Smite them -->
+               <Effects>
+                  <ACardEffect>
+                     <!-- Pick Unit in the entity buffer and destroy them -->
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,REQTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,SET,#REWARD_XPGAIN_VALUE</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_WarfareReward,MUL,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <EvaluateInTooltip>true</EvaluateInTooltip>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,[SELF:NS_WarfareReward]</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToBarbarianDeck</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

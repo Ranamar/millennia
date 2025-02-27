@@ -1,0 +1,280 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_RIOT</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_RIOT</Data>
+         <Data>RegionalEfficiency,0.9</Data>
+         <Data>StatUnrest,4</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE8_CRISISDYSTOPIA-RIOT_EFFECT</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>Riot</Tag>
+         <Tag>Overlay</Tag>
+         <Tag>DestroyOverlayWithImprovement</Tag>
+         <Tag>BlockTileWorkers</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_NATIONALPASTIME</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,450</Data>-->
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCulture,2</Data>
+         <Data>ResCityIdeology,10</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>UpgradeLine-Stadium,2</Data>
+         <Data>RequiredRegionLevel,3</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_RIOTBARRICADES</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,500</Data>-->
+         <Data>ConstructionCost-ResCityProduction,550</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>FortificationBonus,1.1</Data>
+         <Data>StatUnrestSuppression,16</Data>
+         <Data>UpgradeLine-Walls,6</Data>
+         <!-- Not Unit here, think this is fine as a +Fortification only. -->
+         <Data>FilterAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AIHint-Wall</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_EMERGENCYBROADCAST</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResCityIdeology,5</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_PUNKHQ</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResDomainArts,2</Data>
+         <Data>ResCulture,2</Data>
+         <Data>ResCityIdeology,2</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>UpgradeLine-ArtHouse,3</Data>
+         <Data>FilterAge,8</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_FEMA</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResCulture,1</Data>
+         <Data>FilterAge,8</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE8_CRISISDYSTOPIA-FEMA_ONBUILD</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_STANDARDDISTRICT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_STANDARDDISTRICT</Data>
+         <Data>WorkableResCityPowerRequired,2</Data>
+         <Data>ResCityHousing,40</Data>
+         <Data>ResCitySanitation,8</Data>
+         <Data>GoodsPollution,1</Data>
+         <Data>WorkableResCitySanitation,12</Data>
+         <Data>UpgradeLine-Apartment,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>HasRiotChance</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MEGAPOWER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MEGAPOWER</Data>
+         <Data>ResCityPower,4</Data>
+         <Data>WorkableConvertGoods-+CanMakePower-1-Power,1</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>WorkableResCityIdeology,4</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,501</Data>
+         <Data>UpgradeLine-CoalPower,2</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_OILREFINERY_POLLUTION</ID>
+      <!-- Rename "Fuel Refinery" -->
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_OILREFINERY_POLLUTION</Data>
+         <Data>WorkableConvertGoods-Petroleum-1-Power,2</Data>
+         <Data>WorkableGoodsPollution,1</Data>
+         <Data>WorkableResCityIdeology,4</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>UpgradeLine-OilRefinery,1</Data>
+         <Data>ImprovementSort,512</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TRASHINCINERATOR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TRASHINCINERATOR</Data>
+         <Data>ResCitySanitation,12</Data>
+         <Data>WorkableResCitySanitation,12</Data>
+         <Data>WorkableConvertGoods-Waste-2-Charcoal,2</Data>
+         <Data>WorkableResChaosPerTurn,1</Data>
+         <Data>UpgradeLine-Trash,3</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,920</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Trash</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SHELTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,52</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SHELTER</Data>
+         <Data>ResCityHousing,15</Data>
+         <Data>ResCitySanitation,10</Data>
+         <Data>StatRiotChance,-1</Data>
+         <Data>WorkableResCoin,5</Data>
+         <Data>UpgradeLine-Housing,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>HasRiotChance</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_RIOTPOLICE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Sentry</Icon>
+      <Portrait>RiotPolicePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,225</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,30</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>UseAction-101,UNITACTIONS-RIOTPOLICE_DISPERSE</Data>
+         <Data>StatUnrestSuppression,16</Data>
+         <Data>UpgradeLine-Guard,5</Data>
+         <Data>FilterAge,8</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_8</Data>
+         <Data>LeaderPromotionCost,123</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Army/RiotPolice/Unit_RiotPolice</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>   
+         <!-- AI Hints -->
+         <Tag>AIHint-Guard</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+
+   
+</EntityInfoList>

@@ -1,0 +1,869 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>POLITICALSCIENCE</DeckName>
+
+<!-- _____________________NOTES_____________________ -->
+
+   <!--
+
+   Age 8, Diplomacy Domain. 
+
+   Identity
+      Alliance, NATO, melting pot, ideology, think tanks, Castro-style leadership.
+
+   Why
+      Unrest manipulation, pop growth, wide nation, encourage diplomacy and making allies.
+
+   Tier 0 (Auto-Unlocked when NS is chosen, like with Govs unlocking something when chosen)
+      Politics: Ideology Project.
+    
+
+   Tier 1
+
+   Think Tank: CB; Gov XP and Knowledge proportional to number of allies.
+      Reconcile with Age 7 Think Tank by reworking that version into a Research Institute, and making this Think Tank an upgrade of it.
+
+   Annexation: Diplo DP version of the “Claim Territory” DP from the Exploration Domain.
+      Same initial price for Claim Territory, so by late game you’ll be able to claim quite a bit when you first get it, which should feel good even when there’s not much territory left unclaimed.
+      All of these first takes were far more complex for only a slightly different result:
+      Influence spike, grow territory.  Super version of claim territory (full 2 hex). 
+      Possibly an influence spike in nearby tiles
+      Possibly a wider alternative to the Claim Territory DP
+      Possibly an influence spike to a whole region
+
+
+   Tier 2
+
+   Article 5 / Intergovernmental Military Alliance: DP: Spawn an Army of 1 + ally count in Friendly territory.
+
+   Radicalization: DP: Generates a burst of Unrest in an opposing Region and sends a message letting them know it happened.
+      Backup: Also spawns Revolutionaries DP next to the target you selected.
+      Same as Khans DP.  Thinking the Unrest option is more interesting than duplicating the Khans power.  Khans DP could potentially stretch into Revolutionaries to make up for this change.  Especially since there’s already a strong offensive power in here with Article 5.
+      Potentially very powerful and mean if used right since it can overthrow a major capital from under a unit’s nose.  If too powerful then using the Backup and lowering the unrest can even it out a bit.
+    
+
+   Tier 3
+
+   Totalitarian Utopianism: Static Unrest Suppression bonus to all capitals, curving unrest for having multiple Regions.
+
+   Immigration Marketing: CP: Target a Vassal (yours or another nation’s) and get half the pop, rounded down, moved to your nearest Region.  A notification is sent to the player you do this to.
+      Backup: Clicking one of your regions -1s a pop from every other vassal you own and sends +1 pop to that region.
+
+
+   Tier 4
+
+   Welfare State: CP: +10 all Needs for N turns in all regions
+      Should be a solid boon to population growth, and can let players do risky strategies with going into temporary negative Needs to gain other benefits for a time.
+
+
+   National Spirit Legacy: Have >=75 Pop in your nation overall.
+
+   -->
+
+<!-- _____________________AUTOMATIC_____________________ -->
+
+   <Definition>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>PROJECT_GENERATE_IDEOLOGY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>POLITICALSCIENCE,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainDiplomacy</Tag>
+               <Tag>AIHint-PoliticalScience</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________THINK_TANK_____________________ -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-THINKTANK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_THINKTANK</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-THINKTANK_DATALINKACTION_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempAllyAmount,SET,[PLAYER:DRCount-DR_Alliance]</Payload>
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>NS_TempAllyAmount,MUL,0.5</Payload> <! Scale the buff from here >
+                     <PayloadParam>TemporaryInternal:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainGovernment,ADD,[SELF:NS_TempAllyAmount]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,[SELF:NS_TempAllyAmount]</Payload>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>POLITICALSCIENCE-ThinkTank-Tooltip</Payload>
+                     <PayloadParam>FormatParam:1</PayloadParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>POLITICALSCIENCE-ThinkTank-Tooltip2</Payload>
+                     <PayloadParam>FormatParam:1</PayloadParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>UI-Misc-FriendlyNationTooltip</Payload>
+                     <PayloadParam>FormatParam:[PLAYER:DRCount-DR_Alliance]</PayloadParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- _____________________ANNEXATION_____________________ -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-ANNEXATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>CulturePowerUnlock-PoliticalScienceAnnexation,SET,1</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+
+   <!-- _____________________ARTICLE_5_____________________ -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-ARTICLE_5</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-PoliticalScienceArticle5,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ASSAULTRIFLE</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-ARTICLE_5_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,3</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,4</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,5</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>UseSimpleTooltip:true</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>DRCount-DR_Alliance,GTE,6</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <!--ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ASSAULTRIFLE</Payload>
+                     <PayloadParam>SpawnPerRegion:[PLAYER:DRCount-DR_Alliance]</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice-->
+         </Choices>
+      </ACard>
+
+   <!-- _____________________RADICALIZATION_____________________ -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-RADICALIZATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-PoliticalScienceRadicalization,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:200</Tag>
+               </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-RADICALIZATION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Radicalization</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+
+   <!-- _____________________TOTALITARIAN_UTOPIANISM_____________________ -->
+
+         <ACard>
+            <ID>POLITICALSCIENCE-TOTALITARIAN_UTOPIANISM</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Effects>
+                     <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CITY_COUNT_UNREST_FREE_CITIES,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#CITY_COUNT_UNREST_PER_CITY,MUL,0.5</Payload>
+                     <Target>PLAYER</Target>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Tooltip-IconLineBreak</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-TOTALITARIAN_UTOPIANISM_BUFF</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_CAPITAL-TOTALITARIAN_UTOPIANISM,POLITICALSCIENCE-TOTALITARIAN_UTOPIANISM_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  </Effects>
+               </ACardChoice>
+            </Choices>
+            <CardTags>
+               <Tags>
+                  <Tag>PurchaseCost-ResDomainDiplomacy:225</Tag>
+               </Tags>
+            </CardTags>
+            <Layer>3</Layer>
+         </ACard>
+
+         <ACard>
+         <ID>POLITICALSCIENCE-TOTALITARIAN_UTOPIANISM_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrestSuppression,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   <!-- _____________________IMMIGRATION_MARKETING_____________________ -->
+
+      <!-- 
+         Immigration Marketing: 
+            CP: Target a Vassal (yours or another nation’s) and get half the pop, rounded down, moved to your nearest Region.  A notification is sent to the player you do this to. 
+      -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-IMMIGRATIONMARKETING</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>CulturePowerUnlock-PoliticalScienceImmigrationMarketing,SET,1</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-IMMIGRATION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>Population,GTE,2</Req>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-CityCenter,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>TRANSFERPOP</Payload>
+                     <PayloadParam>PopTransferFraction:0.5</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_ImmigrationEffect</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX/ExplosionParticle</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <!-- <CardTags>
+            <Tags>
+               <Tag>RequireObservation</Tag>
+               <Tag>PostObservationDelay:2</Tag>
+            </Tags>
+         </CardTags> -->
+      </ACard>
+
+
+<!-- _____________________TIER_4_____________________ -->
+
+   <!-- _____________________WELFARE_STATE_____________________ -->
+
+      <ACard>
+         <ID>POLITICALSCIENCE-WELFARE_STATE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-PoliticalScienceWelfareState,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-WELFARE_STATE_TRIGGER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-WELFARE_STATE_EFFECT</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-WELFARE_STATE_EFFECT</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <!--Hidden>true</Hidden-->
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-WELFARE_STATE_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>11</Duration>
+         <CardSpriteName>UI/Icons/Culture Powers/WELFARE_STATE-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityFood,ADD,50</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityHousing,ADD,50</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCitySanitation,ADD,50</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityLuxury,ADD,20</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityEducation,ADD,20</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityPower,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityIdeology,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCityInformation,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+      <!-- LEGACY:  -->
+
+         <ACard>
+            <ID>POLITICALSCIENCE-QUEST</ID>
+            <Subtype>CST_Tech</Subtype>
+            <ExecutionType>CX_All</ExecutionType>
+            <Choices>
+               <ACardChoice>
+                  <Requirements>
+                     <ACardRequirement>
+                        <ReqType>CR_GameData</ReqType>
+                        <Req>TotalPopulation,GTE,200</Req>
+                        <Target>PLAYER</Target>
+                     </ACardRequirement>
+                  </Requirements>
+                  <Effects>
+                     <ACardEffect>
+                        <EffectType>CE_AdjustGameData</EffectType>
+                        <Payload>SocialFabricValue-DomainDiplomacy,ADD,1</Payload>
+                        <Target>PLAYER</Target>
+                     </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-POLITICALSCIENCE_LEGACY_BUFF,POLITICALSCIENCE-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainDiplomacy:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-POLITICALSCIENCE-FOREIGNEXCHANGE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>POLITICALSCIENCE-FOREIGNEXCHANGE_BUFF</Payload>
+                     <Target>ENTTAG,University</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-University-FOREIGNEXCHANGE,POLITICALSCIENCE-FOREIGNEXCHANGE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintTag-University-FOREIGNEXCHANGE_BUILDHELPER,ResDomainDiplomacy</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>POLITICALSCIENCE-FOREIGNEXCHANGE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainDiplomacy,ADD,2</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+
+</ADeck>

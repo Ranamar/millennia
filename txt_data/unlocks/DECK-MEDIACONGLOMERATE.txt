@@ -1,0 +1,633 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>MEDIACONGLOMERATE</DeckName>
+
+<!-- NOTES -->
+   <!--
+
+   Tier 1
+
+   MAIN STREAM MEDIA: Unlocks Media Line tile improvement. 
+      30 improvement point cost. Produces 1 “Media” good when worked. Generates +1 Arts XP when worked.
+      Movie goods provide +2 Culture and +2 Luxury.
+
+
+   Tier 2
+
+   BROADCAST STUDIO: Unlocks the Broadcast Studio CB. 
+      300 Production cost, 4 Power need, +5 Ideology, and +5 Information.
+
+
+   PRODUCT PLACEMENT: “Media” goods now provide 10 Wealth per turn.
+
+   FIRESIDE CHAT:Unlocks Fireside Chat CP.
+      -30 Unrest in all regions and +2 Unrest Suppression in all regions.
+      Both removes current unrest amount and provides a temporary unrest reduction bonus.
+
+
+   Tier 3
+
+   SELF-CENSORSHIP: “Media” goods now reduce 10 Unrest and provide +2 Government XP
+
+   NEWS CYCLE: Unlocks News Cycle DP. 
+      50 Arts XP cost, 8 turn cooldown, 30% increase to target region’s Unrest, 20% boost to target region’s Knowledge, and 20% boost to target region’s Information that lasts for 4 turns.
+
+
+   Tier 4
+
+   NATION-SPONSORED FILM: “Media” goods now provide +2 Ideology and +2 Information
+
+
+   LEGACY
+
+   Have 5 Media Line improvements (and thus movies)
+
+
+   -->
+
+   <Definition>
+
+<!-- _____________________AUTOMATIC_STUFF_____________________ -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>MEDIACONGLOMERATE,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:8</Tag>
+               <Tag>DomainResource:ResDomainArts</Tag>
+               <Tag>AIHint-MediaConglomerate</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- _____________________MAIN STREAM MEDIA_____________________ -->
+
+      <!-- Unlocks Media Line tile improvement. 30 improvement point cost. 1 Worker Slot. Produces 1 “Movie” good when worked. Generates +1 Arts XP when worked. Movie goods provide +2 Culture and +2 Luxury. -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-MAINSTREAMMEDIA</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MEDIALINE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:180</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>1</Layer>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- _____________________BROADCAST STUDIO_____________________ -->
+
+      <!-- Unlocks the Broadcast Studio CB. 300 Production cost, 4 Power need, +5 Ideology, and +5 Information. -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-BROADCASTSTUDIO</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_MEDIALINE-BROADCASTSTUDIO_BUILDHELPER,ResCoin</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_BROADCASTSTUDIO</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________PRODUCT PLACEMENT_____________________ -->
+
+      <!-- “Movie” goods now provide 10 Wealth per turn. -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-PRODUCTPLACEMENT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Media-ResCoin,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+   <!-- _____________________FIRESIDE CHAT_____________________ -->
+
+      <!-- Unlocks Fireside Chat CP. -30 Unrest in all regions and +2 Unrest Suppression in all regions. Both removes current unrest amount and provides a temporary unrest reduction bonus.  -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-FIRESIDECHAT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsMediaConglomerateFireSideChat,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-FIRESIDECHAT_TARGET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-FIRESIDECHAT_EFFECT</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-FIRESIDECHAT_EFFECT</Payload>
+                     <Target>ENTTYPE,MT_CITYCENTER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-FIRESIDECHAT_EFFECT_2</Payload>
+                     <Target>ENTTYPE,B_CAPITAL</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-FIRESIDECHAT_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>6</Duration>
+         <CardSpriteName>UI/Icons/Culture Powers/FIRESIDE_CHAT-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrestSuppression,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddDurationToTooltip</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-FIRESIDECHAT_EFFECT_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <Payload>StatUnrest,SUB,50</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- _____________________SELF-CENSORSHIP_____________________ -->
+
+      <!-- “Movie” goods now reduce 10 Unrest and provide +2 Government XP -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-SELFCENSORSHIP</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_MEDIALINE-SELFCENSORSHIP_BUILDHELPER,StatUnrestSuppression</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_MEDIALINE-SELFCENSORSHIP_BUILDHELPER,ResDomainGovernment</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Media-StatUnrestSuppression,ADD,10</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Media-ResDomainGovernment,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+   <!-- _____________________NEWS CYCLE_____________________ -->
+
+      <!-- Unlocks News Cycle DP. 50 Arts XP cost, 8 turn cooldown, 30% increase to target region’s Unrest, 20% boost to target region’s Knowledge, and 20% boost to target region’s Information that lasts for 4 turns. -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-NEWSCYCLE</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsMediaConglomerateNewsCycle,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:225</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-NEWSCYCLE_CAPITALBUFF</ID>
+         <CardSpriteName>UI/Icons/NationalSpirit/NSIconSmall-MEDIACONGLOMERATE</CardSpriteName>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>4</Duration>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Actual Effect -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,ADD,30</Payload>
+                     <Target>ENTTAGATLOC,Capital,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResKnowledge,MUL,1.2</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAGATLOC,Capital,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityInformation,MUL,1.2</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAGATLOC,Capital,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <!-- UI Buff -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatUnrest,ADD,30</Payload>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResKnowledge,MUL,1.2</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityInformation,MUL,1.2</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_4_____________________ -->
+
+   <!-- _____________________NATION-SPONSORED FILM_____________________ -->
+
+      <!-- “Movie” goods now provide +2 Ideology and +2 Information -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-NATIONSPONSOREDFILM</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_MEDIALINE-PROPAGANDA_BUILDHELPER,ResCityIdeology</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>BuildHelperHintType-B_TILEIMP_MEDIALINE-PROPAGANDA_BUILDHELPER,ResCityInformation</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Media-ResCityIdeology,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ConsumeGoodBonus-Media-ResCityInformation,ADD,2</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:300</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+
+<!-- _____________________LEGACY_____________________ -->
+
+   <!--  Have 5 “Media Line” Improvements -->
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_MEDIALINE,GTE,5</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainArts,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-MEDIACONGLOMERATE_LEGACY_BUFF,MEDIACONGLOMERATE-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainArts:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainArts,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-MEDIACONGLOMERATE-REMAKES</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MEDIACONGLOMERATE-REMAKES_BUFF</Payload>
+                     <Target>ENTTYPE,B_TILEIMP_MEDIALINE</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-B_TILEIMP_MEDIALINE-REMAKES,MEDIACONGLOMERATE-REMAKES_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MEDIACONGLOMERATE-REMAKES_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableGoodsMedia,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+   </Definition>
+</ADeck>

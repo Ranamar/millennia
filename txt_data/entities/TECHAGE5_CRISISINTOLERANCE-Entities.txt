@@ -1,0 +1,228 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_FOUNTAIN</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>ResCitySanitation,15</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>StatBonusRegionLevel,1</Data>
+         <Data>UpgradeLine-CitySanitation,2</Data>
+         <Data>FilterAge,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_GRANDPLAZA</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,240</Data>
+         <Data>StatUnrestSuppression,15</Data>
+         <Data>ResDomainArts,2</Data>
+         <Data>TriggerOnTurnStart,TECHAGE5_CRISISINTOLERANCE-PLAZA_RELIGIOUSBUFF</Data>
+         <Data>UpgradeLine-Plaza,2</Data>
+         <Data>FilterAge,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousStructure</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ALMSHOUSE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,36</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ALMSHOUSE</Data>
+         <Data>ResCityHousing,30</Data>
+         <Data>StatUnrest,6</Data>
+         <Data>WorkableResCityFaith-{PlayerReligion},4</Data>
+         <Data>UpgradeLine-Apartment,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>Housing</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TRACTPRINTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,45</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TRACTPRINTER</Data>
+         <Data>WorkableConvertGoods-Paper-2-ReligiousTract,2</Data>
+         <Data>UpgradeLine-ReligiousScribe,2</Data>
+         <Data>ImprovementSort,771</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_RELIGIOUSSCHOOL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,30</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_RELIGIOUSSCHOOL</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>WorkableResCityFaith-{PlayerReligion},4</Data>
+         <Data>StatHereticReligionDecayModifier,0.05</Data>
+         <Data>UpgradeLine-PublicSchool,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>FaithToCulture_Medium</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_INQUISITOR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Hood</Icon>
+      <Portrait>InquisitorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,125</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,23</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>UseAction-100,UNITACTIONS-CLERGY_PROSELYTIZE</Data>
+         <Data>UseAction-101,UNITACTIONS-INQUISITOR_INQUISITION</Data>
+         <Data>UpgradeLine-Guard,3</Data>
+         <Data>FilterAge,5</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_5</Data>
+         <Data>LeaderPromotionCost,54</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>AIBuildWeightPerUnit,0</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Army/Inquisitor/Unit_Inquisitor</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>          
+         <!-- AI Hints -->
+         <Tag>AIHint-Inquisitor</Tag>
+         <Tag>AIHint-Guard</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_HOLYAVENGER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_FlamingSpear</Icon>
+      <Portrait>HolyAvengerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,150</Data>
+         <Data>Upkeep-ResCoin,7</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,32</Data>
+         <Data>StatDefense,26</Data>
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <!-- Flank -->
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2</Data>
+         <!-- Avenger -->
+         <Data>CombatMod-StatAttack-VsSpecial:Heretic,2</Data>
+         <Data>FilterAge,5</Data>
+         <Data>UpgradeLine-Shock,5</Data>
+         <Data>ObsoleteAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_5</Data>
+         <Data>LeaderPromotionCost,54</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Army/HolyAvenger/Unit_HolyAvenger</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>Knight</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCavalry</Tag>
+         <Tag>AttackOverSoundCavalry</Tag>
+         <Tag>AttackSoundLineSword</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <!--<Tag>DestroyedSoundHorse</Tag>-->
+         <Tag>MemberDeadSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>  
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-HolyAvenger</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+</EntityInfoList>

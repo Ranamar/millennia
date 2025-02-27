@@ -1,0 +1,1623 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>TECHAGE9_CRISISVISITORS</DeckName>
+
+   <Definition>
+
+<!-- AGE BASE -->
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-BASE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <!-- -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>CurrentAge,TECHAGE9_CRISISVISITORS-BASE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-ACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9-STANDARDUPDATES</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_MODERNMG</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9-WARSPAWN_MODERNMGCHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALSECURITYOFFICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_NATIONALMUSEUM</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_CHIEFENGINEEROFFICE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_WASTEWATERPROCESSING</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_SUBURB</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MEGACHURCH</Payload>
+                  </ACardEffect>
+
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_ALIENINVADER</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_MOTHERSHIP</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+
+                  <!-- EVENTS -->
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS,+AddToChaosDeck</Payload>
+                     <Target>CHAOS</Target>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+AddToBarbarianDeck</Payload>
+                     <Target>BARBARIAN</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>TECHAGE8,+AddToExploreDeck</Payload>
+                     <Target>EXPLORE</Target>
+                  </ACardEffect>
+                  -->
+
+                  <!-- Help Topics -->
+                  <ACardEffect>
+                     <EffectType>CE_AddHelpTopic</EffectType>
+                     <Payload>Age9VisitorsUnlocks</Payload>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechLayout:0,0</Tag>
+               <Tag>ShowTechNotification</Tag>
+               <Tag>AgeBaseTech</Tag>
+               <Tag>AgeTech:9</Tag>
+               <Tag>CrisisAge</Tag>
+               <Tag>CrisisName:CRISISVISITORS</Tag>
+               <Tag>AgeImage:Cards/Techs/Ages/Age9_CrisisVisitors_3840x2160</Tag>
+               <Tag>AgeNotificationCallout-0:CONCEPT_MOTHERSHIP</Tag>
+               <Tag>AgeNotificationCallout-1:CONCEPT_INVADERS</Tag>
+               <Tag>AgeNotificationCallout-2:CONCEPT_WRECKSALVAGERS</Tag>
+               <Tag>MusicEra:5</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- AGE ADVANCE -->
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-TECHAGE10_VICTORYCOLONYSHIP_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE10_VICTORYCOLONYSHIP-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE9_CRISISVISITORS-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1450</Tag>
+               <Tag>AgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-TECHAGE10_VICTORYARCHANGEL_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_SMARTGRID,GTE,5</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+                  <!--<ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_DEFENSERDCENTER,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>-->
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE10_VICTORYARCHANGEL-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE9_CRISISVISITORS-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1450</Tag>
+               <Tag>AgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-TECHAGE10_VICTORYTRANSCENDENCE_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>SocialFabricTracksCompleted,GTE,2</Req>
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE9-TECHAGE10_VICTORYTRANSCENDENCE_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE10_VICTORYTRANSCENDENCE-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE9_CRISISVISITORS-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1450</Tag>
+               <Tag>AgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-TECHAGE10_VICTORYROGUEAI_ADVANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>StatCrisisRogueAICharge,GTE,[PLAYER:SingularityChargeRequired]</Req>
+                     <Target>PLAYER</Target>
+                     <UseCustomFormat>true</UseCustomFormat>
+                     <CustomFormatKey>TECHAGE9-TECHAGE10_VICTORYROGUEAI_ADVANCE-REQ</CustomFormatKey>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ResearchTech</EffectType>
+                     <Payload>TECHAGE10_VICTORYROGUEAI-BASE</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:SpecialRequirement-CountTechsWithReq,TECHAGE9_CRISISVISITORS-BASE,4</Tag>
+               <Tag>TechCostAdjustPerTechWithReq:0.1,TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1450</Tag>
+               <Tag>AgeAdvance</Tag>
+               <Tag>CrisisAgeAdvance</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- TECHS -->
+
+   <!-- IMPORT TECHS -->
+      <ACard><Import>TECHAGE9-NETWORKS</Import></ACard>
+      <ACard><Import>TECHAGE9-INFORMATION</Import></ACard>
+
+   <!-- NEW TECHS -->
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-RENEWABLERESOURCES</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_SMARTGRID</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_HYDROPONICS</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_MATTERENERGYCONDENSER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_HIGHENERGYBATTERY</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:950</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-RESISTANCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableBonusResource-ResCityIdeology-+Desert,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-DesertForage,Tooltip:TECHAGE9_CRISISVISITORS-RESISTANCE-Proxy-DesertForage</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:Entities/Portraits/ModernMGPortrait,Tooltip:TECHAGE9_CRISISVISITORS-RESISTANCE-Proxy-SpawnMG</PayloadParam>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-RESISTANCE_BUFF</Payload>
+                     <Target>ENTTAG,+Combatant</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Combatant-RESISTANCE_BUFF,TECHAGE9_CRISISVISITORS-RESISTANCE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy-AlienResistance,Tooltip:TECHAGE9_CRISISVISITORS-RESISTANCE-Proxy-CombatBuff</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-DIRTYBOMB_CHECK</Payload>
+                     <PayloadParam>PlayCardPassive:true,RequiresDLC:LCC_DLC2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/DIRTY_BOMB-ICON,Tooltip:TECHAGE9_CRISISVISITORS-RESISTANCE-Proxy-DirtyBomb,InfopediaLink:ITT_Misc|CONCEPT_RESDOMAINWARFARE,RequiresDLC:LCC_DLC2</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1000</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-HIGHENERGYWEAPONS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_LOWORBIT_INTERCEPTOR</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_LOWORBIT_PHOTONBOMBER</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_PHOTONSUBMARINE</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_PHOTONRAILGUN</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>AirUnitsUnlocked,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:900</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-ELITETASKFORCE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ELITESHIELD</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ELITEHEAVY</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>UNIT_ELITESNIPER</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:900</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-AREAFIFTYONE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareVisitorsBomb,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_BOMB-ICON,Tooltip:Game-Culture-WarfareVisitorsBomb-PowerTooltip</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareVisitorsHeal,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_HEAL-ICON,Tooltip:TECHAGE9_CRISISVISITORS-AREAFIFTYONE-Proxy-MedKit</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <!--
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ExplorationVisitorsSatelliteScan,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_SCAN-ICON,Tooltip:TECHAGE9_CRISISVISITORS-AREAFIFTYONE-Proxy-Scan</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  -->
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:950</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-HUMANRELATIONS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Subtype>CST_Tech</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-ArtsVisitorsClonePod,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_CLONEPOD-ICON,Tooltip:TECHAGE9_CRISISVISITORS-HUMANRELATIONS-Proxy-ClonePod</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-GovernmentVisitorsDuplicators,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_DUPLICATOR-ICON,Tooltip:TECHAGE9_CRISISVISITORS-HUMANRELATIONS-Proxy-Duplicators</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-EngineeringVisitorsFabricator,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Culture Powers/VISITORS_FABRICATOR-ICON,Tooltip:TECHAGE9_CRISISVISITORS-HUMANRELATIONS-Proxy-Fabricator</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#TOWN_CAP,ADD,1</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_ProxyTechInfo</EffectType>
+                     <PayloadParam>IconPath:UI/Icons/Proxy_TownCap-ICON,Tooltip:GameStrings-Proxy-TownCapIncrease,InfopediaLink:ITT_Misc|CONCEPT_TOWNS</PayloadParam>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>TechRequirement:TECHAGE9_CRISISVISITORS-BASE</Tag>
+               <Tag>TechCostBase:1000</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- TECH EFFECTS -->
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-DIRTYBOMB_CHECK</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareDirtyBomb,SET,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>RequiresDLC-LCC_DLC2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-DIRTYBOMB_POWERTARGET_BUFFER</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>HOSTILEPLAYERS-NukeTarget,GTE,1</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                     <SkipUntargetedEvaluation>true</SkipUntargetedEvaluation>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-DIRTYBOMB_EFFECTS</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-DIRTYBOMB_EFFECTS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+
+            <!-- If not a City:
+               blow it up immediately
+               terraform to Wasteland
+               spawn MT_Crater
+            -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CityCenter,EQ,0</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_CRATERWATERTEST</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeTarget,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_LOCATION_EFFECTS</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeEffectTarget,EXTERNALTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+
+                  <!-- Is this logically necessary if we destroy units in Prefix and MT tilesin Crater Test? -->
+                  <!-- This literally only effects the case where you directly nuke a Town. Keeping it in, in case there are other corner cases -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeTarget,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_PLAYER_EFFECTS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- If City with Bunkers:
+               scale pop
+               do bunker check
+            -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CityCenter,GTE,1</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CivilBunker,GTE,1</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_LOCATION_EFFECTS</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeTarget,EXTERNALTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_BUNKERCHECK</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-CityCenter,EXTERNALTARGET</Target>
+                     <!-- <EvaluateInTooltip>true</EvaluateInTooltip> -->
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustPopulation</EffectType>
+                     <Payload>SCALE,#CITY_NUKE_POPULATIONSCALE_FACTOR</Payload>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_BUNKERSETPOPULATION</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-CityCenter,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>DAMAGEDEFENSES</Payload>
+                     <PayloadParam>DamageDefensesStrength:1,DamageDefensesAttack:100,DamageDefensesStrategicAttack:400,DamageDefensesStrategicTargets:10,DamageDefensesTag:+CanBeSieged</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_PLAYER_EFFECTS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- If City with Low Pop & No Bunkers:
+               blow it up immediately
+               terraform to Wasteland
+               spawn Wasteland Ruins to replace City
+            -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CityCenter,GTE,1</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CivilBunker,EQ,0</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>Population,LTE,#CITY_NUKE_THRESHOLD</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_CRATERWATERTEST</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeTarget,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_LOCATION_EFFECTS</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeEffectTarget,EXTERNALTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+
+                  <!-- Are cities destroyed when terraformed? -->
+                  <!-- <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-CityCenter,EXTERNALTARGET</Target>
+                  </ACardEffect> -->
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_PLAYER_EFFECTS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <!-- If City with High Pop & No Bunkers:
+               scale pop
+            -->
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CityCenter,GTE,1</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-CivilBunker,EQ,0</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>Population,GT,#CITY_NUKE_THRESHOLD</Req>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_LOCATION_EFFECTS</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeTarget,EXTERNALTARGET</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustPopulation</EffectType>
+                     <Payload>SCALE,#CITY_NUKE_POPULATIONSCALE_FACTOR</Payload>
+                     <Target>REGION,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_Special</EffectType>
+                     <Payload>DAMAGEDEFENSES</Payload>
+                     <PayloadParam>DamageDefensesStrength:1,DamageDefensesAttack:100,DamageDefensesStrategicAttack:400,DamageDefensesStrategicTargets:10,DamageDefensesTag:+CanBeSieged</PayloadParam>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>UNITACTIONS-NUCLEARSTRIKE_PLAYER_EFFECTS</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ChoiceTag-1-HideIfUnmet</Tag>
+               <Tag>ChoiceTag-2-HideIfUnmet</Tag>
+               <Tag>ChoiceTag-3-HideIfUnmet</Tag>
+               <Tag>NukeUse</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_LOCATION_EFFECTS</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <!-- Always do:
+               cool VFX/SFX,
+               destroy Units,
+               raze Improvements,
+               spawn Fallout,
+            -->
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX/FX_NuclearExplosion</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlaySound</EffectType>
+                     <Payload>NukeExplosion</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>HasBeenNuked,SET,1</Payload>
+                     <Target>PLAYER,EXECENTOWNER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DiplomaticRelationship</EffectType>
+                     <Payload>DR_War,{CurrentPlayer}</Payload>
+                     <Target>PLAYER,EXECENTOWNER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_SPAWNADJACENTFALLOUT</Payload>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-NukeEffectTarget,EXECLOC</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,FINDTAGLOCRAD,ALLPLAYERS-+Unit,EXECLOC,2</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,FINDTAGLOCRAD,ALLPLAYERS-+Improvement,EXECLOC,2</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-NUCLEARSTRIKE_SPAWNADJACENTFALLOUT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>BUILDING,B_FALLOUT</Payload>
+                     <PayloadParam>WarnOnFailure:false,SpawnExcludeTag:+NoFallout,SpawnEntityPlayer:LOCOWNER</PayloadParam>
+                     <Target>LOC,RADIUS,2</Target>
+                     <ExtraTargetParam>TileNotSettlement,TileTerrainTag:+Land</ExtraTargetParam>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-RESISTANCE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CombatMod-StatAttack-Target:+TypeAlien,ADD,1.5</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-DUPLICATORS_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Duration>5</Duration>
+         <CardSpriteName>UI/Icons/Culture Powers/VISITORS_DUPLICATOR-ICON</CardSpriteName>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityFood,ADD,1.2</Payload>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCityHousing,ADD,1.2</Payload>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>RegionalEfficiencyResCitySanitation,ADD,1.2</Payload>
+                     <Target>ENTTAGATLOC,CityCenter,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>AddDurationToTooltip</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-BOMB_TARGET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ApplyDamage</EffectType>
+                     <Payload>50</Payload>
+                     <PayloadParam>CanKillUnits:true</PayloadParam>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-+Unit,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX/ExplosionParticle</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlaySound</EffectType>
+                     <Payload>LaBomba</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- AGE RULES -->
+
+   <!-- Age Begin -->
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-SETI_EVENT</ID>
+         <CardSpriteName>Cards/Events/SpaceMissionPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SETICrisisVisitors,SET,1</Payload>
+                     <DisplayWithoutOperator>true</DisplayWithoutOperator>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCulture,ADD,#EUREKA_KNOWLEDGE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResKnowledge,ADD,#EUREKA_KNOWLEDGE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- Age Active -->
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-ACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeActive-CRISISVISITORS</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_RebuildLighting</EffectType>
+                     <Payload>PROFILE,VISITORS</Payload>
+                  </ACardEffect>
+
+                  <!-- Create our sunset trigger -->
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>AgeSunset-CRISISVISITORS:9,TECHAGE9_CRISISVISITORS-SUNSET</Payload>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResChaosPerTurn,ADD,10</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-PLAYERACTIVE</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+
+                  <!-- other game rules -->
+
+                  <!-- 
+                     For Each Player: 
+                     For Each Region:
+                     Pick a location that has both an Improvement & BonusTile
+                     Destroy the TILEIMP & MT
+                     Terraform the terrain to TT_DESERT
+                     Spawn a UNIT_MOTHERSHIP
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_REGION</Payload>
+                     <Target>ENTTAG,ALLPLAYERS-CityCenter</Target>
+                  </ACardEffect>
+
+
+                  <!-- force-choose the age for the timeline -->
+                  <ACardEffect>
+                     <EffectType>CE_ChooseAge</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-BASE</Payload>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE10_VICTORYROGUEAI-BEGIN</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+
+                  <!-- Secularism -->
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#RELIGION_SECULARISM,ADD,3</Payload>
+                     <Target>PLAYER,ALLPLAYERS</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-PLAYERACTIVE</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_WRECKSALVAGERS</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-SUNSET</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <PlayLimit>1</PlayLimit>
+         <PlayLimitTracker>AgeSunset-CRISISVISITORS</PlayLimitTracker>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <PayloadParam>SuppressTriggers:TRUE</PayloadParam>
+                     <Target>ENTTAG,ALLPLAYERS-TypeAlien</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE10_VICTORYROGUEAI-BEGIN_CLEAR</Payload>
+                     <PayloadParam>PlayCardPassive:true</PayloadParam>
+                     <Target>GAME</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- AGE EFFECTS -->
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_REGION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_LOCATION</Payload>
+                     <Target>ENTTAGREGION,ALLPLAYERS-VisitorsTarget</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>#WORLD_DIFFICULTY_HARDMODE,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_LOCATION</Payload>
+                     <Target>ENTTAGREGION,ALLPLAYERS-VisitorsTarget</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ChoiceTag-1-HideIfUnmet</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_LOCATION</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- Destroys IMP & UNIT in the tile -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-Improvement,EXECLOC</Target>
+                     <PayloadParam>DestroyImprovements:TRUE</PayloadParam>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENTTAGATLOC,ALLPLAYERS-Unit,EXECLOC</Target>
+                  </ACardEffect>
+
+                  <!-- Terraform into DESERT -->
+                  <ACardEffect>
+                     <EffectType>CE_ChangeTerrain</EffectType>
+                     <Target>LOC,EXECLOC</Target>
+                     <Payload>TT_DESERT</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+
+                  <!-- Spawn MOTHERSHIP -->
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MOTHERSHIP</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL</PayloadParam>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+
+                  <!-- PlayFX Mothership Spawn ? -->
+                  <!-- 
+                     The timing here is hidden by the Age-Advance card[s] 
+                     Is it worth doing this on turn 2 so that the UI is hidden when the player passes the turn?
+                  -->
+
+                  <!-- 
+                     ENT,EXEC is the bonus tile, for reference 
+                     Might also be implicitly destroyed with TT change?
+                  -->
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- EVENT DECKS -->
+
+   <!-- ________________INNOVATION__________________ -->
+
+      <ACard>
+         <ID>INNOVATION-VISITORS-HARVEST</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-HARVEST_BUFF</Payload>
+                     <Target>ENTTAG,Farms</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Farms-HARVEST,TECHAGE9_CRISISVISITORS-HARVEST_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-HARVEST_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>WorkableGoodsSpecial-TileProduction-PT_FARM,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-VISITORS-LASGUN</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-LASGUN_BUFF</Payload>
+                     <Target>ENTTAG,Combatant</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Combatant-LASGUN,TECHAGE9_CRISISVISITORS-LASGUN_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-LASGUN_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>StatAttack,ADD,10</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+      <ACard>
+         <ID>INNOVATION-VISITORS-GRENADE</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-GRENADE_BUFF</Payload>
+                     <Target>ENTTAG,Leader</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Leader-GRENADE,TECHAGE9_CRISISVISITORS-GRENADE_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>1</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-GRENADE_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-150,TECHAGE9_CRISISVISITORS-GRENADE_EFFECT</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GrenadeCharges,SET,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>TECHAGE9_CRISISVISITORS-GRENADE_EFFECT</ID>
+         <CardSpriteName>UI/Icons/Culture Powers/VISITORS_BOMB-ICON</CardSpriteName>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>ALLPLAYERS-TypeAlien,GTE,1</Req>
+                     <Target>LOC,TILERADIUS,1</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+                  <ACardRequirement>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>GrenadeCharges,GTE,1</Req>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_ApplyDamage</EffectType>
+                     <Payload>50</Payload>
+                     <PayloadParam>CanKillUnits:true</PayloadParam>
+                     <Target>ENT,FINDTAGLOCRAD,ALLPLAYERS-TypeAlien,EXECLOC,1</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlayFX</EffectType>
+                     <Payload>FX/MothershipExplosionParticle</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>GrenadeCharges,SUB,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+   <!-- ___________________CHAOS____________________ -->
+
+      <ACard>
+         <ID>CHAOS-VISITORS-SECONDWAVE</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>TECHAGE9_CRISISVISITORS-FINDMOTHERSHIPLOCATION_REGION</Payload>
+                     <Target>REGION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>CHAOS-VISITORS-ASSAULT</ID>
+         <CardSpriteName>Cards/Events/ChaosPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,10</Req>
+            </Requirement>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_ALIENINVADER</Payload>
+                     <PayloadParam>SpawnEntityPlayer:NEUTRAL,SpawnPerRegion:2,SpawnRadius:6,SpawnVFX:FX/FX_ChaosSpawn|FX/FX_NewlySpawned</PayloadParam>
+                     <ExtraTargetParam>TileNotSettlement,TileEmpty,TileTerrainTag:+LandMovement</ExtraTargetParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <IsCost>true</IsCost>
+                     <ReqType>CR_GameData</ReqType>
+                     <Req>ResCoin,GTE,#CI_CASHOUT_VALUE</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_None</EffectType>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToChaosDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+               <Tag>UseMirrorUI</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

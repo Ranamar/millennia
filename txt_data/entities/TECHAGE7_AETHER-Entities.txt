@@ -1,0 +1,540 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_SKYHOTEL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,400</Data>-->
+         <Data>ConstructionCost-ResCityProduction,500</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityLuxury,8</Data>
+         <Data>ResCityHousing,8</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AetherBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_AIRTAXI</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,350</Data>-->
+         <Data>ConstructionCost-ResCityProduction,500</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>ResCityLuxury,6</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AetherBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AETHERHARVESTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AETHERHARVESTER</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_AETHER,2</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>MineTownBonusValue,1</Data>
+         <Data>AIBuildWeight,4</Data>
+         <Data>ImprovementSort,520</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTile-MT_AETHER</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>MineTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>AIHint-AetherHarvester</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AETHERREFINERY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AETHERREFINERY</Data>
+         <Data>WorkableConvertGoods-Aether-2-Power,2</Data>
+         <Data>ImprovementSort,521</Data>
+         <Data>AIBuildWeight,2</Data>
+         <Data>AIWeightAdjustOnImprovementCount,-1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CLOUDESTATE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CLOUDESTATE</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityHousing,25</Data>
+         <Data>ResCityLuxury,2</Data>
+         <Data>WorkableConvertGoods-Aether-1-Delicacies,1</Data>
+         <Data>UpgradeLine-Villa,2</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-VILLA_TERRAINBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+         <Tag>AetherImprovement</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-CloudEstate</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SECRETLABORATORY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SECRETLABORATORY</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>WorkableConvertGoods-Aether-1-AResearch,2</Data>
+         <Data>UpgradeLine-Lab,3</Data>
+         <Data>ImprovementSort,173</Data>
+         <Data>AIBuildWeight,2</Data>
+         <Data>AIWeightAdjustOnImprovementCount,-1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AUTOFARM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AUTOFARM</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_FARM,3</Data>
+         <Data>WorkableConvertGoods-Aether-1-Wheat,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Farming,3</Data>
+         <Data>ImprovementSort,003</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-+GrasslandImprovements</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>ModernFarm</Tag>
+         <Tag>Scythe</Tag>
+         <Tag>Farms</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AUTOPLANTATION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,52</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AUTOPLANTATION</Data>
+         <Data>WorkableGoodsSpecial-TileProduction-PT_PLANTATION,4</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Plantation,3</Data>
+         <Data>ImprovementSort,103</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-CultivatedPlantationGood</Tag>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>ModernFarm</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AUTOPAPER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AUTOPAPER</Data>
+         <Data>WorkableConvertGoods-Logs-2-Paper,2</Data>
+         <Data>WorkableConvertGoods-Aether-1-Paper,2</Data>
+         <Data>WorkableResDomainDiplomacy,2</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>UpgradeLine-Papermaker,3</Data>
+         <Data>ImprovementSort,742</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Woodwork</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AUTOSAWMILL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AUTOSAWMILL</Data>
+         <Data>WorkableConvertGoods-Logs-2-Lumber,2</Data>
+         <Data>WorkableConvertGoods-Aether-1-Lumber,2</Data>
+         <Data>WorkableResDomainEngineering,2</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>LumberTownBonusValue,1</Data>
+         <Data>UpgradeLine-Sawmill,3</Data>
+         <Data>ImprovementSort,712</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>LumberTownBonus</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Woodwork</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>Sawmill</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AUTOTEXTILE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,50</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AUTOTEXTILE</Data>
+         <Data>WorkableConvertGoods-+CanMakeCloth-2-Textiles,2</Data>
+         <Data>WorkableConvertGoods-Aether-1-Textiles,2</Data>
+         <Data>WorkableResDomainArts,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>UpgradeLine-Textile,3</Data>
+         <Data>ImprovementSort,132</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Textile</Tag>
+         <Tag>Factory</Tag>
+         <Tag>AetherImprovement</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>Textile</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_LANDSHIP</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_AncientShipTread</Icon>
+      <Portrait>LandshipPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,46</Data>
+         <Data>StatDefense,36</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>UpgradeLine-Shock,8</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,3</Data>
+         <Data>FilterAge,7</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_7</Data>
+         <Data>LeaderPromotionCost,101</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Tank</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Landship/Unit_Landship</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeArmor</Tag>
+         <Tag>Steampunk</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundCannon</Tag>
+		   <Tag>AttackSoundCannon</Tag>
+		   <Tag>ProjectileFiredSoundCannon</Tag>
+		   <Tag>DamageTakenSoundMetalTank</Tag>
+		   <Tag>RoutedSoundTank</Tag>
+		   <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_STEAMFIGHTER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_BiplaneFighter</Icon>
+      <Portrait>SteamFighterPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,250</Data>
+         <Data>Upkeep-ResCoin,10</Data>         
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,63</Data>
+         <Data>StatDefense,48</Data>
+         <Data>StatUnrestSuppression,0</Data>         
+         <!-- Fighter I -->
+         <Data>CombatMod-StatAttack-Target:+AirUnit,2.0</Data>
+         <Data>StatAirInterceptRange,4</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>FilterAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-SteamFighter</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Air/SteamFighter/Unit_SteamFighter</Data>
+         <Data>UpgradeLine-Fighter,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>ActInAirCombatRounds</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirToAirTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>Steampunk</Tag>
+         <Tag>AirUnit</Tag>         
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirSteam</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundAirFighter</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-SteamFighter</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_AIRSHIP</ID>
+      <Import>UNIT_BOMBER_BASE</Import>
+      <Icon>UnitIcon_Airship</Icon>
+      <Portrait>AirshipPortrait</Portrait>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,10</Data>   
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatAttack,75</Data>
+         <Data>StatDefense,45</Data>
+         <!-- Bomber Stats -->
+         <Data>StatAirAttackRange,5</Data>
+         <Data>StatStrategicPower,75</Data>
+         <!-- Bomber I -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,1.5</Data>
+         <Data>CombatMod-StatAttack-Target:+NavalTarget,1.5</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Bomber,1</Data>
+         <Data>FilterAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Balloon</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Air/Airship/Unit_Airship</Data>
+	 </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>Steampunk</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirSteam</Tag>
+         <Tag>AttackSoundAirBomber</Tag>
+         <Tag>ProjectileFiredSoundAirBomber</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-Airship</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_DREADNOUGHT</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_AncientShip2</Icon>
+      <Portrait>DreadnoughtPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,500</Data>
+         <Data>Upkeep-ResCoin,20</Data>
+         <Data>RevealRadius,3</Data> 
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>StatAttack,80</Data>
+         <Data>StatDefense,41</Data>
+         <!-- Siege -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,4.0</Data>
+         <Data>CombatMod-StatAttack-Target:+Warship,2.0</Data>
+         <!-- Siege Unit Stats -->
+         <Data>StatStrategicPower,60</Data>
+         <Data>StatStrategicTargets,4</Data>
+         <Data>UpgradeLine-NavalBombardment,3</Data>
+         <Data>UseAction-100,UNITACTIONS-SIEGE_DAMAGEDEFENSES_LONGRANGED</Data>
+         <Data>FilterAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/Dreadnought/Unit_Dreadnought</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>NavalBombardier</Tag>
+         <Tag>ActInNavalBombardRound</Tag>
+         <Tag>CapitalShip</Tag>
+         <Tag>Steampunk</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Capship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundShips</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_NAUTILUS</ID>
+      <Import>UNIT_SUBMARINE_BASE</Import>
+      <Icon>UnitIcon_Submarine</Icon>
+      <Portrait>NautilusPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,250</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>         
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>StatAttack,51</Data>
+         <Data>StatDefense,25</Data>
+         <!-- Submarine Ship -->
+         <Data>StatBarragePower,15</Data>
+         <Data>StatStrategicPower,60</Data>
+         <Data>StatStrategicTargets,4</Data>
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UpgradeLine-Antiship,2</Data>
+         <Data>FilterAge,7</Data>
+         <Data>ObsoleteAge,9</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Navy/Nautilus/Unit_Nautilus</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>Steampunk</Tag>
+         <Tag>NonNuclearSub</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundSub</Tag>
+         <Tag>AttackSoundSub</Tag>
+         <Tag>ProjectileFiredSoundSub</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundSubs</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   
+</EntityInfoList>

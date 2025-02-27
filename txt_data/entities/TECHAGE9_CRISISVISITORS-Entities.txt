@@ -1,0 +1,589 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_HIGHENERGYBATTERY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,4</Data>
+         <Data>ResCityPower,16</Data>
+         <Data>RegionalEfficiencyResCityPower,1.2</Data>
+         <Data>UpgradeLine-CentralPower,2</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_WRECKSALVAGERS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_WRECKSALVAGERS</Data>
+         <Data>WorkableGoodsAlienTech,1</Data>
+         <Data>ImprovementSort,920</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>BuildRequirementTile-MT_MOTHERSHIPWRECKAGE</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_HYDROPONICS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_HYDROPONICS</Data>
+         <Data>WorkableGoodsWheat,4</Data>
+         <Data>ResCityPowerRequired,4</Data>
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>UpgradeLine-Farming,4</Data>
+         <Data>ExtraWorkerSlots,1</Data>
+         <Data>ImprovementSort,004</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+         <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>Rural</Tag>
+         <Tag>ModernFarm</Tag>
+         <Tag>Farms</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MATTERENERGYCONDENSER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,120</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MATTERENERGYCONDENSER</Data>
+         <Data>WorkableConvertGoods-+SteelType-2-Power,2</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+         <Data>ImprovementSort,503</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+         <Tag>Modernization</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_MOTHERSHIP</ID>
+      <Import>UNIT_COMBAT_NOHEAL</Import>
+      <Icon>UnitIcon_UFO</Icon>
+      <Portrait>AlienMothershipPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatHealth,500</Data>
+         <Data>StatHealthMax,500</Data>
+         <Data>StatCommand,999</Data>
+         <Data>StatCommandMax,999</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,175</Data>
+         <Data>StatDefense,100</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-MOTHERSHIP_KILLED</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Mothership/Unit_Mothership</Data>
+         <Data>NeutralSubtype,4</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-MOTHERSHIP_RANDOMEFFECT</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>TypeAlien</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMothership</Tag>
+         <Tag>AttackSoundLaserCannon</Tag>
+         <Tag>ProjectileFiredSoundBigLaser</Tag>
+         <Tag>DamageTakenSoundMetalRobot</Tag>
+         <Tag>RoutedSoundRobot</Tag>
+         <Tag>MemberDeadSoundMachine</Tag>
+         <Tag>NukeTarget</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ALIENINVADER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_AlienInvader</Icon>
+      <Portrait>AlienInvaderPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,36</Data>
+         <Data>StatDefense,48</Data>
+         <Data>NeutralSubtype,4</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/AlienInvader/Unit_AlienInvader</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-INVADER_RAZEGOODTILE</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>TypeAlien</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>NeutralCannotWander</Tag>
+         <Tag>NeutralCannotRaid</Tag>
+         <Tag>NeutralSpecialSeekTag:BonusTile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>ProjectileFiredSoundLaserMulti</Tag> 
+         <Tag>AttackBegunSoundLaserCannon</Tag>
+         <Tag>DamageTakenSoundMetalRobot</Tag>
+         <Tag>RoutedSoundRobot</Tag>
+         <Tag>MemberDeadSoundAlien</Tag>
+         <Tag>VoicePainSoundAlien</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ALIENINVADER_NAVY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_AlienInvader</Icon>
+      <Portrait>AlienInvaderNavyPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>StatAttack,40</Data>
+         <Data>StatDefense,57</Data>
+         <Data>CombatMod-StatAttack-Target:+AttackShip,2.0</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>NeutralSubtype,4</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Navy/AlienSubmarine/Unit_AlienSubmarine</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-INVADER_RAZEGOODTILE</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>TypeAlien</Tag>
+         <!--<Tag>TypeLine</Tag>-->
+         <Tag>NeutralCannotWander</Tag>
+         <Tag>NeutralCannotRaid</Tag>
+         <Tag>NeutralSpecialSeekTag:BonusTile</Tag>
+         <Tag>WaterMovement</Tag>
+         <Tag>NavalTarget</Tag>
+         <Tag>Warship</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Warship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <!--<Tag>ProjectileFiredSoundCannon</Tag>-->
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundSubs</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_ELITESHIELD</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_DeathHead</Icon>
+      <Portrait>SORiotShieldPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,140</Data>-->
+         <Data>ConstructionCost-ResCityProduction,325</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,26</Data>
+         <Data>StatDefense,40</Data>
+         <!-- Anti-Alien -->
+         <Data>CombatMod-StatAttack-Target:+TypeAlien,2.5</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,18</Data>
+         <Data>UpgradeLine-Guard,6</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,140</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/EliteTaskForceRiotShield/Unit_EliteTaskForceRiotShield</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineEnergyShield</Tag>
+         <Tag>DamageTakenSoundLineEnergy</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>  
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-ETF</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ELITEHEAVY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_DeathHead</Icon>
+      <Portrait>SOHeavyPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,350</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,24</Data>
+         <Data>StatDefense,34</Data>
+         <!-- Anti-Alien -->
+         <Data>CombatMod-StatAttack-Target:+TypeAlien,2.5</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-Assault,7</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_8</Data>
+         <Data>LeaderPromotionCost,123</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/EliteTaskForceRiotHeavy/Unit_EliteTaskForceHeavy</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundLaserMulti</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>             
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-ETF</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ELITESNIPER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_DeathHead</Icon>
+      <Portrait>SOSniperPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,182</Data>-->
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,52</Data>
+         <Data>StatDefense,40</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <!-- Stand Off -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,2.5</Data>
+         <!-- Anti-Alien -->
+         <Data>CombatMod-StatAttack-Target:+TypeAlien,2.5</Data>
+         <Data>UpgradeLine-Ranged,6</Data>
+         <!-- Fold-in Raider Bow to Ranged Line -->
+         <Data>UpgradeLine-RaiderBow,5</Data>
+         <!-- Fold-in Soldier to Ranged Line -->
+         <Data>UpgradeLine-Soldier,2</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,182</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/EliteTaskForceSniper/Unit_EliteTaskForceSniper</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeRanged</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundLaserMulti</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-ETF</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PHOTONRAILGUN</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Tread</Icon>
+      <Portrait>PhotonRailgunPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,50</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>StatAttack,54</Data>
+         <Data>StatDefense,44</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>UpgradeLine-Shock,10</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,5</Data>
+         <!-- Fold-In Old Guard Cav to Shock Line -->
+         <Data>UpgradeLine-OldGuardCav,3</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/PhotonRailgunTank/Unit_PhotonRailgunTank</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-TankModern</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeArmor</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundLaserCannon</Tag>
+         <Tag>AttackSoundLaserCannon</Tag>
+         <Tag>ProjectileFiredSoundLaserCannon</Tag>
+         <Tag>DamageTakenSoundMetalTank</Tag>
+         <Tag>RoutedSoundTank</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-Photon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Water Movement -->
+   <EntityInfo>
+      <ID>UNIT_PHOTONSUBMARINE</ID>
+      <Import>UNIT_SUBMARINE_BASE</Import>
+      <Icon>UnitIcon_Submarine</Icon>
+      <Portrait>PhotonSubPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,70</Data>
+         <Data>StatMovementMax,70</Data>
+         <Data>StatAttack,62</Data>
+         <Data>StatDefense,29</Data>
+         <!-- Submarine Ship -->
+         <Data>StatBarragePower,25</Data>
+         <Data>StatStrategicPower,70</Data>
+         <Data>StatStrategicTargets,5</Data>
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UpgradeLine-Antiship,4</Data>
+         <Data>FilterAge,9</Data>
+         <Data>AIBuildWeight,0.1</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Navy/PhotonSubmarine/Unit_PhotonSubmarine</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundLaserCannon</Tag>
+         <Tag>AttackSoundLaserCannon</Tag>
+         <Tag>ProjectileFiredSoundLaserCannon</Tag>
+         <Tag>DamageTakenSoundMetalBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundShips</Tag>          
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-Photon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Air Force -->
+   <EntityInfo>
+      <ID>UNIT_LOWORBIT_INTERCEPTOR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_RocketBomber</Icon>
+      <Portrait>LOInterceptorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,350</Data>
+         <Data>Upkeep-ResCoin,14</Data>         
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,130</Data>
+         <Data>StatDefense,130</Data>
+         <!-- Fighter III -->
+         <Data>CombatMod-StatAttack-Target:+AirUnit,3.0</Data>
+         <!-- Anti-Alien -->
+         <Data>CombatMod-StatAttack-Target:+TypeAlien,2.5</Data>         
+         <Data>StatAirInterceptRange,6</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Fighter,3</Data>
+         <Data>FilterAge,9</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Air/LowOrbitInterceptor/Unit_LowOrbitInterceptor</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-JetFighter</Data>         
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>ActInAirCombatRounds</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirToAirTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>AirUnit</Tag>    
+         <Tag>NoRiverCrossingPenalty</Tag>     
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirJet</Tag>
+         <Tag>ProjectileFiredSoundAirMissile</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-Photon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_LOWORBIT_PHOTONBOMBER</ID>
+      <Import>UNIT_BOMBER_BASE</Import>
+      <Icon>UnitIcon_StealthBomber</Icon>
+      <Portrait>LOBomberPortrait</Portrait>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,350</Data>
+         <Data>Upkeep-ResCoin,14</Data>         
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatAttack,153</Data>
+         <Data>StatDefense,90</Data>
+         <!-- Bomber Stats -->
+         <Data>StatAirAttackRange,7</Data>
+         <Data>StatStrategicPower,153</Data>
+         <!-- Bomber III -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,2.5</Data>
+         <Data>CombatMod-StatAttack-Target:+NavalTarget,2.5</Data>
+         <!-- Anti-Alien -->
+         <Data>CombatMod-StatAttack-Target:+TypeAlien,2.5</Data>            
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Bomber,3</Data>
+         <Data>FilterAge,9</Data>
+		   <Data>UnitMemberPrefab,Entities/Units/Air/LowOrbitPhotonBomber/Unit_LowOrbitPhotonBomber</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-JetFighter</Data>         
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundAirJet</Tag>
+         <Tag>AttackSoundAirBomber</Tag>
+         <Tag>ProjectileFiredSoundAirBomber</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-Photon</Tag>
+      </Tags>
+      <CombatViewerData projectileSpeed="50" projectileHeight="0">
+      </CombatViewerData>
+   </EntityInfo>
+
+
+</EntityInfoList>

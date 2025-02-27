@@ -1,0 +1,838 @@
+<ADeck>
+   <ReshuffleWhenEmpty>false</ReshuffleWhenEmpty>
+   <MaintainOrderWhenShuffled>true</MaintainOrderWhenShuffled>
+   <DeckName>MERCENARIES</DeckName>
+
+<!-- ________________NOTES________________ -->
+   <!-- Content
+
+      Tier 1
+         Hire Mercenary: DP that spawns the “Mercenary” unit in an allied capital, vassal, outpost, etc. for a token War XP cost, but a high upkeep cost.
+            Mercenary, Ranged (Empowered Age 7 Early MG): 55 HP, 30 Move, 22 Com, 68 ATK, 23 DEF
+                  Better than normal Age 7 Units
+                  High upkeep wealth cost
+                     Encourages short-term and reactive usage, and manual disbanding when no longer needed to save on money.
+                     If used right, they should end up cheaper than making units manually since you won’t have to use construction time or keep paying unit upkeep after their use is up.
+                 Prioritize unit for death via upkeep cost before other units via a tag
+            Privateer, Ranged (Empowered Age 7 Battleship): 55 HP, 40 Move, 40 Com, 50 ATK, 30 DEF
+               High upkeep wealth cost
+               Prioritize unit for death via upkeep cost before other units via a tag
+
+         Reputation: You earn money when you kill enemy units in combat
+
+
+      Tier 2
+         Private Military Training Camp: Outpost Improvement, gives Wealth and War XP.
+
+         Ambush: The Bribe DP is replaced with a DP that does the same but now grants you a merc in their spot.
+
+         Guns for Hire: Diplomatic Request, gives the other nation War XP, you get Wealth.
+             Must be a nation that you’re not at war with
+             Flavor text suggests your Mercs are doing small jobs on the side for the nation
+
+
+      Tier 3
+         Contract Termination: War DP, disband a unit, gain flat wealth
+            Mercs would have a higher sell value than other units.
+            Can be used on weak units to get a payout for it.
+            Growing cost DP
+
+         Security Detail: Leader Power, Spawn a Mercenary on the leader’s location
+             No War cost to use
+             Takes up the Leader’s turn
+             Few turns of cooldown
+
+
+      National Spirit
+         Quest: Have 6 Mercs at the same time.
+
+   -->
+
+   <Definition>
+
+<!-- ________________AUTOMATIC________________ -->
+
+      <ACard>
+         <ID>MERCENARIES-AUTOMATIC</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MERCENARIES-DEFAULT_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BONUS,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>#SPEC_FIRST_SELECT_BASE,ADD,5</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AddCardsByTag</EffectType>
+                     <Payload>MERCENARIES,+AddToInnovationDeck</Payload>
+                     <Target>INNOVATION</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <Layer>0</Layer>
+         <CardTags>
+            <Tags>
+               <Tag>DomainAge:6</Tag>
+               <Tag>DomainResource:ResDomainWarfare</Tag>
+               <Tag>AIHint-Mercenaries</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-DEFAULT_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+<!-- _____________________TIER_1_____________________ -->
+
+   <!-- ________________HIRE_MERCS________________ -->
+
+      <!--
+         Hire Mercenaries: DP that spawns the “Mercenary” unit in an allied territory for a token War XP cost, but a high upkeep cost.
+         Mercenary, Ranged (Empowered Age 7 Early MG): 55 HP, 30 Move, 22 Com, 68 ATK, 23 DEF
+            High upkeep wealth cost
+            Prioritize unit for death via upkeep cost before other units via a tag
+         Privateer, Ranged (Empowered Age 7 Battleship): 55 HP, 40 Move, 40 Com, 50 ATK, 30 DEF
+            High upkeep wealth cost
+            Prioritize unit for death via upkeep cost before other units via a tag
+      -->
+
+      <ACard>
+        <ID>MERCENARIES-HIREMERCENARIES</ID>
+        <Subtype>CST_Tech</Subtype>
+        <ExecutionType>CX_All</ExecutionType>
+        <Choices>
+          <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>CulturePowerUnlock-WarfareMercenariesHireMercenaries,ADD,1</Payload>
+                  <Target>PLAYER</Target>
+                  <Hidden>true</Hidden>
+               </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_PRIVATEER</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_MERCENARY</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               <ACardEffect>
+                  <EffectType>CE_Tooltip</EffectType>
+                  <Payload>MERCENARIES-HIREMERCENARIES-Tooltip</Payload>
+               </ACardEffect>
+            </Effects>
+          </ACardChoice>
+        </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>PurchaseCost-ResDomainWarfare:100</Tag>
+          </Tags>
+        </CardTags>
+        <Layer>1</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-SPAWNMERCENARY</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_FirstValid</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+WaterMovement</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_PRIVATEER</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_Location</ReqType>
+                     <Req>TERRAINTAG,+LandMovement</Req>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                     <OnlyCheckForExecution>true</OnlyCheckForExecution>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCENARY</Payload>
+                     <Target>LOC,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_2_____________________ -->
+
+   <!-- ________________CONTRACT_TERMINATION________________ -->
+
+      <!--
+         Contract Termination: War DP, disband a unit, gain flat wealth
+            Mercs would have a higher sell value than other units.
+            Can be used on weak units to get a payout for it.
+            Growing cost DP
+      -->
+
+      <ACard>
+         <ID>MERCENARIES-CONTRACTTERMINATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>CulturePowerUnlock-WarfareMercenariesContractTermination,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-CONTRACTTERMINATION_EFFECT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MERCENARIES-CONTRACTTERMINATION_EFFECT_2</Payload>
+                     <Target>ENTTAGATLOC,+Unit,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-CONTRACTTERMINATION_EFFECT_2</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>+Mercenary</Req>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,50</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_CheckTag</ReqType>
+                     <Req>-Mercenary</Req>
+                     <Target>ENT,EXEC</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_DestroyEntity</EffectType>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>UseConfirmationDialog</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   <!-- ________________REPUTATION________________ -->
+
+      <!-- Reputation: You earn money when you kill enemy units in combat -->
+
+      <ACard>
+         <ID>MERCENARIES-REPUTATION</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEnemyUnitKilled-MercenariesKillReward,MERCENARIES-REPUTATION_EFFECT</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:125</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>2</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-REPUTATION_EFFECT</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,25</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- _____________________TIER_3_____________________ -->
+
+   <!-- ________________AMBUSH________________ -->
+
+      <!-- Ambush: The Bribe DP is replaced with a DP that does the same but now grants you a merc in their spot. -->
+
+      <ACard>
+        <ID>MERCENARIES-AMBUSH</ID>
+        <Subtype>CST_Tech</Subtype>
+        <ExecutionType>CX_All</ExecutionType>
+        <Choices>
+          <ACardChoice>
+            <Effects>
+               <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>CulturePowerUnlock-WarfareMercenariesAmbush,ADD,1</Payload>
+                  <Target>PLAYER</Target>
+               </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_PRIVATEER</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                     <Payload>UNIT_MERCENARY</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+            </Effects>
+          </ACardChoice>
+        </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+          </Tags>
+        </CardTags>
+        <Layer>3</Layer>
+      </ACard>
+
+
+   <!-- ________________PM_TRAINING_CAMP________________ -->
+
+      <!-- Private Military Training Camp: Outpost Improvement, gives Wealth and War XP. -->
+
+      <ACard>
+         <ID>MERCENARIES-PMCTRAININGCAMP</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTypeCount</ReqType>
+                     <Req>B_TILEIMP_COLONY,GTE,1</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_UnlockContent</EffectType>
+                     <Payload>B_TILEIMP_PMCTRAININGCAMP</Payload>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>3</Layer>
+      </ACard>
+
+
+   <!-- ________________GUNS_FOR_HIRE________________ -->
+
+      <!--
+         Guns for Hire: Diplomatic Request, gives the other nation War XP, you get Wealth.
+         Must be a nation that you’re not at war with
+         Flavor text suggests your Mercs are doing small jobs on the side for the nation
+      -->
+
+      <ACard>
+        <ID>MERCENARIES-GUNSFORHIRE</ID>
+        <Subtype>CST_Tech</Subtype>
+        <ExecutionType>CX_All</ExecutionType>
+        <Choices>
+          <ACardChoice>
+            <Requirements>
+            </Requirements>
+            <Effects>
+              <ACardEffect>
+                  <EffectType>CE_AdjustGameData</EffectType>
+                  <Payload>DiplomaticAction-MERCENARIES-DIPLO_GUNSFORHIRE_SEND,ADD,1</Payload>
+                  <Target>PLAYER</Target>
+                  <DisplayWithoutOperator>true</DisplayWithoutOperator>
+               </ACardEffect>
+            </Effects>
+          </ACardChoice>
+        </Choices>
+        <CardTags>
+          <Tags>
+            <Tag>PurchaseCost-ResDomainWarfare:150</Tag>
+          </Tags>
+        </CardTags>
+        <Layer>3</Layer>
+      </ACard>
+
+
+      <ACard>
+         <ID>MERCENARIES-DIPLO_GUNSFORHIRE_SEND</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_DiplomaticRelationship</ReqType>
+                     <Req>DR_War,FALSE</Req>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayerMessage</EffectType>
+                     <Payload>PMT_Choice</Payload>
+                     <PayloadParam>ChoiceCard:MERCENARIES-DIPLO_GUNSFORHIRE_RECV</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AIActionWeight:AIA_Warmonger=1,AIA_Anger=2,AIA_ProactiveNice=-1,AIA_Fear=1</Tag>
+               <Tag>EnvoyPlayerAction</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-DIPLO_GUNSFORHIRE_RECV</ID>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},SUB,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <!-- They receive -->
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Receiver</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCENARY_GIFT</Payload>
+                     <PayloadParam>SpawnVFX:FX/FX_NewlySpawned</PayloadParam>
+                     <Target>LOC,ENTTYPELOC,B_CAPITAL</Target>
+                     <TargetLimit>1</TargetLimit>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_PlaySound</EffectType>
+                     <Payload>UnitActionSpecialSpawn</Payload>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{ExternalTargetPlayer}-{CurrentPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+                  <!-- <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,100</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect> -->
+                     <!-- Hudson - 9/10/24: Swapped out the +Warfare XP for giving the other nation an upkeep-free version of a mercenary.  
+                     Very powerful, but not able to attack other mercs so you still retain the advantage, and moved the Warfare XP to the sender so they can use it to build their own offenses as well. -->
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-GameData-Misc-LineBreak</Payload>
+                  </ACardEffect>
+
+                  <!-- We receive -->
+                  <ACardEffect>
+                     <EffectType>CE_Tooltip</EffectType>
+                     <Payload>Game-Misc-Sender</Payload>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,400</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,40</Payload>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>PlayerRelationship-{CurrentPlayer}-{ExternalTargetPlayer},ADD,#DIPLOMACY_FAVOR_SMALL</Payload>
+                     <PayloadParam>BuffDecay:-2</PayloadParam>
+                     <Target>PLAYER,EXTERNALTARGET</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+               <Tag>DefaultChoice:1</Tag>
+               <Tag>MarkChoiceAsDecline:0</Tag>
+               <Tag>MarkChoiceAsAccept:1</Tag>
+               <Tag>AIResponseWeights-1:AIA_Fear=6,AIA_Warmonger=-2</Tag>
+               <Tag>AIResponseWeights-0:AIA_Compliant=1,AIA_Warmonger=1,AIA_Anger=5,AIA_Friendship=2</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-DIPLO_GUNSFORHIRE_GIFT</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SpawnEntity</EffectType>
+                     <Payload>UNIT,UNIT_MERCENARY_GIFT</Payload>
+                     <Target>LOC,EXECLOC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+<!-- _____________________TIER_4_____________________ -->
+
+   <!-- ________________SECURITY_DETAIL________________ -->
+
+      <!-- 
+         Security Detail: Leader Power, Spawn a Mercenary on the leader’s location
+         No War cost to use
+         Takes up the Leader’s turn
+         Few turns of cooldown 
+      -->
+
+      <ACard>
+         <ID>MERCENARIES-SECURITYDETAIL</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <!-- No effect needed here, it's locked behind requirements on the unit to have this unlocked. -->
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MERCENARIES-SECURITYDETAIL_LEADERBUFF</Payload>
+                     <Target>ENTTAG,+Leader</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-+Leader-SECURITYDETAIL_LEADERBUFF,MERCENARIES-SECURITYDETAIL_LEADERBUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+                     <ACardEffect>
+                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
+                        <Payload>UNIT_MERCENARY</Payload>
+                        <Hidden>true</Hidden>
+                     </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:200</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>4</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-SECURITYDETAIL_LEADERBUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>UseAction-240,UNITACTIONS-LEADER_SPAWNMERCENARY</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+      </ACard>
+
+
+<!-- _____________________TIER_5_____________________ -->
+
+   <!-- Quest: Have 6 Mercenary/Pioneers at the same time. -->
+
+      <ACard>
+         <ID>MERCENARIES-QUEST</ID>
+         <Subtype>CST_Tech</Subtype>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Requirements>
+                  <ACardRequirement>
+                     <ReqType>CR_EntityTagCount</ReqType>
+                     <Req>Mercenary,GTE,6</Req>
+                     <Target>PLAYER</Target>
+                  </ACardRequirement>
+               </Requirements>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>SocialFabricValue-DomainWarfare,ADD,1</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MERCENARIES-LEGACY_BUFF</Payload>
+                     <Target>ENTTYPE,B_HOMELAND</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateTag-Homeland-MERCENARIES_LEGACY_BUFF,MERCENARIES-LEGACY_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <HiddenInTooltip>true</HiddenInTooltip>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>PurchaseCost-ResDomainWarfare:1</Tag>
+            </Tags>
+         </CardTags>
+         <Layer>5</Layer>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-LEGACY_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResDomainWarfare,ADD,1</Payload>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+<!-- ____________________________________________ -->
+<!-- __________________INNOVATION________________ -->
+<!-- ____________________________________________ -->
+
+
+      <ACard>
+         <ID>INNOVATION-MERCENARIES-SEADOGS</ID>
+         <CardSpriteName>Cards/Events/InnovationPainting</CardSpriteName>
+         <ExecutionType>CX_Choice</ExecutionType>
+         <Subtype>CST_Event</Subtype>
+         <Count>1</Count>
+         <BurnAfterReading>true</BurnAfterReading>
+         <Prereqs>
+            <Requirement>
+               <!-- Stop using this even in Age 6+ -->
+               <ReqType>CR_ChosenAge</ReqType>
+               <Req>NONE,8</Req>
+               <Target>PLAYER</Target>
+            </Requirement>
+            <Requirements>
+               <ReqType>CR_EntityTypeCount</ReqType>
+               <Req>UNIT_PRIVATEER,GTE,1</Req>
+               <Target>PLAYER</Target>
+            </Requirements>
+         </Prereqs>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_PlayCard</EffectType>
+                     <Payload>MERCENARIES-SEADOGS_BUFF</Payload>
+                     <Target>ENTTYPE,UNIT_PRIVATEER</Target>
+                     <UseNonTargetedTooltip>true</UseNonTargetedTooltip>
+                  </ACardEffect>
+                  <ACardEffect>
+                     <EffectType>CE_SetStringData</EffectType>
+                     <Payload>TriggerOnEntityCreateType-UNIT_PRIVATEER-SEADOGS,MERCENARIES-SEADOGS_BUFF</Payload>
+                     <Target>PLAYER</Target>
+                     <Hidden>true</Hidden>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>ResCoin,ADD,#CI_CASHOUT_VALUE</Payload>
+                     <Target>PLAYER</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>AddToInnovationDeck</Tag>
+               <Tag>HorizontalDisplay</Tag>
+               <Tag>UseActionButtons</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+      <ACard>
+         <ID>MERCENARIES-SEADOGS_BUFF</ID>
+         <ExecutionType>CX_All</ExecutionType>
+         <Choices>
+            <ACardChoice>
+               <Effects>
+                  <ACardEffect>
+                     <EffectType>CE_AdjustGameData</EffectType>
+                     <Payload>Upkeep-ResCoin,MUL,0.7</Payload>
+                     <DisplayAsPercentage>true</DisplayAsPercentage>
+                     <Target>ENT,EXEC</Target>
+                  </ACardEffect>
+               </Effects>
+            </ACardChoice>
+         </Choices>
+         <CardTags>
+            <Tags>
+               <Tag>ForceEffectAsBuff</Tag>
+            </Tags>
+         </CardTags>
+      </ACard>
+
+
+   </Definition>
+</ADeck>

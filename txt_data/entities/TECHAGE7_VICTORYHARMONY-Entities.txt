@@ -1,0 +1,261 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+	<EntityInfo>
+		<ID>B_CEMETERY</ID>
+		<Import>CITYBUILDING_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,400</Data>-->
+			<Data>ConstructionCost-ResCityProduction,500</Data>
+			<Data>ResCitySanitation,25</Data>
+			<Data>ResCityFaith-{PlayerReligion},10</Data>
+			<Data>StatBonusRegionLevel,1</Data>
+			<Data>UpgradeLine-CitySanitation,3</Data>
+			<Data>FilterAge,7</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>ReligiousStructure</Tag>
+			<Tag>FaithToCulture_Large</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_FOODBANK</ID>
+		<Import>CITYBUILDING_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,400</Data>-->
+			<Data>ConstructionCost-ResCityProduction,500</Data>
+			<Data>ResCityFood,30</Data>
+			<Data>ResCityFaith-{PlayerReligion},10</Data>
+			<Data>StatUnrestSuppression,10</Data>
+			<Data>StatBonusRegionLevel,1</Data>
+			<Data>FilterAge,7</Data>
+			<Data>UpgradeLine-CapFood,3</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>ReligiousStructure</Tag>
+			<Tag>FaithToCulture_Large</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_ICONSTATUE</ID>
+		<Import>CITYBUILDING_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,400</Data>-->
+			<Data>ConstructionCost-ResCityProduction,500</Data>
+			<Data>ResCityExpansionPoints,10</Data>
+			<Data>ResCityFaith-{PlayerReligion},10</Data>
+			<Data>ResCityLuxury,10</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE6-MONUMENT_ONSELFBUILDTRIGGER</Data>
+			<Data>UpgradeLine-CapMonument,4</Data>
+			<Data>FilterAge,7</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>ReligiousStructure</Tag>
+			<Tag>FaithToCulture_Large</Tag>
+         <Tag>CapMonument</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_STATERELIGIONOFFICE</ID>
+		<Import>CITYBUILDING_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,400</Data>-->
+			<Data>ConstructionCost-ResCityProduction,500</Data>
+			<Data>ResDomainGovernment,1</Data>
+			<Data>ResDomainArts,1</Data>
+			<Data>ResCityFaith-{PlayerReligion},8</Data>
+			<Data>RequiredRegionLevel,4</Data>
+         <Data>CountLimit-Nation,1</Data>
+			<Data>FilterAge,7</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>ReligiousStructure</Tag>
+         <Tag>DataLinkAction:PLAYER:SameReligionGlobalPop,TECHAGE7_VICTORYHARMONY-STATERELIGIONOFFICE_DATALINKACTION_BUFF</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+		</Tags>
+	</EntityInfo>
+
+
+<!-- TILE IMPROVEMENTS -->
+
+	<EntityInfo>
+		<ID>B_TILEIMP_TEXTILETAPESTRIES</ID>
+		<Import>IMPROVEMENT_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+			<Data>ConstructionCost-ResImprovementPoints,50</Data>
+			<Data>EntityPrefab,Improvements/B_TILEIMP_TEXTILETAPESTRIES</Data>
+			<Data>WorkableConvertGoods-Textiles-1-Tapestry,2</Data>
+			<Data>WorkableResCityFaith-{PlayerReligion},8</Data>
+			<Data>UpgradeLine-Tapestry,2</Data>
+			<Data>WorkableResCityPowerRequired,1</Data>
+         <Data>ImprovementSort,151</Data>
+         <Data>AIBuildWeight,3</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>IgnoreTerrainWorkerCode</Tag>
+			<Tag>BuildRequirementTag-OpenTerrain</Tag>
+			<Tag>ImprovementCategory-Textile</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AIHint-TextileTapestry</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_TILEIMP_WOODWORKER</ID>
+		<Import>IMPROVEMENT_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+			<Data>ConstructionCost-ResImprovementPoints,50</Data>
+			<Data>EntityPrefab,Improvements/B_TILEIMP_WOODWORKER</Data>
+			<Data>WorkableConvertGoods-Logs-1-Woodworks,1</Data>
+			<Data>WorkableResCityPowerRequired,1</Data>
+         <Data>UpgradeLine-Woodworker,2</Data>
+         <Data>ImprovementSort,730</Data>
+         <Data>AIBuildWeight,3</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>IgnoreTerrainWorkerCode</Tag>
+			<Tag>BuildRequirementTag-OpenTerrain</Tag>
+			<Tag>ImprovementCategory-Woodwork</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AIHint-WoodWorker</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_TILEIMP_HOLYSCULPTOR</ID>
+		<Import>IMPROVEMENT_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+			<Data>ConstructionCost-ResImprovementPoints,50</Data>
+			<Data>EntityPrefab,Improvements/B_TILEIMP_HOLYSCULPTOR</Data>
+			<Data>WorkableConvertGoods-+CanMakeStone-3-Statue,3</Data>
+			<Data>WorkableResCityPowerRequired,1</Data>
+			<Data>UpgradeLine-Sculptor,3</Data>
+         <Data>ImprovementSort,822</Data>
+         <Data>AIBuildWeight,3</Data>
+		</StartingData>
+		<Tags>
+			<Tag>RequireReligion</Tag>
+			<Tag>IgnoreTerrainWorkerCode</Tag>
+			<Tag>BuildRequirementTag-OpenTerrain</Tag>
+			<Tag>ImprovementCategory-StoneClay</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AIHint-HolySculptor</Tag>
+         <Tag>Modernization</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+		</Tags>
+	</EntityInfo>
+
+	<EntityInfo>
+		<ID>B_TILEIMP_ABBEY_2</ID>
+		<Import>IMPROVEMENT_BASE</Import>
+		<MapScale>1.0</MapScale>
+		<StartingData>
+			<Data>ConstructionCost-ResImprovementPoints,40</Data>
+			<Data>EntityPrefab,Improvements/B_TILEIMP_ABBEY_2</Data>
+			<Data>ResCityFaith-{PlayerReligion},8</Data>
+         <Data>GoodsReligiousText,2</Data>
+         <Data>CountLimit-Region,3</Data>
+			<Data>AIBuildWeight,1</Data>
+	      <Data>UpgradeLine-OutpostAbbey,2</Data>
+		</StartingData>
+		<!-- 10/23/2023 Jack: Moved Pyramid Temple out of the Abbey Upgrade line -->
+		<!--
+		<ActionCards>
+         <Card>UNITACTIONS-PYRAMIDTEMPLE_TERRAINBONUS</Card>
+      </ActionCards>
+   	-->
+		<Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+		</Tags>
+	</EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_STATIONARYMG</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_MachineGun</Icon>
+      <Portrait>StationaryMGPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,250</Data>
+         <Data>Upkeep-ResCoin,10</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <!-- Intentionally lower movement -->
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,35</Data>
+         <Data>StatDefense,13</Data>
+         <!-- Stand Off -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,2.5</Data>
+         <!-- Defensive -->
+         <Data>CombatMod-StatAttack-Role:CR_Defender,2</Data>
+         <Data>UpgradeLine-Ranged,5</Data>
+         <!-- Fold-in Raider Bow to Ranged Line -->
+         <Data>UpgradeLine-RaiderBow,4</Data>
+         <Data>FilterAge,7</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_7</Data>
+         <Data>LeaderPromotionCost,101</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/StationaryMachineGun/Unit_StationaryMachineGun</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeRanged</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <!--<Tag>AttackBegunSoundGun</Tag>-->
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>  
+         <!-- AI Hints -->
+         <Tag>AIHint-DefensiveUnit</Tag>
+         <Tag>AIHint-StationaryMachineGun</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

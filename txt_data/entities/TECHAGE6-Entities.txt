@@ -1,0 +1,1506 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!--________________CAP_CITY_BUILDINGS________________-->
+
+   <!--________________STANDARD________________-->
+
+      <EntityInfo>
+         <ID>B_MUSEUM</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>ResCityEducation,4</Data>
+            <Data>ResCityLuxury,4</Data>
+            <Data>StatBonusRegionLevel,1</Data>
+            <Data>UpgradeLine-Museum,1</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_NATIONALLANDMARK</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>ResCityExpansionPoints,9</Data>
+            <Data>TriggerOnSelfBuild,TECHAGE6-MONUMENT_ONSELFBUILDTRIGGER</Data>
+            <Data>UpgradeLine-CapMonument,3</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>CapMonument</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_CENTRALBANK</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,300</Data> -->
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+            <Data>ResCoin,20</Data>
+            <Data>UpgradeLine-Bank,2</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>VentureCapitalists</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_PUBLICLIBRARY</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,440</Data>
+            <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+            <Data>ResKnowledge,2</Data>
+            <Data>UpgradeLine-Library,2</Data>
+            <Data>RequiredRegionLevel,3</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>AIHint-PublicLibrary</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_POLICEDEPARTMENT</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,280</Data> -->
+            <Data>ConstructionCost-ResCityProduction,360</Data>
+            <Data>StatUnrestSuppression,20</Data>
+            <Data>UpgradeLine-Police,2</Data>
+            <Data>RequiredRegionLevel,2</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_ACADEMYOFSCIENCE</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,440</Data>
+            <Data>NeedAdjust-NEEDEDUCATION,2</Data>
+            <Data>ResSpecialists,3</Data>
+            <Data>CountLimit-Nation,1</Data>
+            <Data>TriggerOnSelfBuild,TECHAGE6-ACADEMY_ONSELFBUILDTRIGGER</Data>
+            <Data>UpgradeLine-AcademyScience,1</Data>
+            <Data>RequiredRegionLevel,6</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>AutoDestroyOnConvert</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_LIVERYHALL</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>ResCityProduction,15</Data>
+            <Data>StatExportSlotCount,3</Data>
+            <Data>UpgradeLine-Warehouses,3</Data>
+            <Data>RequiredRegionLevel,2</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>Warehouse</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_UNIVERSITY</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>UpgradeLine-University,3</Data>
+            <!-- <Data>ConstructionCost-ResCityProduction,370</Data> -->
+            <Data>ConstructionCost-ResCityProduction,440</Data>
+            <Data>NeedAdjust-NEEDEDUCATION,2</Data>
+            <Data>ResSpecialists,1</Data>
+            <Data>ResKnowledge,3</Data>
+            <Data>FilterAge,6</Data>
+            <Data>RequiredRegionLevel,4</Data>
+         </StartingData>
+         <Tags>
+            <Tag>University</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_SHOPPINGCENTER</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,300</Data> -->
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>ResDomainDiplomacy,1</Data>
+            <Data>ResCulture,1</Data>
+            <Data>FilterAge,6</Data>
+            <Data>StatImportSlotCount,3</Data>
+            <Data>UpgradeLine-Market,3</Data>
+         </StartingData>
+      </EntityInfo>
+
+	<!--________________NATIONAL_SPIRITS________________-->
+
+      <EntityInfo>
+         <ID>B_NEWPALACE</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>StatBonusRegionLevel,10</Data>
+            <Data>ResDomainGovernment,1</Data>
+            <Data>ResDomainArts,1</Data>
+            <Data>StatUnrestSuppression,20</Data>
+            <Data>TriggerOnSelfBuild,SULTANS-NEWPALACE_ONSELFBUILDTRIGGER</Data>
+            <Data>CountLimit-Nation,1</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>AutoDestroyOnConvert</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_THEODOSIANWALLS</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,200</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>StatUnrestSuppression,16</Data>
+            <Data>UpgradeLine-Walls,5</Data>
+            <Data>CityBuildingDefenders-0,UNIT_THEODOSIANWALLS</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+            <Data>FilterAge,6</Data>
+         </StartingData>
+         <Tags>
+            <Tag>NoBuildingDamage</Tag>
+            <Tag>AIHint-TheodosianWallsBuilding</Tag>
+            <Tag>AIHint-Wall</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_ENGINEERSQUARTER</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,200</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>ResCitySanitation,10</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>TriggerOnSelfBuild,SULTANS-B_ENGINEERSQUARTER_BUFF</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>SultanBuilding</Tag>
+            <Tag>AIHint-EngineersQuarterBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_TRADEADVISORSQUARTER</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,200</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>ResCityLuxury,5</Data>
+            <Data>ResCoin,5</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>TriggerOnSelfBuild,SULTANS-B_TRADEADVISORSQUARTER_BUFF</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>SultanBuilding</Tag>
+            <Tag>AIHint-TradeAdvisorsQuarterBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_EDUCATIONADVISORSQUARTER</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,200</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>ResCityEducation,5</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>TriggerOnSelfBuild,SULTANS-B_EDUCATIONADVISORSQUARTER_BUFF</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>SultanBuilding</Tag>
+            <Tag>AIHint-EducationAdvisorsQuarterBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_CONSERVATORY</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,330</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>ResDomainArts,1</Data>
+            <Data>ResCulture,5</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GREATMASTERS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-GREATMASTERS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>AIHint-ConservatoryBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_GREATLIBRARY</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,200</Data> -->
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>GoodsForeignManuscripts,0</Data>
+            <Data>CountLimit-Nation,1</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SCHOLARS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SCHOLARS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>DataLinkAction:PLAYER:DRCount-DR_OpenBorders,SCHOLARS-GREATLIBRARY_OPENBORDER_DATALINKACTION_BUFF</Tag>
+            <Tag>DataLinkAction:PLAYER:DRCount-DR_Alliance,SCHOLARS-GREATLIBRARY_ALLIANCE_DATALINKACTION_BUFF</Tag>
+            <Tag>AIHint-GreatLibraryBuilding</Tag>
+            <Tag>AutoDestroyOnConvert</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_SCHOLARLYSOCIETY</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- <Data>ConstructionCost-ResCityProduction,300</Data> -->
+            <Data>ConstructionCost-ResCityProduction,380</Data>
+            <Data>GoodsBooks,1</Data>
+            <Data>ResCityEducation,5</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SCHOLARS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SCHOLARS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>GreatLibrary</Tag>
+            <Tag>AIHint-ScholarlySocietyBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+   <!--________________INNOVATION________________-->
+
+      <EntityInfo>
+         <ID>B_TAJMAHAL</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>ResInnovationPerTurn,0.5</Data>
+            <Data>CountLimit-Nation,1</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/ResInnovation-ICON</Data>
+            <Data>SourceOverlayTooltip,Game-Resource-InnovationPerTurn</Data>
+         </StartingData>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_BASILCATHEDRAL</ID>
+         <Import>CITYBUILDING_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResCityProduction,400</Data>
+            <Data>TriggerOnSelfBuild,TECHAGE6-BASILCATHEDRAL_RELIGIOUSTEXT_BUFF</Data>
+            <Data>ResCityFaith-{PlayerReligion},20</Data>
+            <Data>CountLimit-Nation,1</Data>
+            <Data>RequiredRegionLevel,4</Data>
+            <Data>FilterAge,6</Data>
+            <Data>SourceOverlayImageName,UI/Icons/ResInnovation-ICON</Data>
+            <Data>SourceOverlayTooltip,Game-Resource-InnovationPerTurn</Data>
+         </StartingData>
+         <Tags>
+            <Tag>RequireReligion</Tag>
+            <Tag>ReligiousStructure</Tag>
+            <Tag>FaithToCulture_Huge</Tag>
+         </Tags>
+      </EntityInfo>
+
+<!--________________TILE_IMPROVEMENTS________________-->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_BAKERY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,48</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_BAKERY</Data>
+         <Data>WorkableConvertGoods-Flour-4-Bread,4</Data>
+         <Data>UpgradeLine-Oven,2</Data>
+         <Data>ImprovementSort,021</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Cooking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_FOUNDRY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,36</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_FOUNDRY</Data>
+         <Data>WorkableConvertGoods-+CanMakeTools-4-Tools,4</Data>
+         <Data>WorkableResDomainEngineering,1</Data>
+         <Data>UpgradeLine-Tools,2</Data>
+         <Data>ImprovementSort,431</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>RotaryGrindstone</Tag>
+         <Tag>Bellows</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ARSENAL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,36</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ARSENAL</Data>
+         <Data>WorkableConvertGoods-+CanMakeRifles-2-Rifles,2</Data>
+         <Data>UpgradeLine-Weapons,2</Data>
+         <Data>ImprovementSort,421</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Metal</Tag>
+         <Tag>DrawPlate</Tag>
+         <Tag>WeaponSmith</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_PUBLICSCHOOL</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,44</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_PUBLICSCHOOL</Data>
+         <Data>ResCityEducation,3</Data>
+         <Data>WorkableResCityEducation,5</Data>
+         <Data>UpgradeLine-PublicSchool,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>EducationBuilding</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_COFFEEHOUSE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,30</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_COFFEEHOUSE</Data>
+         <Data>WorkableConvertGoods-+CanMakeAnalytics-1-AResearch,1</Data>
+         <Data>StatUnrestSuppression,4</Data>
+         <Data>ImprovementSort,790</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_LITERARYSALON</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,44</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_LITERARYSALON</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+         <Data>WorkableResSpecialists,2</Data>
+         <Data>UpgradeLine-LiterarySalon,1</Data>
+         <Data>ImprovementSort,791</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_HOUSEOFWORSHIP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,40</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_HOUSEOFWORSHIP</Data>
+         <Data>ResCityFaith-{PlayerReligion},6</Data>
+         <Data>WorkableResCityFaith-{PlayerReligion},6</Data>
+         <Data>UpgradeLine-HouseOfWorship,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>RequireReligion</Tag>
+         <Tag>FaithToCulture_Medium</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>ReligiousBuilding</Tag>
+         <Tag>AutoDestroyOnNeutral</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!--NATIONAL SPIRITS-->
+
+   <!-- Inventors -->
+   <EntityInfo>
+      <ID>B_TILEIMP_INVENTORS_LAB</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,5</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_INVENTORS_LAB</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+         <Data>WorkableConvertGoods-Books-1-Inventions,1</Data>
+         <Data>UpgradeLine-Lab,1</Data>
+         <Data>ImprovementSort,781</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-INVENTORS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-INVENTORS-DisplayName</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>Laboratory</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_POWERED_INVENTORS_LAB</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,10</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_POWERED_INVENTORS_LAB</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,1</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>WorkableGoodsInventions,2</Data>
+         <!-- <Data>UpgradeLine-Lab,2</Data> -->
+         <!-- <Data>ImprovementSort,521</Data> -->
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-INVENTORS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-INVENTORS-DisplayName</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>Laboratory</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_VOLTAIC_PILE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,45</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_VOLTAIC_PILE</Data>
+         <Data>NeedAdjust-NEEDEDUCATION,2</Data>
+         <Data>WorkableResCityPower,2</Data>
+         <Data>ResCityPower,2</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-INVENTORS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-INVENTORS-DisplayName</Data>
+         <!--Data>ImprovementSort,600</Data-->
+         <!--Data>UpgradeLine-CoalPower,2</Data-->
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Power</Tag>
+         <Tag>AIHint-VoltaicPile</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_WORLDFAIR</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,45</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_WORLDFAIR</Data>
+         <Data>WorkableConvertGoods-+CanMakeExhibition-1-Exhibitions,1</Data>
+         <Data>ImprovementSort,782</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-INVENTORS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-INVENTORS-DisplayName</Data>
+         <Data>AIBuildWeight,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Professional</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <!-- Colonialism NS -->
+      <EntityInfo>
+         <ID>B_TILEIMP_TRADEFACTORY</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,60</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_TRADEFACTORY</Data>
+            <Data>GoodsSpecial-TileProduction-ANYBONUS,2</Data>
+            <Data>UpgradeLine-TradePost,2</Data>
+            <Data>AIBuildWeight,4</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-COLONIALISM</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-COLONIALISM-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>TradePost</Tag>
+            <Tag>BuildRequirementTag-TradePostTarget</Tag>
+            <Tag>OutpostImprovement</Tag>
+            <Tag>StandardOutpostImprovement</Tag>
+            <Tag>CastleOutpostImprovement</Tag>
+            <Tag>ColonyOutpostImprovement</Tag>
+            <Tag>ImprovementCategory-Gather</Tag>
+            <Tag>WaterVisuals</Tag>
+            <Tag>AIHint-TradeFactory</Tag>
+            <Tag>FaceShore</Tag>
+         </Tags>
+      </EntityInfo>
+
+
+
+   <!-- Warrior Priests NS -->
+      <EntityInfo>
+         <ID>B_TILEIMP_JUNGLEFARM</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,45</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_JUNGLEFARM</Data>
+            <Data>WorkableGoodsSpecial-TileProduction-PT_FARM,4</Data>
+            <Data>FarmTownBonusValue,1</Data>
+            <!--Data>UpgradeLine-Farming,3</Data-->
+            <Data>ImprovementSort,003</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-WARRIORPRIESTS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-WARRIORPRIESTS-DisplayName</Data>
+         </StartingData>
+         <ActionCards>
+            <Card>UNITACTIONS-FARM_RIVERBONUS</Card>
+            <Card>UNITACTIONS-FARM_LUSHBONUS</Card>
+         </ActionCards>
+         <Tags>
+            <Tag>BuildRequirementTerrain-TT_JUNGLE</Tag>
+            <Tag>IgnoreTerrainWorkerCode</Tag>
+            <Tag>FarmTownBonus</Tag>
+            <Tag>ImprovementCategory-Gather</Tag>
+            <Tag>Rural</Tag>
+            <Tag>ModernFarm</Tag>
+            <Tag>Scythe</Tag>
+            <Tag>Farm</Tag>
+            <Tag>AIHint-JungleFarm</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>B_TILEIMP_PYRAMIDTEMPLE</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,20</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_PYRAMIDTEMPLE</Data>
+            <Data>ResCityFaith-{PlayerReligion},6</Data>
+            <Data>WorkableResCityFaith-{PlayerReligion},6</Data>
+            <Data>ResCulture,1</Data>
+            <Data>CountLimit-Region,1</Data>
+            <Data>AIBuildWeight,1</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-WARRIORPRIESTS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-WARRIORPRIESTS-DisplayName</Data>
+         </StartingData>
+         <ActionCards>
+            <Card>UNITACTIONS-PYRAMIDTEMPLE_TERRAINBONUS</Card>
+         </ActionCards>
+         <Tags>
+            <Tag>BuildRequirementTerrain-TT_JUNGLE</Tag>
+            <Tag>ImprovementCategory-Civic</Tag>
+            <Tag>AIHint-PyramidTemple</Tag>
+            <Tag>FaithToCulture_Large</Tag>
+            <Tag>ReligiousBuilding</Tag>
+         </Tags>
+      </EntityInfo>
+
+
+
+   <!-- Mercenaries NS -->
+      <EntityInfo>
+         <ID>B_TILEIMP_PMCTRAININGCAMP</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,60</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_PMCTRAININGCAMP</Data>
+            <Data>ResCoin,3</Data>
+            <Data>ResDomainWarfare,1</Data>
+            <Data>CountLimit-Region,3</Data>
+            <Data>AIBuildWeight,4</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-MERCENARIES</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-MERCENARIES-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>OutpostImprovement</Tag>
+            <Tag>ColonyOutpostImprovement</Tag>
+            <Tag>ImprovementCategory-Civic</Tag>
+            <Tag>BuildRequirementTag-OpenTerrain</Tag>
+            <Tag>AIHint-PMCTrainingCamp</Tag>
+         </Tags>
+      </EntityInfo>
+
+   <!-- Sultans NS -->
+      <EntityInfo>
+         <ID>B_TILEIMP_COURTYARDHOMES</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,30</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_COURTYARDHOMES</Data>
+            <Data>ResCityHousing,15</Data>
+            <Data>WorkableResCoin,7</Data>
+            <Data>UpgradeLine-Housing,3</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+         </StartingData>
+         <Tags>
+            <Tag>IgnoreTerrainWorkerCode</Tag>
+            <Tag>BuildRequirementTag-OpenTerrain</Tag>
+            <Tag>ImprovementCategory-Civic</Tag>
+            <Tag>NoWorkerAssignmentOnCreation</Tag>
+            <Tag>Housing</Tag>
+            <Tag>ModernHouse</Tag>
+            <Tag>AIHint-CourtyardHomes</Tag>
+         </Tags>
+      </EntityInfo>
+
+   <!-- Scholars -->
+      <EntityInfo>
+         <ID>B_TILEIMP_TRANSLATOR</ID>
+         <Import>IMPROVEMENT_BASE</Import>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResImprovementPoints,18</Data>
+            <Data>EntityPrefab,Improvements/B_TILEIMP_TRANSLATOR</Data>
+            <Data>WorkableConvertGoods-ForeignManuscripts-3-Books,3</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SCHOLARS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-SCHOLARS-DisplayName</Data>
+            <Data>AIBuildWeight,2</Data>
+         </StartingData>
+         <Tags>
+            <Tag>IgnoreTerrainWorkerCode</Tag>
+            <Tag>BuildRequirementTag-OpenTerrain</Tag>
+            <Tag>ImprovementCategory-Professional</Tag>
+            <Tag>Scribes</Tag>
+            <Tag>AIHint-Translator</Tag>
+            <Tag>AutoDestroyOnConvert</Tag>
+         </Tags>
+      </EntityInfo>
+
+<!--________________UNITS________________-->
+
+
+   <EntityInfo>
+      <ID>UNIT_MUSKET</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Rifle</Icon>
+      <Portrait>MusketPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,67</Data>-->
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,39</Data>
+         <!-- Volley -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>
+         <Data>UpgradeLine-Infantry,7</Data>
+         <!-- Fold-In Spartans & Hopelite to Infantry -->
+         <Data>UpgradeLine-Spartan,3</Data>
+         <!-- Fold in the Samurai & Naginata -->
+         <Data>UpgradeLine-Samurai,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Musket/Unit_Musket</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:BarracksPresent</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>JaguarBuff</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundGun</Tag>
+		   <Tag>ProjectileFiredSoundMusketMulti</Tag>
+		   <Tag>RoutedSoundLine</Tag>
+		   <!--<Tag>DestroyedSoundLine</Tag>-->
+		   <Tag>AttackSoundGun</Tag>
+		   <Tag>DamageTakenSoundLine</Tag>
+		   <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_GRENADIER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Grenade</Icon>
+      <Portrait>GrenadierPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,22</Data>
+         <Data>StatDefense,32</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-Assault,4</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Grenadier/Unit_Grenadier</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>TypeProjectile</Tag>
+         <Tag>RequiredBuildingTag:BarracksPresent</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+		   <Tag>AttackBegunSoundGrenade</Tag>
+		   <Tag>ProjectileFiredSoundJavelin</Tag>
+		   <Tag>RoutedSoundLine</Tag>
+		   <!--<Tag>DestroyedSoundLine</Tag>-->
+		   <Tag>AttackSoundGrenade</Tag>
+		   <Tag>DamageTakenSoundLine</Tag>
+		   <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_CUIRASSIER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Horseshoe</Icon>
+      <Portrait>CuirassierPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,210</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,38</Data>
+         <Data>StatDefense,30</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>UpgradeLine-Shock,6</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Cuirassier/Unit_Cuirassier</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCavalry</Tag>
+         <Tag>AttackOverSoundCavalry</Tag>
+         <Tag>AttackSoundLineSword</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <!--<Tag>DestroyedSoundHorse</Tag>-->
+         <Tag>MemberDeadSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_RECONBALLOON</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Balloon</Icon>
+      <Portrait>ReconBalloonPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!--<Data>ConstructionCost-ResCityProduction,26</Data>-->
+         <Data>ConstructionCost-ResCityProduction,180</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,19</Data>
+         <Data>StatDefense,25</Data>
+         <Data>FilterAge,6</Data>
+         <Data>UseAction-100,UNITACTIONS-RECONBALLOON_STARTRECON</Data>
+         <Data>UseAction-101,UNITACTIONS-RECONBALLOON_ENDRECON</Data>
+         <Data>IsBusy,0</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Balloon</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/ReconBalloon/Unit_ReconBalloon</Data>
+         <Data>ObsoleteAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeMobileRecon</Tag> <!-- Used for AdvancedStart -->
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>ProjectileFiredSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ReconBalloon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- NATIONAL SPIRITS -->
+
+   <!-- Warrior Priests -->
+   <EntityInfo>
+      <ID>UNIT_JAGUAR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Jaguar</Icon>
+      <Portrait>JaguarPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,220</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,32</Data>
+         <Data>StatDefense,45</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <!-- Leader Stats -->
+         <Data>StatTactics,6</Data>
+         <Data>LeaderRetireValue,35</Data>
+         <!-- <Data>LeaderPromotionType,UNIT_LEADER_7</Data> -->
+         <!-- <Data>LeaderPromotionCost,101</Data> -->
+         <!-- Setting StatTargetPriority to 199 so that leaders are the last "line" to be attacked. -->
+         <Data>StatTargetPriority,199</Data>
+         <Data>UseAction-201,UNITACTIONS-LEADER_RETIRE</Data>
+         <!-- Jungle Bonus -->
+         <Data>CombatMod-StatAttack-Terrain:TT_JUNGLE,1.5</Data>
+         <Data>CombatMod-StatDefense-Terrain:TT_JUNGLE,1.5</Data>
+         <Data>FilterAge,6</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-WARRIORPRIESTS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-WARRIORPRIESTS-DisplayName</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Jaguar/Unit_Jaguar</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE6</Tag>
+         <!-- <Tag>TrainableUnit</Tag> -->
+         <!-- <Tag>RequiredBuildingTag:BarracksPresent</Tag> -->
+
+         <Tag>TypeLine</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Water Movement -->
+   <EntityInfo>
+      <ID>UNIT_MANOFWAR</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_AncientShip1</Icon>
+      <Portrait>ManofwarPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,39</Data>
+         <!-- Warship -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+AttackShip,2.0</Data>
+         <Data>UpgradeLine-Warship,5</Data>
+         <!-- Fold-In Knarr to Warship Line -->
+         <Data>UpgradeLine-Knarr,2</Data>
+         <Data>FilterAge,6</Data>
+         <Data>AIBuildWeight,0.1</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/ManOfWar/Unit_ManOfWar</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredImprovementTag:HarborPresent</Tag>
+         <Tag>Warship</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Warship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>DamageTakenSoundWoodenBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- MERCENARIES NS -->
+   <EntityInfo>
+      <ID>UNIT_MERCENARY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_DeathHeadBeret</Icon>
+      <Portrait>MercenaryPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>Upkeep-ResCoin,40</Data> <!-- 3/18/2024. Increased back to previous rediculously high value. About 5x Upkeep to Age 6 Units. Same with Privateer -->
+         <Data>UpkeepRemovePriority,100</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,50</Data>
+         <Data>StatCommandMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,45</Data>
+         <Data>StatDefense,35</Data>
+         <!-- MERC -->
+         <Data>StatCombatXP,40</Data> <!-- 4/30/2024. Maxed out Veterancy Level immediately when spawned -->
+         <!--Data>CombatMod-StatAttack-Target:+TypeLine,2.5</Data-->
+         <Data>FilterAge,6</Data>
+         <!-- <Data>UnitMemberPrefab,Entities/Units/_NewUnits/UNIT_EARLYMG/Unit_Earlymg_Prefab</Data> -->
+         <Data>ObsoleteAge,8</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-MERCENARIES</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-MERCENARIES-DisplayName</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Mercenary/Unit_Mercenary</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeCommando</Tag>
+         <Tag>Mercenary</Tag>
+         <Tag>TrainableUnit</Tag>
+         <!--Tag>TypeRanged</Tag--> <!-- 4/30/2024. Removed TypeTag, immune to other unit's RPS -->
+         <Tag>ValidAction-BT_Attack</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMusketMulti</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PRIVATEER</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_PirateFlag</Icon>
+      <Portrait>PrivateerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>Upkeep-ResCoin,40</Data>
+         <Data>UpkeepRemovePriority,100</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatCommand,50</Data>
+         <Data>StatCommandMax,50</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>StatAttack,47</Data>
+         <Data>StatDefense,45</Data>
+         <!-- MERC -->
+         <Data>StatCombatXP,40</Data> <!-- 4/30/2024. Maxed out Veterancy Level immediately when spawned -->
+         <Data>FilterAge,6</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Privateer/Unit_Privateer</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-MERCENARIES</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-MERCENARIES-DisplayName</Data>
+         <Data>ObsoleteAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeCommando</Tag>
+         <Tag>Mercenary</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Attackship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>DamageTakenSoundWoodenBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MERCENARY_GIFT</ID>
+      <Import>UNIT_MERCENARY</Import>
+      <StartingData>
+         <Data>Upkeep-ResCoin,0</Data>
+
+         <Data>CombatMod-StatAttack-Target:+Mercenary,0</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <!-- SULTANS NS -->
+   <EntityInfo>
+      <ID>UNIT_BASILIC</ID>
+      <Import>UNIT_CATAPULT_BASE</Import>
+      <Icon>UnitIcon_Cannon</Icon>
+      <Portrait>BasilicPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,220</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,40</Data>
+         <Data>StatDefense,24</Data>
+         <Data>RevealRadius,2</Data>
+         <!-- Siege Unit Stats -->
+         <Data>StatBarragePower,20</Data>
+         <Data>StatBarrageTargets,3</Data>
+         <Data>StatStrategicPower,74</Data>
+         <Data>StatStrategicTargets,3</Data>
+         <Data>UseAction-100,UNITACTIONS-SIEGE_DAMAGEDEFENSES_RANGED</Data>   <!-- UNITACTIONS-SIEGE_DAMAGEDEFENSES -->
+         <Data>ObsoleteAge,8</Data>
+         <Data>FilterAge,6</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Cart</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-SULTANS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-SULTANS-DisplayName</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Basilic/Unit_Basilic</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+         <Tag>DamageTakenSoundMachine</Tag>
+         <Tag>RoutedSoundMachine</Tag>
+         <Tag>DestroyedSoundMachine</Tag>
+         <Tag>AIHint-BasilicUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_THEODOSIANWALLS</ID>
+      <Import>UNIT_WALL_BASE</Import>
+      <Portrait>TheodosianWallPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,40</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Defenses/TheodosianWalls/Unit_TheodosianWalls</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+         <Tag>AttackBegunSoundGateStoneOpen</Tag>
+         <Tag>AttackOverSoundGateStoneClose</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundCannon</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- FIELD MARSHAL NS -->
+   <EntityInfo>
+      <ID>UNIT_FIELDMARSHAL</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_GallopHorse</Icon>
+      <Portrait>FieldMarshalPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,200</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,39</Data>
+         <Data>StatTactics,8</Data>
+         <Data>FilterAge,6</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <!-- The last to be attacked. -->
+         <Data>StatTargetPriority,99</Data>
+         <Data>LeaderRetireValue,45</Data>
+         <Data>UseAction-201,UNITACTIONS-LEADER_RETIRE</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-FIELDMARSHAL</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-FIELDMARSHAL-DisplayName</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/FieldMarshal/Unit_FieldMarshal</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE6</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>Leader</Tag>
+         <Tag>TagAILimitType-Leader</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge6</Tag> -->
+         <!-- <Tag>UseEntityNameTable:LeadersAge6FieldMarshal</Tag> -->
+         <Tag>AttackBegunSoundHorse</Tag>
+         <Tag>AttackOverSoundHorse</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <Tag>DestroyedSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_OLDGUARDGRENADIER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Grenade</Icon>
+      <Portrait>OldGuardGrenadierPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,220</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,25</Data>
+         <Data>StatDefense,36</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-OldGuardGren,1</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/OldGuardGrenadier/Unit_OldGuardGrenadier</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-FIELDMARSHAL</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-FIELDMARSHAL-DisplayName</Data>
+         <Data>ObsoleteAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>TypeProjectile</Tag>
+         <Tag>RequiredBuildingTag:BarracksPresent</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMusketMulti</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-OGGrenadierUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_OLDGUARDCAVALRY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Horseshoe</Icon>
+      <Portrait>OldGuardCavalryPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,245</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,43</Data>
+         <Data>StatDefense,35</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>UpgradeLine-OldGuardCav,1</Data>
+         <Data>FilterAge,6</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_6</Data>
+         <Data>LeaderPromotionCost,84</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-FIELDMARSHAL</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-FIELDMARSHAL-DisplayName</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Horse</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/OldGuardCavalry/Unit_OldGuardCavalry</Data>
+         <Data>ObsoleteAge,8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <Tag>DestroyedSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>AIHint-OGCavalryUnit</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- GREAT MASTERS NS -->
+      <EntityInfo>
+         <ID>UNIT_ARTIST</ID>
+         <Import>UNIT_BASE</Import>
+         <Icon>UnitIcon_Palette</Icon>
+         <Portrait>ArtistPortrait</Portrait>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- 80 Production DIFF -> 40XP to get to Master Arist -->
+            <Data>ConstructionCost-ResCityProduction,50</Data>
+            <Data>RevealRadius,1</Data>
+            <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+            <Data>UseAction-100,UNITACTIONS-ARTIST_CULTURAL_MOVEMENT</Data>
+            <Data>UseAction-101,UNITACTIONS-ARTIST_DEPLOY_CITY</Data>
+            <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Artist/Unit_Artist</Data>
+            <Data>DeployedGoods-ArtWork,1</Data>
+         </StartingData>
+         <Tags>
+            <Tag>EnterPeacefulTerritory</Tag>
+            <Tag>NonCombatant</Tag>
+            <Tag>TagAIBehavior-BT_Artist</Tag>
+            <Tag>NonStacking</Tag>
+            <Tag>Artist</Tag>
+            <Tag>CanDoCulturalMovement</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>UNIT_MASTERARTIST</ID>
+         <Import>UNIT_BASE</Import>
+         <Icon>UnitIcon_PaletteMaster</Icon>
+         <Portrait>MasterArtistPortrait</Portrait>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <Data>ConstructionCost-ResCityProduction,130</Data>
+            <Data>RevealRadius,1</Data>
+            <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+            <Data>UseAction-100,UNITACTIONS-ARTIST_CULTURAL_MOVEMENT</Data>
+            <Data>UseAction-101,UNITACTIONS-MASTER_ARTIST_DEPLOY_CITY</Data>
+            <Data>UseAction-102,UNITACTIONS-GREATMASTERS-APPRENTICE_SPAWN</Data>
+            <Data>DeployedGoods-Masterpiece,1</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GREATMASTERS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-GREATMASTERS-DisplayName</Data>
+   		 <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/MasterArtist/Unit_MasterArtist</Data>
+         </StartingData>
+         <Tags>
+            <Tag>EnterPeacefulTerritory</Tag>
+            <Tag>NonCombatant</Tag>
+            <Tag>TagAIBehavior-BT_MasterArtist</Tag>
+            <Tag>NonStacking</Tag>
+            <Tag>Artist</Tag>
+            <Tag>CanDoCulturalMovement</Tag>
+         </Tags>
+      </EntityInfo>
+
+      <EntityInfo>
+         <ID>UNIT_APPRENTICE</ID>
+         <Import>UNIT_BASE</Import>
+         <Icon>UnitIcon_PaletteApprentice</Icon>
+         <Portrait>ApprenticePortrait</Portrait>
+         <MapScale>1.0</MapScale>
+         <StartingData>
+            <!-- 120 Production DIFF -> 60XP to get to Master Arist -->
+            <Data>ConstructionCost-ResCityProduction,10</Data>
+            <Data>RevealRadius,1</Data>
+            <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+            <Data>UseAction-101,UNITACTIONS-ARTIST_DEPLOY_CITY</Data>
+            <Data>UseAction-102,UNITACTIONS-GREATMASTERS-UPGRADE_TO_ARTIST</Data>
+            <Data>DeployedGoods-ArtWork,1</Data>
+            <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-GREATMASTERS</Data>
+            <Data>SourceOverlayTooltip,DomainSpecialization-GREATMASTERS-DisplayName</Data>
+   		 <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Apprentice/Unit_Apprentice</Data>
+         </StartingData>
+         <Tags>
+            <Tag>EnterPeacefulTerritory</Tag>
+            <Tag>NonCombatant</Tag>
+            <Tag>TagAIBehavior-BT_Artist</Tag>
+            <Tag>NonStacking</Tag>
+            <Tag>Artist</Tag>
+         </Tags>
+      </EntityInfo>
+
+
+
+
+
+</EntityInfoList>

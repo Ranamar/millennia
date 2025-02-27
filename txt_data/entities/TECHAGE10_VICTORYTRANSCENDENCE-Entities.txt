@@ -1,0 +1,222 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+
+
+<!-- Cap City Buildings -->
+
+   <EntityInfo>
+      <ID>B_DIPLOFACILITY</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>ResCityPowerRequired,4</Data>
+         <Data>ResDomainDiplomacy,3</Data>
+         <Data>CountLimit-Nation,1</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE10_VICTORYTRANSCENDENCE-DIPLOFACILITY_SETDIPLOINCOME</Data>
+         <Data>RequiredRegionLevel,3</Data>
+         <Data>UpgradeLine-Diplomacy,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DataLinkAction:PLAYER:RelationshipDiplomacyIncome,TECHAGE4-GREATHALL_DATALINKACTION_BUFF</Tag>
+         <Tag>TooltipItemizeDiplomaticRelationships</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_SOCIALWORKOFFICE</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>StatUnrestSuppression,50</Data>
+         <Data>ResCoin,20</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>UpgradeLine-Police,5</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_INNOVATIONCENTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,800</Data>
+         <Data>ResCityPowerRequired,4</Data>
+         <Data>ResInnovationPerTurn,5</Data>
+         <Data>RequiredRegionLevel,8</Data>
+         <Data>FilterAge,10</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+
+<!-- Tile Improvements -->
+   
+   <EntityInfo>
+      <ID>B_TILEIMP_ALGAEFARM</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ALGAEFARM</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityFood,20</Data>
+         <Data>WorkableResCityFood,10</Data>
+   <!-- 10/19/2023 Jack: Seems like both farm town and coastal town bonus could apply here? -->
+         <Data>FarmTownBonusValue,1</Data>
+         <Data>CoastalTownBonusValue,1</Data>
+         <Data>ExtraWorkerSlots,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>FarmTownBonus</Tag>
+         <Tag>CoastalTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MEGAHOUSING</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MEGAHOUSING</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityHousing,50</Data>
+         <Data>StatUnrest,10</Data>
+         <Data>WorkableResCityFood,12</Data>
+         <Data>UpgradeLine-Apartment,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>Housing</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MULTICULTURALCENTER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MULTICULTURALCENTER</Data>
+         <Data>ResDomainArts,4</Data>
+         <Data>ResCulture,2</Data>
+         <Data>WorkableResDomainArts,2</Data>
+         <Data>UpgradeLine-CultureCenter,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MEGAMONUMENT</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,150</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MEGAMONUMENT</Data>
+         <Data>ResDomainGovernment,10</Data>
+         <Data>ResDomainWarfare,10</Data>
+         <Data>ResDomainExploration,10</Data>
+         <Data>ResDomainDiplomacy,10</Data>
+         <Data>ResDomainEngineering,10</Data>
+         <Data>ResDomainArts,10</Data>
+         <Data>WorkableResCulture,10</Data>
+         <Data>CountLimit-Nation,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>AutoDestroyOnConvert</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_NATIONALPARK</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_NATIONALPARK</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>WorkableResCoin,20</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE10_VICTORYTRANSCENDENCE-NATIONALPARK_REWARD</Data>
+         <Data>CountLimit-Region,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>BuildRequirementAdjacentTag-LandmarkNatural</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>AIHint-NationalPark</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Units -->
+   <EntityInfo>
+      <ID>UNIT_SOCIALWORKER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Defense</Icon>
+      <Portrait>SocialWorkerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,340</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,22</Data>
+         <!--City Defender -->
+         <Data>CombatMod-StatDefense-Tile:+CityCenter-Role:CR_Defender,1.5</Data>
+         <Data>StatUnrestSuppression,20</Data>
+         <Data>UpgradeLine-Guard,7</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_10</Data>
+         <Data>LeaderPromotionCost,157</Data>         
+         <Data>StatTargetPriority,200</Data>
+         <Data>AIBuildWeight,2</Data>
+         <Data>AIBuildWeightPerUnit,-1</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Army/SocialWorker/Unit_SocialWorker</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>         
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>   
+         <!-- AI Hints -->
+         <Tag>AIHint-Guard</Tag>
+         <Tag>AIHint-SocialWorker</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>

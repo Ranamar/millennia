@@ -1,0 +1,677 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+<!-- CAP CITY BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_FALLOUT</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_FALLOUT</Data>
+         <Data>RegionalEfficiency,0.9</Data>
+         <!-- <Data>StatUnrest,4</Data> -->
+         <Data>UseAction-100,UNITACTIONS-FALLOUT_CLEANSE</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>Overlay</Tag>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>NoDestroyAction</Tag>
+         <Tag>BlockTileWorkers</Tag>
+         <Tag>Fallout</Tag>
+         <Tag>NoFallout</Tag>
+         <Tag>DestroyOverlayWithImprovement</Tag>
+         <Tag>BlockImprovements</Tag>
+         <Tag>SpawnOnlyInOriginalTarget</Tag>
+         <!-- <Tag>PlayCardWhenInvaded:TILEACTIONS-FALLOUT_DAMAGEUNITS</Tag> new tag "Play Card When Invaded" to call a specific card instead of making a deck with only a single card in it... -->
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_THUNDERDOME</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,750</Data>
+         <Data>StatUnrestSuppression,30</Data>
+         <Data>ResDomainWarfare,2</Data>
+         <Data>UpgradeLine-Police,4</Data>
+         <Data>RequiredRegionLevel,2</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_SCRAPWALL</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,600</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>StatUnrestSuppression,16</Data>
+         <Data>FortificationBonus,1.2</Data>
+         <Data>CityBuildingDefenders-0,UNIT_SCRAPWALL</Data>
+         <Data>UpgradeLine-Walls,6</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AIHint-Wall</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_RADIATIONSHELTER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,650</Data>
+         <Data>ResCityExpansionPoints,20</Data>
+         <Data>TriggerOnSelfBuild,TECHAGE3-MONUMENT_ONSELFBUILDTRIGGER</Data>
+         <Data>UpgradeLine-CapMonument,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CapMonument</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_MOVIETHEATER</ID>
+      <Import>CITYBUILDING_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,700</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>StatUnrestSuppression,15</Data>
+         <Data>ResCityLuxury,8</Data>
+         <Data>RequiredRegionLevel,4</Data>
+         <Data>FilterAge,9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- TILE IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SCRAPPERYARD</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,25</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SCRAPPERYARD</Data>
+         <Data>WorkableGoodsJunk,1</Data>
+         <Data>WorkableResCityProduction,4</Data>
+         <Data>ImprovementSort,920</Data>
+         <Data>AIBuildWeight,4</Data>
+         <Data>HelpTopicOnBuild,BLDGHELP_SCRAPPER</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>BuildRequirementTerrain-TT_WASTELAND</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_SCRAPTOOLSHOP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResScrap,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_SCRAPTOOLSHOP</Data>
+         <Data>WorkableConvertGoods-Junk-2-PowerTools,2</Data>
+         <Data>ImprovementSort,921</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Scrap</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CANNINGFACILITY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResScrap,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CANNINGFACILITY</Data>
+         <Data>WorkableConvertGoods-Junk-2-CannedFood,2</Data>
+         <Data>ImprovementSort,930</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Scrap</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_RADSCRUBBER</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResSpecialists,60</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_RADSCRUBBER</Data>
+         <Data>WorkableConvertGoods-RadioactiveWaste-1-Soap,1</Data>
+         <Data>ImprovementSort,940</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CASINO</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResScrap,100</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CASINO</Data>
+         <Data>ResCityPowerRequired,2</Data>
+         <Data>ResCityLuxury,10</Data>
+         <Data>StatUnrestSuppression,10</Data>
+         <Data>ResCoin,20</Data>
+         <Data>WorkableResCoin,20</Data>
+         <Data>WorkableResCityPowerRequired,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Scrap</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_OASIS</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResScrap,80</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_OASIS</Data>
+         <Data>ResCityPowerRequired,1</Data>
+         <Data>ResCityHousing,25</Data>
+         <Data>ResCityLuxury,10</Data>
+         <Data>WorkableResCityIdeology,10</Data>
+         <Data>WorkableResCityLuxury,10</Data>
+         <Data>UpgradeLine-Villa,3</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-VILLA_TERRAINBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Scrap</Tag>
+         <Tag>Housing</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_DOLLSHOP</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResScrap,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_DOLLSHOP</Data>
+         <Data>WorkableConvertGoods-+CanMakeRags-4-RagDoll,4</Data>
+         <Data>ImprovementSort,950</Data>
+         <Data>AIBuildWeight,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>IgnoreTerrainWorkerCode</Tag>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>ImprovementCategory-Scrap</Tag>
+         <Tag>Factory</Tag>
+         <Tag>Textile</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+   
+   <EntityInfo>
+      <ID>UNIT_FALLOUTRAIDER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>FalloutRaiderPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,250</Data>
+         <Data>Upkeep-ResCoin,5</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,45</Data>
+         <Data>StatHealthMax,45</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,30</Data>
+         <Data>StatDefense,35</Data>
+         <!-- <Data>NeutralSubtype,1</Data> -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,1.5</Data>
+         <Data>CombatMod-StatAttack-Terrain:TT_WASTELAND,1.2</Data>
+         <Data>CombatMod-StatDefense-Terrain:TT_WASTELAND,1.2</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <Data>FilterAge,9</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/FalloutRaiders/Unit_FalloutRaiders</Data>
+         <Data>SourceOverlayImageName,UI/Icons/ResInnovation-ICON</Data>
+         <Data>SourceOverlayTooltip,Game-Resource-InnovationPerTurn</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>Rebel</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>TypeLine</Tag>         
+         <Tag>TypeProjectile</Tag>       
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundFalloutRaider</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundFalloutRaider</Tag>
+         <Tag>MemberDeadSoundFalloutRaider</Tag>
+         <Tag>VoicePainSoundFalloutRaider</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+   <EntityInfo>
+      <ID>UNIT_DUNEBUGGY</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_WastelandVehicle</Icon>
+      <Portrait>DuneBuggyPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,70</Data>
+         <Data>StatMovementMax,70</Data>
+         <Data>StatAttack,45</Data>
+         <Data>StatDefense,51</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <!-- Volley -->
+         <Data>CombatMod-StatAttack-Target:+TypeCavalry,2.0</Data>
+         <!-- Tank Killer -->
+         <Data>CombatMod-StatAttack-Target:+TypeArmor,2.0</Data>
+         <!-- <Data>UseAction-101,UNITACTIONS-SPECIALOPERATIONS_BRIEFCASENUKE</Data> -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>UpgradeLine-Mobile,6</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/DuneBuggy/Unit_DuneBuggy</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-BattleCar</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeProjectile</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCannon</Tag>
+         <Tag>AttackSoundCannon</Tag>
+         <Tag>ProjectileFiredSoundBattleCar</Tag>
+         <Tag>DamageTakenSoundBattleCar</Tag>
+         <Tag>RoutedSoundBattleCar</Tag>
+         <Tag>DestroyedSoundBattleCar</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>TypeDLC2</Tag>
+         <Tag>NukeCar</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BATTLECAR</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_WastelandVehicle</Icon>
+      <Portrait>BattleCarPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,400</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,35</Data>
+         <Data>StatCommandMax,35</Data>
+         <Data>StatMovement,60</Data>
+         <Data>StatMovementMax,60</Data>
+         <Data>StatAttack,60</Data>
+         <Data>StatDefense,40</Data>
+         <!-- Flank -->
+         <Data>StatOrgDamageFactor,2</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <!-- <Data>UseAction-101,UNITACTIONS-SPECIALOPERATIONS_BRIEFCASENUKE</Data> -->
+         <Data>UpgradeLine-Shock,10</Data>
+         <!-- Fold-in Order Knight to Shock -->
+         <Data>UpgradeLine-OrderKnight,5</Data>
+         <!-- Fold-In Old Guard Cav to Shock Line -->
+         <Data>UpgradeLine-OldGuardCav,3</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/BattleCar/Unit_BattleCar</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-BattleCar</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+         <Tag>RequiredBuildingTag:MilitaryBasePresent</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeProjectile</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundBattleCar</Tag>
+         <Tag>DamageTakenSoundBattleCar</Tag>
+         <Tag>RoutedSoundBattleCar</Tag>
+         <Tag>DestroyedSoundBattleCar</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>TypeDLC2</Tag>
+         <Tag>NukeCar</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_WASTELANDSCAVENGER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Spyglass</Icon>
+      <Portrait>WastelandScavengerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,350</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,45</Data>
+         <Data>StatDefense,48</Data>
+         <!-- Quick -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>StatExpeditionChanceNatural,0.5</Data>
+         <Data>StatExpeditionChanceNaturalRuins,0.5</Data>
+         <Data>StatExpeditionChanceWastelandRuins,0.5</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-SCOUT_RETURNHOME</Data>
+         <Data>UseAction-101,UNITACTIONS-SCOUT_SELFHEAL</Data>
+         <Data>UseAction-102,UNITACTIONS-SCOUT_CLAIMLANDMARK</Data>
+         <Data>UseAction-103,UNITACTIONS-EXPLORER_EXPEDITION</Data>
+         <Data>UseAction-104,UNITACTIONS-WASTELANDSCAVENGER_EXPLORERUINS</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <Data>UpgradeLine-Scout,4</Data>
+         <Data>UpgradeResource,ResDomainExploration</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/WastelandScavenger/Unit_WastelandScavenger</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>GameDataTooltip-ExpeditionChanceNatural</Tag>
+         <Tag>GameDataTooltip-StatExpeditionChanceWastelandRuins</Tag>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeProjectile</Tag>     
+         <Tag>Scout</Tag>
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>TagAIBehavior-BT_Explore</Tag>
+         <Tag>NonStacking</Tag>
+         <Tag>Explorer</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundWastelandScavenger</Tag>              
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundWastelandScavenger</Tag>
+         <Tag>MemberDeadSoundWastelandScavenger</Tag>
+         <Tag>VoicePainSoundWastelandScavenger</Tag>   
+         <Tag>AIHint-Scout</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_HAZMATSCOUT</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_WastelandScavenger</Icon> <!-- Purposefully used here, both use gas masks, this is the more unique unit (no longer a scout) -->
+      <Portrait>HazmatScoutPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,3</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,35</Data>
+         <Data>StatDefense,50</Data>
+         <!-- Quick -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-HAZMAT_CLEARFALLOUT</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <!-- <Data>UpgradeLine-Scout,4</Data> -->
+         <!-- <Data>UpgradeResource,ResDomainExploration</Data> -->
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>AIBuildWeight,1.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.85</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/HazmatScout/Unit_HazmatScout</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>TrainableUnit</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>TypeMobileRecon</Tag>
+         <Tag>ExplorationRevealMapTarget</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>NonStacking</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineMetal</Tag> 
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MUTANT</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_WastelandScavenger</Icon>
+      <Portrait>MutantPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,300</Data>
+         <Data>Upkeep-ResCoin,9</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,999</Data>
+         <Data>StatCommandMax,999</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,35</Data>
+         <Data>StatDefense,41</Data>
+         <!-- Berserker Charge -->
+         <Data>StatOrgDamageFactor,1.5</Data>
+         <!-- Assault -->
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeLine,3.0</Data>
+         <Data>UpgradeLine-Assault,8</Data>
+         <!-- Fold-In Old Guard Grenadier to Assault -->
+         <Data>UpgradeLine-OldGuardGren,3</Data>
+         <Data>FilterAge,9</Data>
+         <Data>LeaderPromotionType,UNIT_LEADER_9</Data>
+         <Data>LeaderPromotionCost,168</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/MutantSoldier/Unit_MutantSoldier</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeLineAssault</Tag>
+         <Tag>TypeProjectile</Tag>          
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMutantSoldier</Tag>
+         <Tag>ProjectileFiredSoundMutantSoldier</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundMutantSoldier</Tag>
+         <Tag>MemberDeadSoundMutantSoldier</Tag>
+         <Tag>VoicePainSoundMutantSoldier</Tag>
+         <!-- AI Hints -->
+         <Tag>AIHint-ArmyUnit</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SETTLER_WASTELAND</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>SettlerCaravanPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,45</Data>
+         <Data>ProgressiveCostModifier,1.5</Data>
+         <Data>PopulationCost,1</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,10</Data>
+         <Data>StatCommandMax,10</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,5</Data>
+         <Data>StatDefense,5</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>AIBuildWeight,30</Data>
+         <Data>AIBuildWeightPerUnit,-50</Data>
+         <Data>AIBuildWeightPerCity,-7.5</Data>
+         <Data>AIBuildWeightPerCityCountCap,5</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-SETTLER_BUILDCITY_WASTELAND</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-SETTLER_KILLED</Data>
+         <Data>FilterAge,1</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-SettlerWasteland</Data>
+        <Data>UnitMemberPrefab,Entities/Units/NonBuildable/SettlerCaravan/Unit_SettlerCaravan</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ScalingStats</Tag>
+         <Tag>Settler</Tag>
+         <Tag>TypeProjectile</Tag>
+         <!--<Tag>NonCombatant</Tag>-->
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>WeightUnitByCityCount</Tag>
+         <Tag>TagAIBehavior-BT_Settle</Tag>
+         <Tag>NonStacking</Tag>
+         <Tag>TypeSettler</Tag>
+         <Tag>AIHint-DislikesCombat:1</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>ProjectileFiredSoundSettlerWasteland</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <Tag>TypeDLC2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SCRAPWALL</ID>
+      <Import>UNIT_WALL_BASE</Import>
+      <Portrait>ScrapwallPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,80</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/ScrapWall/Unit_ScrapWall</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+        <Tag>AttackBegunSoundGateStoneOpen</Tag>
+        <Tag>AttackOverSoundGateStoneClose</Tag>
+        <Tag>DamageTakenSoundWall</Tag>
+        <Tag>DestroyedSoundWall</Tag>
+        <!-- ? -->
+        <Tag>AttackSoundCannon</Tag>
+        <Tag>ProjectileFiredSoundCannon</Tag>
+      </Tags>
+   </EntityInfo>
+
+</EntityInfoList>

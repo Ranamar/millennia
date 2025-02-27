@@ -1,0 +1,2873 @@
+<!-- Misc game entities-->
+
+<EntityInfoList>
+
+   <EntityInfo>
+      <ID>UNIT_BASE</ID>
+      <Import>UNIT_BASE_NOHEAL</Import>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-STANDARD_RECOVERHEALTH</Card>
+      </ActionCardsTurnStart>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BASE_NOHEAL</ID>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,10</Data>
+         <Data>StatCommandMax,10</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,5</Data>
+         <Data>StatDefense,5</Data>
+         <Data>StatOrgDamageFactor,1</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,3.5</Data>
+         <Data>AIBuildWeightPerUnit,-0.1</Data>
+         <Data>RazeValueMultiplier,1</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,1</Data>
+         <Data>StatTargetPriority,100</Data>
+         <Data>StatCombatXPMax,40</Data>
+         <Data>UseAction-0,UNITACTIONS-STANDARD_MARKNOTIDLE</Data>
+         <Data>UseAction-1,UNITACTIONS-STANDARD_GUARDTOGGLE</Data>
+         <Data>UseAction-2,UNITACTIONS-STANDARD_ATTEMPTMULTITURNMOVE</Data>
+         <Data>UseAction-50,UNITACTIONS-STANDARD_RAZE</Data>
+         <Data>UseAction-51,UNITACTIONS-STANDARD_TRANSPORTLOAD</Data>
+         <Data>UseAction-52,UNITACTIONS-STANDARD_AIRLIFT</Data>
+         <Data>UseAction-200,UNITACTIONS-STANDARD_KILLSELF</Data>
+         <Data>UpkeepCategory,UNIT</Data>
+         <Data>EntityAudioEvent-EntitySelected,SelectUnit</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CheckIdle</Tag>
+         <Tag>ProvideVisibility</Tag>
+         <Tag>AIWeightUnitByCombatValue</Tag>
+         <Tag>Unit</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+      </Tags>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-STANDARD_RECOVERCOMMAND</Card>
+      </ActionCardsTurnStart>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_COMBAT</ID>
+      <Import>UNIT_BASE</Import>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatUnrestSuppression,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Combatant</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_COMBAT_NOHEAL</ID>
+      <Import>UNIT_BASE_NOHEAL</Import>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatUnrestSuppression,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Combatant</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>IMPROVEMENT_BASE</ID>
+      <StartingData>
+         <Data>UpkeepCategory,IMPROVEMENT</Data>
+         <Data>EntityAudioEvent-EntitySelected,SelectImprovement</Data>
+         <Data>DefaultBonusValue,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_TOWNBUILDINGWORK</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Improvement</Tag>  <!-- This is an improvement. -->
+         <Tag>Building</Tag>     <!-- This is a building. -->
+         <Tag>NeutralAttackTarget</Tag> <!-- Barbarians can seek this to attack it -->
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>CITYBUILDING_BASE</ID>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_TOWNBUILDINGWORK</Card>
+      </ActionCards>
+      <StartingData>
+         <Data>AIBuildWeight,3.5</Data>
+         <Data>UpkeepCategory,CAPBUILDING</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>CityBuilding</Tag>
+         <Tag>CityBuildingConstructed</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>TOWNSPEC_BASE</ID>
+      <StartingData>
+         <Data>StatAirUnitCapacity,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_TOWNBUILDINGWORK</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>TownSpec</Tag>
+         <Tag>Building</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>SetSpawnCoord</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>DestroyLocalAirUnitsIfDestroyedOrRazed</Tag>
+         <Tag>BlockImprovements</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- UNITS -->
+
+   <EntityInfo>
+      <ID>UNIT_SETTLER</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>SettlerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,45</Data>
+         <Data>ProgressiveCostModifier,1.5</Data>
+         <Data>PopulationCost,1</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,10</Data>
+         <Data>StatCommandMax,10</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,5</Data>
+         <Data>StatDefense,5</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>AIBuildWeight,30</Data>
+         <Data>AIBuildWeightPerUnit,-50</Data>
+         <Data>AIBuildWeightPerCity,-7.5</Data>
+         <Data>AIBuildWeightPerCityCountCap,5</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-SETTLER_BUILDCITY</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-SETTLER_KILLED</Data>
+         <Data>FilterAge,1</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Settler/Unit_Settler</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ScalingStats</Tag>
+         <!--<Tag>NonCombatant</Tag>-->
+         <Tag>TypeSettler</Tag>
+         <Tag>AIHint-DislikesCombat:1</Tag>
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>WeightUnitByExistingCount</Tag>
+         <Tag>WeightUnitByCityCount</Tag>
+         <Tag>TagAIBehavior-BT_Settle</Tag>
+         <Tag>NonStacking</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PROSPECTOR</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Pickaxe</Icon>
+      <Portrait>ProspectorPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-PROSPECTOR_PROSPECT</Data>
+         <Data>ActionCharges,1</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/StoneProspector/Unit_StoneProspector</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Prospector</Tag>
+         <Tag>GameDataKillAtZero-ActionCharges</Tag>
+         <Tag>NonStacking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ENVOY</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Scroll</Icon>
+      <Portrait>EnvoyPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-ENVOY_ENABLEDIPLO</Data>
+         <Data>UseAction-101,UNITACTIONS-ENVOY_DEPLOYVASSAL</Data>
+         <Data>UseAction-102,UNITACTIONS-ENVOY_VASSALIZEMINOR</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-ENVOY_KILLED</Data>
+         <Data>ActionCharges,1</Data>
+         <Data>StatVassalIntegration,1</Data>
+         <Data>StatDeployedVassalIntegration,1</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Envoy/Unit_Envoy</Data>
+      </StartingData>
+      <Tags>
+         <Tag>EnterPeacefulTerritory</Tag>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Envoy</Tag>
+         <Tag>GameDataKillAtZero-ActionCharges</Tag>
+         <Tag>NonStacking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ENGINEER</ID>
+      <!-- Pioneer -->
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Shovel</Icon>
+      <Portrait>EngineerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-ENGINEER_BUILDOUTPOST</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-ENGINEER_KILLED</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Pioneer/Unit_Pioneer</Data>
+      </StartingData>
+      <Tags>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Engineer</Tag>
+         <Tag>NonStacking</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MERCHANT</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_CoinBag</Icon>
+      <Portrait>MerchantPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-MERCHANT_DEPLOY_FOREIGN</Data>
+         <Data>UseAction-101,UNITACTIONS-MERCHANT_DEPLOY_TERRITORY</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-MERCHANT_KILLED</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Cart</Data>
+         <Data>StatDeployedResourceGenerator-ResCoin-Base,5</Data>
+         <Data>StatDeployedResourceGenerator-ResCoin-PerPopulation,1</Data>
+         <Data>StatDeployedProsperity,0.1</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Merchant/Unit_Merchant</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>EnterPeacefulTerritory</Tag>
+         <Tag>NonCombatant</Tag>
+         <Tag>TagAIBehavior-BT_Merchant</Tag>
+         <Tag>CreateImportRoute</Tag>
+         <Tag>NonStacking</Tag>
+         <!-- Sound Tags -->
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Do not remove this even though it is not a "real" unit it is used for debugging / testing! -->
+   <EntityInfo>
+      <ID>UNIT_DEBUGSCOUT</ID>
+      <Import>UNIT_SCOUT</Import>
+      <StartingData>
+         <Data>RevealRadius,4</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+<!-- Defensive Units -->
+
+   <EntityInfo>
+      <ID>UNIT_WALL_BASE</ID>
+      <StartingData>
+         <Data>StatHealth,100</Data>
+         <Data>StatHealthMax,100</Data>
+         <Data>StatCommand,999</Data>
+         <Data>StatCommandMax,999</Data>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,7</Data>
+         <Data>StatTargetPriority,500</Data>
+         <!-- Fortification -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2</Data>
+         <Data>CombatMod-StatDefense-Target:+TypeCavalry,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Unit</Tag>
+         <Tag>CombatWall</Tag>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>GameDataTooltip-StatAttack</Tag>
+         <Tag>GameDataTooltip-StatDefense</Tag>
+         <Tag>TypeDefenses</Tag>
+         <Tag>CanBeSieged</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+         <Tag>NoFortificationBonus</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_None</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_TOWER_BASE</ID>
+      <StartingData>
+         <Data>StatCommand,999</Data>
+         <Data>StatCommandMax,999</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatAttack,6</Data>
+         <Data>StatDefense,7</Data>
+         <Data>StatTargetPriority,100</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Unit</Tag>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>GameDataTooltip-StatAttack</Tag>
+         <Tag>GameDataTooltip-StatDefense</Tag>
+         <Tag>TypeDefenses</Tag>
+         <Tag>CanBeSieged</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+         <Tag>NoFortificationBonus</Tag>
+         <Tag>CombatTower</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWall</Tag>
+         <Tag>DestroyedSoundWall</Tag>
+      </Tags>
+   </EntityInfo>
+
+<!-- Militia -->
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_BASE</ID>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>MilitiaPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,30</Data>
+         <Data>StatCommandMax,30</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatAttack,6</Data>
+         <Data>StatDefense,8</Data>
+         <Data>StatTargetPriority,100</Data>
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2.0</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia/Unit_Militia</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>GameDataTooltip-StatAttack</Tag>
+         <Tag>GameDataTooltip-StatDefense</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>TypeMilitia</Tag>
+         <Tag>Militia</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <Tag>Unit</Tag>
+         <Tag>CanBeSieged</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Portrait>MilitiaPortrait</Portrait>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_2</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia2Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,9</Data>
+         <Data>StatDefense,13</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia2/Unit_Militia2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_3</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia3Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,12</Data>
+         <Data>StatDefense,17</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia3/Unit_Militia3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_4</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia4Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,22</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia4/Unit_Militia4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_5</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia5Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,19</Data>
+         <Data>StatDefense,27</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia5/Unit_Militia5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_6</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia6Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,22</Data>
+         <Data>StatDefense,31</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia6/Unit_Militia6</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMusketMulti</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_7</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia7Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,25</Data>
+         <Data>StatDefense,36</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia7/Unit_Militia7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMusketMulti</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_8</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia8Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,29</Data>
+         <Data>StatDefense,41</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia8/Unit_Militia8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_9</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia9Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,32</Data>
+         <Data>StatDefense,46</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia9/Unit_Militia9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MILITIA_LVL_10</ID>
+      <Import>UNIT_MILITIA_BASE</Import>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>Militia10Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,35</Data>
+         <Data>StatDefense,50</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Defenses/Militia10/Unit_Militia10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundLaserMulti</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Leader Import Data -->
+   <EntityInfo>
+      <ID>UNIT_LEADER</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>LeaderPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,1</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <!-- Setting StatTargetPriority to 199 so that leaders are the last "line" to be attacked. -->
+         <Data>StatTargetPriority,199</Data>
+         <Data>UseAction-201,UNITACTIONS-LEADER_RETIRE</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader/Unit_Leader</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>Leader</Tag>
+         <Tag>TagAILimitType-Leader</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 1 leader - warband type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_1</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>LeaderPortrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,13</Data>
+         <Data>Upkeep-ResCoin,2</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,7</Data>
+         <Data>StatDefense,10</Data>
+         <Data>StatTactics,1</Data>
+         <Data>FilterAge,1</Data>
+         <Data>LeaderRetireValue,10</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader/Unit_Leader</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE1</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge1</Tag> -->
+
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 2 leader - spear type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_2</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader2Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,13</Data>
+         <Data>Upkeep-ResCoin,2</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,11</Data>
+         <Data>StatDefense,16</Data>
+         <Data>StatTactics,2</Data>
+         <Data>LeaderRetireValue,15</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader2/Unit_Leader2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE2</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge2</Tag> -->
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineMetal</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 3 leader - spear type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_3</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader3Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,58</Data>
+         <Data>Upkeep-ResCoin,6</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,22</Data>
+         <Data>StatTactics,3</Data>
+         <Data>LeaderRetireValue,20</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader3/Unit_Leader3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE3</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge3</Tag> -->
+
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineMetal</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 4 leader - pike type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_4</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader4Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,80</Data>
+         <Data>Upkeep-ResCoin,8</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,19</Data>
+         <Data>StatDefense,28</Data>
+         <Data>StatTactics,4</Data>
+         <Data>LeaderRetireValue,25</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader4/Unit_Leader4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE4</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge4</Tag> -->
+
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineMetal</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 5 leader - pike type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_5</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader5Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,97</Data>
+         <Data>Upkeep-ResCoin,10</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,23</Data>
+         <Data>StatDefense,34</Data>
+         <Data>StatTactics,5</Data>
+         <Data>LeaderRetireValue,30</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader5/Unit_Leader5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE5</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge5</Tag> -->
+         <!-- Sound Tags -->
+         <Tag>AttackSoundLineMetal</Tag>
+         <Tag>DamageTakenSoundLineArmor</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 6 leader - pike type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_6</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader6Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,151</Data>
+         <Data>Upkeep-ResCoin,12</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,39</Data>
+         <Data>StatTactics,6</Data>
+         <Data>LeaderRetireValue,35</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader6/Unit_Leader6</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE6</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge6</Tag> -->
+
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>ProjectileFiredSoundGun</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>AttackSoundGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 7 leader - pike type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_7</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader7Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,182</Data>
+         <Data>Upkeep-ResCoin,14</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,32</Data>
+         <Data>StatDefense,45</Data>
+         <Data>StatTactics,7</Data>
+         <Data>LeaderRetireValue,40</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader7/Unit_Leader7</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE7</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge7</Tag> -->
+
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>ProjectileFiredSoundGun</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>AttackSoundGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 8 leader - holds Kalashnikov -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_8</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader8Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,220</Data>
+         <Data>Upkeep-ResCoin,16</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,36</Data>
+         <Data>StatDefense,51</Data>
+         <Data>StatTactics,8</Data>
+         <Data>LeaderRetireValue,45</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader8/Unit_Leader8</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE8</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge8</Tag> -->
+
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 9 leader -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_9</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader9Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,253</Data>
+         <Data>Upkeep-ResCoin,18</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,40</Data>
+         <Data>StatDefense,57</Data>
+         <Data>StatTactics,9</Data>
+         <Data>LeaderRetireValue,50</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader9/Unit_Leader9</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE9</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge9</Tag> -->
+
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundMachineGun</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+   <!-- Age 10 leader - pike type -->
+   <EntityInfo>
+      <ID>UNIT_LEADER_10</ID>
+      <Import>UNIT_LEADER</Import>
+      <Icon>UnitIcon_LeaderStar</Icon>
+      <Portrait>Leader10Portrait</Portrait>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,282</Data>
+         <Data>Upkeep-ResCoin,20</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,44</Data>
+         <Data>StatDefense,63</Data>
+         <Data>StatTactics,10</Data>
+         <Data>LeaderRetireValue,50</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Leader10/Unit_Leader10</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AutoAttachLeader:Leader-GENERIC_AGE10</Tag>
+         <!-- <Tag>UseEntityNameTable:LeadersAge10</Tag> -->
+
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundGun</Tag>
+         <Tag>AttackSoundGun</Tag>
+         <Tag>ProjectileFiredSoundLaserSingle</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+
+<!-- Water Transport Types -->
+   <EntityInfo>
+      <ID>UNIT_TRANSPORT</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_TransportShip</Icon>
+      <Portrait>WaterTransportPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,7</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,8</Data>
+         <Data>UseAction-51,UNITACTIONS-STANDARD_TRANSPORTUNLOAD</Data>
+         <Data>FilterAge,1</Data>
+         <!-- Above used by transport to convert back into the unit it is "carrying."-->
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+      </StartingData>
+      <Tags>
+         <Tag>WaterTransport</Tag>
+         <Tag>IgnoreForScoring</Tag>
+         <!-- CV -->
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sounds -->
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_WATERTRANSPORT</ID>
+      <Import>UNIT_TRANSPORT</Import>
+      <Icon>UnitIcon_TransportShip</Icon>
+      <Portrait>WaterTransportPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,8</Data>
+         <Data>RevealRadius,1</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/WaterTransport/Unit_WaterTransport</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ShallowWater</Tag>
+         <Tag>ShipTest</Tag>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWoodenBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+         <Tag>AIHint-DislikesCombat:2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_DEEPWATERTRANSPORT</ID>
+      <Import>UNIT_TRANSPORT</Import>
+      <Icon>UnitIcon_TransportShip</Icon>
+      <Portrait>DeepWaterBoatPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,0</Data>
+         <Data>StatDefense,20</Data>
+         <Data>StatMovement,50</Data>
+         <Data>StatMovementMax,50</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/DeepWaterTransport/Unit_DeepWaterTransport</Data>
+      </StartingData>
+      <Tags>
+         <!-- Sound Tags -->
+         <Tag>DamageTakenSoundWoodenBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+
+<!-- Rebel Units -->
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_BASE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>RebelPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,7</Data>
+         <Data>StatDefense,10</Data>
+         <Data>NeutralSubtype,1</Data>
+         <Data>StatTargetPriority,200</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Rebel</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>TypeLine</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_1</ID>
+      <Import>UNIT_REBEL_BASE</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>RebelPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,7</Data>
+         <Data>StatDefense,10</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel/Unit_Rebel</Data>
+      </StartingData>
+      <Tags>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>NeutralCampSpawnPlacer</Tag>
+         <Tag>CreateNewNationWhenInvading</Tag>
+         <Tag>MagnetSpawnRevolt</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_2</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel2Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,11</Data>
+         <Data>StatDefense,16</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel2/Unit_Rebel2</Data>
+     </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal2</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_3</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel3Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,15</Data>
+         <Data>StatDefense,22</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel3/Unit_Rebel3</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal2</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_4</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel4Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,19</Data>
+         <Data>StatDefense,28</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel4/Unit_Rebel4</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal3</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_5</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel5Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,23</Data>
+         <Data>StatDefense,34</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel5/Unit_Rebel5</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal3</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_6</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel6Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,28</Data>
+         <Data>StatDefense,39</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel6/Unit_Rebel6</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal4</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_7</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel7Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,30</Data>
+         <Data>StatDefense,42</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel7/Unit_Rebel7</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal4</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_8</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel8Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,36</Data>
+         <Data>StatDefense,51</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel8/Unit_Rebel8</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal5</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_9</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel9Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,40</Data>
+         <Data>StatDefense,57</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel9/Unit_Rebel9</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal5</Tag>
+	   </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_REBEL_LVL_10</ID>
+      <Import>UNIT_REBEL_LVL_1</Import>
+      <Icon>UnitIcon_Flame</Icon>
+      <Portrait>Rebel10Portrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,44</Data>
+         <Data>StatDefense,63</Data>
+		 <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Rebel10/Unit_Rebel10</Data>
+      </StartingData>
+	   <Tags>
+		   <Tag>AttackSoundLineMetal5</Tag>
+	   </Tags>
+   </EntityInfo>
+
+
+<!-- Barbarian Units -->
+
+   <EntityInfo>
+      <ID>UNIT_BARBARIAN</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_HornedHelm</Icon>
+      <Portrait>BarbarianPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,7</Data>
+         <Data>StatDefense,8</Data>
+         <Data>FilterAge,1</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>NeutralCampSpawnPlacer</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBARIAN_LVL_2</ID>
+      <Import>UNIT_BARBARIAN</Import>
+      <Icon>UnitIcon_HornedHelm</Icon>
+      <Portrait>BarbarianPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,12</Data>
+         <Data>StatDefense,13</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBARIAN_LVL_3</ID>
+      <Import>UNIT_BARBARIAN</Import>
+      <Icon>UnitIcon_HornedHelm</Icon>
+      <Portrait>BarbarianPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,16</Data>
+         <Data>StatDefense,19</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_WARLORD</ID>
+      <!--Scaled for Age 3-->
+      <Import>UNIT_BARBARIAN</Import>
+      <Icon>UnitIcon_HornedHelmLeader</Icon>
+      <Portrait>BarbarianWarlordPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,34</Data>
+         <Data>Upkeep-ResCoin,3</Data>
+         <Data>StatAttack,22</Data>
+         <Data>StatDefense,22</Data>
+         <Data>StatTactics,2</Data>
+         <Data>StatTargetPriority,199</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_BarbarianWarlord</Data>
+         <Data>SourceOverlayImageName,UI/Icons/ResInnovation-ICON</Data>
+         <Data>SourceOverlayTooltip,Game-Resource-InnovationPerTurn</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TrainableUnit</Tag>
+      </Tags>
+      <CombatViewerData formationSequence="xoXox.xoox.xoxox"   modelScale="1.0" memberWidth="1.25" memberWidthMaxS="1.5" rowDepth="1.25"/>
+   </EntityInfo>
+
+
+<!-- Barbarian Archer Units -->
+
+   <EntityInfo>
+      <ID>UNIT_BARBARCHER</ID>
+      <!--Scaled for Age 2-->
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Arrow</Icon>
+      <Portrait>BarbArcherPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,12</Data>
+         <Data>StatDefense,8</Data>
+         <Data>FilterAge,1</Data>
+         <!-- Stand Off -->
+         <Data>CombatMod-StatAttack-Target:+TypeLine,2.5</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_BarbarianArcher</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatType:CT_Ranged</Tag>
+         <Tag>TypeRanged</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+         <Tag>NeutralCampSpawnPlacer</Tag>
+         <Tag>AttackBegunSoundBow</Tag>
+         <Tag>ProjectileFiredSoundBow</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundBow</Tag>
+         <Tag>ProjectileFiredSoundBow</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBARCHER_LVL_2</ID>
+      <!--Scaled for Age 3-->
+      <Import>UNIT_BARBARCHER</Import>
+      <Icon>UnitIcon_Arrow</Icon>
+      <Portrait>BarbArcherPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,18</Data>
+         <Data>StatDefense,12</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_BarbarianArcher</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+<!-- Barbarian Mobile Units -->
+
+   <EntityInfo>
+      <ID>UNIT_BARBHORSE</ID>
+      <!--Scaled for Age 3-->
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Horseshoe</Icon>
+      <Portrait>BarbHorsePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,21</Data>
+         <Data>StatDefense,14</Data>
+         <Data>StatOrgDamageFactor,2.0</Data>
+         <Data>StatTargetPriority,150</Data>
+         <Data>FilterAge,1</Data>
+         <!-- Flank -->
+         <Data>CombatMod-StatAttack-Target:+TypeRanged,2.0</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_BarbarianHorse</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>TypeCavalry</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>NeutralCampSpawnPlacer</Tag>
+
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundCavalry</Tag>
+         <Tag>AttackOverSoundCavalry</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundHorse</Tag>
+         <!--<Tag>DestroyedSoundHorse</Tag>-->
+         <Tag>MemberDeadSoundHorse</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+
+      </Tags>
+   </EntityInfo>
+
+<!-- Barbarian Navy Units -->
+   <EntityInfo>
+      <ID>UNIT_BARBCANOE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_AncientShip1</Icon>
+      <Portrait>BarbCanoePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,40</Data>
+         <Data>StatMovementMax,40</Data>
+         <Data>StatAttack,7</Data>
+         <Data>StatDefense,8</Data>
+         <Data>CombatMod-StatAttack-Target:+AttackShip,2.0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>FilterAge,1</Data>
+         <Data>UseAction-51,NONE</Data>
+         <Data>UseAction-52,NONE</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Navy/Unit_BarbarianCanoe</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Barbarian</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <!--<Tag>TypeLine</Tag>-->
+         <Tag>WaterMovement</Tag>
+         <Tag>NavalTarget</Tag>
+         <Tag>NeutralCanSpawnLandingParty</Tag>
+         <Tag>Warship</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Warship</Tag>
+         <Tag>CombatAttackType:CAT_Projectile</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundJavelin</Tag>
+         <Tag>ProjectileFiredSoundJavelin</Tag>
+         <Tag>DamageTakenSoundWoodenBoat</Tag>
+         <Tag>RoutedSoundBoat</Tag>
+         <Tag>DestroyedSoundEarlyBoats</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBCANOE_LVL_2</ID>
+      <Import>UNIT_BARBCANOE</Import>
+      <Portrait>BarbCanoePortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,11</Data>
+         <Data>StatDefense,14</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Navy/Unit_BarbarianCanoe</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+<!-- Barbarian Militia -->
+
+   <EntityInfo>
+      <ID>UNIT_BARBMILITIA</ID>
+      <Icon>UnitIcon_Pitchfork</Icon>
+      <Portrait>BarbMilitiaPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,50</Data>
+         <Data>StatCommandMax,50</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatAttack,6</Data>
+         <Data>StatDefense,8</Data>
+         <Data>StatTargetPriority,199</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>Barbarian</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>TypeLine</Tag>
+         <Tag>Militia</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBMILITIA_LVL_2</ID>
+      <Import>UNIT_BARBMILITIA</Import>
+      <Portrait>BarbMilitiaPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,10</Data>
+         <Data>StatDefense,14</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBMILITIA_LVL_3</ID>
+      <Import>UNIT_BARBMILITIA</Import>
+      <Portrait>BarbMilitiaPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,14</Data>
+         <Data>StatDefense,19</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BARBMILITIA_LVL_4</ID>
+      <Import>UNIT_BARBMILITIA</Import>
+      <Portrait>BarbMilitiaPortrait</Portrait>
+      <StartingData>
+         <Data>StatAttack,18</Data>
+         <Data>StatDefense,25</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Barbarian/Unit_Barbarian</Data>
+      </StartingData>
+   </EntityInfo>
+
+
+<!-- REGION PROJECTS -->
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_IMPROVEMENT_POINTS</ID>
+      <Portrait>PROJECT_GENERATE_IMPROVEMENT_POINTS-ICON</Portrait>
+      <StartingData>
+         <!-- generates 1 improvement points for every 10 input work point -->
+         <Data>Generate-ResImprovementPointsCost,10</Data>
+         <Data>Generate-ResImprovementPoints,1</Data>
+         <Data>FilterAge,1</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_WEALTH</ID>
+      <Portrait>PROJECT_GENERATE_WEALTH-ICON</Portrait>
+      <StartingData>
+         <!-- generates 2 wealth for every 3 input work point -->
+         <Data>Generate-ResCoinCost,3</Data>
+         <Data>Generate-ResCoin,2</Data>
+         <Data>FilterAge,4</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_KNOWLEDGE</ID>
+      <Portrait>PROJECT_GENERATE_KNOWLEDGE-ICON</Portrait>
+      <StartingData>
+         <!-- generates 1 knowledge for every 15 input work point -->
+         <Data>Generate-ResKnowledgeCost,15</Data>
+         <Data>Generate-ResKnowledge,1</Data>
+         <Data>FilterAge,4</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_WARFARE</ID>
+      <Portrait>PROJECT_GENERATE_WARFARE-ICON</Portrait>
+      <StartingData>
+         <!-- generates 1 knowledge for every 10 input work point -->
+         <Data>Generate-ResDomainWarfareCost,10</Data>
+         <Data>Generate-ResDomainWarfare,1</Data>
+         <Data>FilterAge,6</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_IDEOLOGY</ID>
+      <Portrait>PROJECT_GENERATE_IDEOLOGY-ICON</Portrait>
+      <StartingData>
+         <!-- generates 1 ideology for every 10 input work point -->
+         <Data>Generate-ResCityIdeologyCost,10</Data>
+         <Data>Generate-ResCityIdeology,1</Data>
+         <Data>FilterAge,8</Data>
+         <Data>AIBuildWeight,0</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>PROJECT_GENERATE_CULTURE</ID>
+      <Portrait>PROJECT_GENERATE_CULTURE-ICON</Portrait>
+      <StartingData>
+         <!-- generates 1 culture for every 15 input work point -->
+         <Data>Generate-ResCultureCost,15</Data>
+         <Data>Generate-ResCulture,1</Data>
+         <Data>FilterAge,8</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>SourceOverlayImageName,UI/Icons/NationalSpirit/NSIconSmall-POPCULTURE</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-POPCULTURE-DisplayName</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>CityProject</Tag>
+         <Tag>AutoRepeatProductionQueue</Tag>
+         <Tag>NoFixedConstructionCost</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- SPECIAL BUILDINGS -->
+
+   <EntityInfo>
+      <ID>B_CAPITAL</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ResImprovementPoints,0</Data>
+         <Data>ResCoin,0</Data>
+         <Data>ResKnowledge,0</Data>
+         <Data>ResCulture,0</Data>
+         <Data>ResCityProduction,0</Data>
+         <Data>ResCityFood,0</Data>
+         <Data>ResCityHousing,0</Data>
+         <Data>ResCityExpansionPoints,0</Data>
+         <Data>ResDomainGovernment,0</Data>
+         <Data>RegionalEfficiency,1.0</Data>
+         <Data>OutbreakChance,0</Data>
+         <!-- Disabling Cap Upkeep -->
+         <!--
+         <Data>Upkeep-ResDomainGovernment,1</Data>
+         <Data>UpkeepModifier-ProgressiveByPlayerData-CityCount,2.0</Data>
+         -->
+         <Data>UpkeepCategory,CITY</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_RESOURCEGENERATOR</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Capital</Tag>
+         <Tag>Building</Tag>
+         <Tag>CityBuilding</Tag>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>HideInBuildingMenu</Tag>
+         <Tag>ItemizeYieldTooltipBuffs</Tag>
+         <Tag>NoFallout</Tag>
+         <Tag>CanBeSieged</Tag>
+         <Tag>BlockImprovements</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_HOMELAND</ID>
+      <StartingData>
+         <Data>FilterAge,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_RESOURCEGENERATOR</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Homeland</Tag>
+         <Tag>Building</Tag>
+         <Tag>CityBuilding</Tag>
+         <Tag>NoBuildingDamage</Tag>
+         <Tag>RelocateOnPlayerOwnerChange</Tag>
+         <!-- <Tag>HideInBuildingMenu</Tag> -->
+         <Tag>ItemizeYieldTooltipBuffs</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TOWN</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>DefaultSpecialization,B_TOWNSPEC_DEFAULT</Data>
+         <!-- Disabling Cap Upkeep -->
+         <!--
+         <Data>Upkeep-ResDomainGovernment,0</Data>
+         -->
+         <Data>UpkeepCategory,TOWN</Data>
+         <Data>EntityAudioEvent-EntitySelected,SelectTown</Data>
+         <Data>ResCityExpansionPoints,1</Data>
+
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_RESOURCEGENERATOR</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Town</Tag>
+         <Tag>Settlement</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>Building</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEpicenter</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>NoFallout</Tag>
+         <Tag>CanBeSieged</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_RELIGION_BIRTHPLACE</ID>
+      <StartingData>
+         <Data>ResCityFaith-[SELF:BuildingReligion],10</Data>
+         <Data>FilterAge,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-STANDARD_RESOURCEGENERATOR</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>CityBuilding</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- OUTPOST IMPROVEMENTS -->
+
+   <EntityInfo>
+      <ID>B_TILEIMP_OUTPOST</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_OUTPOST</Data>
+         <Data>UseAction-200,UNITACTIONS-OUTPOST_UNPACK</Data>
+         <Data>OutpostImprovementRestrictionTag,StandardOutpostImprovement</Data>
+         <Data>ResCoin,0</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostCore</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>DestroyCityWhenDestroyed</Tag>
+         <Tag>IsDefended</Tag>
+         <Tag>DestroyIfRazed</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>BlockImprovements</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TRADEPOST</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,30</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TRADEPOST</Data>
+         <Data>GoodsSpecial-TileProduction-ANYBONUS,1</Data>
+         <Data>UpgradeLine-TradePost,1</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TradePost</Tag>
+         <Tag>WaterVisuals</Tag>
+         <Tag>UseWaterHeightForPlacement</Tag>
+         <Tag>BuildRequirementTag-TradePostTarget</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>StandardOutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Gather</Tag>
+         <Tag>FaceShore</Tag>
+         <Tag>AIHint-TradePost</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CASTLE</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResDomainEngineering,40</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CASTLE</Data>
+         <Data>UseAction-200,UNITACTIONS-OUTPOST_UNPACK</Data>
+         <Data>OutpostImprovementRestrictionTag,StandardOutpostImprovement</Data>
+         <Data>OutpostImprovementRestrictionTag,CastleOutpostImprovement</Data>
+         <!--<Data>FortificationBonus,1.4</Data>-->
+         <Data>CityBuildingDefenders-0,UNIT_CASTLE</Data>
+         <Data>CityBuildingDefenders-1,UNIT_MILITIA_LVL_4</Data>
+         <Data>CityBuildingDefenders-2,UNIT_MILITIA_LVL_4</Data>
+         <Data>CityAction-0,TILEACTIONS-CITY_ATTACK</Data>
+         <Data>CityAttackStrength,28</Data>
+         <!-- Fortification -->
+         <Data>CombatMod-StatDefense-Target:+TypeRanged,2</Data>
+         <Data>CombatMod-StatDefense-Target:+TypeCavalry,2</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>ResCulture,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostCore</Tag>
+         <Tag>Castle</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>DestroyCityWhenDestroyed</Tag>
+         <Tag>DestroyIfRazed</Tag>
+         <Tag>IsDefended</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>AIHint-CastleOutpost</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>BlockImprovements</Tag>
+         <Tag>CanBeSieged</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CASTLEARMORY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CASTLEARMORY</Data>
+         <Data>ResDomainWarfare,1</Data>
+         <Data>CountLimit-Region,3</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_CASTLETOWN</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,15</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_CASTLETOWN</Data>
+         <Data>ResCoin,3</Data>
+         <Data>GoodsWheat,1</Data>
+         <Data>CountLimit-Region,3</Data>
+         <Data>AIBuildWeight,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-+GrasslandImprovements</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_MISSION</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResDomainEngineering,40</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_MISSION</Data>
+         <Data>ResCityFaith-{PlayerReligion},10</Data>
+         <Data>GoodsTradeGoods,2</Data>
+         <Data>UseAction-200,UNITACTIONS-OUTPOST_UNPACK</Data>
+         <Data>OutpostImprovementRestrictionTag,StandardOutpostImprovement</Data>
+         <Data>OutpostImprovementRestrictionTag,CastleOutpostImprovement</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostCore</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>DestroyCityWhenDestroyed</Tag>
+         <Tag>DestroyIfRazed</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>FaithToCulture_Large</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>BlockImprovements</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_ABBEY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_ABBEY</Data>
+         <Data>ResCityFaith-{PlayerReligion},4</Data>
+         <Data>GoodsReligiousText,1</Data>
+         <Data>CountLimit-Region,3</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-OutpostAbbey,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>RequireReligion</Tag>
+         <Tag>FaithToCulture_Small</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_COLONY</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResDomainEngineering,40</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_COLONY</Data>
+         <Data>UseAction-200,UNITACTIONS-OUTPOST_UNPACK</Data>
+         <Data>OutpostImprovementRestrictionTag,StandardOutpostImprovement</Data>
+         <Data>OutpostImprovementRestrictionTag,CastleOutpostImprovement</Data>
+         <Data>OutpostImprovementRestrictionTag,ColonyOutpostImprovement</Data>
+         <Data>ResCoin,10</Data>
+         <Data>ResCulture,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostCore</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>DestroyCityWhenDestroyed</Tag>
+         <Tag>IsDefended</Tag>
+         <Tag>DestroyIfRazed</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>BlockImprovements</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_AIRFIELD</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResImprovementPoints,20</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_AIRFIELD</Data>
+         <Data>ResDomainExploration,1</Data>
+         <Data>StatAirUnitCapacity,1</Data>
+         <Data>CountLimit-Region,3</Data>
+         <Data>AIBuildWeight,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>BuildRequirementTag-OpenTerrain</Tag>
+         <Tag>OutpostImprovement</Tag>
+         <Tag>StandardOutpostImprovement</Tag>
+         <Tag>CastleOutpostImprovement</Tag>
+         <Tag>ColonyOutpostImprovement</Tag>
+         <Tag>ImprovementCategory-Civic</Tag>
+         <Tag>DestroyLocalAirUnitsIfDestroyedOrRazed</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+<!-- TOWN SPECIALIZATIONS -->
+
+   <!-- DEFAULT TOWN SPECIALIZATIONS -->
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_1</Data>
+         <Data>SpecLevel,1</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT</ID>
+      <Import>B_TOWNSPEC_DEFAULT_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_1</Data>
+         <Data>SpecLevel,1</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_DEFAULT_2</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT_2</ID>
+      <Import>B_TOWNSPEC_DEFAULT_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_DEFAULT_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT_3</ID>
+      <Import>B_TOWNSPEC_DEFAULT_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_DEFAULT_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT_4</ID>
+      <Import>B_TOWNSPEC_DEFAULT_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_DEFAULT_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_DEFAULT_5</ID>
+      <Import>B_TOWNSPEC_DEFAULT_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- AGRICULTURAL TOWN SPECIALIZATIONS -->
+   <EntityInfo>
+      <ID>B_TOWNSPEC_FARM_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_FARM_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>FarmTown</Tag>
+         <Tag>AITownSpecializationMatch-FarmTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_FARM_2</ID>
+      <Import>B_TOWNSPEC_FARM_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_FARM_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_FARM_3</ID>
+      <Import>B_TOWNSPEC_FARM_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_FARM_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_FARM_4</ID>
+      <Import>B_TOWNSPEC_FARM_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_FARM_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_FARM_5</ID>
+      <Import>B_TOWNSPEC_FARM_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- LUMBER TOWN SPECIALIZATIONS -->
+   <EntityInfo>
+      <ID>B_TOWNSPEC_LUMBER_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_LUMBER_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>AITownSpecializationMatch-LumberTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_LUMBER_2</ID>
+      <Import>B_TOWNSPEC_LUMBER_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_LUMBER_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_LUMBER_3</ID>
+      <Import>B_TOWNSPEC_LUMBER_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_LUMBER_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_LUMBER_4</ID>
+      <Import>B_TOWNSPEC_LUMBER_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_LUMBER_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_LUMBER_5</ID>
+      <Import>B_TOWNSPEC_LUMBER_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- MINING TOWN SPECIALIZATIONS -->
+   <EntityInfo>
+      <ID>B_TOWNSPEC_MINE_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_MINE_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>AITownSpecializationMatch-MineTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_MINE_2</ID>
+      <Import>B_TOWNSPEC_MINE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_MINE_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_MINE_3</ID>
+      <Import>B_TOWNSPEC_MINE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_MINE_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_MINE_4</ID>
+      <Import>B_TOWNSPEC_MINE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_MINE_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_MINE_5</ID>
+      <Import>B_TOWNSPEC_MINE_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <!-- COASTAL TOWN SPECIALIZATIONS -->
+   <EntityInfo>
+      <ID>B_TOWNSPEC_COASTAL_BASE</ID>
+      <Import>TOWNSPEC_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <ActionCards>
+         <Card>UNITACTIONS-TOWNSPEC_DEFAULT_TOWNBONUS</Card>
+         <Card>UNITACTIONS-TOWNSPEC_COASTAL_TOWNBONUS</Card>
+      </ActionCards>
+      <Tags>
+         <Tag>EvaluateActionForPredictedYield</Tag>
+         <Tag>TownSpecialization</Tag>
+         <Tag>AITownSpecializationMatch-CoastalTownBonus</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_COASTAL_2</ID>
+      <Import>B_TOWNSPEC_COASTAL_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_2</Data>
+         <Data>SpecLevel,2</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_COASTAL_3</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_COASTAL_3</ID>
+      <Import>B_TOWNSPEC_COASTAL_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_3</Data>
+         <Data>SpecLevel,3</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_COASTAL_4</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_COASTAL_4</ID>
+      <Import>B_TOWNSPEC_COASTAL_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_4</Data>
+         <Data>SpecLevel,4</Data>
+      </StartingData>
+      <Tags>
+         <Tag>SpecPromote-B_TOWNSPEC_COASTAL_5</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TOWNSPEC_COASTAL_5</ID>
+      <Import>B_TOWNSPEC_COASTAL_BASE</Import>
+      <StartingData>
+         <Data>EntityPrefab,Towns/B_TOWNSPEC_DEFAULT_5</Data>
+         <Data>SpecLevel,5</Data>
+      </StartingData>
+      <Tags>
+         <Tag>LevelFiveTown</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TOWNRUINS</ID>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TOWNRUINS</Data>
+      </StartingData>
+      <Tags>
+         <Tag>Building</Tag>
+         <Tag>Improvement</Tag>
+         <Tag>RebuildableTown</Tag>
+         <Tag>CannotRaze</Tag>
+         <Tag>NoWorkerAssignmentOnCreation</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>FAKE_ENTITY_PLAYERSTART</ID>
+      <StartingData>
+         <Data>StartingUnit-0,UNIT_WARBAND</Data>
+         <Data>StartingUnit-1,UNIT_WARBAND</Data>
+         <!-- <Data>StartingUnit-1,UNIT_ARCHER</Data> -->
+         <Data>StartingBuilding-0,B_HOMELAND</Data>
+      </StartingData>
+   </EntityInfo>
+
+<!-- DLC1 -->
+
+   <EntityInfo>
+      <ID>UNIT_NOMAD</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Nomad</Icon>
+      <Portrait>NomadPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,1</Data>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,10</Data>
+         <Data>StatCommandMax,10</Data>
+         <Data>StatMovement,30</Data>
+         <Data>StatMovementMax,30</Data>
+         <Data>StatAttack,5</Data>
+         <Data>StatDefense,5</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>CanScavengeHills,1</Data>
+         <Data>CanScavengeForests,1</Data>
+         <Data>CanScavengeFrozen,1</Data>
+         <Data>UseAction-100,UNITACTIONS-SCOUT_CLAIMLANDMARK</Data>
+         <Data>UseAction-101,UNITACTIONS-NOMAD_SCAVENGE_HILLS</Data>
+         <Data>UseAction-102,UNITACTIONS-NOMAD_SCAVENGE_FOREST</Data>
+         <Data>UseAction-103,UNITACTIONS-NOMAD_SCAVENGE_FROZEN</Data>
+         <Data>UseAction-104,UNITACTIONS-NOMAD_BUILDCITY</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Army/Nomad/Unit_Nomad</Data>
+      </StartingData>
+      <ActionCardsTurnStart>
+         <Card>UNITACTIONS-NOMAD_GAIN_PASSIVE_XP</Card>
+      </ActionCardsTurnStart>
+      <Tags>
+         <Tag>ScalingStats</Tag>
+         <!--<Tag>NonCombatant</Tag>-->
+         <Tag>TypeSettler</Tag>
+         <Tag>CombatType:CT_Mobile</Tag>
+
+         <!-- Nomad Behavior is slightly more complicated than Settler, as we also want the AI to use the Scavenge mechanic -->
+         <Tag>TagAIBehavior-BT_Nomad</Tag>
+
+         <Tag>NonStacking</Tag>
+         <Tag>PreventGameOver</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMoveFoot</Tag>
+         <Tag>AttackOverSoundMoveFoot</Tag>
+         <Tag>AttackSoundLineWood</Tag>
+         <Tag>DamageTakenSoundLine</Tag>
+         <Tag>RoutedSoundLine</Tag>
+         <!--<Tag>DestroyedSoundLine</Tag>-->
+         <Tag>MemberDeadSoundLine</Tag>
+         <Tag>VoicePainSoundHumanSoldier</Tag>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SETTLER_REGION</ID>
+      <Import>UNIT_SETTLER</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>SettlerPortrait</Portrait>
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-SETTLER_BUILDREGION</Data>
+      </StartingData>
+      <Tags>
+         <Tag>PreventGameOver</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_HORTICULTURIST</ID>
+      <Import>UNIT_PROSPECTOR</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>CulturistPortrait</Portrait>
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-HORTICULTURIST_SPAWNGRAPES</Data>
+         <Data>UseAction-101,UNITACTIONS-HORTICULTURIST_SPAWNRICE</Data>
+         <Data>UseAction-102,UNITACTIONS-HORTICULTURIST_SPAWNOLIVES</Data>
+         <Data>UseAction-103,UNITACTIONS-HORTICULTURIST_SPAWNFLAX</Data>
+         <Data>UseAction-104,UNITACTIONS-HORTICULTURIST_SPAWNCOTTON</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Culturist/Unit_Culturist</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_WHEATCULTURIST</ID>
+      <Import>UNIT_PROSPECTOR</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>CulturistPortrait</Portrait>
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-WHEATCULTURIST_SPAWNWHEAT</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Culturist/Unit_Culturist</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_ANIMALCULTURIST</ID>
+      <Import>UNIT_PROSPECTOR</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>CulturistPortrait</Portrait>
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-ANIMALCULTURIST_SPAWNGAME</Data>
+         <Data>UseAction-101,UNITACTIONS-ANIMALCULTURIST_SPAWNCATTLE</Data>
+         <Data>UseAction-102,UNITACTIONS-ANIMALCULTURIST_SPAWNSHEEP</Data>
+         <Data>UseAction-103,UNITACTIONS-ANIMALCULTURIST_SPAWNLLAMAS</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Culturist/Unit_Culturist</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PROSPECTOR_MARBLE</ID>
+      <Import>UNIT_PROSPECTOR</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <!-- <Portrait>ProspectorPortrait</Portrait> -->
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-PROSPECTOR_SPAWNMARBLE</Data>
+         <!-- <Data>UnitMemberPrefab,Entities/Units/NonBuildable/StoneProspector/Unit_StoneProspector</Data> -->
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_PROSPECTOR_ADVANCED</ID>
+      <Import>UNIT_PROSPECTOR</Import>
+      <Icon>UnitIcon_Flag</Icon>
+      <Portrait>IronProspector</Portrait>
+      <StartingData>
+         <Data>UseAction-100,UNITACTIONS-PROSPECTOR_PROSPECT</Data>
+         <Data>UseAction-101,UNITACTIONS-IRON_PROSPECTOR_PROSPECT</Data>
+         <Data>UseAction-102,UNITACTIONS-RAREPROSPECTOR_COALPROSPECT</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NonBuildable/Prospector/Unit_Prospector</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_MASTODON</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Megafauna</Icon>
+      <Portrait>MastodonPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,55</Data>
+         <Data>StatCommandMax,55</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,6</Data>
+         <Data>StatDefense,14</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+Megafauna,2.0</Data>
+         <Data>CombatMod-StatAttack-Target:+Barbarian,2.0</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,2.0</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Mastodon</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Mastodon/Unit_Mastodon</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeLine</Tag>
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>Megafauna</Tag>
+         <Tag>TypeDLC1</Tag>
+         <Tag>CheckAchievement</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundMastodon</Tag>
+         <Tag>AttackOverSoundMastodon</Tag>
+         <Tag>AttackSoundMastodon</Tag>
+         <Tag>DamageTakenSoundMastodon</Tag>
+         <Tag>RoutedSoundMastodon</Tag>
+         <Tag>MemberDeadSoundMastodon</Tag>
+         <Tag>VoicePainSoundMastodon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MASTODON_DEFENDER</ID>
+      <Import>UNIT_MASTODON</Import>
+      <Icon>UnitIcon_Megafauna</Icon>
+      <Portrait>MastodonPortrait</Portrait>
+      <Tags>
+         <Tag>DestroyAtEndOfCombat</Tag>
+         <Tag>DefenderTrackStatusFromCombatResult</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SMILODON</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_Megafauna</Icon>
+      <Portrait>SmilodonPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatCommand,45</Data>
+         <Data>StatCommandMax,45</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatMovement,20</Data>
+         <Data>StatMovementMax,20</Data>
+         <Data>StatAttack,10</Data>
+         <Data>StatDefense,7</Data>
+         <Data>StatOrgDamageFactor,2.0</Data>
+         <Data>StatTargetPriority,200</Data>
+         <Data>CombatMod-StatAttack-Target:+Megafauna,2.0</Data>
+         <Data>CombatMod-StatAttack-Target:+Barbarian,2.0</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Smilodon</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Enemy_Army/Smilodon/Unit_Smilodon</Data>
+      </StartingData>
+      <Tags>
+         <Tag>CombatType:CT_Mobile</Tag>
+         <Tag>CombatAttackType:CAT_Direct</Tag>
+         <Tag>CombatTargetingLowestHealth</Tag>
+         <Tag>DoesNotTriggerBloodAge</Tag>
+         <Tag>TypeMobile</Tag>
+         <Tag>Megafauna</Tag>
+         <Tag>TypeDLC1</Tag>
+         <Tag>CheckAchievement</Tag>
+         <!-- Sound Tags -->
+         <Tag>AttackBegunSoundSmilodon</Tag>
+         <Tag>AttackOverSoundSmilodon</Tag>
+         <Tag>AttackSoundSmilodon</Tag>
+         <Tag>DamageTakenSoundSmilodon</Tag>
+         <Tag>RoutedSoundSmilodon</Tag>
+         <Tag>MemberDeadSoundSmilodon</Tag>
+         <Tag>VoicePainSoundSmilodon</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_MESSENGER</ID>
+      <Import>UNIT_BASE</Import>
+      <Icon>UnitIcon_Messenger</Icon>
+      <Portrait>MessengerPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,2</Data>
+         <Data>AIBuildWeight,0</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>StatUnrestGenerationInEnemyTerritory,0</Data>
+         <Data>UseAction-50,NONE</Data>
+         <Data>UseAction-100,UNITACTIONS-MESSENGER_ENTREATY</Data>
+         <Data>TriggerOnSelfKilled,UNITACTIONS-MESSENGER_KILLED</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Foot</Data>
+         <Data>SourceOverlayImageName,Domains/Domain-MESSENGERS</Data>
+         <Data>SourceOverlayTooltip,DomainSpecialization-MESSENGERS-DisplayName</Data>
+         <Data>UnitMemberPrefab,Entities/Units/NationalSpirit/Messenger/Unit_Messenger</Data>
+      </StartingData>
+      <ActionCards>
+      </ActionCards>
+      <Tags>
+         <Tag>EnterPeacefulTerritory</Tag>
+         <Tag>NonCombatant</Tag>
+         <!-- <Tag>TagAIBehavior-BT_Messenger</Tag> -->
+         <Tag>NonStacking</Tag>
+         <Tag>Messenger</Tag>
+         <!-- Sound Tags -->
+         <Tag>TypeDLC1</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>B_TILEIMP_TAMBO</ID>
+      <Import>IMPROVEMENT_BASE</Import>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>ConstructionCost-ResDomainEngineering,10</Data>
+         <Data>EntityPrefab,Improvements/B_TILEIMP_TAMBO</Data>
+         <Data>UseAction-200,UNITACTIONS-OUTPOST_UNPACK</Data>
+         <Data>OutpostImprovementRestrictionTag,StandardOutpostImprovement</Data>
+         <Data>ResDomainDiplomacy,1</Data>
+         <Data>TriggerOnTurnStart,UNITACTIONS-TAMBO_EFFECT</Data>
+      </StartingData>
+      <Tags>
+         <Tag>OutpostCore</Tag>
+         <Tag>RoadTarget</Tag>
+         <Tag>BlockSettler</Tag>
+         <Tag>NeutralAttackTarget</Tag>
+         <Tag>NeutralCampSpawnInhibitor</Tag>
+         <Tag>AIAttackTarget</Tag>
+         <Tag>DestroyCityWhenDestroyed</Tag>
+         <Tag>DestroyIfRazed</Tag>
+         <Tag>RoadAnchor</Tag>
+         <Tag>TypeDLC1</Tag>
+         <Tag>NukeTarget</Tag>
+         <Tag>NukeEffectTarget</Tag>
+         <Tag>BlockImprovements</Tag>
+         <Tag>CheckAchievement</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+   <EntityInfo>
+      <ID>UNIT_BOMBER_BASE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_BiplaneBomber</Icon>
+      <Portrait>BiplaneBomberPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <UnitLayer>1</UnitLayer>
+      <StartingData>
+         <Data>ConstructionCost-ResCityProduction,250</Data>
+         <Data>Upkeep-ResCoin,10</Data>         
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatMovement,0</Data>
+         <Data>StatMovementMax,0</Data>
+         <Data>StatAttack,75</Data>
+         <Data>StatDefense,40</Data>
+         <Data>StatUnrestSuppression,0</Data>         
+         <!-- Bomber Stats -->
+         <Data>StatAirInterceptRange,0</Data>
+         <Data>StatAirAttackRange,5</Data>
+         <Data>StatStrategicPower,38</Data>
+         <Data>UseAction-100,UNITACTIONS-BOMBER_STRATEGICBOMBING_ENABLE</Data>
+         <Data>UseAction-101,UNITACTIONS-BOMBER_STRATEGICBOMBING_DISABLE</Data>
+         <!-- <Data>UseAction-102,UNITACTIONS-BOMBER_STRATEGICBOMBING_EQUIPNUKE</Data> -->
+         <Data>UseAction-103,UNITACTIONS-BOMBER_STRATEGICBOMBING_DISARMNUKE</Data>
+         <!-- Bomber I -->
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,1.5</Data>
+         <Data>CombatMod-StatAttack-Target:+NavalTarget,1.5</Data>
+         <Data>AIBuildWeight,1</Data>
+         <Data>UpgradeLine-Bomber,1</Data>
+         <Data>FilterAge,7</Data>
+         <Data>EntityAudioEvent-EntityMove,UnitMove-PropellorBomber</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Air/BiplaneBomber/Unit_BiplaneBomber</Data>
+      </StartingData>
+      <Tags>
+         <Tag>ActInBombingRound</Tag>
+         <Tag>AirDefenseTarget</Tag>
+         <Tag>AirInterceptionTarget</Tag>
+         <Tag>AirTargetingOnly</Tag>
+         <Tag>ArmyGroupIgnoreUnit</Tag>
+         <Tag>CanAttackNavalTargets</Tag>
+         <Tag>AirUnit</Tag>
+         <Tag>AirBomber</Tag>
+         <Tag>NoRiverCrossingPenalty</Tag>
+         <!-- Combat Viewer Tags -->
+         <Tag>CombatType:CT_Line</Tag>
+         <Tag>CombatTargetingRandom</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_SUBMARINE_BASE</ID>
+      <Import>UNIT_BOAT_BASE</Import>
+      <Icon>UnitIcon_Submarine</Icon>
+      <Portrait>SubmarinePortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>RevealRadius,2</Data>
+         <Data>StatCommand,40</Data>
+         <Data>StatCommandMax,40</Data>
+         <Data>StatTargetPriority,100</Data>
+         <Data>StatBarragePower,10</Data>
+         <Data>StatStrategicPower,18</Data>
+         <Data>StatStrategicTargets,2</Data>
+         <!-- Submarine Ship -->
+         <Data>CombatMod-StatAttack-Target:+CapitalShip,2.0</Data>
+         <Data>UseAction-100,UNITACTIONS-SUBMARINE_TORPEDO</Data>
+         <Data>UseAction-101,UNITACTIONS-SUBMARINE_MISSILESTRIKE</Data>
+         <!-- <Data>UseAction-102,UNITACTIONS-SUBMARINE_NUCLEARSTRIKE</Data> -->
+         <Data>EntityAudioEvent-EntityMove,UnitMove-Boat</Data>
+         <Data>UnitMemberPrefab,Entities/Units/Navy/Submarine/Unit_Submarine</Data>
+      </StartingData>
+      <Tags>
+         <Tag>AttackShip</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_CATAPULT_BASE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_SiegeEngine</Icon>
+      <Portrait>CatapultPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <!-- Unit Stats -->
+         <Data>StatCommand,20</Data>
+         <Data>StatCommandMax,20</Data>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <!-- Siege -->
+         <Data>StatBarragePower,10</Data>
+         <Data>StatStrategicPower,18</Data>
+         <Data>StatStrategicTargets,2</Data>
+         <Data>CombatMod-StatAttack-Target:+TypeDefenses,2.5</Data>
+         <!-- Unit Actions -->
+         <Data>UseAction-100,UNITACTIONS-SIEGE_DAMAGEDEFENSES</Data>
+         <Data>UseAction-101,UNITACTIONS-SIEGE_BARRAGEUNITS</Data>
+      </StartingData>
+      <Tags>
+         <Tag>TypeSiege</Tag>
+      </Tags>
+   </EntityInfo>
+
+   <EntityInfo>
+      <ID>UNIT_BOAT_BASE</ID>
+      <Import>UNIT_COMBAT</Import>
+      <Icon>UnitIcon_TransportShip</Icon>
+      <Portrait>WaterTransportPortrait</Portrait>
+      <MapScale>1.0</MapScale>
+      <StartingData>
+         <Data>StatHealth,50</Data>
+         <Data>StatHealthMax,50</Data>
+         <Data>StatUnrestSuppression,0</Data>
+         <Data>UseAction-51,NONE</Data>
+         <Data>UseAction-52,NONE</Data>
+         <Data>UpgradeResource,ResDomainExploration</Data>
+      </StartingData>
+      <Tags>
+         <Tag>WaterMovement</Tag>
+         <Tag>NavalTarget</Tag>
+      </Tags>
+   </EntityInfo>
+
+
+</EntityInfoList>
