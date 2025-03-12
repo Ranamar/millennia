@@ -16,9 +16,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      # Replace with the URL of your graphviz image
-      #   gcr.io/<YOUR_GCP_PROJECT_ID>/graphviz
-      image = "us-docker.pkg.dev/cloudrun/container/hello"
+      image = "gcr.io/milennia-tech-tree-grapher/tree-drawing"
     }
 
     service_account = google_service_account.grapher.email
