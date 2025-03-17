@@ -16,7 +16,7 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "gcr.io/milennia-tech-tree-grapher/tree-drawing"
+      image = "gcr.io/millennia-tech-tree-grapher/github.com/millennia:tree-drawing"
     }
 
     service_account = google_service_account.grapher.email
