@@ -7,6 +7,6 @@ from draw_trees import *
 #unflat.format = 'svg'
 #unflat.render()
 
-upgrade_tree = build_unit_upgrade_graph('UNIT_DESTROYER')
+upgrade_tree = build_unit_upgrade_graph('UNIT_DRAGONGRENADIER')
 upgrade_tree.format = 'svg'
 upgrade_tree.render()

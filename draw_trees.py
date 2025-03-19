@@ -110,6 +110,9 @@ def build_unit_upgrade_graph(unit):
                 for tech in line_list[i].unlocked_by:
                     c.node(tech)
                     tree.edge(tech, line_list[i].entity_id)
-                    for age in tech_ages[tech]:
-                        tree.edge(age, tech)
+                    if tech in tech_ages:
+                        for age in tech_ages[tech]:
+                            tree.edge(age, tech)
+                    else:
+                        tree.edge('TECHAGE'+str(line_list[i].age), tech)
     return tree
