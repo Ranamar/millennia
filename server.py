@@ -15,7 +15,7 @@ def index():
         graph.format = "svg"
         image = graph.pipe()
         response = make_response(image)
-        response.headers.set("Content-Type", "image/svg")
+        response.headers.set("Content-Type", "image/svg+xml")
         return response
 
     except Exception as e:
