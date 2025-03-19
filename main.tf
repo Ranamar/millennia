@@ -22,3 +22,10 @@ resource "google_cloud_run_v2_service" "default" {
     service_account = google_service_account.grapher.email
   }
 }
+
+resource "google_cloud_run_service_iam_member" "allow_unauthenticated" {
+  service  = google_cloud_run_v2_service.default.name
+  location = google_cloud_run_v2_service.default.location
+  role     = "roles/run.invoker"
+  member   = "allUsers"
+}
