@@ -78,9 +78,14 @@ class Entity:
     
     def add_upgrade_line(self, data):
         upgrade = data[0].split('-')
-        self.upgrade_lines[upgrade[1]] = data[1]
+        # We don't want to accidentally lexicographically sort our numbers!
+        self.upgrade_lines[upgrade[1]] = int(data[1])
     
     def add_unlock(self, tech):
+        if tech.startswith('EXPLORE-') or tech.startswith('BARBARIAN-'):
+            # EXPLORE- cards are events when you find villages, so it's not actually a tech.
+            # BARBARIAN- cards are for generating barbarians.
+            return
         self.unlocked_by.append(tech)
     
     def parse_attribute(self, data):
@@ -100,6 +105,12 @@ class Entity:
             parsed = entry.split(',')
             if not self.parse_attribute(parsed):
                 self.data[parsed[0]] = parsed[1]
+    
+    def __repr__(self):
+        return self.__str__()
+
+    def __str__(self):
+        return 'entity ' + self.entity_id + ' - age: ' + str(self.age) + '; unlocked by: ' + str(self.unlocked_by) + '; upgrade lines: ' + str(self.upgrade_lines)
 
 class Unit(Entity):
     def __init__(self, entity_id):

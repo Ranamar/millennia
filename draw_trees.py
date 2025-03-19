@@ -114,5 +114,7 @@ def build_unit_upgrade_graph(unit):
                         for age in tech_ages[tech]:
                             tree.edge(age, tech)
                     else:
+                        # Fallback in case we missed something.
+                        # With barbarian and exploration cards removed, this should just be innovations.
                         tree.edge('TECHAGE'+str(line_list[i].age), tech)
     return tree
