@@ -1,4 +1,5 @@
 from draw_trees import build_unit_upgrade_graph
+import millennia_data
 from flask import Flask, make_response, request
 
 import os
@@ -6,7 +7,7 @@ import os
 app = Flask(__name__)
 
 @app.route("/upgrade_tree.svg", methods=["GET"])
-def index():
+def upgrade_tree():
     """
     returns an SVG of the upgrade tree and relevant techs in an HTTP response.
     """
@@ -16,6 +17,22 @@ def index():
         image = graph.pipe()
         response = make_response(image)
         response.headers.set("Content-Type", "image/svg+xml")
+        return response
+
+    except Exception as e:
+        print(f"error: {e}")
+
+        return "Internal Server Error", 500
+
+
+@app.route("/units", methods=["GET"])
+def units():
+    """
+    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    """
+    try:
+        response = make_response(list(millennia_data.units.keys()))
+        response.headers.add("Access-Control-Allow-Origin", "*")
         return response
 
     except Exception as e:

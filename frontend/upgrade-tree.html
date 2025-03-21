@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Millennia upgrade tech trees</title>
+    <link rel="stylesheet" href="styles.css" />
+    <meta charset="utf-8" />
+    <script src="controls.js"></script>
+</head>
+
+<body onload="setup()">
+    <div class="controls">
+        <select id="unitSelect" onchange="updateSelectedUnit()">
+            <option value="">--Units--</option>
+        </select>
+    </div>
+    <img id="graph" src="https://tech-tree-grapher-500188191783.us-central1.run.app/upgrade_tree.svg?entity=UNIT_DESTROYER" />
+</body>
