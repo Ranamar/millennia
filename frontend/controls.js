@@ -24,5 +24,5 @@ function updateSelectedUnit() {
     let selector = document.getElementById("unitSelect");
     let unit = selector.value;
     let graph = document.getElementById("graph")
-    graph.src = UPGRADE_TREE_URL_BASE + "upgrade_tree.svg?entity=" + unit
+    graph.src = UPGRADE_TREE_URL_BASE + "/upgrade_tree.svg?entity=" + unit
 }

@@ -31,7 +31,7 @@ def units():
     returns an SVG of the upgrade tree and relevant techs in an HTTP response.
     """
     try:
-        response = make_response(list(millennia_data.units.keys()))
+        response = make_response(sorted(millennia_data.units.keys()))
         response.headers.add("Access-Control-Allow-Origin", "*")
         return response
 
