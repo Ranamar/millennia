@@ -87,6 +87,9 @@ class Entity:
             # BARBARIAN- cards are for generating barbarians.
             return
         self.unlocked_by.append(tech)
+
+    def is_unlockable(self):
+        return len(self.unlocked_by) > 0
     
     def parse_attribute(self, data):
         #TODO: ConstructionCost, probably other things
@@ -158,7 +161,7 @@ def add_tech_age(tech, age):
 def get_age_from_tech(tech):
     # Extract an age number for a tech
     #TODO: This doesn't work for spirits or governments as currently stored.
-    age_match = re.match(tech, 'TECHAGE([0-9]+)')
+    age_match = re.match('TECHAGE([0-9]+)', tech)
     if age_match:
         return int(age_match.group(1))
     else:
@@ -255,6 +258,11 @@ def load_unlocks(filename):
                 error_cards[name].append((card, errors))
             else:
                 error_cards[name] = [(card, errors)]
+
+def get_unlockable_entity_ids(dictionary):
+    def unlockable_entity(dictionary_item):
+        return dictionary_item[1].is_unlockable()
+    return sorted(map(lambda item: item[0], filter(unlockable_entity, dictionary.items())))
 
 def parse_unit_data(unit, data):
     if unit in units:

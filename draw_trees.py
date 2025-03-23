@@ -1,26 +1,43 @@
 import graphviz
 import millennia_data
-from pprint import pprint as pretty_print
+# from pprint import pprint as pretty_print
 
 tech_ages, age_advances, age_spirits, age_governments, units, improvements, buildings, projects = millennia_data.load_data()
 
 #TODO: Call this from build_tech_graph() if we're not deprecating that.
-def build_age_trunk(name='age_trunk', spacing='4', cluster_trunk=True):
-    tree = graphviz.Digraph(name=name)
+def build_age_trunk(tree, spacing='4', cluster_ages=False):
     trunk_name = 'cluster_agealign'
-    if not cluster_trunk:
-        trunk_name = 'trunk_ages_unaligned'
     with tree.subgraph(name=trunk_name) as age_align:
+        # Space the age tags out by our spacing interval.
+        age_align.attr('edge', minlen=spacing)
+        age_align.attr('edge', style='invis')
+        age_align.attr('graph', style='invis')
+        # Create non-tech nodes, one per age, to keep the rest of the tree from drifting sideways
+        for age_num in range(1, 11):
+            age_node_str = 'AGE_' + str(age_num)
+            age_align.node(age_node_str, 'Age ' + str(age_num))
+            if age_num > 1:
+                age_align.edge('AGE_' + str(age_num - 1), age_node_str)
+        age_subgraph_name = 'sub_'
+        if cluster_ages:
+            age_subgraph_name = 'cluster_' + age_subgraph_name
+        # Because there are no parents to age 1, We won't get an edge from 'AGE_1' to 'TECHAGE1' later.
+        # If we don't put age 1 in its own subgraph here, it ends up being globbed into age 2 in weird ways if we use clusters.
+        with tree.subgraph(name=age_subgraph_name + 'TECHAGE0') as cluster:
+            cluster.node('TECHAGE1')
+            tree.edge('AGE_1', 'TECHAGE1', style='invis')
         for age, children in age_advances.items():
-            # We're trying to build a main trunk box.
-            # Fortunately, the non-trunk ages all have underscores in their name, so that's an easy filter.
-            if '_' not in age:
-                age_align.node(age)
-            with tree.subgraph(name='sub_'+age) as cluster:
+            # We're trying to build a main trunk box. These are not techs, but rather springs to be used to hold stuff together.
+            # Fortunately, the non-trunk ages all have underscores in their name, so that's an easy way to get a unique starting point.
+            # The one fly in this ointment is age 10, which has no base age.
+            with tree.subgraph(name=age_subgraph_name+age) as cluster:
                 cluster.attr('edge', minlen=spacing)
+                if cluster_ages:
+                    cluster.attr('graph', rank='same')
                 for child in children:
                     cluster.edge(age, child)
-    return tree
+                    age_num_string = str(millennia_data.get_age_from_tech(child))
+                    tree.edge('AGE_' + age_num_string, child, style='invis')
 
 # Create a list of digraphs named "cluster_age_[age number]" to cluster each age's techs and unlocks.
 #TODO: Finish using this
@@ -83,11 +100,12 @@ def find_unit_upgrade_lines(search_unit):
 
 def build_unit_upgrade_graph(unit):
     tree = graphviz.Digraph(name='upgrade_tree', strict=True)
-    tree.subgraph(graph=build_age_trunk())
+    # tree.subgraph(graph=build_age_trunk())
+    build_age_trunk(tree)
     upgrade_lines = find_unit_upgrade_lines(units[unit])
-    age_blocks = []
-    for i in range(11):
-        age_blocks.append(set())
+    # age_blocks = []
+    # for i in range(11):
+    #     age_blocks.append(set())
     for line in upgrade_lines:
         line_list = upgrade_lines[line]
         for i in range(len(line_list)):
@@ -104,7 +122,8 @@ def build_unit_upgrade_graph(unit):
                     # If we didn't bail out, draw the edge.
                     tree.edge(line_list[i].entity_id, potential_link.entity_id)
             # Link to techs, and group techs
-            cluster_name = 'cluster_age'+str(line_list[i].age)
+            # This was clustered at one point in the past, but we've solved the 
+            cluster_name = 'age'+str(line_list[i].age)
             with tree.subgraph(name=cluster_name) as c:
                 c.node(line_list[i].entity_id)
                 for tech in line_list[i].unlocked_by:
