@@ -13,7 +13,7 @@ module "im-workspace" {
   im_deployment_ref = var.im_deployment_ref
 
   github_app_installation_id = var.github_app_installation_id
-  # github_personal_access_token = var.github_access_token
+  github_pat_secret = var.github_pat_secret
 }
 
 resource "google_service_account" "grapher" {
