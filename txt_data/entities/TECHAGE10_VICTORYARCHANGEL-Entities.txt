@@ -384,6 +384,7 @@
          <Data>CombatMod-StatAttack-Target:+NavalTarget,2.5</Data>
          <Data>AIBuildWeight,1</Data>
          <Data>UpgradeLine-Bomber,4</Data>
+         <Data>FilterAge,10</Data>
 		   <Data>UnitMemberPrefab,Entities/Units/Air/AiBomber/Unit_AiBomber</Data>
          <Data>EntityAudioEvent-EntityMove,UnitMove-JetBomber</Data>
       </StartingData>
