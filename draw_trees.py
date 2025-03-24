@@ -35,9 +35,8 @@ def build_age_trunk(tree_name='upgrade_tree', spacing='4', cluster_ages=False):
                 cluster.attr('edge', minlen=spacing)
                 for child in children:
                     cluster.edge(age, child)
-                    age_num_string = str(millennia_data.get_age_from_tech(child))
-                    tree.edge('AGE_' + age_num_string, child, style='invis')
-    # attach_spirits_and_governments_to_ages(tree, [])
+                    age_num = millennia_data.get_age_from_tech(child)
+                    tree.edge('AGE_' + str(age_num), child, style='invis')
     return tree
 
 def attach_spirits_and_governments_to_ages(tree, spirits_and_governments):
@@ -113,6 +112,11 @@ def draw_upgrade_tech_tree(tree, upgrade_lines):
             cluster_name = 'age'+str(line_list[i].age)
             with tree.subgraph(name=cluster_name) as c:
                 c.node(line_list[i].entity_id)
+                # Invisible link from entity to the next age (except the last one)
+                # so that we don't get things wandering away from their age
+                if line_list[i].age < 10:
+                    tree.edge(line_list[i].entity_id, 'AGE_' + str(line_list[i].age+1), style='invis')
+                # Link techs
                 for tech in line_list[i].unlocked_by:
                     c.node(tech)
                     tree.edge(tech, line_list[i].entity_id, color='blue2')
