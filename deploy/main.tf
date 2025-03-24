@@ -12,7 +12,7 @@ module "im-workspace" {
   im_deployment_repo_uri = var.git_repo
   im_deployment_ref = var.im_deployment_ref
 
-  #github_app_installation_id = var.github_app_installation_id
+  github_app_installation_id = var.github_app_installation_id
   # github_personal_access_token = var.github_access_token
 }
 
