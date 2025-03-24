@@ -23,20 +23,20 @@ age_advances = {
 }
 # This doesn't look like it can be generated from the data files
 age_spirits = {
-    'TECHAGE2':['MESSENGERS', 'MOUNDBUILDERS', 'OLYMPICLEGACY', 'RAIDER',
+    'AGE_2':['MESSENGERS', 'MOUNDBUILDERS', 'OLYMPICLEGACY', 'RAIDER',
                 'EARLYSEA', 'GODKINGDYNASTY','RITUALHUNTERS'],
-    'TECHAGE4': ['CHIVALRY', 'CRUSADERS', 'EXPLORERS', 'MACHINERY', 'TRADERS',
+    'AGE_4': ['CHIVALRY', 'CRUSADERS', 'EXPLORERS', 'MACHINERY', 'TRADERS',
                  'THEOLOGIANS', 'SHOGUNATE', 'SIEGEMASTERS'],
-    'TECHAGE6': ['COLONIALISM', 'FIELDMARSHAL', 'GREATMASTERS', 'INVENTORS',
+    'AGE_6': ['COLONIALISM', 'FIELDMARSHAL', 'GREATMASTERS', 'INVENTORS',
                  'MERCENARIES', 'WARRIORPRIESTS', 'SCHOLARS', 'SULTANS'],
-    'TECHAGE8': ['BANKING', 'FLOWERCHILD', 'MEDIACONGLOMERATE', 'MODERNIZATION',
+    'AGE_8': ['BANKING', 'FLOWERCHILD', 'MEDIACONGLOMERATE', 'MODERNIZATION',
                  'POLITICALSCIENCE', 'POPCULTURE', 'SILICONVALLEY', 'SPACEAGENCY',
                  'SPECIALOPERATIONS']
 }
 age_governments = {
-    'TECHAGE3': ['GOVKINGDOM', 'GOVIMPERIALDYNASTY'],
-    'TECHAGE5': ['GOVEMPIRE', 'GOVMONARCHY', 'GOVREPUBLIC'],
-    'TECHAGE8': ['GOVAUTOCRATIC', 'GOVCOMMUNIST', 'GOVDEMOCRATICREPUBLIC',
+    'AGE_3': ['GOVKINGDOM', 'GOVIMPERIALDYNASTY'],
+    'AGE_5': ['GOVEMPIRE', 'GOVMONARCHY', 'GOVREPUBLIC'],
+    'AGE_8': ['GOVAUTOCRATIC', 'GOVCOMMUNIST', 'GOVDEMOCRATICREPUBLIC',
                  'GOVFUNDAMENTALIST'],
 }
 units = {}
@@ -87,6 +87,8 @@ class Entity:
             # BARBARIAN- cards are for generating barbarians.
             return
         self.unlocked_by.append(tech)
+        if self.age == 0:
+            self.calculate_age()
 
     def is_unlockable(self):
         return len(self.unlocked_by) > 0
@@ -100,6 +102,9 @@ class Entity:
         else:
             return False
         return True
+    
+    def calculate_age(self):
+        self.age = get_age_from_tech(self.unlocked_by[0])
     
     def parse_data(self, data):
         for entry in data:
@@ -339,7 +344,7 @@ def load_data(unlock_dir="txt_data/unlocks", entity_dir="txt_data/entities"):
     ##print("projects:")
     ##pretty_print(projects)
     ##print("ages for techs:")
-    ##pretty_print(tech_ages)
+    # pretty_print(tech_ages)
     if len(error_cards) > 0:
         print("Errored cards:")
         pretty_print(error_cards)

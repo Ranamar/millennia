@@ -1,11 +1,12 @@
 import graphviz
 import millennia_data
-# from pprint import pprint as pretty_print
+from pprint import pprint as pretty_print
 
 tech_ages, age_advances, age_spirits, age_governments, units, improvements, buildings, projects = millennia_data.load_data()
 
 #TODO: Call this from build_tech_graph() if we're not deprecating that.
-def build_age_trunk(tree, spacing='4', cluster_ages=False):
+def build_age_trunk(tree_name='upgrade_tree', spacing='4', cluster_ages=False):
+    tree = graphviz.Digraph(name=tree_name, strict=True)
     trunk_name = 'cluster_agealign'
     with tree.subgraph(name=trunk_name) as age_align:
         # Space the age tags out by our spacing interval.
@@ -32,24 +33,33 @@ def build_age_trunk(tree, spacing='4', cluster_ages=False):
             # The one fly in this ointment is age 10, which has no base age.
             with tree.subgraph(name=age_subgraph_name+age) as cluster:
                 cluster.attr('edge', minlen=spacing)
-                if cluster_ages:
-                    cluster.attr('graph', rank='same')
                 for child in children:
                     cluster.edge(age, child)
                     age_num_string = str(millennia_data.get_age_from_tech(child))
                     tree.edge('AGE_' + age_num_string, child, style='invis')
+    # attach_spirits_and_governments_to_ages(tree, [])
+    return tree
 
-# Create a list of digraphs named "cluster_age_[age number]" to cluster each age's techs and unlocks.
-#TODO: Finish using this
-def build_age_clusters():
-    age_clusters = []
-    for i in range(10):
-        cluster = graphviz.Digraph(name='cluster_age_'+str(i))
-        #TODO: Put the ages in the clusters here?
-        # You can't draw advancement lines for ages here because they'll be in different clusters
-        # That will need to go in a later function that assembles the clusters into a graph.
-        age_clusters.append(cluster)
-    return age_clusters
+def attach_spirits_and_governments_to_ages(tree, spirits_and_governments):
+    #TODO: We probably want to do (optional) clusters for these like the age trunk.
+    for age, spirits in age_spirits.items():
+        age_subgraph_name = 'sub_spirit_'
+        # if cluster_ages:
+        #     age_subgraph_name = 'cluster_' + age_subgraph_name
+        with tree.subgraph(name=age_subgraph_name + age) as cluster:
+            for spirit in spirits:
+                if spirit in spirits_and_governments:
+                    cluster.node(spirit)
+                    tree.edge(age, spirit, style='invis')
+    for age, governments in age_governments.items():
+        age_subgraph_name = 'sub_government_'
+        # if cluster_ages:
+        #     age_subgraph_name = 'cluster_' + age_subgraph_name
+        with tree.subgraph(name=age_subgraph_name + age) as cluster:
+            for gov in governments:
+                if gov in spirits_and_governments:
+                    cluster.node(gov)
+                    tree.edge(age, gov, style='invis')
 
 def build_tech_graph():
     tree = graphviz.Digraph(name='tech_tree')
@@ -80,32 +90,9 @@ def build_tech_graph():
             tree.edge(parent, tech)
     return tree
 
-def find_unit_upgrade_lines(search_unit):
-    upgrade_lines = {}
-    # It's just easier to do if we know we have at least one 
-    for line in search_unit.upgrade_lines:
-        upgrade_lines[line] = [search_unit]
-    for name, unit in units.items():
-        if name != search_unit.entity_id:
-            for line in unit.upgrade_lines:
-                # Insertion sort our upgrade lines
-                if line in upgrade_lines:
-                    line_num = unit.upgrade_lines[line]
-                    line_list = upgrade_lines[line]
-                    insert_point = 0
-                    while insert_point < len(line_list) and line_list[insert_point].upgrade_lines[line] < line_num:
-                        insert_point += 1
-                    line_list.insert(insert_point, unit)
-    return upgrade_lines     
-
-def build_unit_upgrade_graph(unit):
-    tree = graphviz.Digraph(name='upgrade_tree', strict=True)
-    # tree.subgraph(graph=build_age_trunk())
-    build_age_trunk(tree)
-    upgrade_lines = find_unit_upgrade_lines(units[unit])
-    # age_blocks = []
-    # for i in range(11):
-    #     age_blocks.append(set())
+#TODO: A parameter for node and/or edge formatting once we want to differentiate that between entity types.
+def draw_upgrade_tech_tree(tree, upgrade_lines):
+    non_age_unlocks = []
     for line in upgrade_lines:
         line_list = upgrade_lines[line]
         for i in range(len(line_list)):
@@ -120,7 +107,7 @@ def build_unit_upgrade_graph(unit):
                     elif link_age < potential_link.age:
                         break
                     # If we didn't bail out, draw the edge.
-                    tree.edge(line_list[i].entity_id, potential_link.entity_id)
+                    tree.edge(line_list[i].entity_id, potential_link.entity_id, color='red2')
             # Link to techs, and group techs
             # This was clustered at one point in the past, but we've solved the 
             cluster_name = 'age'+str(line_list[i].age)
@@ -128,12 +115,70 @@ def build_unit_upgrade_graph(unit):
                 c.node(line_list[i].entity_id)
                 for tech in line_list[i].unlocked_by:
                     c.node(tech)
-                    tree.edge(tech, line_list[i].entity_id)
+                    tree.edge(tech, line_list[i].entity_id, color='blue2')
                     if tech in tech_ages:
                         for age in tech_ages[tech]:
                             tree.edge(age, tech)
+                            if not age.startswith('TECHAGE'):
+                                non_age_unlocks.append(age)
                     else:
                         # Fallback in case we missed something.
                         # With barbarian and exploration cards removed, this should just be innovations.
                         tree.edge('TECHAGE'+str(line_list[i].age), tech)
+    attach_spirits_and_governments_to_ages(tree, non_age_unlocks)
+
+# For improvements and buildings, both of which only ever have one upgrade line
+def find_single_upgrade_line(dictionary, upgrade_line):
+    line = []
+    for entity in dictionary.values():
+        if upgrade_line in entity.upgrade_lines:
+            line_num = entity.upgrade_lines[upgrade_line]
+            insert_point = 0
+            while insert_point < len(line) and line[insert_point].upgrade_lines[upgrade_line] < line_num:
+                insert_point += 1
+            line.insert(insert_point, entity)
+    # This format is to match with other expectations
+    return {upgrade_line: line}
+
+def build_building_upgrade_graph(building):
+    tree = build_age_trunk()
+    upgrade_line = ""
+    for line_name in buildings[building].upgrade_lines.keys():
+        upgrade_line = line_name
+    line = find_single_upgrade_line(buildings, upgrade_line)
+    draw_upgrade_tech_tree(tree, line)
+    return tree
+
+def build_improvement_upgrade_graph(improvement):
+    tree = build_age_trunk()
+    upgrade_line = ""
+    for line_name in improvements[improvement].upgrade_lines.keys():
+        upgrade_line = line_name
+    upgrade_lines = find_single_upgrade_line(improvements, upgrade_line)
+    draw_upgrade_tech_tree(tree, upgrade_lines)
+    return tree
+
+def find_unit_upgrade_lines(search_unit):
+    upgrade_lines = {}
+    # It's just easier to do if we know we have at least one 
+    for line in search_unit.upgrade_lines:
+        upgrade_lines[line] = [search_unit]
+    for name, unit in units.items():
+        if name != search_unit.entity_id:
+            for line in unit.upgrade_lines:
+                # Insertion sort our upgrade lines as we find entries.
+                # If we were worried about efficiency, this could use a binary search insert.
+                if line in upgrade_lines:
+                    line_num = unit.upgrade_lines[line]
+                    line_list = upgrade_lines[line]
+                    insert_point = 0
+                    while insert_point < len(line_list) and line_list[insert_point].upgrade_lines[line] < line_num:
+                        insert_point += 1
+                    line_list.insert(insert_point, unit)
+    return upgrade_lines     
+
+def build_unit_upgrade_graph(unit):
+    tree = build_age_trunk()
+    upgrade_lines = find_unit_upgrade_lines(units[unit])
+    draw_upgrade_tech_tree(tree, upgrade_lines)
     return tree
