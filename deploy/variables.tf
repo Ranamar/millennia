@@ -1,4 +1,4 @@
 variable "project" {}
-variable "deployment" {}
+variable "deployment_name" {}
 variable "git_repo" {}
 variable "im_deployment_ref" {}
