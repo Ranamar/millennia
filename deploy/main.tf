@@ -11,6 +11,8 @@ module "im-workspace" {
   deployment_id = "projects/${var.project}/locations/us-central1/deployments/${var.deployment_name}"
   im_deployment_repo_uri = var.git_repo
   im_deployment_ref = var.im_deployment_ref
+  im_deployment_repo_dir = "deploy"
+  infra_manager_sa = "projects/${var.project}/serviceAccounts/terraform-runner"
 
   github_app_installation_id = var.github_app_installation_id
   github_pat_secret = var.github_pat_secret
