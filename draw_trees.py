@@ -150,6 +150,7 @@ def build_building_upgrade_graph(building):
     for line_name in buildings[building].upgrade_lines.keys():
         upgrade_line = line_name
     line = find_single_upgrade_line(buildings, upgrade_line)
+    pretty_print(line)
     draw_upgrade_tech_tree(tree, line)
     return tree
 
@@ -159,6 +160,7 @@ def build_improvement_upgrade_graph(improvement):
     for line_name in improvements[improvement].upgrade_lines.keys():
         upgrade_line = line_name
     upgrade_lines = find_single_upgrade_line(improvements, upgrade_line)
+    pretty_print(upgrade_lines)
     draw_upgrade_tech_tree(tree, upgrade_lines)
     return tree
 
@@ -184,5 +186,6 @@ def find_unit_upgrade_lines(search_unit):
 def build_unit_upgrade_graph(unit):
     tree = build_age_trunk()
     upgrade_lines = find_unit_upgrade_lines(units[unit])
+    pretty_print(upgrade_lines)
     draw_upgrade_tech_tree(tree, upgrade_lines)
     return tree

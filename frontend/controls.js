@@ -59,6 +59,13 @@ function updateSelectedUnit() {
     let unit = selector.value;
     let graph = document.getElementById("graph")
     graph.src = UPGRADE_TREE_URL_BASE + "/unit-upgrade-tree.svg?entity=" + unit
+    clearImprovementSelector();
+    clearBuildingSelector();
+}
+
+function clearUnitSelector() {
+    let selector = document.getElementById("unitSelect");
+    selector.value = ""
 }
 
 function updateSelectedImprovement() {
@@ -66,6 +73,13 @@ function updateSelectedImprovement() {
     let improvement = selector.value;
     let graph = document.getElementById("graph")
     graph.src = UPGRADE_TREE_URL_BASE + "/improvement-upgrade-tree.svg?entity=" + improvement
+    clearUnitSelector();
+    clearBuildingSelector();
+}
+
+function clearImprovementSelector() {
+    let selector = document.getElementById("improvementSelect");
+    selector.value = ""
 }
 
 function updateSelectedBuilding() {
@@ -73,4 +87,11 @@ function updateSelectedBuilding() {
     let building = selector.value;
     let graph = document.getElementById("graph")
     graph.src = UPGRADE_TREE_URL_BASE + "/building-upgrade-tree.svg?entity=" + building
+    clearImprovementSelector();
+    clearUnitSelector();
+}
+
+function clearBuildingSelector() {
+    let selector = document.getElementById("buildingSelect");
+    selector.value = ""
 }
