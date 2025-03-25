@@ -6,6 +6,7 @@ provider "google" {
 module "im-workspace" {
   source = "terraform-google-modules/bootstrap/google//modules/im_cloudbuild_workspace"
   version = "~> 11.0"
+  tf_version = "1.5.7"
 
   project_id = var.project
   deployment_id = var.deployment_name
