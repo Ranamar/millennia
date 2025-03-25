@@ -8,7 +8,7 @@ module "im-workspace" {
   version = "~> 11.0"
 
   project_id = var.project
-  deployment_id = "projects/${var.project}/locations/us-central1/deployments/${var.deployment_name}"
+  deployment_id = var.deployment_name
   im_deployment_repo_uri = var.git_repo
   im_deployment_ref = var.im_deployment_ref
   im_deployment_repo_dir = "deploy"
