@@ -146,21 +146,25 @@ def find_single_upgrade_line(dictionary, upgrade_line):
 
 def build_building_upgrade_graph(building):
     tree = build_age_trunk()
-    upgrade_line = ""
+    upgrade_line = None
     for line_name in buildings[building].upgrade_lines.keys():
         upgrade_line = line_name
-    line = find_single_upgrade_line(buildings, upgrade_line)
-    pretty_print(line)
+    line = {'default': [buildings[building]]}
+    if upgrade_line is not None:
+        line = find_single_upgrade_line(buildings, upgrade_line)
+    print(line)
     draw_upgrade_tech_tree(tree, line)
     return tree
 
 def build_improvement_upgrade_graph(improvement):
     tree = build_age_trunk()
-    upgrade_line = ""
+    upgrade_line = None
     for line_name in improvements[improvement].upgrade_lines.keys():
         upgrade_line = line_name
-    upgrade_lines = find_single_upgrade_line(improvements, upgrade_line)
-    pretty_print(upgrade_lines)
+    upgrade_lines = {'default': [improvements[improvement]]}
+    if upgrade_line is not None:
+        upgrade_lines = find_single_upgrade_line(improvements, upgrade_line)
+    print(upgrade_lines)
     draw_upgrade_tech_tree(tree, upgrade_lines)
     return tree
 
@@ -181,11 +185,13 @@ def find_unit_upgrade_lines(search_unit):
                     while insert_point < len(line_list) and line_list[insert_point].upgrade_lines[line] < line_num:
                         insert_point += 1
                     line_list.insert(insert_point, unit)
+    if len(upgrade_lines) == 0:
+        {'default': search_unit}
     return upgrade_lines     
 
 def build_unit_upgrade_graph(unit):
     tree = build_age_trunk()
     upgrade_lines = find_unit_upgrade_lines(units[unit])
-    pretty_print(upgrade_lines)
+    print(upgrade_lines)
     draw_upgrade_tech_tree(tree, upgrade_lines)
     return tree
