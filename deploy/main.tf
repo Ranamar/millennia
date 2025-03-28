@@ -32,10 +32,10 @@ resource "google_cloud_run_v2_service" "default" {
 
   template {
     containers {
-      image = "gcr.io/millennia-tech-tree-grapher/github.com/millennia:latest"
+      image = "gcr.io/millennia-tech-tree-grapher/github.com/millennia"
     }
 
-    service_account = google_service_account.grapher.email
+    service_account = google_service_account.grapher.id
   }
 }
 
