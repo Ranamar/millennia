@@ -156,11 +156,6 @@
                         <Payload>UNIT_PEASANT</Payload>
                         <Hidden>true</Hidden>
                      </ACardEffect>
-                     <ACardEffect>
-                        <EffectType>CE_UnlockEntityInfopedia</EffectType>
-                        <Payload>B_TILEIMP_FARM</Payload>
-                        <Hidden>true</Hidden>
-                     </ACardEffect>
                   <!-- <ACardEffect>
                      <EffectType>CE_UnlockContent</EffectType>
                      <Payload>UNIT_PEASANT</Payload>
