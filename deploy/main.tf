@@ -37,7 +37,7 @@ resource "google_cloud_run_v2_service" "default" {
       image = "gcr.io/millennia-tech-tree-grapher/github.com/millennia"
     }
 
-    service_account = google_service_account.grapher.id
+    # service_account = google_service_account.grapher.id
   }
 }
 
