@@ -20,8 +20,10 @@ module "im-workspace" {
 }
 
 resource "google_service_account" "grapher" {
-  account_id   = "tech-tree-grapher"
+  account_id   = "tree-grapher"
   display_name = "Tech tree grapher Service Account"
+
+  create_ignore_already_exists = true
 }
 
 resource "google_cloud_run_v2_service" "default" {
