@@ -75,6 +75,7 @@ class Entity:
         self.upgrade_lines = {}
         self.unlocked_by = []
         self.age = 0
+        self.unknown_tags = []
     
     def add_upgrade_line(self, data):
         upgrade = data[0].split('-')
@@ -103,6 +104,14 @@ class Entity:
             return False
         return True
     
+    def parse_tags(self, tags):
+        for entry in tags:
+            if not self.parse_tag(entry):
+                self.unknown_tags.append(entry)
+
+    def parse_tag(self, tag):
+        return False
+    
     def calculate_age(self):
         self.age = get_age_from_tech(self.unlocked_by[0])
     
@@ -129,6 +138,8 @@ class Improvement(Entity):
         super().__init__(entity_id)
         self.consumes = {}
         self.produces = {}
+        self.build_requirements = set()
+        self.outpost_core = False
     
     def parse_attribute(self, data):
         #TODO: WorkableRes (produces currencies), (extra) worker slots, probably other things
@@ -148,6 +159,19 @@ class Improvement(Entity):
             # Try common attribute parsing from the parent class
             return super().parse_attribute(data)
         return True
+    
+    def parse_tag(self, tag):
+        # There's both BuildRequirementTag for terrain types and BuildRequirementTile for goods
+        # Perhaps in the future these should be split? but for now we're keeping them together.
+        if tag.startswith('BuildRequirement'):
+            parsed = tag.split('-')
+            self.build_requirements.add(parsed[1])
+        elif tag == 'OutpostCore':
+            self.outpost_core = True
+            # I'm trying not to have anything with truly no build requirements
+            self.build_requirements.add('OutpostCore')
+        else:
+            return super().parse_tag(tag)
 
 class Building(Entity):
     def __init__(self, entity_id):
@@ -269,11 +293,34 @@ def get_unlockable_entity_ids(dictionary):
         return dictionary_item[1].is_unlockable()
     return sorted(map(lambda item: item[0], filter(unlockable_entity, dictionary.items())))
 
+def get_improvement_terrains():
+    terrains = set()
+    for imp in improvements.values():
+        if len(imp.build_requirements) == 0:
+            # The things with no requirements seem to be outpost and monument evolutions.
+            # Perhaps they should be included here sometime, but for now we'll skip them. I don't know which data file they're in.
+            # print(imp)
+            pass
+        else:
+            terrains.add(frozenset(imp.build_requirements))
+    def ordered_list(req_set):
+        # TODO: Translate things like "+GrasslandImprovements" to something more comprehensible
+        # TODO: Make the whole thing human-readable
+        return sorted(req_set)
+    return sorted(map(ordered_list, terrains))
+
 def parse_unit_data(unit, data):
     if unit in units:
         get_unit(unit).parse_data(data)
     else:
 ##        print('Skipped techless unit:', unit)
+        pass
+
+def parse_improvement_tags(imp, tags):
+    if imp in improvements:
+        get_improvement(imp).parse_tags(tags)
+    else:
+##        print('Skipped techless improvement:', imp)
         pass
 
 def parse_improvement_data(imp, data):
@@ -313,6 +360,8 @@ def load_entities(filename):
                 blank_entities.append(entity)
             else:
                 error_entities.append((entity, 'No Starting Data or Import'))
+            if 'Tags' in entity:
+                parse_improvement_tags(ent_id, entity['Tags']['Tag'])
         elif ent_id.startswith('B_'):
             if 'StartingData' in entity:
                 parse_building_data(ent_id, entity['StartingData']['Data'])

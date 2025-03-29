@@ -89,6 +89,21 @@ def improvements():
         print(f"error: {e}")
 
         return "Internal Server Error", 500
+    
+@app.route("/terrains", methods=["GET"])
+def terrains():
+    """
+    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    """
+    try:
+        response = make_response(millennia_data.get_improvement_terrains())
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
+
+    except Exception as e:
+        print(f"error: {e}")
+
+        return "Internal Server Error", 500
 
 @app.route("/buildings", methods=["GET"])
 def buildings():
