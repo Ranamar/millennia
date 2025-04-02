@@ -37,28 +37,46 @@ function setupBuildingSelector() {
     }
 }
 
-const UPGRADE_TREE_URL_BASE = "https://tech-tree-grapher-500188191783.us-central1.run.app"
+function setupTerrainSelector() {
+    let terrainReqList = JSON.parse(this.response);
+    let selector = document.getElementById("terrainSelect");
+    for (const entity of terrainReqList) {
+        let opt = document.createElement("option");
+        opt.value = entity;
+        //TODO: Get non-ID values back from unit list and put them here.
+        //      That might be doable from localization files, or we might need to special-case it somehow.
+        opt.text = entity;
+        selector.add(opt);
+    }
+}
+
+const BACKEND_URL_BASE = "https://tech-tree-grapher-500188191783.us-central1.run.app"
 
 function setup() {
     let units_req = new XMLHttpRequest();
     units_req.addEventListener("load", setupUnitSelector);
-    units_req.open("GET", UPGRADE_TREE_URL_BASE +"/units", true);
+    units_req.open("GET", BACKEND_URL_BASE +"/units", true);
     units_req.send();
     let imp_req = new XMLHttpRequest();
     imp_req.addEventListener("load", setupImprovementSelector);
-    imp_req.open("GET", UPGRADE_TREE_URL_BASE +"/improvements", true);
+    imp_req.open("GET", BACKEND_URL_BASE +"/improvements", true);
     imp_req.send();
     let building_req = new XMLHttpRequest();
     building_req.addEventListener("load", setupBuildingSelector);
-    building_req.open("GET", UPGRADE_TREE_URL_BASE +"/buildings", true);
+    building_req.open("GET", BACKEND_URL_BASE +"/buildings", true);
     building_req.send();
+
+    let terrain_req = new XMLHttpRequest();
+    terrain_req.addEventListener("load", setupTerrainSelector);
+    terrain_req.open("GET", BACKEND_URL_BASE +"/terrains", true);
+    terrain_req.send();
 }
 
 function updateSelectedUnit() {
     let selector = document.getElementById("unitSelect");
     let unit = selector.value;
     let graph = document.getElementById("graph")
-    graph.src = UPGRADE_TREE_URL_BASE + "/unit-upgrade-tree.svg?entity=" + unit
+    graph.src = BACKEND_URL_BASE + "/unit-upgrade-tree.svg?entity=" + unit
     clearImprovementSelector();
     clearBuildingSelector();
 }
@@ -72,7 +90,7 @@ function updateSelectedImprovement() {
     let selector = document.getElementById("improvementSelect");
     let improvement = selector.value;
     let graph = document.getElementById("graph")
-    graph.src = UPGRADE_TREE_URL_BASE + "/improvement-upgrade-tree.svg?entity=" + improvement
+    graph.src = BACKEND_URL_BASE + "/improvement-upgrade-tree.svg?entity=" + improvement
     clearUnitSelector();
     clearBuildingSelector();
 }
@@ -86,12 +104,29 @@ function updateSelectedBuilding() {
     let selector = document.getElementById("buildingSelect");
     let building = selector.value;
     let graph = document.getElementById("graph")
-    graph.src = UPGRADE_TREE_URL_BASE + "/building-upgrade-tree.svg?entity=" + building
+    graph.src = BACKEND_URL_BASE + "/building-upgrade-tree.svg?entity=" + building
     clearImprovementSelector();
     clearUnitSelector();
 }
 
 function clearBuildingSelector() {
     let selector = document.getElementById("buildingSelect");
+    selector.value = ""
+}
+
+
+function updateSelectedTerrain() {
+    let selector = document.getElementById("terrainSelect");
+    // Because of the way that we jammed stuff into the selector, this value is a single string with comma-separated values.
+    let terrainList = selector.value;
+    let graph = document.getElementById("graph")
+    console.log(terrainList)
+    graph.src = BACKEND_URL_BASE + "/upgrades-by-terrain.svg?requirements=" + terrainList
+    clearImprovementSelector();
+    clearUnitSelector();
+}
+
+function clearTerrainSelector() {
+    let selector = document.getElementById("terrainSelect");
     selector.value = ""
 }
