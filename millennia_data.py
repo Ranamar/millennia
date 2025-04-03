@@ -172,6 +172,9 @@ class Improvement(Entity):
             self.build_requirements.add('OutpostCore')
         else:
             return super().parse_tag(tag)
+        
+    def __str__(self):
+        return 'entity ' + self.entity_id + ' - age: ' + str(self.age) + ', unlocked by: ' + str(self.unlocked_by) + ', upgrade lines: ' + str(self.upgrade_lines) + ', Terrain: ' + str(self.build_requirements)
 
 class Building(Entity):
     def __init__(self, entity_id):
@@ -383,16 +386,16 @@ def load_data(unlock_dir="txt_data/unlocks", entity_dir="txt_data/entities"):
     for filename in os.listdir(entity_dir):
         load_entities(os.path.join(entity_dir, filename))
     print("done.")
-    ##print("results:")
-    ##print("units:")
-    ##pretty_print(units)
-    ##print("improvements:")
-    ##pretty_print(improvements)
-    ##print("buildings:")
-    ##pretty_print(buildings)
-    ##print("projects:")
-    ##pretty_print(projects)
-    ##print("ages for techs:")
+    #print("results:")
+    #print("units:")
+    #pretty_print(units)
+    # print("improvements:")
+    # pretty_print(improvements)
+    #print("buildings:")
+    #pretty_print(buildings)
+    #print("projects:")
+    #pretty_print(projects)
+    #print("ages for techs:")
     # pretty_print(tech_ages)
     if len(error_cards) > 0:
         print("Errored cards:")
@@ -400,6 +403,6 @@ def load_data(unlock_dir="txt_data/unlocks", entity_dir="txt_data/entities"):
     if len(error_entities) > 0:
         print("Errored entities:")
         pretty_print(error_entities)
-    ##print("Blank entities:")
-    ##pretty_print(blank_entities)
+    #print("Blank entities:")
+    #pretty_print(blank_entities)
     return (tech_ages, age_advances, age_spirits, age_governments, units, improvements, buildings, projects)

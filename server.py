@@ -60,6 +60,25 @@ def building_upgrade_tree():
 
         return "Internal Server Error", 500
 
+@app.route("/upgrades-by-terrain.svg", methods=["GET"])
+def improvements_by_terrain_tree():
+    """
+    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    """
+    try:
+        requirements = request.args.get("requirements").split(",")
+        graph = draw_trees.build_terrain_upgrade_graph(requirements)
+        graph.format = "svg"
+        image = graph.pipe()
+        response = make_response(image)
+        response.headers.set("Content-Type", "image/svg+xml")
+        return response
+
+    except Exception as e:
+        print(f"error: {e}")
+
+        return "Internal Server Error", 500
+
 @app.route("/units", methods=["GET"])
 def units():
     """

@@ -1,3 +1,4 @@
+from bisect import insort
 import graphviz
 import millennia_data
 from pprint import pprint as pretty_print
@@ -155,12 +156,8 @@ def find_single_upgrade_line(dictionary, upgrade_line):
     line = []
     for entity in dictionary.values():
         if upgrade_line in entity.upgrade_lines:
-            line_num = entity.upgrade_lines[upgrade_line]
-            insert_point = 0
-            while insert_point < len(line) and line[insert_point].upgrade_lines[upgrade_line] < line_num:
-                insert_point += 1
-            line.insert(insert_point, entity)
-    # This format is to match with other expectations
+            insort(line, entity, key=lambda e: e.upgrade_lines[upgrade_line])
+    # This format is to match with cases where there are multiple upgrade lines.
     return {upgrade_line: line}
 
 def build_building_upgrade_graph(building):
@@ -196,14 +193,10 @@ def find_unit_upgrade_lines(search_unit):
         if name != search_unit.entity_id:
             for line in unit.upgrade_lines:
                 # Insertion sort our upgrade lines as we find entries.
-                # If we were worried about efficiency, this could use a binary search insert.
+                # The bisect library makes it easy!
                 if line in upgrade_lines:
-                    line_num = unit.upgrade_lines[line]
                     line_list = upgrade_lines[line]
-                    insert_point = 0
-                    while insert_point < len(line_list) and line_list[insert_point].upgrade_lines[line] < line_num:
-                        insert_point += 1
-                    line_list.insert(insert_point, unit)
+                    insort(line_list, unit, key=lambda u: u.upgrade_lines[line])
     if len(upgrade_lines) == 0:
         {'default': search_unit}
     return upgrade_lines     
@@ -211,6 +204,29 @@ def find_unit_upgrade_lines(search_unit):
 def build_unit_upgrade_graph(unit):
     tree = UpgradeTechTreeGraph()
     upgrade_lines = find_unit_upgrade_lines(units[unit])
+    pretty_print(upgrade_lines)
+    tree.draw_upgrade_tech_tree(upgrade_lines)
+    return tree
+
+def get_improvements_for_terrain(required_attributes):
+    print(required_attributes)
+    requirements = frozenset(required_attributes)
+    print(requirements)
+    improvement_lines = {}
+    for id, imp in improvements.items():
+        if imp.build_requirements == requirements:
+            if len(imp.upgrade_lines) == 0:
+                improvement_lines[id] = [imp]
+            else:
+                for line in imp.upgrade_lines.keys():
+                    if line not in improvement_lines:
+                        improvement_lines[line] = []
+                    insort(improvement_lines[line], imp, key=lambda i: i.upgrade_lines[line])
+    return improvement_lines
+
+def build_terrain_upgrade_graph(terrain_reqs):
+    tree = UpgradeTechTreeGraph()
+    upgrade_lines = get_improvements_for_terrain(terrain_reqs)
     pretty_print(upgrade_lines)
     tree.draw_upgrade_tech_tree(upgrade_lines)
     return tree
