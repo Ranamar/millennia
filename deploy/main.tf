@@ -3,22 +3,6 @@ provider "google" {
   region      = "us-central1"
 }
 
-module "im-workspace" {
-  source = "terraform-google-modules/bootstrap/google//modules/im_cloudbuild_workspace"
-  version = "~> 11.0"
-  tf_version = "1.5.7"
-
-  project_id = var.project
-  deployment_id = var.deployment_name
-  im_deployment_repo_uri = var.git_repo
-  im_deployment_ref = var.im_deployment_ref
-  im_deployment_repo_dir = "deploy"
-  infra_manager_sa = "projects/${var.project}/serviceAccounts/terraform-runner@millennia-tech-tree-grapher.iam.gserviceaccount.com"
-
-  github_app_installation_id = var.github_app_installation_id
-  github_pat_secret = var.github_pat_secret
-}
-
 resource "google_service_account" "grapher" {
   account_id   = "tree-grapher"
   display_name = "Tech tree grapher Service Account"

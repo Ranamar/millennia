@@ -1,0 +1,31 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - build
+      - --push
+      - -t
+      - >-
+        gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
+      - .
+    id: Build
+  - name: gcr.io/cloud-builders/gcloud
+    env:
+      - SHORT_SHA=$SHORT_SHA
+    args:
+      - infra-manager
+      - deployments
+      - apply
+      - >-
+        projects/$PROJECT_ID/locations/us-central1/deployments/tree-drawing
+      - >-
+        --service-account=projects/$PROJECT_ID/serviceAccounts/terraform-runner@millennia-tech-tree-grapher.iam.gserviceaccount.com
+      - '--git-source-repo=https://github.com/Ranamar/millennia.git'
+      - '--git-source-directory=deploy'
+      - '--git-source-ref=main'
+    id: Apply
+timeout: 600s
+options:
+  logging: CLOUD_LOGGING_ONLY
+images:
+  - >-
+    gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
