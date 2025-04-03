@@ -2,7 +2,6 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - build
-      - --push
       - -t
       - >-
         gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
