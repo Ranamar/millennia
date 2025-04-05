@@ -7,15 +7,12 @@ steps:
         gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
       - .
     id: Build
-  - name: 'gcr.io/cloud-builders/docker'
+  - name: gcr.io/cloud-builders/docker
     args:
-      - build
-      - --push
-      - -t
+      - push
       - >-
         gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
-      - .
-    id: Build
+    id: Push
   - name: gcr.io/cloud-builders/gcloud
     env:
       - SHORT_SHA=$SHORT_SHA
