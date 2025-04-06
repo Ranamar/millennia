@@ -163,7 +163,7 @@ class Improvement(Entity):
     def parse_tag(self, tag):
         # There's both BuildRequirementTag for terrain types and BuildRequirementTile for goods
         # Perhaps in the future these should be split? but for now we're keeping them together.
-        if tag.startswith('BuildRequirement'):
+        if tag.startswith('BuildRequirementTag'):
             parsed = tag.split('-')
             self.build_requirements.add(parsed[1])
         elif tag == 'OutpostCore':
@@ -298,19 +298,11 @@ def get_unlockable_entity_ids(dictionary):
 
 def get_improvement_terrains():
     terrains = set()
+    # Terrain restrictions are OR, not AND.
     for imp in improvements.values():
-        if len(imp.build_requirements) == 0:
-            # The things with no requirements seem to be outpost and monument evolutions.
-            # Perhaps they should be included here sometime, but for now we'll skip them. I don't know which data file they're in.
-            # print(imp)
-            pass
-        else:
-            terrains.add(frozenset(imp.build_requirements))
-    def ordered_list(req_set):
-        # TODO: Translate things like "+GrasslandImprovements" to something more comprehensible
-        # TODO: Make the whole thing human-readable
-        return sorted(req_set)
-    return sorted(map(ordered_list, terrains))
+        for req in imp.build_requirements:
+            terrains.add(req)
+    return sorted(terrains)
 
 def parse_unit_data(unit, data):
     if unit in units:

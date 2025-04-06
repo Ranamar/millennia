@@ -79,6 +79,7 @@ function updateSelectedUnit() {
     graph.src = BACKEND_URL_BASE + "/unit-upgrade-tree.svg?entity=" + unit
     clearImprovementSelector();
     clearBuildingSelector();
+    clearTerrainSelector()
 }
 
 function clearUnitSelector() {
@@ -93,6 +94,7 @@ function updateSelectedImprovement() {
     graph.src = BACKEND_URL_BASE + "/improvement-upgrade-tree.svg?entity=" + improvement
     clearUnitSelector();
     clearBuildingSelector();
+    clearTerrainSelector()
 }
 
 function clearImprovementSelector() {
@@ -107,6 +109,7 @@ function updateSelectedBuilding() {
     graph.src = BACKEND_URL_BASE + "/building-upgrade-tree.svg?entity=" + building
     clearImprovementSelector();
     clearUnitSelector();
+    clearTerrainSelector()
 }
 
 function clearBuildingSelector() {
@@ -118,11 +121,12 @@ function clearBuildingSelector() {
 function updateSelectedTerrain() {
     let selector = document.getElementById("terrainSelect");
     // Because of the way that we jammed stuff into the selector, this value is a single string with comma-separated values.
-    let terrainList = selector.value;
+    let terrain = selector.value;
     let graph = document.getElementById("graph")
-    console.log(terrainList)
-    graph.src = BACKEND_URL_BASE + "/upgrades-by-terrain.svg?requirements=" + terrainList
+    console.log(terrain)
+    graph.src = BACKEND_URL_BASE + "/upgrades-by-terrain.svg?requirements=" + terrain
     clearImprovementSelector();
+    clearBuildingSelector();
     clearUnitSelector();
 }
 

@@ -208,13 +208,11 @@ def build_unit_upgrade_graph(unit):
     tree.draw_upgrade_tech_tree(upgrade_lines)
     return tree
 
-def get_improvements_for_terrain(required_attributes):
-    print(required_attributes)
-    requirements = frozenset(required_attributes)
-    print(requirements)
+def get_improvements_for_terrain(required_attribute):
+    print(required_attribute)
     improvement_lines = {}
     for id, imp in improvements.items():
-        if imp.build_requirements == requirements:
+        if required_attribute in imp.build_requirements:
             if len(imp.upgrade_lines) == 0:
                 improvement_lines[id] = [imp]
             else:
