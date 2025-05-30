@@ -66,7 +66,7 @@ def improvements_by_terrain_tree():
     returns an SVG of the upgrade tree and relevant techs in an HTTP response.
     """
     try:
-        requirements = request.args.get("requirements").split(",")
+        requirements = request.args.get("requirements")
         graph = draw_trees.build_terrain_upgrade_graph(requirements)
         graph.format = "svg"
         image = graph.pipe()
