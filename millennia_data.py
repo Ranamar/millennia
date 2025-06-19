@@ -45,6 +45,12 @@ buildings = {}
 projects = {}
 
 error_cards = {}
+def card_error(name, card, errors):
+    if name in error_cards:
+        error_cards[name].append((card, errors))
+    else:
+        error_cards[name] = [(card, errors)]
+
 error_entities = []
 blank_entities = []
 
@@ -75,7 +81,7 @@ class Entity:
         self.upgrade_lines = {}
         self.unlocked_by = []
         self.age = 0
-        self.unknown_tags = []
+        self.unknown_tags = set()
     
     def add_upgrade_line(self, data):
         upgrade = data[0].split('-')
@@ -87,7 +93,8 @@ class Entity:
             # EXPLORE- cards are events when you find villages, so it's not actually a tech.
             # BARBARIAN- cards are for generating barbarians.
             return
-        self.unlocked_by.append(tech)
+        if tech not in self.unlocked_by:
+            self.unlocked_by.append(tech)
         if self.age == 0:
             self.calculate_age()
 
@@ -107,7 +114,7 @@ class Entity:
     def parse_tags(self, tags):
         for entry in tags:
             if not self.parse_tag(entry):
-                self.unknown_tags.append(entry)
+                self.unknown_tags.add(entry)
 
     def parse_tag(self, tag):
         return False
@@ -134,11 +141,16 @@ class Unit(Entity):
         super().__init__(entity_id)
 
 class Improvement(Entity):
+    NOTABLE_TAGS = frozenset({'Factory', 'Modernization', 'AetherImprovement', 'Furnace'})
+
     def __init__(self, entity_id):
         super().__init__(entity_id)
         self.consumes = {}
         self.produces = {}
         self.build_requirements = set()
+        self.improvement_category = ''
+        self.town_bonus = None
+        self.notable_tags = set()
         self.outpost_core = False
     
     def parse_attribute(self, data):
@@ -160,21 +172,49 @@ class Improvement(Entity):
             return super().parse_attribute(data)
         return True
     
-    def parse_tag(self, tag):
+    def parse_tag(self, tag: str) -> bool:
         # There's both BuildRequirementTag for terrain types and BuildRequirementTile for goods
         # Perhaps in the future these should be split? but for now we're keeping them together.
         if tag.startswith('BuildRequirementTag'):
             parsed = tag.split('-')
-            self.build_requirements.add(parsed[1])
+            self.add_build_requirement(parsed[1])
         elif tag == 'OutpostCore':
             self.outpost_core = True
             # I'm trying not to have anything with truly no build requirements
-            self.build_requirements.add('OutpostCore')
+            self.add_build_requirement('OutpostCore')
+        elif tag.startswith('ImprovementCategory'):
+            parsed = tag.split('-')
+            self.improvement_category = parsed[1]
+        elif tag.endswith('TownBonus'):
+            self.add_town_bonus(tag)
+            if tag not in town_bonus_types:
+                town_bonus_types.add(tag)
+        elif tag in Improvement.NOTABLE_TAGS:
+            self.notable_tags.add(tag)
         else:
             return super().parse_tag(tag)
-        
+        return True
+    
+    def add_build_requirement(self, req):
+        self.build_requirements.add(req)
+        if req not in improvement_terrain_possible_requirements:
+            improvement_terrain_possible_requirements.add(req)
+    
+    def add_town_bonus(self, tag):
+        if self.town_bonus is not None:
+            self.town_bonus.add(tag)
+        else:
+            self.town_bonus = set()
+            self.town_bonus.add(tag)
+
     def __str__(self):
-        return 'entity ' + self.entity_id + ' - age: ' + str(self.age) + ', unlocked by: ' + str(self.unlocked_by) + ', upgrade lines: ' + str(self.upgrade_lines) + ', Terrain: ' + str(self.build_requirements)
+        repr = 'entity ' + self.entity_id + ' - age: ' + str(self.age) + ', unlocked by: ' + str(self.unlocked_by)
+        if self.town_bonus is not None:
+            repr += ', town bonuses: ' + str(self.town_bonus)
+        if len(self.notable_tags) > 0:
+            repr += ', notable tags: ' + str(self.notable_tags)
+        repr += ', upgrade lines: ' + str(self.upgrade_lines) + ', Terrain: ' + str(self.build_requirements) + ', Category: ' + str(self.improvement_category)
+        return repr
 
 class Building(Entity):
     def __init__(self, entity_id):
@@ -192,8 +232,28 @@ def add_tech_age(tech, age):
 
 def get_age_from_tech(tech):
     # Extract an age number for a tech
-    #TODO: This doesn't work for spirits or governments as currently stored.
-    age_match = re.match('TECHAGE([0-9]+)', tech)
+    # Governments and spirits are a bit convoluted because it's not in the name.
+    age_match = re.match('(INNOVATION-)?TECHAGE([0-9]+)', tech)
+    if age_match:
+        return int(age_match.group(2))
+    elif tech.startswith('GOV'):
+        for age, govs in age_governments.items():
+            if tech in govs:
+                return get_age_from_baseage(age)
+    else:
+        spirit_match = re.match('([A-Z]+)-', tech)
+        if spirit_match:
+            spirit = spirit_match.group(1)
+            for age, spirits in age_spirits.items():
+                if spirit in spirits:
+                    return get_age_from_baseage(age)
+        else:
+            return 0
+    print('Somehow reached end of age calculation with no result! ' + tech)
+    return 0
+
+def get_age_from_baseage(age):
+    age_match = re.match('AGE_([0-9]+)', age)
     if age_match:
         return int(age_match.group(1))
     else:
@@ -286,23 +346,31 @@ def load_unlocks(filename):
             else:
                 errors.append("Missing ID")
         if len(errors) > 0:
-            if name in error_cards:
-                error_cards[name].append((card, errors))
-            else:
-                error_cards[name] = [(card, errors)]
+            card_error(name, card, errors)
 
 def get_unlockable_entity_ids(dictionary):
     def unlockable_entity(dictionary_item):
         return dictionary_item[1].is_unlockable()
     return sorted(map(lambda item: item[0], filter(unlockable_entity, dictionary.items())))
 
-def get_improvement_terrains():
-    terrains = set()
-    # Terrain restrictions are OR, not AND.
-    for imp in improvements.values():
-        for req in imp.build_requirements:
-            terrains.add(req)
-    return sorted(terrains)
+improvement_terrain_possible_requirements = set()
+def get_improvement_terrains() -> list[str]:
+    # Terrain restrictions are OR, not AND, fortunately!
+    return sorted(improvement_terrain_possible_requirements)
+
+def get_notable_tags() -> list[str]:
+    return sorted(Improvement.NOTABLE_TAGS)
+
+town_bonus_types = set()
+def get_town_bonuses() -> list[str]:
+    return sorted(town_bonus_types)
+
+def get_improvement_with_unknown_tag(tag: str) -> list[Improvement]:
+    selected = []
+    for improvement in improvements.values():
+        if tag in improvement.unknown_tags:
+            selected.append(improvement)
+    return selected
 
 def parse_unit_data(unit, data):
     if unit in units:

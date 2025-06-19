@@ -25,6 +25,7 @@ class UpgradeTechTreeGraph:
 
     def build_age_trunk(self):
         tree = self.tree
+        tree.graph_attr.update(mclimit='2')
         trunk_name = 'cluster_agealign'
         with tree.subgraph(name=trunk_name) as age_align:
             # Space the age tags out by our spacing interval.
@@ -57,16 +58,15 @@ class UpgradeTechTreeGraph:
 
     def attach_spirits_and_governments_to_ages(self, spirits_and_governments):
         tree = self.tree
-        #TODO: We probably want to do (optional) clusters for these like the age trunk.
         for age, spirits in age_spirits.items():
             age_subgraph_name = 'sub_spirit_'
-            # if cluster_ages:
-            #     age_subgraph_name = 'cluster_' + age_subgraph_name
+            if self.cluster_ages:
+                age_subgraph_name = 'cluster_' + age_subgraph_name
             with tree.subgraph(name=age_subgraph_name + age) as cluster:
                 for spirit in spirits:
                     if spirit in spirits_and_governments:
                         cluster.node(spirit)
-                        tree.edge(age, spirit, style='invis')
+                        tree.edge(age, spirit)
         for age, governments in age_governments.items():
             age_subgraph_name = 'sub_government_'
             # if cluster_ages:
@@ -75,13 +75,13 @@ class UpgradeTechTreeGraph:
                 for gov in governments:
                     if gov in spirits_and_governments:
                         cluster.node(gov)
-                        tree.edge(age, gov, style='invis')
+                        tree.edge(age, gov)
 
     #TODO: A parameter for node and/or edge formatting once we want to differentiate that between entity types.
     #      This could be attached to the containing class.
     def draw_upgrade_tech_tree(self, upgrade_lines):
         tree = self.tree
-        non_age_unlocks = []
+        non_age_unlocks = set()
         for line in upgrade_lines:
             line_list = upgrade_lines[line]
             for i in range(len(line_list)):
@@ -114,7 +114,7 @@ class UpgradeTechTreeGraph:
                             for age in tech_ages[tech]:
                                 tree.edge(age, tech)
                                 if not age.startswith('TECHAGE'):
-                                    non_age_unlocks.append(age)
+                                    non_age_unlocks.add(age)
                         else:
                             # Fallback in case we missed something.
                             # With barbarian and exploration cards removed, this should just be innovations.
@@ -159,6 +159,14 @@ def find_single_upgrade_line(dictionary, upgrade_line):
             insort(line, entity, key=lambda e: e.upgrade_lines[upgrade_line])
     # This format is to match with cases where there are multiple upgrade lines.
     return {upgrade_line: line}
+
+def extend_upgrade_lines_from_partial(dictionary: dict[str, millennia_data.Entity], upgrade_lines: dict[str, list[millennia_data.Entity]]):
+    for entity in dictionary.values():
+        for line_id, line_list in upgrade_lines.items():
+            if line_id in entity.upgrade_lines:
+                # We're just going to do this the inefficient way, because somehow bisect breaks but insort doesn't.
+                if entity not in line_list:
+                    insort(line_list, entity, key=lambda e: e.upgrade_lines[line_id])
 
 def build_building_upgrade_graph(building):
     tree = UpgradeTechTreeGraph()
@@ -228,3 +236,29 @@ def build_terrain_upgrade_graph(terrain_reqs):
     pretty_print(upgrade_lines)
     tree.draw_upgrade_tech_tree(upgrade_lines)
     return tree
+
+def get_improvements_with_tag(required_attribute: str) -> dict[str, list[millennia_data.Improvement]]:
+    print(required_attribute)
+    improvement_lines = {}
+    for id, imp in improvements.items():
+        if required_attribute in imp.notable_tags:
+            if len(imp.upgrade_lines) == 0:
+                improvement_lines[id] = [imp]
+            else:
+                for line in imp.upgrade_lines.keys():
+                    if line not in improvement_lines:
+                        improvement_lines[line] = []
+                    insort(improvement_lines[line], imp, key=lambda i: i.upgrade_lines[line])
+    return improvement_lines
+
+def build_tag_upgrade_graph(tag):
+    tree = UpgradeTechTreeGraph()
+    upgrade_lines = get_improvements_with_tag(tag)
+    pretty_print(upgrade_lines)
+    # TODO: Find a way to make this not illegible, probably by implementing some sort of stagger for children of a tech.
+    #       Unfortunately, the way we construct these lists means it will take extra checking to notice when things share a tech.
+    # extend_upgrade_lines_from_partial(improvements, upgrade_lines)
+    # pretty_print(upgrade_lines)
+    tree.draw_upgrade_tech_tree(upgrade_lines)
+    return tree
+
