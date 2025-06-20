@@ -138,7 +138,7 @@ function updateSelectedTownBonus() {
     let selector = document.getElementById("townBonusSelect");
     let town = selector.value;
     let graph = document.getElementById("graph")
-    console.log(terrain)
+    console.log(town)
     graph.src = BACKEND_URL_BASE + "/upgrades-by-town-bonus.svg?town=" + town
     clearOtherSelectors("townBonusSelect");
 }
