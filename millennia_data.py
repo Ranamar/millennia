@@ -196,6 +196,8 @@ class Improvement(Entity):
         return True
     
     def add_build_requirement(self, req):
+        # The plus character '+' causes trouble in URLs, so we're stripping it out of build requirements that use it.
+        req = req.lstrip('+')
         self.build_requirements.add(req)
         if req not in improvement_terrain_possible_requirements:
             improvement_terrain_possible_requirements.add(req)
