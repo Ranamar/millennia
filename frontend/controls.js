@@ -134,7 +134,7 @@ function updateSelectedTerrain() {
     clearOtherSelectors("terrainSelect");
 }
 
-function updateSelectedTerrain() {
+function updateSelectedTownBonus() {
     let selector = document.getElementById("townBonusSelect");
     let town = selector.value;
     let graph = document.getElementById("graph")
