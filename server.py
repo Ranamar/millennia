@@ -79,10 +79,29 @@ def improvements_by_terrain_tree():
 
         return "Internal Server Error", 500
 
+@app.route("/upgrades-by-town-bonus.svg", methods=["GET"])
+def improvements_by_town_bonus_tree():
+    """
+    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    """
+    try:
+        requirements = request.args.get("town")
+        graph = draw_trees.build_town_bonus_upgrade_graph(requirements)
+        graph.format = "svg"
+        image = graph.pipe()
+        response = make_response(image)
+        response.headers.set("Content-Type", "image/svg+xml")
+        return response
+
+    except Exception as e:
+        print(f"error: {e}")
+
+        return "Internal Server Error", 500
+
 @app.route("/units", methods=["GET"])
 def units():
     """
-    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    returns a list of selectable entities in an HTTP response.
     """
     try:
         response = make_response(millennia_data.get_unlockable_entity_ids(millennia_data.units))
@@ -97,7 +116,7 @@ def units():
 @app.route("/improvements", methods=["GET"])
 def improvements():
     """
-    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    returns a list of selectable entities in an HTTP response.
     """
     try:
         response = make_response(millennia_data.get_unlockable_entity_ids(millennia_data.improvements))
@@ -112,7 +131,7 @@ def improvements():
 @app.route("/terrains", methods=["GET"])
 def terrains():
     """
-    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    returns a list of possible terrain restrictions on improvements in an HTTP response.
     """
     try:
         response = make_response(millennia_data.get_improvement_terrains())
@@ -127,7 +146,7 @@ def terrains():
 @app.route("/buildings", methods=["GET"])
 def buildings():
     """
-    returns an SVG of the upgrade tree and relevant techs in an HTTP response.
+    returns a list of selectable entities in an HTTP response.
     """
     try:
         response = make_response(millennia_data.get_unlockable_entity_ids(millennia_data.buildings))
@@ -139,9 +158,24 @@ def buildings():
 
         return "Internal Server Error", 500
 
-if __name__ == "__main__":
-    PORT = int(os.getenv("PORT")) if os.getenv("PORT") else 8080
+@app.route("/town-bonuses", methods=["GET"])
+def town_bonuses():
+    """
+    returns a list of possible town adjacency bonus types in an HTTP response.
+    """
+    try:
+        response = make_response(millennia_data.get_town_bonuses())
+        response.headers.add("Access-Control-Allow-Origin", "*")
+        return response
 
-    # This is used when running locally. Gunicorn is used to run the
-    # application on Cloud Run. See entrypoint in Dockerfile.
-    app.run(host="127.0.0.1", port=PORT, debug=True)
+    except Exception as e:
+        print(f"error: {e}")
+
+        return "Internal Server Error", 500
+
+# if __name__ == "__main__":
+#     PORT = int(os.getenv("PORT")) if os.getenv("PORT") else 8080
+
+#     # This is used when running locally. Gunicorn is used to run the
+#     # application on Cloud Run. See entrypoint in Dockerfile.
+#     app.run(host="127.0.0.1", port=PORT, debug=True)

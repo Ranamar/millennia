@@ -27,7 +27,7 @@ class UpgradeTechTreeGraph:
         tree = self.tree
         tree.graph_attr.update(mclimit='2')
         trunk_name = 'cluster_agealign'
-        with tree.subgraph(name=trunk_name) as age_align:
+        with tree.subgraph(name=trunk_name) as age_align: # type: ignore
             # Space the age tags out by our spacing interval.
             age_align.edge_attr.update(style='invis', minlen=self.spacing)
             age_align.attr('graph', style='invis')
@@ -42,14 +42,14 @@ class UpgradeTechTreeGraph:
                 age_subgraph_name = 'cluster_' + age_subgraph_name
             # Because there are no parents to age 1, We won't get an edge from 'AGE_1' to 'TECHAGE1' later.
             # If we don't put age 1 in its own subgraph here, it ends up being globbed into age 2 in weird ways if we use clusters.
-            with tree.subgraph(name=age_subgraph_name + 'TECHAGE0') as cluster:
+            with tree.subgraph(name=age_subgraph_name + 'TECHAGE0') as cluster: # type: ignore
                 cluster.node('TECHAGE1')
                 tree.edge('AGE_1', 'TECHAGE1', style='invis')
             for age, children in age_advances.items():
                 # We're trying to build a main trunk box. These are not techs, but rather springs to be used to hold stuff together.
                 # Fortunately, the non-trunk ages all have underscores in their name, so that's an easy way to get a unique starting point.
                 # The one fly in this ointment is age 10, which has no base age.
-                with tree.subgraph(name=age_subgraph_name+age) as cluster:
+                with tree.subgraph(name=age_subgraph_name+age) as cluster: # type: ignore
                     cluster.attr('edge', minlen=self.spacing)
                     for child in children:
                         cluster.edge(age, child)
@@ -62,7 +62,7 @@ class UpgradeTechTreeGraph:
             age_subgraph_name = 'sub_spirit_'
             if self.cluster_ages:
                 age_subgraph_name = 'cluster_' + age_subgraph_name
-            with tree.subgraph(name=age_subgraph_name + age) as cluster:
+            with tree.subgraph(name=age_subgraph_name + age) as cluster: # type: ignore
                 for spirit in spirits:
                     if spirit in spirits_and_governments:
                         cluster.node(spirit)
@@ -71,7 +71,7 @@ class UpgradeTechTreeGraph:
             age_subgraph_name = 'sub_government_'
             # if cluster_ages:
             #     age_subgraph_name = 'cluster_' + age_subgraph_name
-            with tree.subgraph(name=age_subgraph_name + age) as cluster:
+            with tree.subgraph(name=age_subgraph_name + age) as cluster: # type: ignore
                 for gov in governments:
                     if gov in spirits_and_governments:
                         cluster.node(gov)
@@ -100,7 +100,7 @@ class UpgradeTechTreeGraph:
                 # Link to techs, and group techs
                 # This was clustered at one point in the past, but we've solved the 
                 cluster_name = 'age'+str(line_list[i].age)
-                with tree.subgraph(name=cluster_name) as c:
+                with tree.subgraph(name=cluster_name) as c: # type: ignore
                     c.node(line_list[i].entity_id, group=cluster_name)
                     # Invisible link from entity to the next age (except the last one)
                     # so that we don't get things wandering away from their age
@@ -121,35 +121,34 @@ class UpgradeTechTreeGraph:
                             tree.edge('TECHAGE'+str(line_list[i].age), tech)
         self.attach_spirits_and_governments_to_ages(non_age_unlocks)
 
-
-def build_tech_graph():
-    tree = graphviz.Digraph(name='tech_tree')
-    tree.attr(compound='true')
-    with tree.subgraph(name='cluster_agealign') as age_align:
-        for age, children in age_advances.items():
-            # This is super hacky, but we're just trying to do some age alignment
-            if age != 'TECHAGE6_CRISISHERESY':
-                age_align.node(age)
-            with tree.subgraph(name='sub_'+age) as cluster:
-                cluster.attr('edge', minlen='4')
-                for child in children:
-                    cluster.edge(age, child)
-    for age, children in age_spirits.items():
-        cluster_name = 'cluster_spirits_'+age
-        with tree.subgraph(name=cluster_name) as cluster:
-            for child in children:
-                cluster.node(child)
-        tree.edge(age, children[0], lhead=cluster_name)
-    for age, children in age_governments.items():
-        cluster_name = 'cluster_governments_'+age
-        with tree.subgraph(name=cluster_name) as cluster:
-            for child in children:
-                cluster.node(child)
-        tree.edge(age, children[0], lhead=cluster_name)
-    for tech, parents in tech_ages.items():
-        for parent in parents:
-            tree.edge(parent, tech)
-    return tree
+# def build_tech_graph():
+#     tree = graphviz.Digraph(name='tech_tree')
+#     tree.attr(compound='true')
+#     with tree.subgraph(name='cluster_agealign') as age_align:
+#         for age, children in age_advances.items():
+#             # This is super hacky, but we're just trying to do some age alignment
+#             if age != 'TECHAGE6_CRISISHERESY':
+#                 age_align.node(age)
+#             with tree.subgraph(name='sub_'+age) as cluster:
+#                 cluster.attr('edge', minlen='4')
+#                 for child in children:
+#                     cluster.edge(age, child)
+#     for age, children in age_spirits.items():
+#         cluster_name = 'cluster_spirits_'+age
+#         with tree.subgraph(name=cluster_name) as cluster:
+#             for child in children:
+#                 cluster.node(child)
+#         tree.edge(age, children[0], lhead=cluster_name)
+#     for age, children in age_governments.items():
+#         cluster_name = 'cluster_governments_'+age
+#         with tree.subgraph(name=cluster_name) as cluster:
+#             for child in children:
+#                 cluster.node(child)
+#         tree.edge(age, children[0], lhead=cluster_name)
+#     for tech, parents in tech_ages.items():
+#         for parent in parents:
+#             tree.edge(parent, tech)
+#     return tree
 
 # For improvements and buildings, both of which only ever have one upgrade line
 def find_single_upgrade_line(dictionary, upgrade_line):
@@ -206,7 +205,7 @@ def find_unit_upgrade_lines(search_unit):
                     line_list = upgrade_lines[line]
                     insort(line_list, unit, key=lambda u: u.upgrade_lines[line])
     if len(upgrade_lines) == 0:
-        {'default': search_unit}
+        upgrade_lines = {'default': search_unit}
     return upgrade_lines     
 
 def build_unit_upgrade_graph(unit):
@@ -257,6 +256,30 @@ def build_tag_upgrade_graph(tag):
     pretty_print(upgrade_lines)
     # TODO: Find a way to make this not illegible, probably by implementing some sort of stagger for children of a tech.
     #       Unfortunately, the way we construct these lists means it will take extra checking to notice when things share a tech.
+    # extend_upgrade_lines_from_partial(improvements, upgrade_lines)
+    # pretty_print(upgrade_lines)
+    tree.draw_upgrade_tech_tree(upgrade_lines)
+    return tree
+
+def get_improvements_with_town_bonus(bonus: str) -> dict[str, list[millennia_data.Improvement]]:
+    print(bonus)
+    improvement_lines = {}
+    for id, imp in improvements.items():
+        if bonus in imp.town_bonus:
+            if len(imp.upgrade_lines) == 0:
+                improvement_lines[id] = [imp]
+            else:
+                for line in imp.upgrade_lines.keys():
+                    if line not in improvement_lines:
+                        improvement_lines[line] = []
+                    insort(improvement_lines[line], imp, key=lambda i: i.upgrade_lines[line])
+    return improvement_lines
+
+def build_town_bonus_upgrade_graph(tag):
+    tree = UpgradeTechTreeGraph()
+    upgrade_lines = get_improvements_with_town_bonus(tag)
+    pretty_print(upgrade_lines)
+    # This could be relevant for Age of Atom stuff, maybe.
     # extend_upgrade_lines_from_partial(improvements, upgrade_lines)
     # pretty_print(upgrade_lines)
     tree.draw_upgrade_tech_tree(upgrade_lines)

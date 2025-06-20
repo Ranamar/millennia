@@ -5,7 +5,9 @@ from draw_trees import *
 # upgrade_tree = build_building_upgrade_graph('B_UNIVERSITY')
 # upgrade_tree = build_terrain_upgrade_graph('Hills')
 # upgrade_tree = build_tag_upgrade_graph('Modernization')
-upgrade_tree = build_tag_upgrade_graph('Furnace')
+# upgrade_tree = build_tag_upgrade_graph('Furnace')
+upgrade_tree = build_town_bonus_upgrade_graph('FarmTownBonus')
 
 upgrade_tree.format = 'svg'
 upgrade_tree.render()
+

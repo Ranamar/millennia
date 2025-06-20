@@ -116,7 +116,7 @@ class Entity:
             if not self.parse_tag(entry):
                 self.unknown_tags.add(entry)
 
-    def parse_tag(self, tag):
+    def parse_tag(self, tag: str) -> bool:
         return False
     
     def calculate_age(self):
@@ -149,7 +149,7 @@ class Improvement(Entity):
         self.produces = {}
         self.build_requirements = set()
         self.improvement_category = ''
-        self.town_bonus = None
+        self.town_bonus = set()
         self.notable_tags = set()
         self.outpost_core = False
     
@@ -186,7 +186,7 @@ class Improvement(Entity):
             parsed = tag.split('-')
             self.improvement_category = parsed[1]
         elif tag.endswith('TownBonus'):
-            self.add_town_bonus(tag)
+            self.town_bonus.add(tag)
             if tag not in town_bonus_types:
                 town_bonus_types.add(tag)
         elif tag in Improvement.NOTABLE_TAGS:
@@ -200,16 +200,9 @@ class Improvement(Entity):
         if req not in improvement_terrain_possible_requirements:
             improvement_terrain_possible_requirements.add(req)
     
-    def add_town_bonus(self, tag):
-        if self.town_bonus is not None:
-            self.town_bonus.add(tag)
-        else:
-            self.town_bonus = set()
-            self.town_bonus.add(tag)
-
     def __str__(self):
         repr = 'entity ' + self.entity_id + ' - age: ' + str(self.age) + ', unlocked by: ' + str(self.unlocked_by)
-        if self.town_bonus is not None:
+        if len(self.town_bonus) > 0:
             repr += ', town bonuses: ' + str(self.town_bonus)
         if len(self.notable_tags) > 0:
             repr += ', notable tags: ' + str(self.notable_tags)

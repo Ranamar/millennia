@@ -1,3 +1,14 @@
+function clearOtherSelectors(preserve) {
+    // If I had a style class for the selectors themselves, I could get rid of the outer loop here.
+    for(const element of document.getElementsByClassName("controls")) {
+        for(let control of element.children) {
+            if(control.id != preserve) {
+                control.value = ""
+            }
+        }
+    }
+}
+
 function setupUnitSelector() {
     let unitList = JSON.parse(this.response);
     let selector = document.getElementById("unitSelect");
@@ -50,6 +61,19 @@ function setupTerrainSelector() {
     }
 }
 
+function setupTownBonusSelector() {
+    let townBonusList = JSON.parse(this.response);
+    let selector = document.getElementById("townBonusSelect");
+    for (const entity of townBonusList) {
+        let opt = document.createElement("option");
+        opt.value = entity;
+        //TODO: Get non-ID values back from unit list and put them here.
+        //      That might be doable from localization files, or we might need to special-case it somehow.
+        opt.text = entity;
+        selector.add(opt);
+    }
+}
+
 const BACKEND_URL_BASE = "https://tech-tree-grapher-500188191783.us-central1.run.app"
 
 function setup() {
@@ -70,6 +94,10 @@ function setup() {
     terrain_req.addEventListener("load", setupTerrainSelector);
     terrain_req.open("GET", BACKEND_URL_BASE +"/terrains", true);
     terrain_req.send();
+    let town_req = new XMLHttpRequest();
+    town_req.addEventListener("load", setupTownBonusSelector);
+    town_req.open("GET", BACKEND_URL_BASE +"/town-bonuses", true);
+    town_req.send();
 }
 
 function updateSelectedUnit() {
@@ -77,14 +105,7 @@ function updateSelectedUnit() {
     let unit = selector.value;
     let graph = document.getElementById("graph")
     graph.src = BACKEND_URL_BASE + "/unit-upgrade-tree.svg?entity=" + unit
-    clearImprovementSelector();
-    clearBuildingSelector();
-    clearTerrainSelector()
-}
-
-function clearUnitSelector() {
-    let selector = document.getElementById("unitSelect");
-    selector.value = ""
+    clearOtherSelectors("unitSelect");
 }
 
 function updateSelectedImprovement() {
@@ -92,14 +113,7 @@ function updateSelectedImprovement() {
     let improvement = selector.value;
     let graph = document.getElementById("graph")
     graph.src = BACKEND_URL_BASE + "/improvement-upgrade-tree.svg?entity=" + improvement
-    clearUnitSelector();
-    clearBuildingSelector();
-    clearTerrainSelector()
-}
-
-function clearImprovementSelector() {
-    let selector = document.getElementById("improvementSelect");
-    selector.value = ""
+    clearOtherSelectors("improvementSelect");
 }
 
 function updateSelectedBuilding() {
@@ -107,16 +121,8 @@ function updateSelectedBuilding() {
     let building = selector.value;
     let graph = document.getElementById("graph")
     graph.src = BACKEND_URL_BASE + "/building-upgrade-tree.svg?entity=" + building
-    clearImprovementSelector();
-    clearUnitSelector();
-    clearTerrainSelector()
+    clearOtherSelectors("buildingSelect");
 }
-
-function clearBuildingSelector() {
-    let selector = document.getElementById("buildingSelect");
-    selector.value = ""
-}
-
 
 function updateSelectedTerrain() {
     let selector = document.getElementById("terrainSelect");
@@ -125,12 +131,14 @@ function updateSelectedTerrain() {
     let graph = document.getElementById("graph")
     console.log(terrain)
     graph.src = BACKEND_URL_BASE + "/upgrades-by-terrain.svg?requirements=" + terrain
-    clearImprovementSelector();
-    clearBuildingSelector();
-    clearUnitSelector();
+    clearOtherSelectors("terrainSelect");
 }
 
-function clearTerrainSelector() {
-    let selector = document.getElementById("terrainSelect");
-    selector.value = ""
+function updateSelectedTerrain() {
+    let selector = document.getElementById("townBonusSelect");
+    let town = selector.value;
+    let graph = document.getElementById("graph")
+    console.log(terrain)
+    graph.src = BACKEND_URL_BASE + "/upgrades-by-town-bonus.svg?town=" + town
+    clearOtherSelectors("townBonusSelect");
 }
