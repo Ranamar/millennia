@@ -2,28 +2,27 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args:
       - build
-      - -t
-      - >-
-        gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA'
       - .
     id: Build
-  - name: gcr.io/cloud-builders/docker
+  - name: 'gcr.io/cloud-builders/docker'
     args:
-      - push
-      - >-
-        gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
+      - 'push'
+      - '--all-tags'
+      - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA'
     id: Push
-  - name: gcr.io/cloud-builders/gcloud
+  - name: 'gcr.io/cloud-builders/gcloud'
     env:
       - SHORT_SHA=$SHORT_SHA
     args:
       - infra-manager
       - deployments
       - apply
-      - >-
-        projects/$PROJECT_ID/locations/us-central1/deployments/tree-drawing
-      - >-
-        --service-account=projects/$PROJECT_ID/serviceAccounts/terraform-runner@millennia-tech-tree-grapher.iam.gserviceaccount.com
+      - 'projects/$PROJECT_ID/locations/us-central1/deployments/tree-drawing'
+      - '--service-account=projects/$PROJECT_ID/serviceAccounts/terraform-runner@millennia-tech-tree-grapher.iam.gserviceaccount.com'
       - '--git-source-repo=https://github.com/Ranamar/millennia.git'
       - '--git-source-directory=deploy'
       - '--git-source-ref=main'
@@ -35,10 +34,8 @@ steps:
       - update
       - tech-tree-grapher
       - '--platform=managed'
-      - >-
-        --image=gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
-      - >-
-        --labels=commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID
+      - '--image=gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest'
+      - '--labels=commit-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID'
       - '--region=us-central1'
     id: Deploy
     entrypoint: gcloud
@@ -46,7 +43,5 @@ timeout: 600s
 options:
   logging: CLOUD_LOGGING_ONLY
 images:
-  - >-
-    gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest
-  - >-
-    gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA
+  - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest'
+  - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA'
