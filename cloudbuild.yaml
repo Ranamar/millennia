@@ -12,7 +12,7 @@ steps:
     args:
       - 'push'
       - '--all-tags'
-      - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA'
+      - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME'
     id: Push
   - name: 'gcr.io/cloud-builders/gcloud'
     env:
