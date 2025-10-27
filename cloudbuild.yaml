@@ -29,3 +29,6 @@ steps:
 images:
   - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:latest'
   - 'gcr.io/$PROJECT_ID/github.com/$REPO_NAME:$COMMIT_SHA'
+timeout: 600s
+options:
+  logging: CLOUD_LOGGING_ONLY
